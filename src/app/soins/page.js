@@ -45,6 +45,7 @@ const formules = [
       "Comment se protéger",
       "Trouver son outil",
       "Comment faire un soin",
+      "La canalisation, ce que je ressens",
     ],
   },
   {
@@ -58,6 +59,12 @@ const formules = [
       "La mission de vie et pourquoi",
       "Explorer et s’exercer",
       "Mise en condition de soin",
+      "Couper son mental et son égo",
+      "Maitriser totalement ce que l'on travaille",
+      "Ressentir les énergies qui viennent dans notre canal",
+      "Temps de paroles",
+      "Sortie en nature",
+      "Pleine conscience",
     ],
   },
 ];
@@ -96,7 +103,7 @@ export default function Soins() {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-teal-100 transform -rotate-3 rounded-2xl shadow-lg" />
 
               {/* Carte */}
-              <div className="relative bg-white p-8 rounded-2xl shadow-md transition-all duration-300 group-hover:-translate-y-2 h-full">
+              <div className="relative bg-white p-8 rounded-2xl shadow-md transition-all duration-300 group-hover:-translate-y-2 h-full flex flex-col justify-between">
                 {/* En-tête de carte */}
                 <div className="flex items-start gap-4 mb-6">
                   <div className="p-3 bg-purple-100 rounded-lg">

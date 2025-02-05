@@ -19,7 +19,7 @@ const Cta = () => {
             expérience de transformation unique.
           </p>
           <motion.a
-            href="#services" // Assurez-vous que cette ancre mène à la section des services
+            href="/soins" // Assurez-vous que cette ancre mène à la section des services
             className="inline-block bg-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-purple-700"
             whileHover={{ scale: 1.05 }}
           >

@@ -19,7 +19,7 @@ export default function Navbar() {
         <nav className="hidden md:flex space-x-6">
           <Link href="/" className="text-gray-700 hover:text-indigo-600">Accueil</Link>
           <Link href="/soins" className="text-gray-700 hover:text-indigo-600">Les soins</Link>
-          {/* <Link href="/services" className="text-gray-700 hover:text-indigo-600">Services</Link> */}
+          <Link href="/services" className="text-gray-700 hover:text-indigo-600">Services</Link>
           <Link href="/contact" className="text-gray-700 hover:text-indigo-600">Contact</Link>
         </nav>
 
@@ -34,7 +34,7 @@ export default function Navbar() {
         <nav className="md:hidden bg-white shadow-md p-4 space-y-4 absolute w-full left-0 top-16">
           <Link href="/" className="block text-gray-700" onClick={() => setIsOpen(false)}>Accueil</Link>
           <Link href="/soins" className="block text-gray-700" onClick={() => setIsOpen(false)}>Les soins</Link>
-          {/* <Link href="/services" className="block text-gray-700" onClick={() => setIsOpen(false)}>Services</Link> */}
+          <Link href="/services" className="block text-gray-700" onClick={() => setIsOpen(false)}>Services</Link>
           <Link href="/contact" className="block text-gray-700" onClick={() => setIsOpen(false)}>Contact</Link>
         </nav>
       )}
