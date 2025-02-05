@@ -39,7 +39,7 @@ export default function Presentation() {
           className="w-full lg:w-7/12 space-y-10"
         >
           <h2 className="text-5xl font-bold text-gray-900 leading-tight">
-            Kristelle <span className="text-purple-600">Feron</span>
+            Kristelle <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600">Feron</span>
           </h2>
 
           <div className="space-y-8">

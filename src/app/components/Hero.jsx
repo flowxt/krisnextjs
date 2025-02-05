@@ -25,7 +25,7 @@ export default function Hero() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-5xl md:text-6xl font-bold"
         >
-           Kris LaVoixDesAnges
+           Kris <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600">LaVoixDesAnges</span>
          
         </motion.h1>
         <motion.p
@@ -42,11 +42,11 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="mt-6"
+          className="mt-12"
         >
           <a
             href="#contact"
-            className="bg-white text-black px-6 py-3 text-lg font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300"
+            className="bg-gradient-to-r from-purple-400 to-indigo-600 text-white px-6 py-3 text-lg font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300"
           >
             Prendre Rendez-vous
           </a>
