@@ -8,11 +8,11 @@ const Cta = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="w-full py-16 bg-gradient-to-r from-teal-100 to-purple-50"
+        className="w-full py-16 bg-gradient-to-r from-purple-100 to-purple-50"
       >
         <div className="max-w-7xl mx-auto text-center px-4">
           <h3 className="text-3xl font-semibold text-gray-800 mb-6">
-            Prêt à transformer votre énergie ?
+            Prêt à transformer votre <span className='text-purple-800'>énergie ?</span>
           </h3>
           <p className="text-lg text-gray-600 mb-8">
             Découvrez nos soins énergétiques sur-mesure et offrez-vous une
