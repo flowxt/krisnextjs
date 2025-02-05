@@ -12,7 +12,7 @@ const Cta = () => {
       >
         <div className="max-w-7xl mx-auto text-center px-4">
           <h3 className="text-3xl font-semibold text-gray-800 mb-6">
-            Prêt à transformer votre <span className='text-purple-800'>énergie ?</span>
+            Prêt à transformer votre <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600'>énergie ?</span>
           </h3>
           <p className="text-lg text-gray-600 mb-8">
             Découvrez nos soins énergétiques sur-mesure et offrez-vous une
@@ -20,7 +20,7 @@ const Cta = () => {
           </p>
           <motion.a
             href="/soins" // Assurez-vous que cette ancre mène à la section des services
-            className="inline-block bg-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-purple-700"
+            className="inline-block bg-gradient-to-r from-purple-400 to-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-purple-700"
             whileHover={{ scale: 1.05 }}
           >
             En savoir plus
