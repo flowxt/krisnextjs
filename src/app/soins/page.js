@@ -1,4 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  RocketLaunchIcon,
+  SunIcon,
+  BookOpenIcon,
+  AcademicCapIcon,
+} from "@heroicons/react/24/outline";
 
 const formules = [
   {
@@ -55,42 +64,105 @@ const formules = [
 
 export default function Soins() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-900 to-purple-700 text-white">
-      <div className="max-w-6xl mx-auto py-20 px-6">
-        <h1 className="text-5xl font-bold text-center mb-10">
-          Soins & Formules
-        </h1>
-        <p className="text-center text-lg mb-12 max-w-3xl mx-auto">
-          Découvrez nos offres et choisissez la formule qui vous convient pour
-          un accompagnement holistique sur-mesure.
-        </p>
-        <div className="grid md:grid-cols-2 gap-8">
-          {formules.map((formule) => (
-            <div
+    <section className="w-full py-24 bg-gradient-to-br from-gray-50 to-purple-50">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* En-tête animé */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+            Soins & <span className="text-purple-600">Formules</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Découvrez nos offres et choisissez la formule qui vous convient pour
+            un accompagnement holistique sur-mesure.
+          </p>
+        </motion.div>
+
+        {/* Grille de cartes */}
+        <div className="grid md:grid-cols-2 gap-12">
+          {formules.map((formule, index) => (
+            <motion.div
               key={formule.id}
-              className="bg-white text-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative group"
             >
-              <h2 className="text-2xl font-semibold text-purple-700">
-                {formule.title}
-              </h2>
-              <p className="text-lg font-bold text-indigo-600">
-                {formule.price}
-              </p>
-              <p className="italic text-sm mb-4">{formule.duration}</p>
-              <ul className="list-disc pl-5 text-gray-700 mb-6">
-                {formule.description.map((desc, index) => (
-                  <li key={index}>{desc}</li>
-                ))}
-              </ul>
-              <Link href="/contact">
-                <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full w-full">
-                  Sélectionner
-                </button>
-              </Link>
-            </div>
+              {/* Effet de fond gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-teal-100 transform -rotate-3 rounded-2xl shadow-lg" />
+
+              {/* Carte */}
+              <div className="relative bg-white p-8 rounded-2xl shadow-md transition-all duration-300 group-hover:-translate-y-2 h-full">
+                {/* En-tête de carte */}
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="p-3 bg-purple-100 rounded-lg">
+                    {formule.id === 1 && (
+                      <RocketLaunchIcon className="w-8 h-8 text-purple-600" />
+                    )}
+                    {formule.id === 2 && (
+                      <SunIcon className="w-8 h-8 text-purple-600" />
+                    )}
+                    {formule.id === 3 && (
+                      <BookOpenIcon className="w-8 h-8 text-purple-600" />
+                    )}
+                    {formule.id === 4 && (
+                      <AcademicCapIcon className="w-8 h-8 text-purple-600" />
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      {formule.title}
+                    </h3>
+                    <p className="text-purple-600 font-semibold">
+                      {formule.price}
+                    </p>
+                    <p className="text-sm text-gray-500 italic">
+                      {formule.duration}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Liste des caractéristiques */}
+                <ul className="space-y-3 mb-8 pl-2">
+                  {formule.description.map((desc, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2 text-gray-600"
+                    >
+                      <span className="text-purple-500">▹</span>
+                      {desc}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Bouton */}
+                <Link href="/contact">
+                  <button className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02]">
+                    Sélectionner
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
           ))}
         </div>
+
+        {/* Citation en bas */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="text-center mt-16 max-w-2xl mx-auto"
+        >
+          <p className="text-xl italic text-gray-600 border-l-4 border-purple-500 pl-4">
+            “L'énergie vitale est la clé de toute transformation profonde et
+            durable.”
+          </p>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
