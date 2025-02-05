@@ -1,65 +1,43 @@
 "use client";
-import Link from "next/link";
-import { FiMenu, FiX } from "react-icons/fi";
 import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const links = [
-    { name: "Accueil", path: "/" },
-    { name: "Soins & Formules", path: "/soins" },
-    { name: "À propos", path: "/a-propos" },
-    { name: "Contact", path: "/contact" },
-    { name: "Blog", path: "/blog" },
-  ];
-
   return (
-    <nav className="bg-gradient-to-r from-slate-800/50 to-slate-900/50 shadow-lg fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
-          <Link href="/" className="text-2xl font-cursive text-sky-300">
-            Kristelle Feron
-          </Link>
+    <header className="bg-white shadow-md fixed top-0 w-full z-50">
+      <div className="max-w-6xl mx-auto flex items-center justify-between p-4">
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-bold text-gray-800 flex items-center">
+        <img src="/photo/logo.png" alt="Kristelle Feron" className="w-12 h-12 mr-4" />
+          Kristelle Feron
+        </Link>
 
-          {/* Desktop menu */}
-          <div className="hidden md:flex space-x-8">
-            {links.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className="text-pink-100 hover:text-rose-300 transition-colors text-lg"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
+        {/* Navigation Desktop */}
+        <nav className="hidden md:flex space-x-6">
+          <Link href="/" className="text-gray-700 hover:text-indigo-600">Accueil</Link>
+          <Link href="/about" className="text-gray-700 hover:text-indigo-600">À propos</Link>
+          <Link href="/services" className="text-gray-700 hover:text-indigo-600">Services</Link>
+          <Link href="/contact" className="text-gray-700 hover:text-indigo-600">Contact</Link>
+        </nav>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-pink-100"
-          >
-            {isOpen ? <FiX size={28} /> : <FiMenu size={28} />}
-          </button>
-        </div>
-
-        {/* Mobile menu */}
-        {isOpen && (
-          <div className="md:hidden pb-4 space-y-4">
-            {links.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className="block px-4 py-2 text-pink-100 hover:bg-purple-700 rounded-lg"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        )}
+        {/* Menu Burger Mobile */}
+        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
-    </nav>
+
+      {/* Menu Mobile */}
+      {isOpen && (
+        <nav className="md:hidden bg-white shadow-md p-4 space-y-4 absolute w-full left-0 top-16">
+          <Link href="/" className="block text-gray-700" onClick={() => setIsOpen(false)}>Accueil</Link>
+          <Link href="/about" className="block text-gray-700" onClick={() => setIsOpen(false)}>À propos</Link>
+          <Link href="/services" className="block text-gray-700" onClick={() => setIsOpen(false)}>Services</Link>
+          <Link href="/contact" className="block text-gray-700" onClick={() => setIsOpen(false)}>Contact</Link>
+        </nav>
+      )}
+    </header>
   );
 }
