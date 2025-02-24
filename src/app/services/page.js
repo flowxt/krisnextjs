@@ -150,14 +150,47 @@ export default function Services() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-20">
-      <div className="max-w-7xl mx-auto px-4">
-        <motion.h2
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-16"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 relative"
         >
-          Mes Services Énergétiques
-        </motion.h2>
+          <h2 className="mt-11 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block">
+            <span className="relative z-10 px-4">
+              Mes Services{" "}
+              <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white p-2">
+                Énergétiques
+              </span>
+            </span>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.2, delay: 0.5 }}
+              className="absolute bottom-3 left-0 w-full h-3 bg-purple-100/80 z-0"
+              style={{ originX: 0 }}
+            />
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto relative z-10">
+            Découvrez une gamme de{" "}
+            <span className="font-semibold text-purple-600">
+              soins personnalisés
+            </span>{" "}
+            pour harmoniser votre{" "}
+            <span className="font-semibold text-indigo-600">
+              corps, cœur et esprit
+            </span>
+          </p>
+
+          <motion.div
+            animate={{ rotate: 12, scale: [1, 1.05, 1] }}
+            transition={{ duration: 8, repeat: Infinity }}
+            className="absolute -top-8 -right-12 opacity-10"
+          >
+            <SparklesIcon className="w-36 h-36 text-purple-400" />
+          </motion.div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => (
