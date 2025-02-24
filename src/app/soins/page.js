@@ -136,8 +136,9 @@ export default function Soins() {
             <Image
               src="/photo/IMG_8959.jpg"
               alt="Extérieur du lieu"
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-500"
+              width={800}
+              height={600}
+              className="object-cover h-full w-full hover:scale-105 transition-transform duration-500"
             />
           </motion.div>
 
@@ -149,8 +150,9 @@ export default function Soins() {
               <Image
                 src="/photo/IMG_8954.jpg"
                 alt="Intérieur du lieu"
-                fill
-                className="object-cover"
+                width={400}
+                height={300}
+                className="object-cover w-full h-full"
               />
             </motion.div>
             <motion.div
@@ -160,8 +162,9 @@ export default function Soins() {
               <Image
                 src="/photo/IMG_8951.jpg"
                 alt="Détails intérieurs"
-                fill
-                className="object-cover"
+                width={400}
+                height={300}
+                className="object-cover w-full h-full"
               />
             </motion.div>
           </div>
@@ -173,8 +176,9 @@ export default function Soins() {
             <Image
               src="/photo/IMG_8950.jpg"
               alt="Ambiance détente"
-              fill
-              className="object-cover"
+              width={800}
+              height={600}
+              className="object-cover w-full h-full"
             />
           </motion.div>
         </div>
