@@ -36,7 +36,7 @@ Chaque séance est unique et s’adapte à vos besoins profonds, même ceux que 
 Si vous ressentez cet appel, c’est qu’il est temps. Il vous suffit d’ouvrir la porte… et de laisser l’univers vous guider.
 
 Nous découvrirons ensemble ce qui est juste pour vous, en toute confiance. ✨`,
-    images: ["/photo/IMG_8967.jpg", "/photo/IMG_8963.jpg"],
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
   },
 
   // Carte 2
@@ -58,7 +58,7 @@ Durant cette séance adaptée, nous créons un espace de douceur et de sécurit�
 Chaque séance est une expérience unique, respectant le rythme et la sensibilité de votre enfant. Dans cet espace protégé, les tensions se dénouent, permettant à leur énergie vitale de circuler librement.
 
 Cette approche délicate contribue à leur développement harmonieux, leur offrant des outils naturels pour grandir sereinement.`,
-    images: ["/photo/IMG_8970.jpg", "/photo/IMG_8969.jpg"],
+    images: ["/photo/IMG_8970.JPG", "/photo/IMG_8969.JPG"],
   },
 
   // Carte 3
@@ -86,7 +86,7 @@ Cette approche délicate offre de nombreux bienfaits :
 • Une paix intérieure naturelle
 
 N'oubliez pas doudou et tétine pour un moment de pure douceur.`,
-    images: ["/photo/IMG_8966.jpg", "/photo/IMG_8965.jpg"],
+    images: ["/photo/IMG_8966.JPG", "/photo/IMG_8965.JPG"],
   },
   //Carte 4
   {
@@ -116,7 +116,7 @@ Modalités pratiques :
 • Message vocal personnalisé
 
 * Une guidance éclairée pour transformer vos questions en réponses lumineuses. ✨`,
-    images: ["/photo/IMG_8962.jpg", "/photo/IMG_8963.jpg"],
+    images: ["/photo/IMG_8962.JPG", "/photo/IMG_8963.JPG"],
   },
   //Carte 5
   {
@@ -140,7 +140,7 @@ La séance se termine par un ancrage des nouvelles énergies positives, garantis
 
 * Le tarif et la durée varient selon la surface à traiter et l'intensité énergétique requise. Une évaluation précise sera établie lors de notre premier échange. 
  `,
-    images: ["/photo/IMG_8961.jpg", "/photo/IMG_8960.jpg"],
+    images: ["/photo/IMG_8961.JPG", "/photo/IMG_8960.JPG"],
   },
   // Ajouter les autres services de la même manière
 ];
