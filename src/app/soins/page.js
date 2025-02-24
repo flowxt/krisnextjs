@@ -90,7 +90,7 @@ export default function Soins() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 relative"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block">
+          <h2 className="mt-11 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block">
             <span className="relative z-10 px-4">
               Un havre de paix pour{" "}
               <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white p-2 ">
