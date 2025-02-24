@@ -134,7 +134,7 @@ export default function Soins() {
             whileHover={{ scale: 1.02 }}
           >
             <Image
-              src="/photo/IMG_8959.jpg"
+              src="/photo/IMG_8959.JPG"
               alt="Extérieur du lieu"
               width={800}
               height={600}
@@ -148,7 +148,7 @@ export default function Soins() {
               whileHover={{ scale: 1.05 }}
             >
               <Image
-                src="/photo/IMG_8954.jpg"
+                src="/photo/IMG_8954.JPG"
                 alt="Intérieur du lieu"
                 width={400}
                 height={300}
@@ -160,7 +160,7 @@ export default function Soins() {
               whileHover={{ scale: 1.05 }}
             >
               <Image
-                src="/photo/IMG_8951.jpg"
+                src="/photo/IMG_8951.JPG"
                 alt="Détails intérieurs"
                 width={400}
                 height={300}
@@ -174,7 +174,7 @@ export default function Soins() {
             whileHover={{ scale: 1.02 }}
           >
             <Image
-              src="/photo/IMG_8950.jpg"
+              src="/photo/IMG_8950.JPG"
               alt="Ambiance détente"
               width={800}
               height={600}
