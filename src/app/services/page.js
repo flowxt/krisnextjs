@@ -222,8 +222,9 @@ export default function Services() {
                           <Image
                             src={img}
                             alt={service.title}
-                            fill
-                            className="object-cover"
+                            width={800}
+                            height={600}
+                            className="object-cover w-full h-full"
                           />
                         </div>
                       ))}
