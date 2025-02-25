@@ -97,13 +97,6 @@ export default function Soins() {
                 votre bien-être
               </span>
             </span>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1.2, delay: 0.5 }}
-              className="absolute bottom-3 left-0 w-full h-3 bg-purple-100/80 z-0"
-              style={{ originX: 0 }}
-            />
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto relative z-10">
             Niché dans un{" "}
@@ -118,13 +111,6 @@ export default function Soins() {
           </p>
 
           {/* Élément décoratif discret */}
-          <motion.div
-            animate={{ rotate: 12, scale: [1, 1.05, 1] }}
-            transition={{ duration: 8, repeat: Infinity }}
-            className="absolute -top-8 -right-12 opacity-10"
-          >
-            <SparklesIcon className="w-36 h-36 text-purple-400" />
-          </motion.div>
         </motion.div>
 
         {/* Galerie images modifiée */}
