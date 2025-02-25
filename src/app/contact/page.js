@@ -25,12 +25,12 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 py-20 px-4 mt-11">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 py-20 px-4 ">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden"
+        className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden mt-11"
       >
         <div className="flex flex-col lg:flex-row">
           {/* Section Photo */}
