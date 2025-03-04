@@ -27,7 +27,7 @@ const Cta = ({ page }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="w-full py-16 bg-gradient-to-r from-purple-100 to-purple-50"
+      className="w-full py-16 bg-gradient-to-t from-pink-50 to-purple-100"
     >
       <div className="max-w-7xl mx-auto text-center px-4">
         <h3 className="text-3xl font-semibold text-gray-800 mb-6">
