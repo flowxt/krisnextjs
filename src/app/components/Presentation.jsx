@@ -211,22 +211,13 @@ export default function Presentation() {
           { title: "Non-Jugement", icon: HeartIcon },
           { title: "Respect du Libre Arbitre", icon: ScaleIcon }
         ].map((item, i) => (
-          <motion.div
+          <div
             key={i}
             className="flex items-center gap-6 p-6 bg-gray-50 rounded-xl"
-            // Désactivation des animations sur mobile
-            initial={{ x: 0 }}
-            whileInView={{ 
-              x: 0,
-              // Animation uniquement sur desktop
-              ...(window.innerWidth > 768 && {
-                x: i % 2 === 0 ? -50 : 50
-              })
-            }}
           >
             <item.icon className="w-12 h-12 text-purple-600 flex-shrink-0" />
             <span className="text-xl font-semibold">{item.title}</span>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
