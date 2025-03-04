@@ -47,7 +47,7 @@ export default function Hero() {
           {/* Titre avec découpe de gradient animé */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold mb-6 leading-normal pb-2"
+            className="text-3xl md:text-7xl font-bold mb-6 leading-normal pb-2"
             style={{
               background: "linear-gradient(45deg, #9F7AEA, #667EEA, #6B46C1)",
               WebkitBackgroundClip: "text",
