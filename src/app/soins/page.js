@@ -93,10 +93,13 @@ export default function Soins() {
             className="text-center mb-16 relative"
           >
             <h2 className="mt-11 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block">
-              <span className="relative z-10 px-4">
-                Un havre de paix pour{" "}
-                <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white p-2 ">
-                  votre bien-être
+              <span className="relative z-10 px-4 flex flex-col md:flex-row items-center gap-2 md:gap-0">
+                <span className="whitespace-nowrap">Un havre de paix</span>{" "}
+                <span className="whitespace-nowrap">
+                  pour{" "}
+                  <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white p-2 inline-block mt-1 md:mt-0">
+                    votre bien-être
+                  </span>
                 </span>
               </span>
             </h2>
