@@ -572,13 +572,6 @@ export default function Services() {
                   Énergétiques
                 </span>
               </span>
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1.2, delay: 0.5 }}
-                className="absolute bottom-3 left-0 w-full h-3 bg-purple-100/80 z-0"
-                style={{ originX: 0 }}
-              />
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto relative z-10 px-4">
               Découvrez une gamme de{" "}
