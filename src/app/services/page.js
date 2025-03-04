@@ -13,6 +13,7 @@ import {
   SunIcon,
   LightBulbIcon,
 } from "@heroicons/react/24/outline";
+import Cta from "../components/Cta";
 
 const services = [
   {
@@ -20,6 +21,7 @@ const services = [
     title: "Séance Énergétique Adulte",
     price: "100€",
     duration: "1h - Présentiel/Distance",
+    intervenant: "Kris",
     icon: <SparklesIcon className="w-8 h-8" />,
     description: `Vous ressentez cet appel intérieur, ce doux murmure de votre âme qui vous invite à un retour à l’essentiel ? Une reconnexion, un souffle nouveau, un besoin de vous ressourcer profondément ?
 
@@ -48,6 +50,7 @@ Nous découvrirons ensemble ce qui est juste pour vous, en toute confiance. ✨`
     title: "Séance Enfant (4-12 ans)",
     price: "80€",
     duration: "1h - Présentiel",
+    intervenant: "Kris",
     icon: <UserIcon className="w-8 h-8" />,
     description: `Les enfants sont naturellement réceptifs aux énergies qui les entourent. Leur sensibilité innée en fait des êtres particulièrement disposés aux soins énergétiques.
 
@@ -70,6 +73,7 @@ Cette approche délicate contribue à leur développement harmonieux, leur offra
     title: "Séance Enfant (3 mois à 3 ans)",
     price: "45€",
     duration: "30min - Présentiel",
+    intervenant: "Kris",
     icon: <UserIcon className="w-8 h-8" />,
     description: `Une Bulle de Douceur pour l'Épanouissement de Bébé
 
@@ -97,6 +101,7 @@ N'oubliez pas doudou et tétine pour un moment de pure douceur.`,
     title: "Guidance à la Question",
     price: "à partir de 20€",
     duration: "Reponse sous 3j - Distanciel uniquement",
+    intervenant: "Kris",
     icon: <QuestionMarkCircleIcon className="w-8 h-8" />,
     description: `Les grandes questions existentielles méritent des réponses claires et éclairées. Face aux carrefours décisifs de votre vie, offrez-vous une guidance précise et inspirée.
 
@@ -127,6 +132,7 @@ Modalités pratiques :
     title: "Nettoyage Énergétique du Foyer",
     price: "à partir de 250€",
     duration: "3h minimum - Présentiel",
+    intervenant: "Kris",
     icon: <HomeIcon className="w-8 h-8" />,
     description: `L'harmonisation de votre espace de vie est fondamentale pour votre bien-être global. Un foyer énergétiquement sain est la base d'une vie équilibrée et épanouie.
 
@@ -150,6 +156,7 @@ La séance se termine par un ancrage des nouvelles énergies positives, garantis
     title: "Contact Défunt",
     price: "100€",
     duration: "1h - Préférence Présentiel",
+    intervenant: "Kris",
     icon: <HeartIcon className="w-8 h-8" />,
     description: `Un moment sacré pour renouer avec ceux qui nous ont quittés. Un espace de connexion unique pour apaiser votre cœur et accompagner votre processus de deuil.
   
@@ -181,6 +188,7 @@ La séance se termine par un ancrage des nouvelles énergies positives, garantis
     title: "Carte Cadeau Soin Énergétique",
     price: "100€",
     duration: "1h - Présentiel/Distance",
+    intervenant: "Kris",
     icon: <GiftIcon className="w-8 h-8" />,
     description: `Quoi de mieux que d'offrir un moment de sérénité à une personne qui vous est chère ? Un cadeau unique qui touche l'âme et le cœur.
   
@@ -208,6 +216,7 @@ La séance se termine par un ancrage des nouvelles énergies positives, garantis
     title: "Soin Énergétique Personnalisé",
     price: "100€",
     duration: "1h - Présentiel/Distance",
+    intervenant: "Kris",
     icon: <SparklesIcon className="w-8 h-8" />,
     description: `𝙐𝙣 𝙊𝙘𝙚́𝙖𝙣 𝙙𝙚 𝙎𝙚́𝙧𝙚́𝙣𝙞𝙩𝙚́ 𝙖̀ 𝙑𝙤𝙩𝙧𝙚 𝙋𝙤𝙧𝙩𝙚́𝙚
   
@@ -241,6 +250,7 @@ La séance se termine par un ancrage des nouvelles énergies positives, garantis
     title: "Guidance 1h30",
     price: "120€",
     duration: "1h30 - Présentiel/Distance",
+    intervenant: "Kris",
     icon: <SunIcon className="w-8 h-8" />,
     description: `Ouvrez Grand les Portes de Votre Destinée pour éclairer votre chemin de vie et vos choix.
   
@@ -280,6 +290,7 @@ La séance se termine par un ancrage des nouvelles énergies positives, garantis
     title: "Guidance 1h",
     price: "80€",
     duration: "1h - Présentiel/Distance",
+    intervenant: "Kris",
     icon: <LightBulbIcon className="w-8 h-8" />,
     description: `Ouvrez Grand les Portes de Votre Destinée pour éclairer sur votre chemin de vie et vos choix.
   
@@ -322,6 +333,7 @@ La séance se termine par un ancrage des nouvelles énergies positives, garantis
     title: "Guidance 45min",
     price: "60€",
     duration: "45min - Présentiel/Distance",
+    intervenant: "Kris",
     icon: <LightBulbIcon className="w-8 h-8" />,
     description: `Ouvrez Grand les Portes de Votre Destinée pour éclairer sur votre chemin de vie et vos choix.
   
@@ -359,6 +371,181 @@ La séance se termine par un ancrage des nouvelles énergies positives, garantis
   * Comme une lampe dans la nuit, laissez la guidance éclairer votre chemin et vous permettre d'avancer avec confiance ! ✨`,
     images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
   },
+  {
+    id: 12,
+    title: "Force Intérieure & Renaissance Masculine",
+    price: "100€",
+    duration: "1h - Présentiel",
+    intervenant: "Patrice",
+    icon: <UserIcon className="w-8 h-8" />, // Vous pouvez changer l'icône selon vos préférences
+    description: `Un espace dédié à la libération émotionnelle masculine, alliant olfactothérapie et zéro mental pour une transformation profonde.
+
+✨ Libération émotionnelle masculine
+✨ Approche holistique personnalisée
+✨ Techniques d'olfactothérapie ciblées
+✨ Pratique du zéro mental guidée
+
+RESERVATION PAR SMS UNIQUEMENT 06.65.55.33.41
+
+Cette approche unique combine plusieurs aspects pour une transformation complète :
+
+1. Olfactothérapie - Le Pouvoir des Odeurs :
+• Libération des blocages émotionnels
+• Réveil des mémoires enfouies
+• Apaisement des tensions mentales et corporelles
+• Reconnexion à soi par les sens
+
+2. Le Zéro Mental - L'Art du Lâcher-Prise :
+• Atteindre un état de calme intérieur profond
+• Se détacher des jugements limitants
+• Développer la présence à soi
+• Faciliter l'introspection authentique
+
+Pourquoi une Approche Entre Hommes :
+• Créer un espace sécurisant et sans jugement
+• Briser les tabous autour de la vulnérabilité masculine
+• Partager et se reconnaître dans les expériences des autres
+• Développer une fraternité bienveillante
+
+Bénéfices Après la Séance :
+• Libération émotionnelle profonde
+• Clarté mentale retrouvée
+• Légèreté intérieure
+• Meilleure gestion des émotions
+• Avancement serein dans sa vie
+
+Cette combinaison puissante offre une voie unique pour reconnecter corps, esprit et émotions dans un cadre bienveillant, spécialement conçu pour les hommes en quête d'authenticité et de transformation.`,
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"], // À remplacer avec les images appropriées
+  },
+  {
+    id: 13,
+    title: "Soin Libre d'Être Soi",
+    price: "180€",
+    duration: "2h - Présentiel",
+    intervenant: "Patrice",
+    icon: <SparklesIcon className="w-8 h-8" />,
+    description: `𝙇'𝙐𝙡𝙩𝙞𝙢𝙚 𝙍𝙚𝙣𝙖𝙞𝙨𝙨𝙖𝙣𝙘𝙚 𝙙𝙚 𝙑𝙤𝙩𝙧𝙚 𝙀𝙨𝙨𝙚𝙣𝙘𝙚 𝙋𝙪𝙧𝙚
+
+✨ Duo Zéro Mental + Soin 
+✨ Séance Réalisée avec 2 thérapeutes
+✨ Renaissance de Votre Essence Pure
+✨ Intense connexion du Corps de l'Âme et de l'Esprit
+
+RESERVATION PAR SMS UNIQUEMENT 06.65.55.33.41
+
+𝙄𝙣𝙩𝙚𝙣𝙨𝙚 𝙘𝙤𝙣𝙣𝙚𝙭𝙞𝙤𝙣 𝙙𝙪 𝘾𝙤𝙧𝙥𝙨 𝙙𝙚 𝙡'𝘼̂𝙢𝙚 𝙚𝙩 𝙙𝙚 𝙡'𝙀𝙨𝙥𝙧𝙞𝙩 & 𝙇𝙖̂𝙘𝙝𝙚𝙧 𝙋𝙧𝙞𝙨𝙚 𝙐𝙡𝙩𝙞𝙢𝙚
+
+Imaginez un cocon douillet où plus rien ne pourrait entraver le déploiement de votre moi essentiel dans sa plénitude rayonnante. 𝙐𝙣 𝙨𝙖𝙣𝙘𝙩𝙪𝙖𝙞𝙧𝙚 𝙫𝙞𝙗𝙧𝙖𝙩𝙤𝙞𝙧𝙚 𝙘𝙤𝙣𝙘̧𝙪 𝙥𝙤𝙪𝙧 𝙗𝙧𝙞𝙨𝙚𝙧 𝙡𝙚𝙨 𝙘𝙝𝙖𝙞̂𝙣𝙚𝙨 𝙙𝙚𝙨 𝙨𝙘𝙝𝙚́𝙢𝙖𝙨 𝙡𝙞𝙢𝙞𝙩𝙖𝙣𝙩𝙨 𝙚𝙩 𝙙𝙚𝙨 𝙨𝙤𝙪𝙛𝙛𝙧𝙖𝙣𝙘𝙚𝙨 𝙖𝙣𝙘𝙞𝙚𝙣𝙣𝙚𝙨 𝙦𝙪𝙞 𝙚𝙣𝙩𝙧𝙖𝙫𝙚𝙣𝙩 𝙚𝙣𝙘𝙤𝙧𝙚 𝙫𝙤𝙩𝙧𝙚 𝙚𝙣𝙩𝙞𝙚̀𝙧𝙚 𝙡𝙞𝙗𝙚́𝙧𝙖𝙩𝙞𝙤𝙣.
+
+C'est la séance audacieuse du "Soin Libre d'Être Soi", une expérience immersive et duale qui conjugue le lâcher-prise absolu du Zéro Mental à la profonde reconnexion vibratoire du Soin Énergétique.
+
+Ce que cette séance vous apporte :
+• Libération des schémas limitants
+• Reconnexion à votre essence profonde
+• Double accompagnement expert
+• Transformation vibratoire complète
+
+Le processus de transformation :
+• Démantèlement des prisons mentales
+• Libération des traumatismes
+• Harmonisation énergétique profonde
+• Renaissance de votre lumière essentielle
+
+𝙪𝙣𝙚 𝙛𝙪𝙨𝙞𝙤𝙣 𝙚𝙭𝙥𝙚𝙧𝙩𝙚 𝙙𝙚 𝙙𝙚𝙪𝙭 𝙩𝙝𝙚́𝙧𝙖𝙥𝙚𝙪𝙩𝙚𝙨 œ𝙪𝙫𝙧𝙚𝙧𝙖 𝙚𝙣 𝙥𝙖𝙧𝙛𝙖𝙞𝙩𝙚 𝙨𝙮𝙢𝙗𝙞𝙤𝙨𝙚 pour une transformation totale et durable.
+
+Alors plus aucun frein, plus aucune barrière provisoire ne saurait entraver l'éclosion de votre grandeur essentielle !
+
+Libre d'être Soi dans toute sa gloire manifeste, vibrante et épanouie, telle est la promesse de cette expérience transformatrice à l'état pur !`,
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
+  },
+  {
+    id: 14,
+    title: "Zero Mental",
+    price: "100€",
+    duration: "1h - Présentiel",
+    intervenant: "Patrice",
+    icon: <SparklesIcon className="w-8 h-8" />,
+    description: `𝑳'𝑨𝒖𝒃𝒆 𝒅'𝒖𝒏𝒆 𝑵𝒐𝒖𝒗𝒆𝒍𝒍𝒆 𝑪𝒐𝒏𝒔𝒄𝒊𝒆𝒏𝒄𝒆 𝑳𝒊𝒃𝒆́𝒓𝒆́𝒆
+
+✨ Libération du mental limitant 
+✨ Reconnexion à votre essence pure
+✨ Transformation vibratoire profonde
+✨ État de plénitude intérieure absolue
+
+RESERVATION PAR SMS UNIQUEMENT 06.65.55.33.41
+
+𝑽𝒐𝒖𝒔 𝒍'𝒂𝒗𝒆𝒛 𝒅𝒆́𝒋𝒂̀ 𝒈𝒐𝒖̂𝒕𝒆́ 𝒑𝒂𝒓 𝒃𝒓𝒊𝒃𝒆𝒔, 𝒄𝒆 𝒔𝒆𝒏𝒕𝒊𝒎𝒆𝒏𝒕 𝒆𝒙𝒂𝒍𝒕𝒂𝒏𝒕 𝒅𝒆 𝒑𝒍𝒆́𝒏𝒊𝒕𝒖𝒅𝒆 𝒊𝒏𝒕𝒆́𝒓𝒊𝒆𝒖𝒓𝒆. 
+𝑪𝒐𝒎𝒎𝒆 𝒖𝒏 𝒑𝒂𝒓𝒇𝒖𝒎 𝒅'𝒆́𝒕𝒆𝒓𝒏𝒊𝒕𝒆́ 𝒇𝒍𝒐𝒕𝒕𝒂𝒏𝒕 𝒅𝒂𝒏𝒔 𝒍'𝒂𝒊𝒓, 𝒗𝒐𝒖𝒔 𝒆𝒏 𝒂𝒗𝒆𝒛 𝒓𝒆𝒔𝒑𝒊𝒓𝒆́ 𝒍𝒆𝒔 𝒆𝒇𝒇𝒍𝒖𝒗𝒆𝒔 𝒆𝒏𝒕𝒆̂𝒕𝒂𝒏𝒕𝒔... 𝑨𝒗𝒂𝒏𝒕 𝒅𝒆 𝒍𝒆𝒔 𝒗𝒐𝒊𝒓 𝒔𝒆 𝒅𝒊𝒔𝒔𝒊𝒑𝒆𝒓 𝒂𝒖𝒔𝒔𝒊 𝒗𝒊𝒕𝒆 𝒅𝒂𝒏𝒔 𝒍𝒆 𝒕𝒖𝒎𝒖𝒍𝒕𝒆 𝒅𝒆 𝒍'𝒆𝒔𝒑𝒓𝒊𝒕.
+
+Aujourd'hui, c'est l'opportunité de recapturer cet état de grâce pour en faire votre nouvel étalon, votre fréquence vibratoire naturelle et immuable. De transformer l'éphémère en Demeure pérenne, baignée des rayons d'une Lumière céleste intarissable.
+
+𝑳𝒆 𝒁𝒆́𝒓𝒐 𝑴𝒆𝒏𝒕𝒂𝒍 𝒔𝒆𝒓𝒂 𝒄𝒆 𝒍𝒆𝒗𝒊𝒆𝒓 𝒅𝒆 𝒑𝒖𝒊𝒔𝒔𝒂𝒏𝒕𝒆 𝒂𝒍𝒄𝒉𝒊𝒎𝒊𝒆 𝒊𝒏𝒕𝒆́𝒓𝒊𝒆𝒖𝒓𝒆 𝒑𝒂𝒓 𝒍𝒆𝒒𝒖𝒆𝒍 𝒗𝒐𝒖𝒔 𝒂𝒄𝒄𝒆́𝒅𝒆𝒓𝒆𝒛 𝒂̀ 𝒄𝒆 𝒓𝒐𝒚𝒂𝒖𝒎𝒆 𝒅𝒆 𝒔𝒆́𝒓𝒆́𝒏𝒊𝒕𝒆́ 𝒊𝒏𝒆𝒇𝒇𝒂𝒃𝒍𝒆.
+
+Ce que cette séance vous apporte :
+• Libération des pensées limitantes
+• Accès à un état de conscience élargi
+• Reconnexion à votre essence véritable
+• Transformation vibratoire profonde
+
+Le processus de transformation :
+• Démantèlement des schémas mentaux limitants
+• Libération des conditionnements
+• Ouverture à une conscience élargie
+• Accès à votre potentiel illimité
+
+𝑰𝒍 𝒏'𝒚 𝒂𝒖𝒓𝒂 𝒂𝒍𝒐𝒓𝒔 𝒑𝒍𝒖𝒔 𝒅𝒆 𝒒𝒖𝒆̂𝒕𝒆 𝒂̀ 𝒎𝒆𝒏𝒆𝒓, 𝒎𝒂𝒊𝒔 𝒖𝒏 𝒆́𝒕𝒂𝒕 𝒅'𝒆̂𝒕𝒓𝒆 𝒂̀ 𝒔𝒂𝒗𝒐𝒖𝒓𝒆𝒓 𝒅𝒂𝒏𝒔 𝒍'𝒆𝒙𝒕𝒂𝒔𝒆 𝒅'𝒖𝒏𝒆 𝒓𝒆𝒄𝒐𝒏𝒏𝒆𝒙𝒊𝒐𝒏 𝒕𝒐𝒕𝒂𝒍𝒆 𝒂𝒗𝒆𝒄 𝒍'𝒆́𝒕𝒊𝒏𝒄𝒆𝒍𝒍𝒆 𝒅𝒊𝒗𝒊𝒏𝒆 𝒒𝒖𝒊 𝒃𝒓𝒖̂𝒍𝒆 𝒆𝒏 𝒗𝒐𝒖𝒔 𝒅𝒆𝒑𝒖𝒊𝒔 𝒍𝒂 𝒏𝒖𝒊𝒕 𝒅𝒆𝒔 𝒕𝒆𝒎𝒑𝒔.
+
+Le Zéro Mental sera cette clé ouvrant les portes d'une Nouvelle Conscience libérée des chaînes du mental limitant. L'entrée glorieuse dans le Royaume de votre Moi essentiel... définitivement retrouvé !`,
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
+  },
+  {
+    id: 15,
+    title: "Olfactothérapie",
+    price: "100€",
+    duration: "1h - Présentiel",
+    intervenant: "Patrice",
+    icon: <SparklesIcon className="w-8 h-8" />,
+    description: `𝑳𝒂 𝑷𝒖𝒊𝒔𝒔𝒂𝒏𝒄𝒆 𝒅𝒆𝒔 𝑺𝒆𝒏𝒔 𝒑𝒐𝒖𝒓 𝒖𝒏𝒆 𝑳𝒊𝒃𝒆́𝒓𝒂𝒕𝒊𝒐𝒏 É𝒎𝒐𝒕𝒊𝒐𝒏𝒏𝒆𝒍𝒍𝒆
+
+✨ Libération des émotions cristallisées
+✨ Thérapie psycho-corporelle ciblée
+✨ Transformation des schémas répétitifs
+✨ Reconnexion sensorielle profonde
+
+RESERVATION PAR SMS UNIQUEMENT 06.65.55.33.41
+
+L'olfacto-thérapie est une approche thérapeutique unique qui utilise la puissance évocatrice des odeurs pour accéder à vos mémoires émotionnelles les plus profondes. Cette thérapie brève mais intense permet de libérer les blocages émotionnels ancrés dans votre corps.
+
+Ce que cette séance vous apporte :
+• Libération des traumatismes émotionnels
+• Transformation des schémas limitants
+• Reconnexion à vos ressources intérieures
+• Harmonisation corps-esprit
+
+Le processus de transformation :
+• Exploration olfactive guidée
+• Identification des nœuds émotionnels
+• Libération par les essences naturelles
+• Ancrage des nouveaux schémas positifs
+
+𝑳𝒂 𝒑𝒖𝒊𝒔𝒔𝒂𝒏𝒄𝒆 𝒅𝒆𝒔 𝒐𝒅𝒆𝒖𝒓𝒔 :
+• Accès direct à la mémoire émotionnelle
+• Libération des charges émotionnelles
+• Reprogrammation neurosensorielle
+• Activation des ressources naturelles de guérison
+
+Cette approche holistique permet de :
+• Dépasser les blocages émotionnels
+• Transformer les schémas répétitifs
+• Retrouver un équilibre intérieur
+• Développer une nouvelle relation à soi
+
+L'olfactothérapie agit comme un pont entre le conscient et l'inconscient, permettant d'accéder aux mémoires cellulaires pour une libération profonde et durable. Les fragrances soigneusement sélectionnées deviennent les clés qui ouvrent les portes de votre guérison émotionnelle.
+
+𝑪𝒉𝒂𝒒𝒖𝒆 𝒔𝒆́𝒂𝒏𝒄𝒆 𝒆𝒔𝒕 𝒖𝒏 𝒗𝒐𝒚𝒂𝒈𝒆 𝒖𝒏𝒊𝒒𝒖𝒆 𝒂𝒖 𝒄œ𝒖𝒓 𝒅𝒆 𝒗𝒐𝒔 𝒔𝒆𝒏𝒔𝒂𝒕𝒊𝒐𝒏𝒔, une exploration guidée vers une liberté émotionnelle retrouvée.`,
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
+  },
+
   // Ajouter les autres services de la même manière
 ];
 
@@ -366,146 +553,207 @@ export default function Services() {
   const [expandedId, setExpandedId] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-20">
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16 relative overflow-hidden"
-        >
-          <h2 className="mt-11 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block px-4">
-            <span className="relative z-10">
-              Mes Services{" "}
-              <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white p-2 inline-block">
-                Énergétiques
+    <>
+      <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-20">
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16 relative overflow-hidden"
+          >
+            <h2 className="mt-11 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block px-4">
+              <span className="relative z-10">
+                Mes Services{" "}
+                <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white p-2 inline-block">
+                  Énergétiques
+                </span>
               </span>
-            </span>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1.2, delay: 0.5 }}
-              className="absolute bottom-3 left-0 w-full h-3 bg-purple-100/80 z-0"
-              style={{ originX: 0 }}
-            />
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto relative z-10 px-4">
-            Découvrez une gamme de{" "}
-            <span className="font-semibold text-purple-600">
-              soins personnalisés
-            </span>{" "}
-            pour harmoniser votre{" "}
-            <span className="font-semibold text-indigo-600">
-              corps, cœur et esprit
-            </span>
-          </p>
-        </motion.div>
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1.2, delay: 0.5 }}
+                className="absolute bottom-3 left-0 w-full h-3 bg-purple-100/80 z-0"
+                style={{ originX: 0 }}
+              />
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto relative z-10 px-4">
+              Découvrez une gamme de{" "}
+              <span className="font-semibold text-purple-600">
+                soins personnalisés
+              </span>{" "}
+              pour harmoniser votre{" "}
+              <span className="font-semibold text-indigo-600">
+                corps, cœur et esprit
+              </span>
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {services.map((service) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className={`relative bg-gradient-to-br from-white to-purple-50 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 ${
-                expandedId === service.id ? "md:col-span-2" : ""
-              }`}
-            >
-              <div
-                className="p-8 cursor-pointer"
-                onClick={() =>
-                  setExpandedId(expandedId === service.id ? null : service.id)
-                }
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {services.map((service) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`relative ${
+                  service.intervenant === "Patrice"
+                    ? "bg-gradient-to-br from-white to-blue-50"
+                    : "bg-gradient-to-br from-white to-purple-50"
+                } rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 ${
+                  expandedId === service.id ? "md:col-span-2" : ""
+                }`}
               >
-                <div className="flex items-start gap-6">
-                  {/* Icône avec dégradé */}
-                  <div className="p-4 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-2xl text-white shadow-lg">
-                    {service.icon}
-                  </div>
+                <div
+                  className="p-8 cursor-pointer"
+                  onClick={() =>
+                    setExpandedId(expandedId === service.id ? null : service.id)
+                  }
+                >
+                  <div className="flex items-start gap-6">
+                    {/* Icône avec dégradé selon l'intervenant */}
+                    <div
+                      className={`p-4 ${
+                        service.intervenant === "Patrice"
+                          ? "bg-gradient-to-br from-blue-500 to-cyan-500"
+                          : "bg-gradient-to-br from-purple-500 to-indigo-500"
+                      } rounded-2xl text-white shadow-lg`}
+                    >
+                      {service.icon}
+                    </div>
 
-                  <div className="flex-1 min-w-0">
-                    {/* Titre avec limite de lignes */}
-                    <h3 className="text-2xl font-bold text-gray-800 font-serif truncate-2-lines">
-                      {service.title}
-                    </h3>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-2xl font-bold text-gray-800 font-serif truncate-2-lines">
+                        {service.title}
+                      </h3>
 
-                    {/* Prix et durée en colonne */}
-                    <div className="mt-4 flex flex-col space-y-2">
-                      <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                        {service.price}
+                      {/* Badge intervenant */}
+                      <span
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-2 ${
+                          service.intervenant === "Patrice"
+                            ? "bg-blue-100 text-blue-800"
+                            : "bg-purple-100 text-purple-800"
+                        }`}
+                      >
+                        {service.intervenant}
                       </span>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="text-sm font-medium text-purple-600 bg-purple-50 px-3 py-1.5 rounded-full">
-                          ⌛ {service.duration.split(" - ")[0]}
+
+                      <div className="mt-4 flex flex-col space-y-2">
+                        <span
+                          className={`text-xl font-bold bg-gradient-to-r ${
+                            service.intervenant === "Patrice"
+                              ? "from-blue-600 to-cyan-600"
+                              : "from-purple-600 to-indigo-600"
+                          } bg-clip-text text-transparent`}
+                        >
+                          {service.price}
                         </span>
-                        <span className="text-sm font-medium text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full">
-                          📍 {service.duration.split(" - ")[1]}
-                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          <span
+                            className={`text-sm font-medium ${
+                              service.intervenant === "Patrice"
+                                ? "text-blue-600 bg-blue-50"
+                                : "text-purple-600 bg-purple-50"
+                            } px-3 py-1.5 rounded-full`}
+                          >
+                            ⌛ {service.duration.split(" - ")[0]}
+                          </span>
+                          <span
+                            className={`text-sm font-medium ${
+                              service.intervenant === "Patrice"
+                                ? "text-cyan-600 bg-cyan-50"
+                                : "text-indigo-600 bg-indigo-50"
+                            } px-3 py-1.5 rounded-full`}
+                          >
+                            📍 {service.duration.split(" - ")[1]}
+                          </span>
+                        </div>
                       </div>
                     </div>
+
+                    <ChevronDownIcon
+                      className={`w-8 h-8 ${
+                        service.intervenant === "Patrice"
+                          ? "text-blue-600"
+                          : "text-purple-600"
+                      } transform transition-transform ${
+                        expandedId === service.id ? "rotate-180" : ""
+                      }`}
+                    />
                   </div>
 
-                  <ChevronDownIcon
-                    className={`w-8 h-8 text-purple-600 transform transition-transform ${
-                      expandedId === service.id ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
+                  {expandedId === service.id && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="mt-8 space-y-8"
+                    >
+                      <div className="space-y-6 text-gray-700 leading-relaxed">
+                        {service.description
+                          .split("\n")
+                          .map((paragraph, idx) => (
+                            <div key={idx} className="flex items-start gap-3">
+                              {paragraph.startsWith("✨") && (
+                                <span
+                                  className={`${
+                                    service.intervenant === "Patrice"
+                                      ? "text-blue-500"
+                                      : "text-purple-500"
+                                  } mt-1`}
+                                >
+                                  ●
+                                </span>
+                              )}
+                              <p
+                                className={
+                                  paragraph.startsWith("✨")
+                                    ? "font-medium"
+                                    : ""
+                                }
+                              >
+                                {paragraph.replace("✨ ", "")}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
 
-                {expandedId === service.id && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="mt-8 space-y-8"
-                  >
-                    {/* Description avec puces stylisées */}
-                    <div className="space-y-6 text-gray-700 leading-relaxed">
-                      {service.description.split("\n").map((paragraph, idx) => (
-                        <div key={idx} className="flex items-start gap-3">
-                          {paragraph.startsWith("✨") && (
-                            <span className="text-purple-500 mt-1">●</span>
-                          )}
-                          <p
-                            className={
-                              paragraph.startsWith("✨") ? "font-medium" : ""
-                            }
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {service.images.map((img, idx) => (
+                          <div
+                            key={idx}
+                            className="relative group rounded-xl overflow-hidden shadow-lg"
                           >
-                            {paragraph.replace("✨ ", "")}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                            <Image
+                              src={img}
+                              alt={service.title}
+                              width={1200}
+                              height={800}
+                              className="object-cover w-full h-64 transform group-hover:scale-105 transition-transform duration-300"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                          </div>
+                        ))}
+                      </div>
 
-                    {/* Galerie d'images améliorée */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {service.images.map((img, idx) => (
-                        <div
-                          key={idx}
-                          className="relative group rounded-xl overflow-hidden shadow-lg"
-                        >
-                          <Image
-                            src={img}
-                            alt={service.title}
-                            width={1200}
-                            height={800}
-                            className="object-cover w-full h-64 transform group-hover:scale-105 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Bouton avec effet de gradient */}
-                    <button className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
-                      🌟 Réserver cette séance
-                    </button>
-                  </motion.div>
-                )}
-              </div>
-            </motion.div>
-          ))}
+                      <button
+                        className={`w-full py-4 bg-gradient-to-r ${
+                          service.intervenant === "Patrice"
+                            ? "from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
+                            : "from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
+                        } text-white rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl`}
+                      >
+                        🌟 Réserver cette séance
+                      </button>
+                    </motion.div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <div className="w-full">
+        <Cta page="services" />
+      </div>
+    </>
   );
 }

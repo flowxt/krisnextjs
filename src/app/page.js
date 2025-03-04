@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <Hero />
       <Presentation />
-      <Cta />
+      <Cta page="accueil" />
     </div>
   );
 }

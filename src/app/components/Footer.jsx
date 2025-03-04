@@ -1,54 +1,96 @@
 "use client";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+import { Facebook, Instagram } from "lucide-react";
+import Image from "next/image";
 
+export default function Footer() {
   return (
-    <>
-      <header className="bg-white shadow-md fixed top-0 w-full z-50">
-        <div className="max-w-6xl mx-auto flex items-center justify-between p-4">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-gray-800">
-            LaVoixDesAnges
-          </Link>
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="border-t border-gray-100 bg-white/30 backdrop-blur-sm"
+    >
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* Logo et description */}
+          <div className="space-y-4">
+            <Link href="/" className="flex items-center gap-3">
+              <Image 
+                src="/photo/logo.png" 
+                alt="Kristelle Feron"
+                width={48}
+                height={48}
+                className="w-12 h-12"
+              />
+              <span className="text-xl font-bold text-gray-800">Kristelle Feron</span>
+            </Link>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Guidance holistique & soins énergétiques<br />
+              Libérez votre potentiel vibratoire
+            </p>
+          </div>
 
-          {/* Navigation Desktop */}
-          <nav className="hidden md:flex space-x-6">
-            <Link href="/" className="text-gray-700 hover:text-indigo-600">Accueil</Link>
-            <Link href="/about" className="text-gray-700 hover:text-indigo-600">À propos</Link>
-            <Link href="/services" className="text-gray-700 hover:text-indigo-600">Services</Link>
-            <Link href="/contact" className="text-gray-700 hover:text-indigo-600">Contact</Link>
-          </nav>
+          {/* Contact */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-purple-600 mb-2">Contact</h3>
+            <div className="space-y-2">
+              <a href="tel:0665553341" className="flex items-center gap-2 text-gray-700 hover:text-indigo-600 transition-colors">
+                <span className="i-heroicons-phone-solid text-purple-500" />
+                06 65 55 33 41
+              </a>
+              <a href="mailto:contact@krislavoixdesanges.com" className="flex items-center gap-2 text-gray-700 hover:text-indigo-600 transition-colors">
+                <span className="i-heroicons-envelope-solid text-purple-500" />
+                contact@krislavoixdesanges.com
+              </a>
+            </div>
+          </div>
 
-          {/* Menu Burger Mobile */}
-          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
+          {/* Réseaux sociaux */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-purple-600 mb-2">Suivez-moi</h3>
+            <div className="flex gap-4">
+              <a 
+                href="#" 
+                target="_blank" 
+                className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5 text-purple-600" />
+              </a>
+              <a 
+                href="#" 
+                target="_blank"
+                className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5 text-purple-600" />
+              </a>
+            </div>
+          </div>
 
-        {/* Menu Mobile */}
-        {isOpen && (
-          <nav className="md:hidden bg-white shadow-md p-4 space-y-4 absolute w-full left-0 top-16">
-            <Link href="/" className="block text-gray-700" onClick={() => setIsOpen(false)}>Accueil</Link>
-            <Link href="/about" className="block text-gray-700" onClick={() => setIsOpen(false)}>À propos</Link>
-            <Link href="/services" className="block text-gray-700" onClick={() => setIsOpen(false)}>Services</Link>
-            <Link href="/contact" className="block text-gray-700" onClick={() => setIsOpen(false)}>Contact</Link>
-          </nav>
-        )}
-      </header>
-
-      <footer className="bg-gray-900 text-white mt-16 py-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-4">
-          <p className="text-sm">© 2025 LaVoixDesAnges. Tous droits réservés.</p>
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-indigo-400">Facebook</Link>
-            <Link href="#" className="hover:text-indigo-400">Instagram</Link>
+          {/* Adresse */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-purple-600 mb-2">Localisation</h3>
+            <address className="not-italic text-gray-700 space-y-2">
+              <p>208 impasse des Fiers Gens<br />
+              74800 Saint-Laurent<br />
+              74 Haute-Savoie et Suisse</p>
+              <p className="text-sm text-purple-500 font-medium">En présentiel ou à distance</p>
+            </address>
           </div>
         </div>
-      </footer>
-    </>
+
+        {/* Copyright */}
+        <div className="border-t border-gray-100 pt-8 text-center">
+          <p className="text-sm text-gray-500">
+            © {new Date().getFullYear()} Kristelle Feron - Tous droits réservés<br />
+            Créé avec <span className="text-purple-500">♥</span> par Florian Barjon
+          </p>
+        </div>
+      </div>
+    </motion.footer>
   );
 }
