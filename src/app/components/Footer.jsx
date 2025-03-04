@@ -8,12 +8,19 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <motion.footer
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="border-t border-gray-100 bg-white/30 backdrop-blur-sm"
-    >
-      <div className="max-w-7xl mx-auto px-4 py-12">
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="relative border-t border-gray-100"
+  >
+    {/* Ajout du fond dégradé sphérique */}
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-purple-100/80 via-purple-50/50 to-transparent pointer-events-none" />
+    
+    {/* Ajout d'un effet de flou */}
+    <div className="absolute inset-0 backdrop-blur-[2px]" />
+    
+    {/* Contenu du footer avec z-index pour passer au-dessus du gradient */}
+    <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Logo et description */}
           <div className="space-y-4">
