@@ -14,6 +14,7 @@ import {
   LightBulbIcon,
 } from "@heroicons/react/24/outline";
 import Cta from "../components/Cta";
+import BookingModal from "../components/BookingModal";
 
 const services = [
   {
@@ -551,6 +552,8 @@ L'olfactothérapie agit comme un pont entre le conscient et l'inconscient, perme
 
 export default function Services() {
   const [expandedId, setExpandedId] = useState(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
 
   return (
     <>
@@ -735,6 +738,10 @@ export default function Services() {
                       </div>
 
                       <button
+                        onClick={() => {
+                          setSelectedService(service);
+                          setIsBookingModalOpen(true);
+                        }}
                         className={`w-full py-4 bg-gradient-to-r ${
                           service.intervenant === "Patrice"
                             ? "from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
@@ -754,6 +761,11 @@ export default function Services() {
       <div className="w-full">
         <Cta page="services" />
       </div>
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        service={selectedService}
+      />
     </>
   );
 }
