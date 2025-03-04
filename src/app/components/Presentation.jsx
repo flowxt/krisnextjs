@@ -107,10 +107,12 @@ export default function Presentation() {
         </motion.div>
       </div>
     </section>
+
+    {/* Section voyage en 4 etapes */}
     <motion.section 
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
-  className="py-24 bg-white">
+  className="py-24 bg-gradient-to-b from-pink-100 to-purple-200 ">
   <div className="max-w-7xl mx-auto px-4">
     <h3 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
       Votre voyage en 4 étapes sécurisées
@@ -194,7 +196,7 @@ export default function Presentation() {
 </motion.div> */}
 
 {/* Notre ethique */}
-<section className="py-24 bg-white">
+<section className="py-24 bg-gradient-to-t from-pink-100 to-purple-200">
   <div className="max-w-7xl mx-auto px-4">
     <div className="lg:w-1/2 mx-auto text-center">
       <h3 className="text-4xl font-bold mb-8">
@@ -225,7 +227,7 @@ export default function Presentation() {
 </section>
 
 {/* FAQ */}
-<section className="py-24 bg-gray-50">
+<section className="py-24 bg-gradient-to-b from-pink-100 to-purple-200">
   <div className="max-w-4xl mx-auto px-4">
     <h3 className="text-4xl font-bold text-center mb-16">
       Vos questions, <span className="text-purple-600">nos réponses</span>
