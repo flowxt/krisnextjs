@@ -32,7 +32,7 @@ export default function Presentation() {
   const [openItems, setOpenItems] = useState({});
   return (
     <>
-    <section className="w-full py-24 bg-gradient-to-br from-gray-50 to-purple-50">
+    <section className="w-full py-24 bg-gradient-to-br from-gray-50 to-purple-50 dark:bg-gradient-to-t dark:from-purple-700 dark:to-indigo-900">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-4 gap-16">
         {/* Image Section */}
         <motion.div
@@ -64,8 +64,8 @@ export default function Presentation() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full lg:w-7/12 space-y-10"
         >
-          <h2 className="text-5xl font-bold text-gray-900 leading-tight">
-            Kristelle <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600">Feron</span>
+          <h2 className="text-5xl font-bold text-gray-900 leading-tight dark:text-white">
+            Kristelle <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600 dark:from-purple-100 dark:to-indigo-200">Feron</span>
           </h2>
 
           <div className="space-y-8">
@@ -75,7 +75,7 @@ export default function Presentation() {
                 <HeartIcon className="w-8 h-8 text-purple-600" />
                 <h3 className="text-2xl font-semibold">Un héritage énergétique</h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed dark:text-purple-100">
               Dès les premiers battements de mon cœur, un lien sacré s'est tissé avec les royaumes invisibles qui sous-tendent notre existence.Un fil d'or vibrant, hérité au tréfonds de mes gènes par mon arrière-grand-mère, celle qui m'a transmis ses dons de médiumnité et son magnétisme singulier.Je percevais les énergies subtiles rayonner tout autour de moi, telles des auréoles invisibles. Cette connexion innée aux dimensions spirituelles éveilla très tôt en moi un destin.Vers l'âge de 7 ans, à l'aube de ma tendre innocence, j'ai pris conscience de mon lien privilégié avec l'au-delà.Des ressentis profonds,des émotions que mon jeune être ne parvenait à saisir.<br /><br />
               Des années durant, j'ai cheminé avec ces sens exacerbés,ces facultés à fleur de peau que je n'osais révéler.Ce n'est qu'une fois l'âge adulte atteint que j'ai pu embrasser pleinement ce don,cette grâce de communier avec les royaumes angéliques.
               </p>
@@ -87,7 +87,7 @@ export default function Presentation() {
                 <ScaleIcon className="w-8 h-8 text-teal-600" />
                 <h3 className="text-2xl font-semibold">Un équilibre holistique</h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed dark:text-purple-100">
               En écoutant les murmures secrets des Anges et des Guides,je vous propose un accompagnement holistique unique,alliant psychologie positive et techniques énergétiques avancées.Par le magnétisme, les soins énergétiques sur-mesure,l'harmonisation et le coaching holistique, nous agirons ensemble sur les plans physique, mental, émotionnel et spirituelpour une libération totale de votre énergie vitale, nécessaire à votre évolution du quotidien.<br /><br />
               Quelle que soit l'étape de votre cheminement,je vous accompagne à révéler la plénitude de votre être. En m'ouvrant les portes de votre âme,nous adhérerons à un processus de renaissance vibratoire,où chaque cellule de votre corps rayonnera d'une nouvelle lumière apaisée et resplendissante.<br /><br />Sur les sentiers sacrés de l'évolution, vers l'accomplissement de votre destinée la plus précieuse
               </p>
@@ -109,16 +109,17 @@ export default function Presentation() {
     </section>
 
     {/* Section voyage en 4 etapes */}
+    
     <motion.section 
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
-  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100 ">
+  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100 dark:bg-gradient-to-b dark:from-purple-700 dark:to-indigo-900">
   <div className="max-w-7xl mx-auto px-4">
-    <h3 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+    <h3 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:bg-gradient-to-l dark:from-purple-50 dark:to-indigo-200">
       Votre voyage en 4 étapes sécurisées
     </h3>
     
-    <div className="grid md:grid-cols-4 gap-8">
+    <div className="grid md:grid-cols-4 gap-8 dark:text-purple-700">
       {[
         { icon: '🕊️', title: "Diagnostic énergétique", desc: "Analyse approfondie de vos blocages" },
         { icon: '🌀', title: "Protection sacrée", desc: "Mise en place d'un bouclier vibratoire" },
@@ -196,16 +197,16 @@ export default function Presentation() {
 </motion.div> */}
 
 {/* Notre ethique */}
-<section className="py-24 bg-gradient-to-t from-pink-50 to-purple-100">
+<section className="py-24 bg-gradient-to-t from-pink-50 to-purple-100  dark:from-purple-700 dark:to-indigo-900">
   <div className="max-w-7xl mx-auto px-4">
     <div className="lg:w-1/2 mx-auto text-center">
       <h3 className="text-4xl font-bold mb-8">
-        <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:bg-gradient-to-l dark:from-purple-100 dark:to-indigo-200">
           Charte Éthique
         </span>
       </h3>
       
-      <div className="space-y-8 text-left">
+      <div className="space-y-8 text-left dark:text-purple-700">
         {[
           { title: "Confidentialité Absolue", icon: LockClosedIcon },
           { title: "Non-Jugement", icon: HeartIcon },
@@ -225,13 +226,13 @@ export default function Presentation() {
 </section>
 
 {/* FAQ */}
-<section className="py-24 bg-gradient-to-b from-pink-50 to-purple-100">
+<section className="py-24 bg-gradient-to-b from-pink-50 to-purple-100  dark:from-purple-700 dark:to-indigo-900">
   <div className="max-w-4xl mx-auto px-4">
     <h3 className="text-4xl font-bold text-center mb-16">
-      Vos questions, <span className="text-purple-600">nos réponses</span>
+      Vos questions, <span className="text-purple-600 dark:text-purple-400 ">nos réponses</span>
     </h3>
 
-    <div className="space-y-6">
+    <div className="space-y-6 dark:text-purple-700">
       {faqItems.map((item, i) => (
         <motion.div
           key={i}

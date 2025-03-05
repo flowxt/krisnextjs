@@ -27,13 +27,13 @@ const Cta = ({ page }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="w-full py-16 bg-gradient-to-t from-pink-50 to-purple-100"
+      className="w-full py-16 bg-gradient-to-t from-pink-50 to-purple-100 dark:bg-gradient-to-t dark:from-purple-700 dark:to-indigo-900"
     >
       <div className="max-w-7xl mx-auto text-center px-4">
-        <h3 className="text-3xl font-semibold text-gray-800 mb-6">
+        <h3 className="text-3xl font-semibold text-gray-800 mb-6 dark:text-purple-100">
           {content[page].titre.split(' ').map((word, index) => 
             word === 'énergie' || word === 'personnalisée' || word === 'sur-mesure' ? (
-              <span key={index} className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600">
+              <span key={index} className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600 ">
                 {word + ' '}
               </span>
             ) : (
