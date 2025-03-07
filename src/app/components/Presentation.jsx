@@ -32,81 +32,244 @@ export default function Presentation() {
   const [openItems, setOpenItems] = useState({});
   return (
     <>
-    <section className="w-full py-24 bg-gradient-to-br from-gray-50 to-purple-50 dark:bg-gradient-to-t dark:from-purple-700 dark:to-indigo-900">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-4 gap-16">
-        {/* Image Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="w-full lg:w-5/12 relative"
-        >
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-teal-100 transform -rotate-3 rounded-2xl" />
-            <Image
-              src="/photo/kris.jpg"
-              alt="Kristelle Feron"
-              width={500}
-              height={700}
-              className="relative rounded-2xl shadow-2xl transform group-hover:-translate-y-2 transition-all duration-300 object-cover h-[550px] w-full"
-            />
-            <div className="absolute -bottom-8 right-8 bg-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2">
-              <SparklesIcon className="w-5 h-5 text-purple-600" />
-              <span className="text-purple-600 font-semibold">Médium • Magnétiseuse • Guide</span>
-            </div>
-          </div>
+<motion.section 
+  className="w-full py-24 bg-gradient-to-br from-gray-50 to-purple-50 dark:bg-gradient-to-t dark:from-purple-700 dark:to-indigo-900 overflow-hidden relative"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+>
+  {/* Particules d'arrière-plan subtiles */}
+  <motion.div 
+    className="absolute inset-0 pointer-events-none"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 0.3 }}
+    transition={{ delay: 0.5, duration: 1 }}
+  >
+    {[...Array(12)].map((_, i) => (
+      <motion.div 
+        key={i}
+        className="absolute w-1 h-1 rounded-full bg-purple-300 dark:bg-purple-300/40"
+        initial={{ 
+          x: Math.random() * 100 + "%", 
+          y: Math.random() * 100 + "%",
+          opacity: 0.2
+        }}
+        animate={{ 
+          y: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
+          opacity: [0.1, 0.4, 0.1]
+        }}
+        transition={{ 
+          duration: 8 + Math.random() * 15,
+          repeat: Infinity,
+          repeatType: "reverse"
+        }}
+      />
+    ))}
+  </motion.div>
+
+  <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-4 gap-16 relative z-10">
+    {/* Image Section - avec animations améliorées */}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ 
+        duration: 0.8,
+        type: "spring",
+        stiffness: 50 
+      }}
+      className="w-full lg:w-5/12 relative"
+    >
+      <div className="relative group">
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-r from-purple-100 to-teal-100 transform -rotate-3 rounded-2xl"
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          whileHover={{ scale: 1.02, rotate: "-2deg" }}
+        />
+        <motion.div className="relative overflow-hidden rounded-2xl shadow-2xl">
+          <Image
+            src="/photo/kris.jpg"
+            alt="Kristelle Feron"
+            width={500}
+            height={700}
+            className="relative transform group-hover:-translate-y-2 transition-all duration-500 object-cover h-[550px] w-full"
+          />
+          {/* Overlay lumineux qui se déplace au survol */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-tr from-purple-300/0 via-white/20 to-transparent opacity-0 group-hover:opacity-100"
+            whileHover={{ 
+              x: ["100%", "-100%"],
+              transition: { duration: 1.5, ease: "easeInOut" }
+            }}
+          />
         </motion.div>
-
-        {/* Text Section */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full lg:w-7/12 space-y-10"
+        <motion.div 
+          className="absolute -bottom-8 right-8 bg-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          whileHover={{ scale: 1.05, y: -5 }}
         >
-          <h2 className="text-5xl font-bold text-gray-900 leading-tight dark:text-white">
-            Kristelle <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600 dark:from-purple-100 dark:to-indigo-200">Feron</span>
-          </h2>
-
-          <div className="space-y-8">
-            {/* Section 1 */}
-            <div className="relative pl-8 border-l-4 border-purple-500">
-              <div className="flex items-center gap-3 mb-4">
-                <HeartIcon className="w-8 h-8 text-purple-600" />
-                <h3 className="text-2xl font-semibold">Un héritage énergétique</h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed dark:text-purple-100">
-              Dès les premiers battements de mon cœur, un lien sacré s'est tissé avec les royaumes invisibles qui sous-tendent notre existence.Un fil d'or vibrant, hérité au tréfonds de mes gènes par mon arrière-grand-mère, celle qui m'a transmis ses dons de médiumnité et son magnétisme singulier.Je percevais les énergies subtiles rayonner tout autour de moi, telles des auréoles invisibles. Cette connexion innée aux dimensions spirituelles éveilla très tôt en moi un destin.Vers l'âge de 7 ans, à l'aube de ma tendre innocence, j'ai pris conscience de mon lien privilégié avec l'au-delà.Des ressentis profonds,des émotions que mon jeune être ne parvenait à saisir.<br /><br />
-              Des années durant, j'ai cheminé avec ces sens exacerbés,ces facultés à fleur de peau que je n'osais révéler.Ce n'est qu'une fois l'âge adulte atteint que j'ai pu embrasser pleinement ce don,cette grâce de communier avec les royaumes angéliques.
-              </p>
-            </div>
-
-            {/* Section 2 */}
-            <div className="relative pl-8 border-l-4 border-teal-500">
-              <div className="flex items-center gap-3 mb-4">
-                <ScaleIcon className="w-8 h-8 text-teal-600" />
-                <h3 className="text-2xl font-semibold">Un équilibre holistique</h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed dark:text-purple-100">
-              En écoutant les murmures secrets des Anges et des Guides,je vous propose un accompagnement holistique unique,alliant psychologie positive et techniques énergétiques avancées.Par le magnétisme, les soins énergétiques sur-mesure,l'harmonisation et le coaching holistique, nous agirons ensemble sur les plans physique, mental, émotionnel et spirituelpour une libération totale de votre énergie vitale, nécessaire à votre évolution du quotidien.<br /><br />
-              Quelle que soit l'étape de votre cheminement,je vous accompagne à révéler la plénitude de votre être. En m'ouvrant les portes de votre âme,nous adhérerons à un processus de renaissance vibratoire,où chaque cellule de votre corps rayonnera d'une nouvelle lumière apaisée et resplendissante.<br /><br />Sur les sentiers sacrés de l'évolution, vers l'accomplissement de votre destinée la plus précieuse
-              </p>
-            </div>
-
-            {/* Quote */}
-            <motion.div
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              className="bg-purple-50 p-6 rounded-xl border border-purple-100"
-            >
-              <p className="text-xl italic text-purple-800">
-                “Le changement n'est pas douloureux, seule la résistance l'est...”
-              </p>
-            </motion.div>
-          </div>
+          <motion.div
+            whileHover={{ rotate: [0, 15, -15, 0] }}
+            transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 0.5 }}
+          >
+            <SparklesIcon className="w-5 h-5 text-purple-600" />
+          </motion.div>
+          <span className="text-purple-600 font-semibold">Médium • Magnétiseuse • Guide</span>
         </motion.div>
       </div>
-    </section>
+    </motion.div>
+
+    {/* Text Section - avec animations améliorées */}
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ 
+        duration: 0.8, 
+        delay: 0.3,
+        type: "spring",
+        stiffness: 50 
+      }}
+      className="w-full lg:w-7/12 space-y-10"
+    >
+      <motion.h2 
+        className="text-5xl font-bold text-gray-900 leading-tight dark:text-white"
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        Kristelle{" "}
+        <motion.span 
+          className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600 dark:from-purple-100 dark:to-indigo-200 inline-block"
+          initial={{ backgroundPosition: "0% 0%" }}
+          animate={{ backgroundPosition: "100% 0%" }}
+          transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
+        >
+          Feron
+        </motion.span>
+      </motion.h2>
+
+      <div className="space-y-8">
+        {/* Section 1 - avec animations */}
+        <motion.div 
+          className="relative pl-8 border-l-4 border-purple-500 overflow-hidden"
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          whileHover={{ 
+            boxShadow: "0 4px 20px -8px rgba(147, 51, 234, 0.3)",
+            transition: { duration: 0.3 }
+          }}
+        >
+          <motion.div 
+            className="flex items-center gap-3 mb-4"
+            whileHover={{ x: 5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <motion.div
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <HeartIcon className="w-8 h-8 text-purple-600" />
+            </motion.div>
+            <h3 className="text-2xl font-semibold">Un héritage énergétique</h3>
+          </motion.div>
+          <p className="text-gray-600 leading-relaxed dark:text-purple-100">
+            Dès les premiers battements de mon cœur, un lien sacré s'est tissé avec les royaumes invisibles qui sous-tendent notre existence. Un fil d'or vibrant, hérité au tréfonds de mes gènes par mon arrière-grand-mère, celle qui m'a transmis ses dons de médiumnité et son magnétisme singulier. Je percevais les énergies subtiles rayonner tout autour de moi, telles des auréoles invisibles. Cette connexion innée aux dimensions spirituelles éveilla très tôt en moi un destin. Vers l'âge de 7 ans, à l'aube de ma tendre innocence, j'ai pris conscience de mon lien privilégié avec l'au-delà. Des ressentis profonds, des émotions que mon jeune être ne parvenait à saisir.<br /><br />
+            Des années durant, j'ai cheminé avec ces sens exacerbés, ces facultés à fleur de peau que je n'osais révéler. Ce n'est qu'une fois l'âge adulte atteint que j'ai pu embrasser pleinement ce don, cette grâce de communier avec les royaumes angéliques.
+          </p>
+        </motion.div>
+
+        {/* Section 2 - avec animations */}
+        <motion.div 
+          className="relative pl-8 border-l-4 border-teal-500"
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          whileHover={{ 
+            boxShadow: "0 4px 20px -8px rgba(20, 184, 166, 0.3)",
+            transition: { duration: 0.3 }
+          }}
+        >
+          <motion.div 
+            className="flex items-center gap-3 mb-4"
+            whileHover={{ x: 5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <motion.div
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <ScaleIcon className="w-8 h-8 text-teal-600" />
+            </motion.div>
+            <h3 className="text-2xl font-semibold">Un équilibre holistique</h3>
+          </motion.div>
+          <p className="text-gray-600 leading-relaxed dark:text-purple-100">
+            En écoutant les murmures secrets des Anges et des Guides, je vous propose un accompagnement holistique unique, alliant psychologie positive et techniques énergétiques avancées. Par le magnétisme, les soins énergétiques sur-mesure, l'harmonisation et le coaching holistique, nous agirons ensemble sur les plans physique, mental, émotionnel et spirituel pour une libération totale de votre énergie vitale, nécessaire à votre évolution du quotidien.<br /><br />
+            Quelle que soit l'étape de votre cheminement, je vous accompagne à révéler la plénitude de votre être. En m'ouvrant les portes de votre âme, nous adhérerons à un processus de renaissance vibratoire, où chaque cellule de votre corps rayonnera d'une nouvelle lumière apaisée et resplendissante.<br /><br />Sur les sentiers sacrés de l'évolution, vers l'accomplissement de votre destinée la plus précieuse
+          </p>
+        </motion.div>
+
+        {/* Citation avec animation */}
+        <motion.div
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
+          className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/40 dark:to-indigo-900/40 p-6 rounded-xl border border-purple-100 dark:border-purple-700/50 shadow-sm relative overflow-hidden"
+        >
+          {/* Petites particules de citation */}
+          <motion.div 
+            className="absolute inset-0 pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+          >
+            {[...Array(6)].map((_, i) => (
+              <motion.div 
+                key={i}
+                className="absolute w-1 h-1 rounded-full bg-purple-300/40 dark:bg-purple-300/20"
+                initial={{ 
+                  x: Math.random() * 100 + "%", 
+                  y: Math.random() * 100 + "%",
+                }}
+                animate={{ 
+                  y: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
+                  opacity: [0.2, 0.8, 0.2]
+                }}
+                transition={{ 
+                  duration: 3 + Math.random() * 5,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              />
+            ))}
+          </motion.div>
+          
+          <motion.div
+            initial={{ x: -10, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
+          >
+            <p className="text-xl italic text-purple-800 dark:text-purple-200 relative z-10">
+              "Le changement n'est pas douloureux, seule la résistance l'est..."
+            </p>
+          </motion.div>
+          
+          {/* Élément décoratif pour la citation */}
+          <motion.div 
+            className="absolute -bottom-6 -right-6 w-16 h-16 rounded-full bg-purple-200/30 dark:bg-purple-500/20"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 1.4, duration: 0.5 }}
+          />
+        </motion.div>
+      </div>
+    </motion.div>
+  </div>
+</motion.section>
 
     {/* Section voyage en 4 etapes */}
     
