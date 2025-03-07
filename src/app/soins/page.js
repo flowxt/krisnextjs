@@ -201,7 +201,7 @@ export default function Soins() {
           </div>
 
           {/* Cartes revisitées */}
-          <div ref={ref} className="grid md:grid-cols-2 gap-8 relative">
+          <div ref={ref} className="grid md:grid-cols-2 gap-12 relative">
             {formules.map((formule, index) => (
               <motion.div
                 key={formule.id}
@@ -213,26 +213,72 @@ export default function Soins() {
                   stiffness: 50,
                   delay: index * 0.15,
                 }}
-                className="relative group"
+                className="relative overflow-visible isolate"
+                whileHover={{
+                  y: -8,
+                  transition: { duration: 0.3, type: "spring", stiffness: 300 },
+                }}
               >
-                <div className="relative bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col justify-between border border-white/30 hover:border-purple-200/50">
+                {/* Effet de halo au survol avec isolation */}
+                <motion.div
+                  className="absolute inset-0 -m-3 rounded-3xl bg-gradient-to-br from-purple-300/30 via-indigo-300/30 to-blue-300/30 blur-xl opacity-0 group-hover:opacity-100 pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1, scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                />
+
+                <div className="relative bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl transition-all duration-300 h-full flex flex-col justify-between border border-white/30 hover:border-purple-300 group z-10">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-indigo-50/50 rounded-3xl" />
 
-                  <div className="flex items-start gap-6 mb-8 relative z-10">
+                  {/* Effet de brillance qui parcourt la carte au survol - avec isolation */}
+                  <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+                    <motion.div
+                      className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent opacity-0 group-hover:opacity-100"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 1.5, ease: "easeInOut" }}
+                    />
+                  </div>
+
+                  <div className="flex items-start gap-6 mb-8 relative z-20">
                     <div className="p-4 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl shadow-sm">
                       {formule.id === 1 && (
-                        <RocketLaunchIcon className="w-8 h-8 text-gradient from-purple-600 to-indigo-600 text-purple-500" />
+                        <motion.div
+                          animate={{ y: [0, -3, 0] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                          }}
+                        >
+                          <RocketLaunchIcon className="w-8 h-8 text-purple-500" />
+                        </motion.div>
                       )}
                       {formule.id === 2 && (
-                        <SunIcon className="w-8 h-8 text-gradient from-purple-600 to-indigo-600 text-purple-500" />
+                        <motion.div
+                          animate={{
+                            rotate: [0, 360],
+                          }}
+                          transition={{
+                            duration: 20,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        >
+                          <SunIcon className="w-8 h-8 text-purple-500" />
+                        </motion.div>
                       )}
                       {formule.id === 3 && (
-                        <BookOpenIcon className="w-8 h-8 text-gradient from-purple-600 to-indigo-600 text-purple-500" />
+                        <BookOpenIcon className="w-8 h-8 text-purple-500" />
                       )}
                       {formule.id === 4 && (
-                        <AcademicCapIcon className="w-8 h-8 text-gradient from-purple-600 to-indigo-600 text-purple-500" />
+                        <motion.div
+                          animate={{ y: [0, -2, 0] }}
+                          transition={{ duration: 3, repeat: Infinity }}
+                        >
+                          <AcademicCapIcon className="w-8 h-8 text-purple-500" />
+                        </motion.div>
                       )}
-                      {/* ... autres icônes avec gradient */}
                     </div>
 
                     <div>
@@ -250,27 +296,50 @@ export default function Soins() {
                     </div>
                   </div>
 
-                  <ul className="space-y-3 mb-8 pl-2 relative z-10">
+                  <ul className="space-y-3 mb-8 pl-2 relative z-20">
                     {formule.description.map((desc, idx) => (
                       <motion.li
                         key={idx}
-                        className="flex items-center gap-3 text-gray-700 hover:text-gray-900 group/item"
-                        whileHover={{ x: 5 }}
+                        className="flex items-center gap-3 text-gray-700 hover:text-gray-900"
+                        whileHover={{ x: 5, color: "#6d28d9" }}
+                        transition={{ type: "spring", stiffness: 300 }}
                       >
                         <span className="w-2 h-2 bg-purple-500 rounded-full flex-shrink-0" />
-                        <span className="transition-colors">{desc}</span>
+                        <span>{desc}</span>
                       </motion.li>
                     ))}
                   </ul>
 
-                  <Link href="/contact" className="relative z-10">
+                  <Link href="/contact" className="relative z-20">
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{
+                        scale: 1.02,
+                        boxShadow: "0 10px 25px -5px rgba(124, 58, 237, 0.4)",
+                      }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-4 bg-gradient-to-r from-purple-400 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                      className="w-full py-4 bg-gradient-to-r from-purple-400 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-xl font-semibold shadow-lg transition-all flex items-center justify-center gap-2"
                     >
-                      <span>Commencer le voyage</span>
-                      <ArrowRightIcon className="w-5 h-5" />
+                      <span>
+                        {formule.id === 1
+                          ? "Lancer ma transformation"
+                          : formule.id === 2
+                          ? "Harmoniser mon année"
+                          : formule.id === 3
+                          ? "Explorer mon potentiel"
+                          : "Maîtriser mon énergie"}
+                      </span>
+                      <motion.div
+                        animate={isInView ? { x: [0, 5, 0] } : {}}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          repeatType: "loop",
+                          repeatDelay: 2,
+                          delay: index * 0.5,
+                        }}
+                      >
+                        <ArrowRightIcon className="w-5 h-5" />
+                      </motion.div>
                     </motion.button>
                   </Link>
                 </div>
@@ -278,17 +347,103 @@ export default function Soins() {
             ))}
           </div>
           {/* Citation */}
+          {/* Citation animée */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="flex justify-center items-center mt-16 px-4"
           >
-            <div className="max-w-3xl w-full">
-              <p className="text-xl italic text-gray-600 border-l-4 border-purple-500 pl-8 py-4 bg-white/50 rounded-r-lg shadow-sm">
-                "L'énergie vitale est la clé de toute transformation profonde et
-                durable."
-              </p>
+            <div className="max-w-3xl w-full relative">
+              {/* Éléments décoratifs */}
+              <motion.div
+                className="absolute -top-6 -left-6 w-12 h-12 rounded-full bg-gradient-to-br from-purple-200 to-indigo-200 opacity-70 dark:opacity-30 blur-md"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 5, 0],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+              <motion.div
+                className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-gradient-to-tr from-purple-200/50 to-indigo-300/40 blur-md"
+                animate={{
+                  scale: [1, 1.15, 1],
+                  opacity: [0.2, 0.4, 0.2],
+                }}
+                transition={{
+                  duration: 7,
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                }}
+              />
+
+              {/* Conteneur de citation avec animation de bordure */}
+              <motion.div
+                className="relative overflow-hidden backdrop-blur-sm rounded-xl shadow-lg border border-purple-100"
+                whileHover={{
+                  boxShadow: "0 15px 30px -10px rgba(124, 58, 237, 0.3)",
+                  scale: 1.01,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Effet de brillance qui parcourt la citation */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "100%" }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    repeatDelay: 5,
+                  }}
+                />
+
+                <div className="relative bg-white/60 p-8 flex items-center">
+                  {/* Bordure gauche animée */}
+                  <motion.div
+                    className="absolute left-0 top-2 bottom-2 w-1.5 bg-gradient-to-b from-purple-400 via-indigo-500 to-purple-400"
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                  />
+
+                  {/* Conteneur texte */}
+                  <div className="pl-8">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 1.2 }}
+                    >
+                      <SparklesIcon className="w-6 h-6 text-purple-400 mb-3" />
+                    </motion.div>
+
+                    <motion.p
+                      className="text-xl italic text-gray-700 leading-relaxed"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 1, delay: 0.9 }}
+                    >
+                      "L'énergie vitale est la clé de toute transformation
+                      profonde et durable."
+                    </motion.p>
+
+                    <motion.p
+                      className="text-right mt-3 text-sm text-purple-600 font-medium"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 1.4 }}
+                    >
+                      — Kristelle Feron
+                    </motion.p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
           {/* Ajout du CTA */}
