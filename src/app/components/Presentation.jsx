@@ -111,30 +111,143 @@ export default function Presentation() {
     {/* Section voyage en 4 etapes */}
     
     <motion.section 
+  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100 dark:bg-gradient-to-b dark:from-purple-700 dark:to-indigo-900 overflow-hidden relative"
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
-  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100 dark:bg-gradient-to-b dark:from-purple-700 dark:to-indigo-900">
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ duration: 0.8 }}
+>
+  {/* Particules d'arrière-plan subtiles */}
+  <motion.div 
+    className="absolute inset-0 pointer-events-none"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 0.4 }}
+    transition={{ delay: 0.5, duration: 1 }}
+  >
+    {[...Array(20)].map((_, i) => (
+      <motion.div 
+        key={i}
+        className="absolute w-2 h-2 rounded-full bg-purple-200 dark:bg-purple-300"
+        initial={{ 
+          x: Math.random() * 100 + "%", 
+          y: Math.random() * 100 + "%",
+          opacity: 0.3
+        }}
+        animate={{ 
+          y: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
+          opacity: [0.2, 0.8, 0.2]
+        }}
+        transition={{ 
+          duration: 5 + Math.random() * 10,
+          repeat: Infinity,
+          repeatType: "reverse"
+        }}
+      />
+    ))}
+  </motion.div>
+
   <div className="max-w-7xl mx-auto px-4">
-    <h3 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:bg-gradient-to-l dark:from-purple-50 dark:to-indigo-200">
-      Votre voyage en 4 étapes sécurisées
-    </h3>
+    <motion.h3 
+      className="text-4xl font-bold text-center mb-16 relative"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+    >
+      <motion.span 
+        className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:bg-gradient-to-l dark:from-purple-50 dark:to-indigo-200"
+        initial={{ backgroundPosition: "0% 0%" }}
+        animate={{ backgroundPosition: "100% 0%" }}
+        transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
+      >
+        Votre voyage en 4 étapes sécurisées
+      </motion.span>
+    </motion.h3>
     
     <div className="grid md:grid-cols-4 gap-8 dark:text-purple-700">
       {[
-        { icon: '🕊️', title: "Diagnostic énergétique", desc: "Analyse approfondie de vos blocages" },
-        { icon: '🌀', title: "Protection sacrée", desc: "Mise en place d'un bouclier vibratoire" },
-        { icon: '🌿', title: "Soin personnalisé", desc: "Procédure adaptée à votre signature énergétique" },
-        { icon: '✨', title: "Intégration durable", desc: "Rituel de pérennisation des bienfaits" }
+        { icon: '🕊️', title: "Diagnostic énergétique", desc: "Analyse approfondie de vos blocages", delay: 0 },
+        { icon: '🌀', title: "Protection sacrée", desc: "Mise en place d'un bouclier vibratoire", delay: 0.2 },
+        { icon: '🌿', title: "Soin personnalisé", desc: "Procédure adaptée à votre signature énergétique", delay: 0.4 },
+        { icon: '✨', title: "Intégration durable", desc: "Rituel de pérennisation des bienfaits", delay: 0.6 }
       ].map((step, i) => (
         <motion.div
           key={i}
-          initial={{ scale: 0.9 }}
-          whileInView={{ scale: 1 }}
-          className="p-8 rounded-2xl bg-purple-50 border border-purple-100"
+          className="p-8 rounded-2xl bg-purple-50 border border-purple-100 hover:bg-white relative overflow-hidden group shadow-sm hover:shadow-xl"
+          initial={{ 
+            opacity: 0, 
+            y: 30,
+            scale: 0.9 
+          }}
+          whileInView={{ 
+            opacity: 1, 
+            y: 0,
+            scale: 1 
+          }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ 
+            duration: 0.8, 
+            delay: step.delay,
+            type: "spring", 
+            stiffness: 50 
+          }}
+          whileHover={{ 
+            scale: 1.05, 
+            y: -10,
+            transition: { duration: 0.3 }
+          }}
         >
-          <div className="text-4xl mb-4">{step.icon}</div>
-          <h4 className="text-xl font-bold mb-2">{step.title}</h4>
-          <p className="text-gray-600">{step.desc}</p>
+          {/* Icône avec animation */}
+          <motion.div 
+            className="text-4xl mb-6 relative flex justify-center items-center h-16"
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ 
+              delay: step.delay + 0.3,
+              type: "spring",
+              stiffness: 100
+            }}
+            whileHover={{ 
+              scale: 1.2,
+              rotate: [0, 5, -5, 0],
+              transition: { duration: 0.5, repeat: Infinity }
+            }}
+          >
+            <motion.div 
+              className="absolute w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-300/20"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: [0, 1.2, 1] }}
+              viewport={{ once: true }}
+              transition={{ 
+                delay: step.delay + 0.2,
+                duration: 0.8
+              }}
+            />
+            <span className="relative z-10">{step.icon}</span>
+          </motion.div>
+          
+          <motion.h4 
+            className="text-xl font-bold mb-3 relative z-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: step.delay + 0.4 }}
+          >
+            {step.title}
+          </motion.h4>
+          
+          <motion.p 
+            className="text-gray-600 relative z-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: step.delay + 0.5 }}
+          >
+            {step.desc}
+          </motion.p>
+          
+          {/* Suppression des lignes de connexion entre les étapes */}
         </motion.div>
       ))}
     </div>
@@ -285,45 +398,130 @@ export default function Presentation() {
 </motion.section>
 
 {/* FAQ */}
-<section className="py-24 bg-gradient-to-b from-pink-50 to-purple-100  dark:from-purple-700 dark:to-indigo-900">
+{/* FAQ */}
+<motion.section 
+  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100 dark:from-purple-700 dark:to-indigo-900 overflow-hidden"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8 }}
+>
   <div className="max-w-4xl mx-auto px-4">
-    <h3 className="text-4xl font-bold text-center mb-16">
-      Vos questions, <span className="text-purple-600 dark:text-purple-400 ">nos réponses</span>
-    </h3>
+    <motion.h3 
+      className="text-4xl font-bold text-center mb-16 relative"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+    >
+      Vos questions, {' '}
+      <motion.span 
+        className="text-purple-600 dark:text-purple-400 inline-block"
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        nos réponses
+      </motion.span>
+    </motion.h3>
 
     <div className="space-y-6 dark:text-purple-700">
       {faqItems.map((item, i) => (
         <motion.div
           key={i}
-          className="bg-white p-8 rounded-2xl shadow-lg cursor-pointer"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          className="bg-white p-8 rounded-2xl shadow-lg cursor-pointer relative overflow-hidden group"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ 
+            duration: 0.5, 
+            delay: i * 0.1,
+            type: "spring",
+            stiffness: 70
+          }}
+          whileHover={{ 
+            scale: 1.01,
+            boxShadow: "0 10px 30px -10px rgba(120, 80, 170, 0.2)"
+          }}
+          whileTap={{ scale: 0.99 }}
           onClick={() => setOpenItems(prev => ({ ...prev, [i]: !prev[i] }))}
         >
-          <div className="flex justify-between items-center">
-            <h4 className="text-xl font-semibold">{item.question}</h4>
-            <ChevronDownIcon 
-              className={`w-6 h-6 text-purple-600 transition-transform duration-300 ${
-                openItems[i] ? 'rotate-180' : ''
-              }`}
-            />
+          {/* Effet de vague au survol */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-purple-50 to-transparent opacity-0 group-hover:opacity-100"
+            initial={{ x: "-100%" }}
+            whileHover={{ x: "100%" }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+          />
+          
+          <div className="flex justify-between items-center relative z-10">
+            <motion.h4 
+              className="text-xl font-semibold"
+              animate={{ 
+                color: openItems[i] ? "#9333ea" : "#1f2937"
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              {item.question}
+            </motion.h4>
+            
+            <motion.div
+              animate={{ 
+                rotate: openItems[i] ? 180 : 0,
+                backgroundColor: openItems[i] ? "rgba(147, 51, 234, 0.1)" : "transparent"
+              }}
+              transition={{ duration: 0.3, type: "spring" }}
+              className="p-2 rounded-full"
+            >
+              <ChevronDownIcon 
+                className={`w-6 h-6 text-purple-600`}
+              />
+            </motion.div>
           </div>
-          <motion.p 
-            className={`mt-4 text-gray-600 ${openItems[i] ? 'block' : 'hidden'}`}
-            initial={{ height: 0, opacity: 0 }}
+          
+          <motion.div 
+            className="overflow-hidden"
+            initial={{ height: 0 }}
             animate={{ 
-              height: openItems[i] ? 'auto' : 0,
+              height: openItems[i] ? "auto" : 0,
               opacity: openItems[i] ? 1 : 0
             }}
-            transition={{ duration: 0.3 }}
+            transition={{ 
+              duration: 0.4, 
+              ease: [0.04, 0.62, 0.23, 0.98]
+            }}
           >
-            {item.answer}
-          </motion.p>
+            <motion.p 
+              className="mt-4 text-gray-600 relative z-10"
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ 
+                y: openItems[i] ? 0 : -10,
+                opacity: openItems[i] ? 1 : 0
+              }}
+              transition={{ 
+                duration: 0.3,
+                delay: openItems[i] ? 0.2 : 0
+              }}
+            >
+              {item.answer}
+            </motion.p>
+
+            {/* Ligne décorative qui apparaît quand la FAQ est ouverte */}
+            <motion.div 
+              className="h-0.5 bg-gradient-to-r from-purple-200 to-transparent mt-4"
+              initial={{ scaleX: 0, originX: 0 }}
+              animate={{ 
+                scaleX: openItems[i] ? 1 : 0
+              }}
+              transition={{ duration: 0.5 }}
+            />
+          </motion.div>
         </motion.div>
       ))}
     </div>
   </div>
-</section>
+</motion.section>
     </>
     
   );
