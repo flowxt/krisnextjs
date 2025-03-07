@@ -197,33 +197,92 @@ export default function Presentation() {
 </motion.div> */}
 
 {/* Notre ethique */}
-<section className="py-24 bg-gradient-to-t from-pink-50 to-purple-100  dark:from-purple-700 dark:to-indigo-900">
+<motion.section 
+  className="py-24 bg-gradient-to-t from-pink-50 to-purple-100 dark:from-purple-700 dark:to-indigo-900 overflow-hidden"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ duration: 0.8 }}
+>
   <div className="max-w-7xl mx-auto px-4">
-    <div className="lg:w-1/2 mx-auto text-center">
-      <h3 className="text-4xl font-bold mb-8">
-        <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:bg-gradient-to-l dark:from-purple-100 dark:to-indigo-200">
+    <motion.div
+      className="lg:w-1/2 mx-auto text-center"
+      initial={{ y: 50 }}
+      whileInView={{ y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.h3 
+        className="text-4xl font-bold mb-8 relative"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <motion.span 
+          className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:bg-gradient-to-l dark:from-purple-100 dark:to-indigo-200"
+          initial={{ backgroundPosition: "0% 0%" }}
+          animate={{ backgroundPosition: "100% 0%" }}
+          transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
+        >
           Charte Éthique
-        </span>
-      </h3>
+        </motion.span>
+      </motion.h3>
       
       <div className="space-y-8 text-left dark:text-purple-700">
         {[
-          { title: "Confidentialité Absolue", icon: LockClosedIcon },
-          { title: "Non-Jugement", icon: HeartIcon },
-          { title: "Respect du Libre Arbitre", icon: ScaleIcon }
+          { title: "Confidentialité Absolue", icon: LockClosedIcon, delay: 0 },
+          { title: "Non-Jugement", icon: HeartIcon, delay: 0.2 },
+          { title: "Respect du Libre Arbitre", icon: ScaleIcon, delay: 0.4 }
         ].map((item, i) => (
-          <div
+          <motion.div
             key={i}
-            className="flex items-center gap-6 p-6 bg-gray-50 rounded-xl"
+            className="flex items-center gap-6 p-6 bg-gray-50 rounded-xl hover:bg-white relative overflow-hidden group shadow-sm hover:shadow-xl"
+            initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.8, 
+              delay: item.delay,
+              type: "spring", 
+              stiffness: 70 
+            }}
+            whileHover={{ scale: 1.03, y: -5 }}
           >
-            <item.icon className="w-12 h-12 text-purple-600 flex-shrink-0" />
-            <span className="text-xl font-semibold">{item.title}</span>
-          </div>
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-purple-100/30 to-indigo-100/30 opacity-0 group-hover:opacity-100"
+              animate={{ x: ["0%", "100%", "0%"], opacity: [0, 0.5, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.div 
+              className="w-12 h-12 flex-shrink-0 relative"
+              whileHover={{ scale: 1.1, rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 0.5 }}
+            >
+              <item.icon className="w-12 h-12 text-purple-600 z-10 absolute" />
+              <motion.div 
+                className="w-12 h-12 bg-purple-200 rounded-full absolute -inset-0"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: [0, 1.2, 1] }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: item.delay + 0.3 }}
+              />
+            </motion.div>
+            <motion.span 
+              className="text-xl font-semibold relative z-10"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: item.delay + 0.3 }}
+            >
+              {item.title}
+            </motion.span>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   </div>
-</section>
+</motion.section>
 
 {/* FAQ */}
 <section className="py-24 bg-gradient-to-b from-pink-50 to-purple-100  dark:from-purple-700 dark:to-indigo-900">
