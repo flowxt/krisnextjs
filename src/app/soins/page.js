@@ -92,7 +92,7 @@ export default function Soins() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16 relative"
           >
-            <h2 className="mt-11 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block">
+            <h2 className="font-heading mt-11 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block">
               <span className="relative z-10 px-4 flex flex-col md:flex-row items-center gap-2 md:gap-0">
                 <span className="whitespace-nowrap">Un havre de paix</span>{" "}
                 <span className="whitespace-nowrap pl-2">
@@ -183,7 +183,7 @@ export default function Soins() {
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 50 }}
             >
-              <h3 className="text-4xl font-bold text-gray-900 mb-6 text-center">
+              <h3 className="font-heading text-4xl font-bold text-gray-900 mb-6 text-center">
                 🌿 L'énergie qui vous ressemble
               </h3>
               <p className="text-xl text-gray-700 text-center max-w-2xl mx-auto leading-relaxed">
@@ -282,7 +282,7 @@ export default function Soins() {
                     </div>
 
                     <div>
-                      <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                      <h3 className="font-heading text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                         {formule.title}
                       </h3>
                       <div className="flex items-center gap-4 mt-2">

@@ -519,7 +519,7 @@ export default function Services() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16 relative overflow-hidden"
           >
-            <h2 className="mt-11 text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block px-4">
+            <h2 className="font-heading mt-11 text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block px-4">
               <span className="relative z-10">
                 Mes Services{" "}
                 <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white p-2 inline-block">
@@ -645,7 +645,7 @@ export default function Services() {
 
                         <div className="flex-1 min-w-0">
                           <motion.h3
-                            className="text-base md:text-2xl font-bold text-gray-800 font-serif mb-2"
+                            className=" text-base md:text-xl font-bold text-gray-800 font-heading mb-2"
                             initial={{ lineHeight: "1.4" }}
                             whileHover={{ scale: 1.01 }}
                           >

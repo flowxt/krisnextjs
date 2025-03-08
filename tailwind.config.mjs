@@ -11,6 +11,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        sans: ["var(--font-nunito)", "sans-serif"],
+        heading: ["var(--font-cinzel)", "serif"],
+      },
     },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],

@@ -135,7 +135,7 @@ export default function Presentation() {
       className="w-full lg:w-7/12 space-y-10"
     >
       <motion.h2 
-        className="text-5xl font-bold text-gray-900 leading-tight dark:text-white"
+        className="font-heading text-5xl font-bold text-gray-900 leading-tight dark:text-white"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.4 }}
@@ -174,9 +174,9 @@ export default function Presentation() {
             >
               <HeartIcon className="w-8 h-8 text-purple-600" />
             </motion.div>
-            <h3 className="text-2xl font-semibold">Un héritage énergétique</h3>
+            <h3 className="font-heading text-2xl font-semibold">Un héritage énergétique</h3>
           </motion.div>
-          <p className="text-gray-600 leading-relaxed dark:text-purple-100">
+          <p className="font-sans text-gray-600 leading-relaxed dark:text-purple-100">
             Dès les premiers battements de mon cœur, un lien sacré s'est tissé avec les royaumes invisibles qui sous-tendent notre existence. Un fil d'or vibrant, hérité au tréfonds de mes gènes par mon arrière-grand-mère, celle qui m'a transmis ses dons de médiumnité et son magnétisme singulier. Je percevais les énergies subtiles rayonner tout autour de moi, telles des auréoles invisibles. Cette connexion innée aux dimensions spirituelles éveilla très tôt en moi un destin. Vers l'âge de 7 ans, à l'aube de ma tendre innocence, j'ai pris conscience de mon lien privilégié avec l'au-delà. Des ressentis profonds, des émotions que mon jeune être ne parvenait à saisir.<br /><br />
             Des années durant, j'ai cheminé avec ces sens exacerbés, ces facultés à fleur de peau que je n'osais révéler. Ce n'est qu'une fois l'âge adulte atteint que j'ai pu embrasser pleinement ce don, cette grâce de communier avec les royaumes angéliques.
           </p>
@@ -204,9 +204,9 @@ export default function Presentation() {
             >
               <ScaleIcon className="w-8 h-8 text-teal-600" />
             </motion.div>
-            <h3 className="text-2xl font-semibold">Un équilibre holistique</h3>
+            <h3 className="font-heading text-2xl font-semibold">Un équilibre holistique</h3>
           </motion.div>
-          <p className="text-gray-600 leading-relaxed dark:text-purple-100">
+          <p className="font-sans text-gray-600 leading-relaxed dark:text-purple-100">
             En écoutant les murmures secrets des Anges et des Guides, je vous propose un accompagnement holistique unique, alliant psychologie positive et techniques énergétiques avancées. Par le magnétisme, les soins énergétiques sur-mesure, l'harmonisation et le coaching holistique, nous agirons ensemble sur les plans physique, mental, émotionnel et spirituel pour une libération totale de votre énergie vitale, nécessaire à votre évolution du quotidien.<br /><br />
             Quelle que soit l'étape de votre cheminement, je vous accompagne à révéler la plénitude de votre être. En m'ouvrant les portes de votre âme, nous adhérerons à un processus de renaissance vibratoire, où chaque cellule de votre corps rayonnera d'une nouvelle lumière apaisée et resplendissante.<br /><br />Sur les sentiers sacrés de l'évolution, vers l'accomplissement de votre destinée la plus précieuse
           </p>
@@ -311,7 +311,7 @@ export default function Presentation() {
 
   <div className="max-w-7xl mx-auto px-4">
     <motion.h3 
-      className="text-4xl font-bold text-center mb-16 relative"
+      className="font-heading text-4xl font-bold text-center mb-16 relative"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -327,7 +327,7 @@ export default function Presentation() {
       </motion.span>
     </motion.h3>
     
-    <div className="grid md:grid-cols-4 gap-8 dark:text-purple-700">
+    <div className=" grid md:grid-cols-4 gap-8 dark:text-purple-700">
       {[
         { icon: '🕊️', title: "Diagnostic énergétique", desc: "Analyse approfondie de vos blocages", delay: 0 },
         { icon: '🌀', title: "Protection sacrée", desc: "Mise en place d'un bouclier vibratoire", delay: 0.2 },
@@ -489,7 +489,7 @@ export default function Presentation() {
       transition={{ duration: 0.5 }}
     >
       <motion.h3 
-        className="text-4xl font-bold mb-8 relative"
+        className="font-heading text-4xl font-bold mb-8 relative"
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -571,7 +571,7 @@ export default function Presentation() {
 >
   <div className="max-w-4xl mx-auto px-4">
     <motion.h3 
-      className="text-4xl font-bold text-center mb-16 relative"
+      className="font-heading text-4xl font-bold text-center mb-16 relative"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

@@ -1,31 +1,62 @@
 "use client";
-import { motion, useTransform, useScroll, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
+// Import des icônes Heroicons
+import { SparklesIcon, HeartIcon, MoonIcon, SunIcon, 
+         LightBulbIcon, HandRaisedIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+
+// Variantes d'animation
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.3 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { type: "spring", stiffness: 70, damping: 15 }
+  }
+};
+
+// Positions fixes pour les particules (pour éviter les problèmes d'hydratation)
+const particlePositions = [
+  { x: 10, y: 20, size: 3, delay: 0.5, duration: 3 },
+  { x: 85, y: 15, size: 2, delay: 0.8, duration: 4 },
+  { x: 25, y: 55, size: 2, delay: 0.3, duration: 2.5 },
+  { x: 70, y: 45, size: 3, delay: 1.2, duration: 3.5 },
+  { x: 40, y: 10, size: 2, delay: 0.7, duration: 3 },
+  { x: 60, y: 70, size: 2, delay: 0.9, duration: 3.2 }
+];
+
 export default function Hero() {
+  // Hooks
   const ref = useRef(null);
-  const [videoError, setVideoError] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scrollIndicator, setScrollIndicator] = useState(true);
+  const [isClient, setIsClient] = useState(false);
   
-  // Parallaxe au scroll
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  // Effet parallaxe à la souris
+  // Marqueur côté client pour les animations qui pourraient causer des problèmes d'hydratation
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth - 0.5) * 20;
-      const y = (clientY / window.innerHeight - 0.5) * 20;
-      setMousePosition({ x, y });
+    setIsClient(true);
+  }, []);
+  
+  // Gestion du défilement
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrollIndicator(false);
+      } else {
+        setScrollIndicator(true);
+      }
     };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -34,291 +65,274 @@ export default function Hero() {
       className="relative w-full h-screen overflow-hidden"
       aria-label="Présentation principale"
     >
-      {/* Conteneur vidéo sans loader */}
-      <div className="absolute inset-0">
-        {/* Image de secours en cas d'erreur de vidéo */}
-        {videoError && (
-          <div 
-            className="absolute inset-0 bg-cover bg-center" 
-            style={{ 
-              backgroundImage: "url('/images/space-bg.jpg')",
-              filter: "brightness(0.8) contrast(1.05)"
-            }}
-          />
-        )}
+      {/* Arrière-plan amélioré */}
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-purple-100">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-50/80 via-pink-50/80 to-indigo-50/80">
+          {/* Étoiles fixes pour éviter problèmes d'hydratation */}
+          {[...Array(10)].map((_, i) => (
+            <div 
+              key={i}
+              className="absolute rounded-full bg-white"
+              style={{
+                width: `${i % 3 + 1}px`,
+                height: `${i % 3 + 1}px`,
+                top: `${i * 10 + 5}%`,
+                left: `${(i * 8 + 7) % 90 + 5}%`,
+                opacity: (i % 3 + 1) * 0.15,
+                boxShadow: `0 0 ${(i % 3) + 2}px rgba(167, 139, 250, 0.5)`
+              }}
+            />
+          ))}
+        </div>
         
-        {!videoError && (
-          <video
-            className="w-full h-full object-cover"
-            src="/video/space2.mp4" 
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            onError={() => {
-              console.error("Erreur de chargement de la vidéo");
-              setVideoError(true);
-            }}
-            style={{ 
-              filter: "brightness(0.8) contrast(1.05) hue-rotate(180deg)",
-              transform: `scale(1.05) translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`,
-              transition: "transform 0.6s ease-out"
-            }}
-          />
-        )}
-        
-        {/* Couches de superposition avec moins d'opacité */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/40 to-indigo-900/60 mix-blend-soft-light" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-purple-900/10 to-indigo-900/30" />
-        
-        {/* Effet de brume cosmique */}
-        <motion.div 
-          className="absolute inset-0 opacity-20"
-          style={{ 
-            backgroundImage: "url('/images/cosmic-dust.png')",
-            backgroundSize: "cover",
-            x: useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]),
-          }}
-        />
+        {/* Lueur décorative */}
+        <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2 w-2/3 h-96 rounded-full bg-purple-200/20 blur-3xl" />
       </div>
 
-      {/* Overlay étoilé */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(50)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              backgroundColor: "white",
-            }}
-            animate={{
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, Math.random() * 0.3 + 1, 1]
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Contenu amélioré */}
+      {/* Contenu principal */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
         <motion.div 
           className="max-w-4xl"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          style={{ 
-            y: useTransform(scrollYProgress, [0, 0.5], [0, -100]),
-            opacity
-          }}
         >
-          {/* Élément décoratif au-dessus du titre */}
-          <motion.div 
-            className="flex justify-center mb-8"
-            variants={itemVariants}
-          >
-            <div className="relative">
-              <motion.div 
-                className="w-32 h-1 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full mx-auto"
-                animate={{ 
-                  width: ["20%", "80%", "20%"],
-                  opacity: [0.6, 1, 0.6]
-                }}
-                transition={{ duration: 4, repeat: Infinity }}
-              />
-              <motion.div 
-                className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-purple-400 rounded-full"
-                animate={{ 
-                  boxShadow: [
-                    "0 0 0px rgba(159, 122, 234, 0.3)",
-                    "0 0 15px rgba(159, 122, 234, 0.7)",
-                    "0 0 0px rgba(159, 122, 234, 0.3)"
-                  ]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </div>
-          </motion.div>
-
-          {/* Titre avec découpe de gradient animé - Hover corrigé */}
+          {/* Titre avec effets améliorés */}
           <motion.h1
-  variants={itemVariants}
-  className="text-4xl md:text-7xl font-bold mb-8 leading-snug pb-4" // Augmentation du padding et line-height
->
-  <span className="sr-only">Kristelle Feron</span>
-  <span 
-    className="inline-block bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent bg-size-200 animate-gradient"
-  >
-    Kris
-  </span>
-  <motion.span 
-    className="inline-block ml-2 bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent bg-size-200 animate-gradient"
-    animate={{
-      textShadow: [
-        "0 0 10px rgba(159,122,234,0.3)",
-        "0 0 20px rgba(103,126,234,0.4)",
-        "0 0 10px rgba(159,122,234,0.3)"
-      ]
-    }}
-    transition={{ duration: 2, repeat: Infinity }}
-    style={{ paddingBottom: "0.15em" }} // Ajout d'un peu d'espace en bas pour les lettres descendantes
-  >
-    LaVoixDesAnges
-  </motion.span>
-</motion.h1>
+            variants={itemVariants}
+            className="font-heading text-4xl md:text-7xl font-bold mb-8 leading-snug pb-4 relative"
+          >
+            <span className="sr-only">Kristelle Feron</span>
+            
+            {/* Effet de halo amélioré */}
+            <div className="absolute inset-0 blur-2xl opacity-30 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl -z-10" />
+            
+            {/* Nom avec couleur dégradée - KRIS */}
+            <span className="inline-block relative">
+              {/* Particules autour du texte "Kris" */}
+              {isClient && particlePositions.slice(0, 3).map((particle, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full bg-purple-300"
+                  style={{
+                    width: particle.size,
+                    height: particle.size,
+                    left: `${particle.x}%`,
+                    top: `${particle.y}%`
+                  }}
+                  animate={{
+                    y: [0, -15, 0],
+                    opacity: [0, 0.7, 0],
+                    scale: [0.5, 1.2, 0.5]
+                  }}
+                  transition={{
+                    duration: particle.duration,
+                    repeat: Infinity,
+                    delay: particle.delay
+                  }}
+                />
+              ))}
+              
+              <span className="relative inline-block bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                Kris
+              </span>
+              
+              {/* Effet halo autour de "Kris" */}
+              <motion.span
+                className="absolute inset-0 rounded-lg opacity-0"
+                animate={{
+                  boxShadow: [
+                    "0 0 5px rgba(139, 92, 246, 0)",
+                    "0 0 15px rgba(139, 92, 246, 0.3)",
+                    "0 0 5px rgba(139, 92, 246, 0)"
+                  ],
+                  opacity: [0, 0.5, 0]
+                }}
+                transition={{ duration: 3, repeat: Infinity, repeatDelay: 1 }}
+              />
+            </span>
+            
+            <span className="mx-1 md:mx-2"></span>
+            
+            {/* LA VOIX DES ANGES */}
+            <span className="inline-block relative" style={{ paddingBottom: "0.25em" }}>
+              {/* Particules autour du texte "LaVoixDesAnges" */}
+              {isClient && particlePositions.slice(3, 6).map((particle, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full bg-purple-300"
+                  style={{
+                    width: particle.size,
+                    height: particle.size,
+                    right: `${particle.x - 10}%`,
+                    top: `${particle.y + 10}%`
+                  }}
+                  animate={{
+                    y: [0, -15, 0],
+                    opacity: [0, 0.7, 0],
+                    scale: [0.5, 1.2, 0.5]
+                  }}
+                  transition={{
+                    duration: particle.duration,
+                    repeat: Infinity,
+                    delay: particle.delay
+                  }}
+                />
+              ))}
+              
+              <span className="relative inline-block bg-gradient-to-br from-fuchsia-500 via-purple-600 to-indigo-500 bg-clip-text text-transparent pb-1">
+                LaVoixDesAnges
+              </span>
+              
+              {/* Effet de lumière qui passe */}
+              {isClient && (
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"
+                  style={{ width: "200%" }}
+                  animate={{ x: ["-100%", "100%"] }}
+                  transition={{ duration: 3, repeat: Infinity, repeatDelay: 4 }}
+                />
+              )}
+            </span>
+            
+            {/* Ligne décorative sous le titre - améliorée */}
+            <motion.div
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[3px] bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-400"
+              initial={{ width: "0%" }}
+              animate={{ width: "80%" }}
+              transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
+            />
+          </motion.h1>
 
-          {/* Phrase d'accroche */}
+          {/* Phrase d'accroche avec icône */}
           <motion.div
             variants={itemVariants}
-            className="mb-6"
+            className="mb-6 flex flex-col items-center"
           >
-            <p className="text-lg md:text-xl text-purple-200 font-light italic">
+            <motion.div 
+              className="mb-2 text-purple-500"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1, rotate: [0, 10, 0, -10, 0] }}
+              transition={{ 
+                scale: { delay: 0.5, duration: 0.5 },
+                rotate: { delay: 1, duration: 2, repeat: Infinity, repeatDelay: 5 } 
+              }}
+            >
+              <SparklesIcon className="w-6 h-6" />
+            </motion.div>
+            <p className="text-lg md:text-xl text-purple-800 font-light italic">
               Votre guide vers l'équilibre et la sérénité intérieure
             </p>
           </motion.div>
 
-          {/* Sous-titre avec effet de séquence */}
-          <motion.p
-            variants={itemVariants}
-            className="mt-4 text-xl md:text-2xl font-light max-w-3xl mx-auto text-gray-200"
-          >
-            {["Soins Énergétiques", "•", "Accompagnement Holistique", "•", "Éveil Spirituel"].map((word, i) => (
-              <motion.span
-                key={i}
-                className="inline-block mx-1"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 + 0.4 }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  color: word !== "•" ? "#d8b4fe" : "#f9fafb"
-                }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
-
-          {/* Bouton amélioré */}
+          {/* Sous-titre avec les mots clés et icônes */}
           <motion.div
             variants={itemVariants}
-            className="mt-12"
+            className="mt-4 flex flex-wrap justify-center items-center max-w-3xl mx-auto text-gray-700"
           >
-            <motion.a
-              href="#contact"
-              className="group relative inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-full overflow-hidden"
-              aria-label="Prendre rendez-vous"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full"
-                animate={{
-                  background: [
-                    "linear-gradient(90deg, #8b5cf6, #6366f1)",
-                    "linear-gradient(180deg, #9333ea, #4f46e5)",
-                    "linear-gradient(270deg, #8b5cf6, #6366f1)",
-                    "linear-gradient(0deg, #9333ea, #4f46e5)",
-                    "linear-gradient(90deg, #8b5cf6, #6366f1)"
-                  ]
-                }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              />
-              
-              {/* Halo lumineux */}
-              <motion.div 
-                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
-                initial={{ boxShadow: "0 0 0 rgba(139, 92, 246, 0)" }}
-                whileHover={{ 
-                  boxShadow: [
-                    "0 0 20px rgba(139, 92, 246, 0.5)",
-                    "0 0 30px rgba(139, 92, 246, 0.6)",
-                    "0 0 20px rgba(139, 92, 246, 0.5)"
-                  ]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              
-              {/* Effet de brillance */}
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 1 }}
-              />
-              
-              <span className="relative z-10 flex items-center gap-3 text-white">
-                Commencer votre voyage
-                <motion.svg 
-                  className="w-5 h-5" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </motion.svg>
-              </span>
-            </motion.a>
+            <span className="inline-flex items-center gap-1 mx-2 my-1 hover:text-purple-600 transition-colors text-lg md:text-xl font-light">
+              <HeartIcon className="w-5 h-5" />
+              <span>Soins Énergétiques</span>
+            </span>
+            <span className="mx-1">•</span>
+            <span className="inline-flex items-center gap-1 mx-2 my-1 hover:text-purple-600 transition-colors text-lg md:text-xl font-light">
+              <MoonIcon className="w-5 h-5" />
+              <span>Accompagnement Holistique</span>
+            </span>
+            <span className="mx-1">•</span>
+            <span className="inline-flex items-center gap-1 mx-2 my-1 hover:text-purple-600 transition-colors text-lg md:text-xl font-light">
+              <LightBulbIcon className="w-5 h-5" />
+              <span>Éveil Spirituel</span>
+            </span>
           </motion.div>
+
+          {/* Bouton CTA amélioré */}
+         
+<motion.div
+  variants={itemVariants}
+  className="mt-10"
+>
+  <motion.a
+    href="#contact"
+    className="group relative overflow-hidden inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-full"
+    aria-label="Prendre rendez-vous"
+    whileHover={{
+      scale: 1.03,
+      boxShadow: "0 20px 30px -10px rgba(139, 92, 246, 0.4)",
+    }}
+    whileTap={{ scale: 0.98 }}
+  >
+    {/* Fond avec dégradé */}
+    <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full"></div>
+    
+    {/* Effet de lueur permanent */}
+    <div className="absolute inset-0 rounded-full" 
+         style={{ boxShadow: "0 0 20px rgba(139, 92, 246, 0.3)" }} />
+    
+    {/* Effet de brillance qui traverse en continu */}
+    {isClient && (
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+        initial={{ x: "-100%" }}
+        animate={{ x: "100%" }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 2,
+          ease: "linear",
+        }}
+      />
+    )}
+    
+    {/* Contenu du bouton */}
+    <span className="relative z-10 flex items-center justify-center gap-3 text-white">
+      <SparklesIcon className="w-5 h-5" />
+      Commencer votre voyage
+      <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+    </span>
+  </motion.a>
+</motion.div>
         </motion.div>
 
-        {/* Badges de spécialité */}
-        <motion.div 
-          className="flex flex-wrap justify-center gap-3 mt-6 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2 }}
-          style={{ opacity }}
-        >
-          {["Médium", "Magnétiseuse", "Guide Spirituel", "Soins Énergétiques"].map((badge, i) => (
-            <motion.span
-              key={i}
-              className="px-4 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs font-medium text-purple-100"
-              whileHover={{ 
-                scale: 1.1, 
-                backgroundColor: "rgba(255, 255, 255, 0.2)" 
-              }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2 + i * 0.1 }}
-            >
-              {badge}
-            </motion.span>
-          ))}
-        </motion.div>
+        {/* Badges de spécialité avec icônes */}
+        <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 mt-6 mx-auto px-4 max-w-md">
+          <span className="px-4 py-1.5 bg-purple-100 backdrop-blur-sm rounded-full text-xs font-medium text-purple-700 whitespace-nowrap flex items-center gap-1 hover:bg-purple-200 transition-colors">
+            <HandRaisedIcon className="w-3.5 h-3.5" />
+            Médium
+          </span>
+          <span className="px-4 py-1.5 bg-purple-100 backdrop-blur-sm rounded-full text-xs font-medium text-purple-700 whitespace-nowrap flex items-center gap-1 hover:bg-purple-200 transition-colors">
+            <SparklesIcon className="w-3.5 h-3.5" />
+            Magnétiseuse
+          </span>
+          <span className="px-4 py-1.5 bg-purple-100 backdrop-blur-sm rounded-full text-xs font-medium text-purple-700 whitespace-nowrap flex items-center gap-1 hover:bg-purple-200 transition-colors">
+            <SunIcon className="w-3.5 h-3.5" />
+            Guide Spirituel
+          </span>
+          <span className="px-4 py-1.5 bg-purple-100 backdrop-blur-sm rounded-full text-xs font-medium text-purple-700 whitespace-nowrap flex items-center gap-1 hover:bg-purple-200 transition-colors">
+            <HeartIcon className="w-3.5 h-3.5" />
+            Soins Énergétiques
+          </span>
+        </div>
 
         {/* Indicateur de défilement amélioré */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5 }}
-          whileHover={{ scale: 1.1 }}
-          onClick={() => {
-            window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
-          }}
-        >
-          <div className="relative flex flex-col items-center">
+        {scrollIndicator && (
+          <div
+            className="absolute left-1/2 bottom-8 transform -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center"
+            onClick={() => {
+              window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
+            }}
+            aria-label="Défiler vers le bas"
+          >
             <motion.p 
-              className="text-sm text-purple-200 mb-2 font-light"
+              className="text-sm text-purple-700 mb-2 font-medium"
               animate={{ opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
               Découvrir
             </motion.p>
+            
             <motion.div
-              className="w-8 h-14 rounded-full border-2 border-purple-300/50 flex items-start justify-center p-1"
+              className="w-8 h-14 rounded-full border-2 border-purple-500/50 flex items-start justify-center p-1"
               animate={{ 
                 boxShadow: [
                   "0 0 0 rgba(167, 139, 250, 0)",
@@ -329,7 +343,7 @@ export default function Hero() {
               transition={{ duration: 2, repeat: Infinity }}
             >
               <motion.div 
-                className="w-2 h-2 bg-purple-300 rounded-full"
+                className="w-2 h-2 bg-purple-600 rounded-full"
                 animate={{ y: [2, 8, 2] }}
                 transition={{ 
                   duration: 1.5, 
@@ -339,87 +353,19 @@ export default function Hero() {
               />
             </motion.div>
           </div>
-        </motion.div>
+        )}
       </div>
-
-      {/* Effets de particules améliorés */}
-      <motion.div 
-        className="absolute inset-0 pointer-events-none"
-        style={{ y }}
-      >
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full mix-blend-screen"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 4 + 1}px`,
-              height: `${Math.random() * 4 + 1}px`,
-              backgroundColor: `rgba(${139 + Math.random() * 50}, ${92 + Math.random() * 50}, ${246 + Math.random() * 10}, ${0.3 + Math.random() * 0.5})`,
-              filter: `blur(${Math.random() * 2}px)`,
-              animationDuration: `${15 + Math.random() * 20}s`,
-              animationName: "floatParticle"
-            }}
-          />
-        ))}
-      </motion.div>
-
+      
+      {/* Style pour les animations de dégradés */}
       <style jsx global>{`
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        
-        .bg-size-200 {
-          background-size: 200% 200%;
-        }
-        
-        .animate-gradient {
-          animation: gradientShift 8s ease infinite;
-        }
-        
-        @keyframes floatParticle {
-          0% { transform: translateY(0) translateX(0); opacity: 0; }
-          25% { opacity: 1; }
-          50% { transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px); opacity: 0.5; }
-          75% { opacity: 0.7; }
-          100% { transform: translateY(-200vh) translateX(${Math.random() * 200 - 100}px); opacity: 0; }
-        }
-        
-        .animate-scrollIndicator {
-          animation: scrollIndicator 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes scrollIndicator {
+        @keyframes float {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(6px); }
+          50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+          animation: float 5s ease-in-out infinite;
         }
       `}</style>
     </section>
   );
 }
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { 
-      type: "spring", 
-      stiffness: 80 
-    }
-  }
-};

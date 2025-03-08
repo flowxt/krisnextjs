@@ -120,7 +120,7 @@ const Cta = ({ page }) => {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 dark:text-purple-100 inline-flex flex-wrap justify-center gap-x-2">
+            <h3 className="font-heading text-3xl md:text-4xl font-bold text-gray-800 mb-2 dark:text-purple-100 inline-flex flex-wrap justify-center gap-x-2">
               {titleWords.map((word, index) => (
                 <motion.span 
                   key={index}

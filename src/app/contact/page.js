@@ -220,7 +220,7 @@ const ContactForm = () => {
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
                 <motion.h2
-                  className="text-3xl lg:text-4xl font-bold mb-4 text-white"
+                  className="font-heading text-2xl lg:text-3xl font-bold mb-4 text-white"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300, damping: 10 }}
                 >
@@ -311,7 +311,7 @@ const ContactForm = () => {
               className="max-w-lg mx-auto"
             >
               <motion.h3
-                className="text-2xl font-bold text-gray-800 mb-2"
+                className="font-heading text-2xl font-bold text-gray-800 mb-2"
                 whileHover={{ scale: 1.01 }}
               >
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
@@ -762,7 +762,7 @@ const ContactForm = () => {
       >
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">
+            <h3 className="font-heading text-xl font-bold text-gray-800 mb-4">
               Me trouver
             </h3>
             <p className="text-gray-600 mb-6">
