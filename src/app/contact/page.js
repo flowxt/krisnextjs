@@ -541,7 +541,7 @@ const ContactForm = () => {
 
                     {/* Sujet */}
                     <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
+                      <label className="block text-gray-700 mb-2 font-medium ">
                         Sujet du message
                       </label>
                       <div className="relative">

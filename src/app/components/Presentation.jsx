@@ -135,7 +135,7 @@ export default function Presentation() {
       className="w-full lg:w-7/12 space-y-10"
     >
       <motion.h2 
-        className="font-heading text-5xl font-bold text-gray-900 leading-tight dark:text-white"
+        className="font-heading text-4xl font-bold text-gray-900 leading-tight dark:text-white"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.4 }}
