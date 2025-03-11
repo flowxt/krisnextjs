@@ -18,9 +18,8 @@ export default function ArticleCard({ article }) {
     publicationDate
   } = article.attributes;
 
-  // Pour l'image, vérifions si c'est la nouvelle structure ou l'ancienne
-  const imageUrl = featuredImage?.url || featuredImage?.data?.attributes?.url;
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+  // Avec TinaCMS, l'URL de l'image est directement utilisable sans préfixe
+  const imageUrl = featuredImage?.data?.attributes?.url || null;
 
   return (
     <motion.div
@@ -31,9 +30,9 @@ export default function ArticleCard({ article }) {
     >
       <Link href={`/blog/${slug}`}>
         <div className="relative h-48">
-          {imageUrl && strapiUrl && (
+          {imageUrl && (
             <Image
-              src={`${strapiUrl}${imageUrl}`}
+              src={imageUrl} // Utiliser directement l'URL
               alt={Title || 'Article image'}
               fill
               priority

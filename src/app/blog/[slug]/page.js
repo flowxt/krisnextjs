@@ -1,37 +1,58 @@
-"use client";
-import React from "react";
-
-import { useEffect, useState } from "react";
-import { getArticleBySlug } from "@/lib/strapi";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import Image from "next/image";
-import { Suspense } from "react";
+import { marked } from "marked";
 
-function ArticleContent({ slug }) {
-  const [article, setArticle] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+// Fonction locale pour récupérer un article par son slug
+async function getArticleData(slug) {
+  try {
+    const postsDirectory = path.join(process.cwd(), "content/blog");
+    const mdPath = path.join(postsDirectory, `${slug}.mdx`);
+    const mdxPath = path.join(postsDirectory, `${slug}.md`);
 
-  useEffect(() => {
-    async function fetchArticle() {
-      try {
-        const data = await getArticleBySlug(slug);
-        setArticle(data);
-      } catch (error) {
-        console.error("Erreur lors du chargement de l'article:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+    let fullPath = fs.existsSync(mdPath) ? mdPath : mdxPath;
 
-    fetchArticle();
-  }, [slug]);
+    if (!fs.existsSync(fullPath)) return null;
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-xl">Chargement...</div>
-      </div>
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    return {
+      id: slug,
+      attributes: {
+        Title: data.title,
+        description: data.description,
+        slug,
+        categories: data.categories,
+        publicationDate: data.date,
+        content: content,
+        featuredImage: data.image
+          ? {
+              data: {
+                attributes: {
+                  url: data.image,
+                },
+              },
+            }
+          : null,
+      },
+    };
+  } catch (error) {
+    console.error(
+      `Erreur lors de la récupération de l'article ${slug}:`,
+      error
     );
+    return null;
   }
+}
+
+export default async function ArticlePage({ params }) {
+  // Attendre la résolution des params dans Next.js 15
+  const resolvedParams = await Promise.resolve(params);
+  const { slug } = resolvedParams;
+
+  const article = await getArticleData(slug);
 
   if (!article) {
     return (
@@ -49,16 +70,16 @@ function ArticleContent({ slug }) {
     categories,
     publicationDate,
   } = article.attributes;
+
   const imageUrl = featuredImage?.data?.attributes?.url;
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-20 mt-11">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-20 ">
       <article className="max-w-4xl mx-auto px-4">
-        {imageUrl && strapiUrl && (
-          <div className="relative h-96 mb-8 rounded-2xl overflow-hidden shadow-xl">
+        {imageUrl && (
+          <div className="relative h-96 mb-8 rounded-2xl overflow-hidden shadow-xl mt-11">
             <Image
-              src={`${strapiUrl}${imageUrl}`}
+              src={imageUrl}
               alt={Title || "Image de l'article"}
               fill
               priority
@@ -82,11 +103,12 @@ function ArticleContent({ slug }) {
             )}
             {publicationDate && (
               <time className="text-sm text-gray-500">
-                {new Date(publicationDate).toLocaleDateString("fr-FR", {
+                {new Intl.DateTimeFormat("fr-FR", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
-                })}
+                  timeZone: "UTC",
+                }).format(new Date(publicationDate))}
               </time>
             )}
           </div>
@@ -98,33 +120,10 @@ function ArticleContent({ slug }) {
           )}
 
           <div className="prose prose-lg prose-purple max-w-none">
-            {content?.map((block, index) => (
-              <div key={index} className="mb-6">
-                {block.children?.map((child, childIndex) => (
-                  <p key={childIndex} className="text-gray-700 leading-relaxed">
-                    {child.text}
-                  </p>
-                ))}
-              </div>
-            ))}
+            <div dangerouslySetInnerHTML={{ __html: marked(content) }} />
           </div>
         </div>
       </article>
     </div>
-  );
-}
-
-export default function ArticlePage({ params }) {
-  const resolvedParams = React.use(params); // Déballage de la Promise
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-xl">Chargement...</div>
-        </div>
-      }
-    >
-      <ArticleContent slug={resolvedParams.slug} />
-    </Suspense>
   );
 }
