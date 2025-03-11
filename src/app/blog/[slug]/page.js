@@ -92,7 +92,9 @@ export default async function ArticlePage({ params }) {
 
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-            {Title}
+            <span className="bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
+              {Title}
+            </span>
           </h1>
 
           <div className="flex flex-wrap items-center gap-4">
