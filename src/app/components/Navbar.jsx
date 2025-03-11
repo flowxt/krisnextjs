@@ -20,6 +20,7 @@ export default function Navbar() {
           <Link href="/" className="text-gray-800 hover:text-indigo-600 font-medium">Accueil</Link>
           <Link href="/soins" className="text-gray-800 hover:text-indigo-600 font-medium">Les soins</Link>
           <Link href="/services" className="text-gray-800 hover:text-indigo-600 font-medium">Services</Link>
+          <Link href="/blog" className="text-gray-800 hover:text-indigo-600 font-medium">Blog</Link>
           <Link href="/contact" className="text-gray-800 hover:text-indigo-600 font-medium">Contact</Link>
         </nav>
 
@@ -35,6 +36,7 @@ export default function Navbar() {
           <Link href="/" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Accueil</Link>
           <Link href="/soins" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Les soins</Link>
           <Link href="/services" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Services</Link>
+          <Link href="/blog" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Blog</Link>
           <Link href="/contact" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Contact</Link>
         </nav>
       )}
