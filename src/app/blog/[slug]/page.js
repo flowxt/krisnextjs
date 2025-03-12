@@ -31,7 +31,10 @@ async function getArticleData(slug) {
           ? {
               data: {
                 attributes: {
-                  url: data.image,
+                  // Ajouter un slash si l'image n'en a pas déjà un
+                  url: data.image.startsWith("/")
+                    ? data.image
+                    : `/${data.image}`,
                 },
               },
             }

@@ -50,7 +50,9 @@ export default async function Blog() {
         ? {
             data: {
               attributes: {
-                url: article.image,
+                url: article.image.startsWith("/")
+                  ? article.image
+                  : `/${article.image}`,
               },
             },
           }
