@@ -263,7 +263,7 @@ export default function Hero() {
     whileTap={{ scale: 0.98 }}
   >
     {/* Fond avec dégradé */}
-    <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full"></div>
+    <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
     
     {/* Effet de lueur permanent */}
     <div className="absolute inset-0 rounded-full" 

@@ -19,7 +19,7 @@ import BookingModal from "../components/BookingModal";
 const services = [
   {
     id: 1,
-    title: "Séance Énergétique Adulte",
+    title: 'Séance "Je me laisse guider"',
     price: "100€",
     duration: "1h - Présentiel/Distance",
     intervenant: "Kris",

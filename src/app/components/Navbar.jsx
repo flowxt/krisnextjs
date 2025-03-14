@@ -18,7 +18,7 @@ export default function Navbar() {
         {/* Navigation Desktop */}
         <nav className="hidden md:flex space-x-6">
           <Link href="/" className="text-gray-800 hover:text-indigo-600 font-medium">Accueil</Link>
-          <Link href="/soins" className="text-gray-800 hover:text-indigo-600 font-medium">Les soins</Link>
+          <Link href="/soins" className="text-gray-800 hover:text-indigo-600 font-medium">Forfaits</Link>
           <Link href="/services" className="text-gray-800 hover:text-indigo-600 font-medium">Services</Link>
           <Link href="/blog" className="text-gray-800 hover:text-indigo-600 font-medium">Blog</Link>
           <Link href="/partenaires" className="text-gray-800 hover:text-indigo-600 font-medium">Nos partenaires</Link>
@@ -35,7 +35,7 @@ export default function Navbar() {
       {isOpen && (
         <nav className="md:hidden backdrop-blur-md bg-white/70 p-4 space-y-4 absolute w-[calc(100%-2rem)] left-4 top-20 rounded-2xl shadow-lg">
           <Link href="/" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Accueil</Link>
-          <Link href="/soins" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Les soins</Link>
+          <Link href="/soins" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Forfaits</Link>
           <Link href="/services" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Services</Link>
           <Link href="/blog" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Blog</Link>
           <Link href="/partenaires" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Partenaires</Link>
