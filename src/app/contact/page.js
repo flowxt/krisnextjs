@@ -31,7 +31,7 @@ const ContactForm = () => {
     }
   };
 
-  // Classes dynamiques pour les champs
+  // Classes dynamiques pour les champs du formulaire
   const inputClasses = (fieldName) => {
     return `w-full px-4 py-3 rounded-lg border transition-all duration-300
       ${
