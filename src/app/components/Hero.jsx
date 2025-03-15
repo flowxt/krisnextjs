@@ -60,6 +60,7 @@ export default function Hero() {
   }, []);
 
   return (
+    <header>
     <section 
       ref={ref}
       className="relative w-full h-screen overflow-hidden"
@@ -367,5 +368,6 @@ export default function Hero() {
         }
       `}</style>
     </section>
+    </header>
   );
 }

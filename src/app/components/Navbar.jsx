@@ -10,9 +10,9 @@ export default function Navbar() {
     <header className="fixed top-0 w-full z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between p-4 backdrop-blur-sm bg-white/30 m-4 rounded-full shadow-lg">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-gray-800 flex items-center">
-          <img src="/photo/logo.png" alt="Kristelle Feron" className="w-12 h-12 mr-4" />
-          Kristelle Feron
+        <Link href="/" className="text-xl font-bold text-gray-800 flex items-center font-heading">
+          <img src="/photo/logonew.jpg" alt="Kristelle Feron" className="w-12 h-12 mr-4 rounded-full" />
+          Kris & Patrice
         </Link>
 
         {/* Navigation Desktop */}
@@ -21,7 +21,7 @@ export default function Navbar() {
           <Link href="/soins" className="text-gray-800 hover:text-indigo-600 font-medium">Forfaits</Link>
           <Link href="/services" className="text-gray-800 hover:text-indigo-600 font-medium">Services</Link>
           <Link href="/blog" className="text-gray-800 hover:text-indigo-600 font-medium">Blog</Link>
-          <Link href="/partenaires" className="text-gray-800 hover:text-indigo-600 font-medium">Nos partenaires</Link>
+          <Link href="/partenaires" className="text-gray-800 hover:text-indigo-600 font-medium">Partenaires</Link>
           <Link href="/contact" className="text-gray-800 hover:text-indigo-600 font-medium">Contact</Link>
         </nav>
 

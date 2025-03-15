@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -508,26 +508,38 @@ export default function Services() {
   const [expandedId, setExpandedId] = useState(null);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
+  const [visibleItems, setVisibleItems] = useState(6); // Chargement initial limité
+
+  // Optimisation: Charger plus d'éléments au défilement
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 1000
+      ) {
+        setVisibleItems((prev) => Math.min(prev + 4, services.length));
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
       <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-20">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16 relative overflow-hidden"
-          >
-            <h2 className="font-heading mt-11 text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative inline-block px-4">
-              <span className="relative z-10">
+          {/* En-tête simplifié */}
+          <div className="text-center mb-16">
+            <h2 className="font-heading mt-11 text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <span>
                 Mes Services{" "}
                 <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white p-2 inline-block">
                   Énergétiques
                 </span>
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto relative z-10 px-4">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Découvrez une gamme de{" "}
               <span className="font-semibold text-purple-600">
                 soins personnalisés
@@ -537,84 +549,44 @@ export default function Services() {
                 corps, cœur et esprit
               </span>
             </p>
-          </motion.div>
+          </div>
 
+          {/* Grille de services */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, index) => {
+            {services.slice(0, visibleItems).map((service, index) => {
               const isPatrice = service.intervenant === "Patrice";
-              const gradientColors = isPatrice
-                ? [
-                    "from-blue-500",
-                    "via-blue-400",
-                    "to-cyan-400",
-                    "from-blue-600",
-                    "to-cyan-600",
-                    "bg-blue-50",
-                  ]
-                : [
-                    "from-purple-500",
-                    "via-fuchsia-400",
-                    "to-indigo-400",
-                    "from-purple-600",
-                    "to-indigo-600",
-                    "bg-purple-50",
-                  ];
+              const mainColor = isPatrice ? "blue" : "purple";
+              const secondaryColor = isPatrice ? "cyan" : "indigo";
 
               return (
-                <motion.div
+                <div
                   key={service.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.7,
-                    delay: index * 0.1,
-                    ease: [0.21, 1.11, 0.81, 0.99], // Effet de ressort élégant
-                  }}
-                  className={`relative ${
+                  className={`relative opacity-0 animate-fade-in ${
                     expandedId === service.id ? "md:col-span-2" : ""
                   }`}
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                    animationFillMode: "forwards",
+                  }}
                 >
-                  <motion.div
-                    className={`relative rounded-[2rem] overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-500
-            ${
-              isPatrice
-                ? "hover:shadow-blue-200/50"
-                : "hover:shadow-purple-200/50"
-            }`}
-                    whileHover={{ y: -8 }}
-                    layout
+                  <div
+                    className={`relative rounded-[2rem] overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2
+                    ${
+                      isPatrice
+                        ? "hover:shadow-blue-200/30"
+                        : "hover:shadow-purple-200/30"
+                    }`}
                   >
-                    {/* Éléments décoratifs en arrière-plan */}
-                    <div className="absolute inset-0 opacity-10 overflow-hidden">
+                    {/* Élément décoratif simplifié */}
+                    <div className="absolute inset-0 opacity-5">
                       <div
-                        className={`absolute -top-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br ${gradientColors[0]} ${gradientColors[1]} ${gradientColors[2]} blur-3xl`}
-                      ></div>
-                      <div
-                        className={`absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-gradient-to-br ${gradientColors[0]} ${gradientColors[2]} ${gradientColors[1]} blur-2xl`}
+                        className={`absolute -top-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
                       ></div>
                     </div>
 
-                    {/* Pattern subtil */}
+                    {/* Contenu de la carte */}
                     <div
-                      className="absolute inset-0 opacity-5"
-                      style={{
-                        backgroundImage:
-                          "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-                      }}
-                    ></div>
-
-                    {/* Bordure lumineuse */}
-                    <div
-                      className={`absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700
-              ${
-                isPatrice
-                  ? "group-hover:border-2 group-hover:border-blue-300/30"
-                  : "group-hover:border-2 group-hover:border-purple-300/30"
-              }`}
-                    ></div>
-
-                    <div
-                      className="group p-8 cursor-pointer relative z-10"
+                      className="p-8 cursor-pointer relative z-10"
                       onClick={() =>
                         setExpandedId(
                           expandedId === service.id ? null : service.id
@@ -622,406 +594,164 @@ export default function Services() {
                       }
                     >
                       <div className="flex items-start gap-6 relative">
-                        {/* Icône avec animation */}
-                        <motion.div
-                          className={`relative p-5 rounded-2xl text-white shadow-lg overflow-hidden
-                  bg-gradient-to-br ${gradientColors[0]} ${gradientColors[1]} ${gradientColors[2]}`}
-                          initial={{ rotate: 0 }}
-                          whileHover={{
-                            rotate: [0, -5, 5, -3, 3, 0],
-                            scale: 1.1,
-                            transition: { duration: 0.5 },
-                          }}
+                        {/* Icône simplifiée */}
+                        <div
+                          className={`p-5 rounded-2xl text-white shadow-md overflow-hidden
+                          bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400 hover:scale-105 transition-transform duration-300`}
                         >
-                          {/* Effet de brillance */}
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                            initial={{ x: "-100%", opacity: 0 }}
-                            whileHover={{ x: "100%", opacity: 1 }}
-                            transition={{ duration: 0.8, ease: "easeInOut" }}
-                          />
                           <div className="relative z-10">{service.icon}</div>
-                        </motion.div>
+                        </div>
 
                         <div className="flex-1 min-w-0">
-                          <motion.h3
-                            className=" text-base md:text-xl font-bold text-gray-800 font-heading mb-2"
-                            initial={{ lineHeight: "1.4" }}
-                            whileHover={{ scale: 1.01 }}
-                          >
-                            {/* Effet de gradient au survol du titre */}
-                            <motion.span
-                              className={`inline-block bg-clip-text bg-gradient-to-r ${gradientColors[3]} ${gradientColors[4]}`}
-                              whileHover={{
-                                color: "transparent",
-                                transition: { duration: 0.3 },
-                              }}
+                          {/* Titre */}
+                          <h3 className="text-base md:text-xl font-bold text-gray-800 font-heading mb-2">
+                            <span
+                              className={`bg-clip-text text-${mainColor}-600`}
                             >
                               {service.title}
-                            </motion.span>
-                          </motion.h3>
+                            </span>
+                          </h3>
 
-                          {/* Badge intervenant avec animation */}
-                          <motion.span
+                          {/* Badge intervenant */}
+                          <span
                             className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3
-                    ${
-                      isPatrice
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-purple-100 text-purple-800"
-                    }`}
-                            whileHover={{
-                              y: -3,
-                              boxShadow: isPatrice
-                                ? "0 4px 10px rgba(96, 165, 250, 0.3)"
-                                : "0 4px 10px rgba(167, 139, 250, 0.3)",
-                            }}
+                            ${
+                              isPatrice
+                                ? "bg-blue-100 text-blue-800"
+                                : "bg-purple-100 text-purple-800"
+                            }`}
                           >
                             {service.intervenant}
-                          </motion.span>
+                          </span>
 
                           <div className="mt-4 flex flex-col space-y-3">
-                            {/* Prix avec animation */}
-                            <motion.span
-                              className={`text-xl font-bold bg-gradient-to-r ${gradientColors[3]} ${gradientColors[4]} bg-clip-text text-transparent`}
-                              whileHover={{
-                                scale: 1.05,
-                                textShadow: isPatrice
-                                  ? "0 0 8px rgba(96, 165, 250, 0.3)"
-                                  : "0 0 8px rgba(167, 139, 250, 0.3)",
-                              }}
+                            {/* Prix */}
+                            <span
+                              className={`text-xl font-bold text-${mainColor}-600`}
                             >
                               {service.price}
-                            </motion.span>
+                            </span>
 
-                            {/* Badges durée et lieu avec animation */}
+                            {/* Badges simplifiés */}
                             <div className="flex flex-wrap gap-2">
-                              <motion.span
+                              <span
                                 className={`text-sm font-medium px-3 py-1.5 rounded-full
-                        ${
-                          isPatrice
-                            ? "text-blue-600 bg-blue-50"
-                            : "text-purple-600 bg-purple-50"
-                        }`}
-                                whileHover={{ scale: 1.08 }}
-                                transition={{
-                                  type: "spring",
-                                  stiffness: 400,
-                                  damping: 10,
-                                }}
+                                ${
+                                  isPatrice
+                                    ? "text-blue-600 bg-blue-50"
+                                    : "text-purple-600 bg-purple-50"
+                                }`}
                               >
-                                <span className="relative inline-block mr-1">
-                                  ⌛
-                                </span>{" "}
+                                <span className="inline-block mr-1">⌛</span>{" "}
                                 {service.duration.split(" - ")[0]}
-                              </motion.span>
+                              </span>
 
-                              <motion.span
+                              <span
                                 className={`text-sm font-medium px-3 py-1.5 rounded-full
-                        ${
-                          isPatrice
-                            ? "text-cyan-600 bg-cyan-50"
-                            : "text-indigo-600 bg-indigo-50"
-                        }`}
-                                whileHover={{ scale: 1.08 }}
-                                transition={{
-                                  type: "spring",
-                                  stiffness: 400,
-                                  damping: 10,
-                                }}
+                                ${
+                                  isPatrice
+                                    ? "text-cyan-600 bg-cyan-50"
+                                    : "text-indigo-600 bg-indigo-50"
+                                }`}
                               >
-                                <span className="relative inline-block mr-1">
-                                  📍
-                                </span>{" "}
+                                <span className="inline-block mr-1">📍</span>{" "}
                                 {service.duration.split(" - ")[1]}
-                              </motion.span>
+                              </span>
                             </div>
                           </div>
                         </div>
 
-                        {/* Icône de flèche avec animation */}
-                        <motion.div
-                          className="relative"
-                          animate={{
-                            rotate: expandedId === service.id ? 180 : 0,
-                            y: expandedId === service.id ? 3 : 0,
-                          }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 20,
-                          }}
+                        {/* Icône de flèche simplifiée */}
+                        <div
+                          className={`transition-transform duration-300 transform ${
+                            expandedId === service.id ? "rotate-180" : ""
+                          }`}
                         >
                           <ChevronDownIcon
                             className={`w-8 h-8 
-                    ${isPatrice ? "text-blue-600" : "text-purple-600"}`}
+                            ${isPatrice ? "text-blue-600" : "text-purple-600"}`}
                           />
-
-                          {/* Effet de halo autour de la flèche */}
-                          <motion.div
-                            className={`absolute inset-0 rounded-full -z-10
-                    ${isPatrice ? "bg-blue-100" : "bg-purple-100"}`}
-                            initial={{ scale: 0, opacity: 0 }}
-                            whileHover={{ scale: 1.7, opacity: 0.5 }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 300,
-                              damping: 20,
-                            }}
-                          />
-                        </motion.div>
+                        </div>
                       </div>
 
-                      {/* Contenu déplié */}
-                      <AnimatePresence>
-                        {expandedId === service.id && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{
-                              opacity: { duration: 0.4 },
-                              height: { duration: 0.6 },
-                            }}
-                          >
-                            <motion.div
-                              className="mt-8 space-y-8"
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.2, duration: 0.4 }}
-                            >
-                              {/* Description avec effet de mise en évidence */}
-                              <motion.div
-                                className="space-y-6 text-gray-700 leading-relaxed"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.3, duration: 0.5 }}
+                      {/* Contenu déplié simplifié */}
+                      {expandedId === service.id && (
+                        <div className="mt-8 space-y-8 animate-fade-in">
+                          {/* Description simplifiée */}
+                          <div className="space-y-6 text-gray-700 leading-relaxed">
+                            {service.description
+                              .split("\n")
+                              .map((paragraph, idx) => (
+                                <div
+                                  key={idx}
+                                  className="flex items-start gap-3"
+                                >
+                                  {paragraph.startsWith("✨") ? (
+                                    <>
+                                      <span className="text-xl">✨</span>
+                                      <p
+                                        className={`font-medium hover:text-${mainColor}-600 transition-colors`}
+                                      >
+                                        {paragraph.substring(2)}
+                                      </p>
+                                    </>
+                                  ) : (
+                                    <p>{paragraph}</p>
+                                  )}
+                                </div>
+                              ))}
+                          </div>
+
+                          {/* Images simplifiées */}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {service.images.map((img, idx) => (
+                              <div
+                                key={idx}
+                                className="relative group rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow hover:scale-[1.02] transform duration-300"
                               >
-                                {service.description
-                                  .split("\n")
-                                  .map((paragraph, idx) => (
-                                    <motion.div
-                                      key={idx}
-                                      className="flex items-start gap-3"
-                                      initial={{ opacity: 0, y: 10 }}
-                                      animate={{ opacity: 1, y: 0 }}
-                                      transition={{
-                                        delay: 0.3 + idx * 0.05,
-                                        duration: 0.5,
-                                      }}
-                                      whileHover={{
-                                        x: paragraph.startsWith("✨") ? 5 : 0,
-                                        transition: {
-                                          type: "spring",
-                                          stiffness: 300,
-                                          damping: 20,
-                                        },
-                                      }}
-                                    >
-                                      {paragraph.startsWith("✨") ? (
-                                        <>
-                                          <motion.span
-                                            className="text-xl"
-                                            animate={{
-                                              rotate: [0, 5, -5, 5, 0],
-                                              scale: [1, 1.1, 1, 1.1, 1],
-                                              color: [
-                                                isPatrice
-                                                  ? "#3b82f6"
-                                                  : "#8b5cf6",
-                                                isPatrice
-                                                  ? "#60a5fa"
-                                                  : "#a78bfa",
-                                                isPatrice
-                                                  ? "#3b82f6"
-                                                  : "#8b5cf6",
-                                              ],
-                                            }}
-                                            transition={{
-                                              duration: 3,
-                                              repeat: Infinity,
-                                              repeatType: "reverse",
-                                            }}
-                                          >
-                                            ✨
-                                          </motion.span>
-                                          <motion.p
-                                            className="font-medium"
-                                            whileHover={{
-                                              color: isPatrice
-                                                ? "#3b82f6"
-                                                : "#8b5cf6",
-                                              fontWeight: "600",
-                                            }}
-                                          >
-                                            {paragraph.substring(2)}
-                                          </motion.p>
-                                        </>
-                                      ) : (
-                                        <motion.p
-                                          whileHover={{ color: "#4b5563" }}
-                                        >
-                                          {paragraph}
-                                        </motion.p>
-                                      )}
-                                    </motion.div>
-                                  ))}
-                              </motion.div>
-
-                              {/* Images avec animations */}
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {service.images.map((img, idx) => (
-                                  <motion.div
-                                    key={idx}
-                                    className="relative group rounded-xl overflow-hidden shadow-lg"
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{
-                                      delay: 0.4 + idx * 0.1,
-                                      duration: 0.5,
-                                    }}
-                                    whileHover={{ scale: 1.03, zIndex: 10 }}
-                                  >
-                                    <motion.div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                    <Image
-                                      src={img}
-                                      alt={service.title}
-                                      width={1200}
-                                      height={800}
-                                      className="object-cover w-full h-64 transform transition-transform duration-700 ease-out"
-                                      style={{
-                                        transformOrigin:
-                                          idx === 0
-                                            ? "left center"
-                                            : "right center",
-                                      }}
-                                    />
-
-                                    {/* Effet de brillance au survol */}
-                                    <motion.div
-                                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                                      initial={{ x: "-100%" }}
-                                      whileHover={{ x: "100%" }}
-                                      transition={{ duration: 1.5 }}
-                                    />
-                                  </motion.div>
-                                ))}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <Image
+                                  src={img}
+                                  alt={service.title}
+                                  width={600}
+                                  height={400}
+                                  className="object-cover w-full h-64"
+                                  loading="lazy"
+                                />
                               </div>
+                            ))}
+                          </div>
 
-                              {/* Bouton de réservation amélioré */}
-                              <motion.button
-                                onClick={() => {
-                                  setSelectedService(service);
-                                  setIsBookingModalOpen(true);
-                                }}
-                                className={`w-full py-5 relative overflow-hidden rounded-xl font-bold text-lg shadow-lg`}
-                                whileHover={{
-                                  scale: 1.02,
-                                  boxShadow: isPatrice
-                                    ? "0 20px 30px -10px rgba(96, 165, 250, 0.4)"
-                                    : "0 20px 30px -10px rgba(167, 139, 250, 0.4)",
-                                }}
-                                whileTap={{ scale: 0.98 }}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5, duration: 0.5 }}
+                          {/* Bouton simplifié */}
+                          <button
+                            onClick={() => {
+                              setSelectedService(service);
+                              setIsBookingModalOpen(true);
+                            }}
+                            className={`w-full py-5 relative overflow-hidden rounded-xl font-bold text-lg bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 text-white hover:brightness-105 transition-all duration-300 hover:scale-[1.01]`}
+                          >
+                            <span className="flex items-center justify-center gap-3">
+                              <span>Réserver cette séance</span>
+                              <svg
+                                className="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
                               >
-                                {/* Fond animé du bouton */}
-                                <motion.div
-                                  className={`absolute inset-0 bg-gradient-to-r ${gradientColors[3]} ${gradientColors[4]}`}
-                                  animate={{
-                                    background: isPatrice
-                                      ? [
-                                          "linear-gradient(90deg, #3b82f6, #0ea5e9)",
-                                          "linear-gradient(180deg, #60a5fa, #22d3ee)",
-                                          "linear-gradient(270deg, #3b82f6, #0ea5e9)",
-                                          "linear-gradient(0deg, #60a5fa, #22d3ee)",
-                                        ]
-                                      : [
-                                          "linear-gradient(90deg, #8b5cf6, #6366f1)",
-                                          "linear-gradient(180deg, #a78bfa, #818cf8)",
-                                          "linear-gradient(270deg, #8b5cf6, #6366f1)",
-                                          "linear-gradient(0deg, #a78bfa, #818cf8)",
-                                        ],
-                                  }}
-                                  transition={{
-                                    duration: 10,
-                                    repeat: Infinity,
-                                    ease: "linear",
-                                  }}
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M17 8l4 4m0 0l-4 4m4-4H3"
                                 />
-
-                                {/* Effet de brillance */}
-                                <motion.div
-                                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100"
-                                  initial={{ x: "-100%" }}
-                                  whileHover={{ x: "100%" }}
-                                  transition={{ duration: 1 }}
-                                />
-
-                                {/* Étoiles animées */}
-                                <motion.div
-                                  className="absolute left-[10%] top-1/2 -translate-y-1/2 text-lg"
-                                  animate={{
-                                    scale: [1, 1.2, 1],
-                                    opacity: [0.7, 1, 0.7],
-                                  }}
-                                  transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    repeatType: "reverse",
-                                  }}
-                                >
-                                  ✨
-                                </motion.div>
-
-                                <motion.div
-                                  className="absolute right-[10%] top-1/2 -translate-y-1/2 text-lg"
-                                  animate={{
-                                    scale: [1, 1.2, 1],
-                                    opacity: [0.7, 1, 0.7],
-                                  }}
-                                  transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    repeatType: "reverse",
-                                    delay: 0.5,
-                                  }}
-                                >
-                                  ✨
-                                </motion.div>
-
-                                {/* Texte du bouton */}
-                                <span className="relative z-10 flex items-center justify-center gap-3 text-white">
-                                  <span>Réserver cette séance</span>
-                                  <motion.svg
-                                    className="w-5 h-5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    animate={{ x: [0, 5, 0] }}
-                                    transition={{
-                                      duration: 1.5,
-                                      repeat: Infinity,
-                                      repeatDelay: 1,
-                                    }}
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="2"
-                                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                    />
-                                  </motion.svg>
-                                </span>
-                              </motion.button>
-                            </motion.div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                              </svg>
+                            </span>
+                          </button>
+                        </div>
+                      )}
                     </div>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               );
             })}
           </div>
