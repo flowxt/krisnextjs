@@ -6,8 +6,10 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <Presentation />
-      <Cta page="accueil" />
+      <main>
+        <Presentation />
+        <Cta page="accueil" />
+      </main>
     </div>
   );
 }
