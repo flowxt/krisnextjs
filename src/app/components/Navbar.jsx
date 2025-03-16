@@ -15,28 +15,30 @@ export default function Navbar() {
           Kris & Patrice
         </Link>
 
-        {/* Navigation Desktop */}
-        <nav className="hidden md:flex space-x-6">
+        {/* Navigation Desktop - seulement sur grands écrans */}
+        <nav className="hidden lg:flex space-x-6">
           <Link href="/" className="text-gray-800 hover:text-indigo-600 font-medium">Accueil</Link>
           <Link href="/soins" className="text-gray-800 hover:text-indigo-600 font-medium">Forfaits</Link>
           <Link href="/services" className="text-gray-800 hover:text-indigo-600 font-medium">Services</Link>
+          <Link href="/patrice" className="text-gray-700 hover:text-blue-600 font-medium">Accompagnement</Link>
           <Link href="/blog" className="text-gray-800 hover:text-indigo-600 font-medium">Blog</Link>
           <Link href="/partenaires" className="text-gray-800 hover:text-indigo-600 font-medium">Partenaires</Link>
           <Link href="/contact" className="text-gray-800 hover:text-indigo-600 font-medium">Contact</Link>
         </nav>
 
-        {/* Menu Burger Mobile */}
-        <button className="md:hidden text-gray-800" onClick={() => setIsOpen(!isOpen)}>
+        {/* Menu Burger - visible sur mobile et tablette */}
+        <button className="lg:hidden text-gray-800" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Menu Mobile */}
+      {/* Menu Mobile/Tablette */}
       {isOpen && (
-        <nav className="md:hidden backdrop-blur-md bg-white/70 p-4 space-y-4 absolute w-[calc(100%-2rem)] left-4 top-20 rounded-2xl shadow-lg">
+        <nav className="lg:hidden backdrop-blur-md bg-white/70 p-4 space-y-4 absolute w-[calc(100%-2rem)] left-4 top-20 rounded-2xl shadow-lg">
           <Link href="/" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Accueil</Link>
           <Link href="/soins" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Forfaits</Link>
           <Link href="/services" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Services</Link>
+          <Link href="/patrice" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Accompagnement</Link>
           <Link href="/blog" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Blog</Link>
           <Link href="/partenaires" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Partenaires</Link>
           <Link href="/contact" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Contact</Link>
