@@ -18,4 +18,7 @@ export default {
     },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  daisyui: {
+    themes: ["light"], // Force uniquement le thème clair de daisyUI
+  },
 };
