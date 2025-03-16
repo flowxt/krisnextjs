@@ -20,7 +20,7 @@ export default function PartenairesPage() {
           <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-purple-200/20 blur-3xl -z-10" />
           <div className="absolute bottom-0 right-1/4 w-72 h-72 rounded-full bg-indigo-200/20 blur-3xl -z-10" />
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 font-heading">
             <span className="bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
               Mes Partenaires
             </span>

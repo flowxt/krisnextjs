@@ -91,12 +91,20 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-100 pt-8 text-center">
-          <p className="text-sm text-gray-500 dark:text-gray-300">
-            © {new Date().getFullYear()} Kristelle Feron - Tous droits réservés<br />
-            Créé avec <span className="text-purple-500 dark:text-purple-200">♥</span> par Florian Barjon
-          </p>
-        </div>
+       <div className="border-t border-gray-100 pt-8 text-center">
+  <p className="text-sm text-gray-500 dark:text-gray-300">
+    © {new Date().getFullYear()} Kristelle Feron - Tous droits réservés<br />
+    Créé avec <span className="text-purple-500 dark:text-purple-200">♥</span> par{" "}
+    <a 
+      href="https://portfolio-florian-rose.vercel.app/" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="text-purple-500 hover:text-purple-700 transition-colors dark:text-purple-300 dark:hover:text-purple-100"
+    >
+      Florian Barjon
+    </a>
+  </p>
+</div>
       </div>
     </motion.footer>
   );

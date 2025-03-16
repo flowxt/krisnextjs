@@ -540,7 +540,7 @@ const ContactForm = () => {
                     </div>
 
                     {/* Sujet */}
-                    <div>
+                    {/* <div>
                       <label className="block text-gray-700 mb-2 font-medium ">
                         Sujet du message
                       </label>
@@ -589,7 +589,7 @@ const ContactForm = () => {
                           </svg>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* Message */}
                     <div>
