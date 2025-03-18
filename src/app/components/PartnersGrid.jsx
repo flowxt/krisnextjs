@@ -129,7 +129,7 @@ export default function PartnersGrid() {
               />
             </div>
             <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{partner.name}</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 font-heading">{partner.name}</h3>
               <p className="text-gray-600 mb-4">{partner.description}</p>
               <Link 
                 href={partner.website} 

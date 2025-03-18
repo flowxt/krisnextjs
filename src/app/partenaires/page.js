@@ -26,7 +26,7 @@ export default function PartenairesPage() {
             </span>
           </h1>
 
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto font-sans">
             Je m'entoure de professionnels d'exception pour vous proposer un
             accompagnement complet. Découvrez mon réseau de confiance avec qui
             je partage des valeurs d'authenticité et d'excellence.
