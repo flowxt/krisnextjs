@@ -4,6 +4,16 @@ description: Les soins énergétiques sont pratiqués pour diverses raisons, et 
 date: 2025-02-20T12:00:00Z
 categories: Bien-être
 image: photo/soin.png
+tags:
+  - calme intérieur
+  - amour
+  - alignement
+  - libération émotionnelle
+  - harmonisation
+  - bien être
+  - chakras
+  - soin énergétique
+  - guérison
 ---
 
 ## Réduction du stress :

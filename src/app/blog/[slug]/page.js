@@ -25,6 +25,7 @@ async function getArticleData(slug) {
         description: data.description,
         slug,
         categories: data.categories,
+        tags: data.tags || [], // Ajoutez cette ligne
         publicationDate: data.date,
         content: content,
         featuredImage: data.image
@@ -72,6 +73,7 @@ export default async function ArticlePage({ params }) {
     featuredImage,
     categories,
     publicationDate,
+    tags,
   } = article.attributes;
 
   const imageUrl = featuredImage?.data?.attributes?.url;
@@ -127,6 +129,22 @@ export default async function ArticlePage({ params }) {
           <div className="prose prose-lg prose-purple max-w-none">
             <div dangerouslySetInnerHTML={{ __html: marked(content) }} />
           </div>
+          {/* Section pour afficher les tags */}
+          {tags && tags.length > 0 && (
+            <div className="mt-12 pt-6 border-t border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-700 mb-4">Tags</h3>
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full hover:bg-purple-200 transition-colors cursor-pointer"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </article>
     </div>
