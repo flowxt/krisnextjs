@@ -17,6 +17,77 @@ const nunito = Nunito({
   weight: ["200", "300", "400", "500", "600", "700"], // Plus de poids pour plus de flexibilité
 });
 
+// Définition des métadonnées du site
+export const metadata = {
+  title: {
+    default:
+      "Kris La Voix des Anges | Soins Énergétiques & Guidance Spirituelle",
+    template: "%s | Kris La Voix des Anges",
+  },
+  description:
+    "Découvrez les soins énergétiques et la guidance spirituelle avec Kristelle et Patrice. Accompagnement holistique personnalisé pour votre bien-être et votre développement spirituel.",
+  keywords: [
+    "soins énergétiques",
+    "guidance spirituelle",
+    "bien-être",
+    "chakras",
+    "médium",
+    "développement personnel",
+    "accompagnement holistique",
+  ],
+  authors: [{ name: "Kristelle Feron" }, { name: "Patrice Guffon" }],
+  creator: "Kristelle Feron",
+  publisher: "Kris La Voix des Anges",
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: "https://krislavoixdesanges.com/",
+    siteName: "Kris La Voix des Anges",
+    title: "Kris La Voix des Anges | Soins Énergétiques & Guidance Spirituelle",
+    description:
+      "Découvrez les soins énergétiques et la guidance spirituelle avec Kristelle et Patrice. Accompagnement holistique personnalisé pour votre bien-être.",
+    images: [
+      {
+        url: "/photo/logonew.jpg",
+        width: 800,
+        height: 600,
+        alt: "Kris La Voix des Anges",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kris La Voix des Anges | Soins Énergétiques & Guidance",
+    description:
+      "Découvrez les soins énergétiques et la guidance spirituelle avec Kristelle et Patrice.",
+    images: ["/photo/logonew.jpg"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
+  },
+  manifest: "/site.webmanifest",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
