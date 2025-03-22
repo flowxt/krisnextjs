@@ -16,7 +16,7 @@ const partnersData = [
   {
     id: 2,
     name: "Natka La clé du bien-être",
-    logo: "/images/logo2.png",
+    logo: "/images/natka.png",
     description: "Réflexologie plantaire",
     category: "praticien",
     website: "https://www.natkalaclefdubienetre.fr/"
@@ -64,7 +64,7 @@ const partnersData = [
   {
     id: 8,
     name: "Corinne Barreau",
-    logo: "/images/logo8.png",
+    logo: "/images/corinne.png",
     description: "Hypnothérapeute",
     category: "praticien",
     website: "https://hypnose74geneve.com/"
