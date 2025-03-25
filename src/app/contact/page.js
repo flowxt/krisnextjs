@@ -85,8 +85,17 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulation d'envoi à un API
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || "Erreur d'envoi");
+      }
 
       setSubmitSuccess(true);
 
@@ -102,7 +111,9 @@ const ContactForm = () => {
         setSubmitSuccess(false);
       }, 5000);
     } catch (error) {
+      console.error("Erreur lors de l'envoi:", error);
       setErrors({
+        ...errors,
         submit:
           "Une erreur s'est produite lors de l'envoi. Veuillez réessayer.",
       });
