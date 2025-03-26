@@ -68,6 +68,7 @@ export default function Hero() {
     >
       {/* Arrière-plan amélioré */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-purple-100">
+        
         <div className="absolute inset-0 bg-gradient-to-b from-purple-50/80 via-pink-50/80 to-indigo-50/80">
           {/* Étoiles fixes pour éviter problèmes d'hydratation */}
           {[...Array(10)].map((_, i) => (
@@ -89,6 +90,7 @@ export default function Hero() {
         {/* Lueur décorative */}
         <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2 w-2/3 h-96 rounded-full bg-purple-200/20 blur-3xl" />
       </div>
+      
 
       {/* Contenu principal */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
