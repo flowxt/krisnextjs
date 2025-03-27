@@ -505,10 +505,10 @@ Pour toute séance en distanciel (WhatsApp), règlement 48h minimum avant la pre
 ];
 
 export default function Services() {
-  const [expandedId, setExpandedId] = useState(null);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
-  const [visibleItems, setVisibleItems] = useState(6); // Chargement initial limité
+  const [visibleItems, setVisibleItems] = useState(6);
 
   // Optimisation: Charger plus d'éléments au défilement
   useEffect(() => {
@@ -524,6 +524,18 @@ export default function Services() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Ouvrir la modale de détails
+  const openDetailsModal = (service) => {
+    setSelectedService(service);
+    setIsDetailsModalOpen(true);
+  };
+
+  // Ouvrir la modale de réservation
+  const openBookingModal = (service) => {
+    setSelectedService(service);
+    setIsBookingModalOpen(true);
+  };
 
   return (
     <>
@@ -552,7 +564,7 @@ export default function Services() {
           </div>
 
           {/* Grille de services */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.slice(0, visibleItems).map((service, index) => {
               const isPatrice = service.intervenant === "Patrice";
               const mainColor = isPatrice ? "blue" : "purple";
@@ -561,23 +573,21 @@ export default function Services() {
               return (
                 <div
                   key={service.id}
-                  className={`relative opacity-0 animate-fade-in ${
-                    expandedId === service.id ? "md:col-span-2" : ""
-                  }`}
+                  className="relative opacity-0 animate-fade-in"
                   style={{
                     animationDelay: `${index * 0.1}s`,
                     animationFillMode: "forwards",
                   }}
                 >
                   <div
-                    className={`relative rounded-[2rem] overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2
+                    className={`relative h-full rounded-[2rem] overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2
                     ${
                       isPatrice
                         ? "hover:shadow-blue-200/30"
                         : "hover:shadow-purple-200/30"
                     }`}
                   >
-                    {/* Élément décoratif simplifié */}
+                    {/* Élément décoratif */}
                     <div className="absolute inset-0 opacity-5">
                       <div
                         className={`absolute -top-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
@@ -585,19 +595,12 @@ export default function Services() {
                     </div>
 
                     {/* Contenu de la carte */}
-                    <div
-                      className="p-8 cursor-pointer relative z-10"
-                      onClick={() =>
-                        setExpandedId(
-                          expandedId === service.id ? null : service.id
-                        )
-                      }
-                    >
+                    <div className="p-8 relative z-10 flex flex-col h-full">
                       <div className="flex items-start gap-6 relative">
-                        {/* Icône simplifiée */}
+                        {/* Icône */}
                         <div
                           className={`p-5 rounded-2xl text-white shadow-md overflow-hidden
-                          bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400 hover:scale-105 transition-transform duration-300`}
+                          bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
                         >
                           <div className="relative z-10">{service.icon}</div>
                         </div>
@@ -623,132 +626,98 @@ export default function Services() {
                           >
                             {service.intervenant}
                           </span>
-
-                          <div className="mt-4 flex flex-col space-y-3">
-                            {/* Prix */}
-                            <span
-                              className={`text-xl font-bold text-${mainColor}-600`}
-                            >
-                              {service.price}
-                            </span>
-
-                            {/* Badges simplifiés */}
-                            <div className="flex flex-wrap gap-2">
-                              <span
-                                className={`text-sm font-medium px-3 py-1.5 rounded-full
-                                ${
-                                  isPatrice
-                                    ? "text-blue-600 bg-blue-50"
-                                    : "text-purple-600 bg-purple-50"
-                                }`}
-                              >
-                                <span className="inline-block mr-1">⌛</span>{" "}
-                                {service.duration.split(" - ")[0]}
-                              </span>
-
-                              <span
-                                className={`text-sm font-medium px-3 py-1.5 rounded-full
-                                ${
-                                  isPatrice
-                                    ? "text-cyan-600 bg-cyan-50"
-                                    : "text-indigo-600 bg-indigo-50"
-                                }`}
-                              >
-                                <span className="inline-block mr-1">📍</span>{" "}
-                                {service.duration.split(" - ")[1]}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Icône de flèche simplifiée */}
-                        <div
-                          className={`transition-transform duration-300 transform ${
-                            expandedId === service.id ? "rotate-180" : ""
-                          }`}
-                        >
-                          <ChevronDownIcon
-                            className={`w-8 h-8 
-                            ${isPatrice ? "text-blue-600" : "text-purple-600"}`}
-                          />
                         </div>
                       </div>
 
-                      {/* Contenu déplié simplifié */}
-                      {expandedId === service.id && (
-                        <div className="mt-8 space-y-8 animate-fade-in">
-                          {/* Description simplifiée */}
-                          <div className="space-y-6 text-gray-700 leading-relaxed">
-                            {service.description
-                              .split("\n")
-                              .map((paragraph, idx) => (
-                                <div
-                                  key={idx}
-                                  className="flex items-start gap-3"
-                                >
-                                  {paragraph.startsWith("✨") ? (
-                                    <>
-                                      <span className="text-xl">✨</span>
-                                      <p
-                                        className={`font-medium hover:text-${mainColor}-600 transition-colors`}
-                                      >
-                                        {paragraph.substring(2)}
-                                      </p>
-                                    </>
-                                  ) : (
-                                    <p>{paragraph}</p>
-                                  )}
-                                </div>
-                              ))}
-                          </div>
+                      {/* Prix et badges */}
+                      <div className="mt-4 flex flex-col space-y-3">
+                        {/* Prix */}
+                        <span
+                          className={`text-xl font-bold text-${mainColor}-600`}
+                        >
+                          {service.price}
+                        </span>
 
-                          {/* Images simplifiées */}
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {service.images.map((img, idx) => (
-                              <div
-                                key={idx}
-                                className="relative group rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow hover:scale-[1.02] transform duration-300"
-                              >
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <Image
-                                  src={img}
-                                  alt={service.title}
-                                  width={600}
-                                  height={400}
-                                  className="object-cover w-full h-64"
-                                  loading="lazy"
-                                />
-                              </div>
-                            ))}
-                          </div>
-
-                          {/* Bouton simplifié */}
-                          <button
-                            onClick={() => {
-                              setSelectedService(service);
-                              setIsBookingModalOpen(true);
-                            }}
-                            className={`w-full py-5 relative overflow-hidden rounded-xl font-bold text-lg bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 text-white hover:brightness-105 transition-all duration-300 hover:scale-[1.01]`}
+                        {/* Badges simplifiés */}
+                        <div className="flex flex-wrap gap-2">
+                          <span
+                            className={`text-sm font-medium px-3 py-1.5 rounded-full
+                            ${
+                              isPatrice
+                                ? "text-blue-600 bg-blue-50"
+                                : "text-purple-600 bg-purple-50"
+                            }`}
                           >
-                            <span className="flex items-center justify-center gap-3">
-                              <span>Réserver cette séance</span>
-                              <svg
-                                className="w-5 h-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth="2"
-                                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                />
-                              </svg>
-                            </span>
-                          </button>
+                            <span className="inline-block mr-1">⌛</span>{" "}
+                            {service.duration.split(" - ")[0]}
+                          </span>
+
+                          <span
+                            className={`text-sm font-medium px-3 py-1.5 rounded-full
+                            ${
+                              isPatrice
+                                ? "text-cyan-600 bg-cyan-50"
+                                : "text-indigo-600 bg-indigo-50"
+                            }`}
+                          >
+                            <span className="inline-block mr-1">📍</span>{" "}
+                            {service.duration.split(" - ")[1]}
+                          </span>
                         </div>
-                      )}
+                      </div>
+
+                      {/* Aperçu de description */}
+                      <div className="mt-6 mb-6">
+                        <p className="text-gray-600 line-clamp-3">
+                          {service.description.split("\n")[0]}
+                        </p>
+                      </div>
+
+                      {/* Boutons d'action */}
+                      <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-3">
+                        <button
+                          onClick={() => openDetailsModal(service)}
+                          className={`flex-1 py-3 px-4 rounded-xl font-medium bg-${mainColor}-50 text-${mainColor}-600 hover:bg-${mainColor}-100 transition-all duration-200`}
+                        >
+                          <span className="flex items-center justify-center gap-2">
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                              ></path>
+                            </svg>
+                            En savoir plus
+                          </span>
+                        </button>
+                        <button
+                          onClick={() => openBookingModal(service)}
+                          className={`flex-1 py-3 px-4 rounded-xl font-medium text-white bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 hover:brightness-105 transition-all duration-200`}
+                        >
+                          <span className="flex items-center justify-center gap-2">
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              ></path>
+                            </svg>
+                            Réserver
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -757,14 +726,165 @@ export default function Services() {
           </div>
         </div>
       </div>
+
       <div className="w-full">
         <Cta page="services" />
       </div>
+
+      {/* Modal de détails du service */}
+      <AnimatePresence>
+        {isDetailsModalOpen && selectedService && (
+          <ServiceDetailsModal
+            service={selectedService}
+            onClose={() => setIsDetailsModalOpen(false)}
+            onBooking={() => {
+              setIsDetailsModalOpen(false);
+              setTimeout(() => setIsBookingModalOpen(true), 300);
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Modal de réservation */}
       <BookingModal
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}
         service={selectedService}
       />
     </>
+  );
+}
+
+// Nouveau composant pour la modale de détails
+function ServiceDetailsModal({ service, onClose, onBooking }) {
+  const isPatrice = service.intervenant === "Patrice";
+  const mainColor = isPatrice ? "blue" : "purple";
+  const secondaryColor = isPatrice ? "cyan" : "indigo";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 overflow-y-auto"
+    >
+      <div
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+        onClick={onClose}
+      ></div>
+
+      <div className="relative min-h-screen flex items-center justify-center p-4">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          className="bg-white rounded-2xl shadow-xl w-full max-w-4xl overflow-hidden relative z-10"
+        >
+          {/* Entête de la modale */}
+          <div
+            className={`px-6 py-4 border-b border-gray-200 bg-${mainColor}-50 flex items-center justify-between`}
+          >
+            <div className="flex items-center gap-4">
+              <div
+                className={`p-3 rounded-xl bg-${mainColor}-100 text-${mainColor}-600`}
+              >
+                {service.icon}
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold text-gray-800">
+                  {service.title}
+                </h2>
+                <p className={`text-${mainColor}-700 font-medium`}>
+                  {service.price} · {service.duration}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={onClose}
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          {/* Corps de la modale */}
+          <div className="p-6 max-h-[70vh] overflow-y-auto">
+            {/* Description */}
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              {service.description.split("\n").map((paragraph, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  {paragraph.startsWith("✨") ? (
+                    <>
+                      <span className="text-xl">✨</span>
+                      <p className={`font-medium text-${mainColor}-700`}>
+                        {paragraph.substring(2)}
+                      </p>
+                    </>
+                  ) : (
+                    <p>{paragraph}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Images */}
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {service.images.map((img, idx) => (
+                <div
+                  key={idx}
+                  className="relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                >
+                  <Image
+                    src={img}
+                    alt={service.title}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full h-64"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Pied de la modale */}
+          <div className="px-6 py-4 border-t border-gray-200 flex justify-end">
+            <button
+              onClick={onBooking}
+              className={`py-3 px-6 rounded-xl font-medium text-white bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 hover:brightness-105 transition-all duration-200`}
+            >
+              <span className="flex items-center justify-center gap-2">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                Réserver cette séance
+              </span>
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }
