@@ -257,7 +257,7 @@ export default function Hero() {
   className="mt-10"
 >
   <motion.a
-    href="#contact"
+    href="/services"
     className="group relative overflow-hidden inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-full"
     aria-label="Prendre rendez-vous"
     whileHover={{

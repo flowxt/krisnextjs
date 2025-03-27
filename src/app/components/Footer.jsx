@@ -60,7 +60,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-purple-600 mb-2 dark:text-purple-200">Suivez-moi</h3>
             <div className="flex gap-4">
               <a 
-                href="#" 
+                href="https://www.facebook.com/KrisAnge74" 
                 target="_blank" 
                 className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors"
                 aria-label="Facebook"
@@ -68,7 +68,7 @@ export default function Footer() {
                 <Facebook className="w-5 h-5 text-purple-600" />
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/kris_lavoixdesanges/#" 
                 target="_blank"
                 className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors"
                 aria-label="Instagram"

@@ -11,70 +11,70 @@ const reviewsData = [
     name: "Betty S.",
     rating: 5,
     text: "Kris est une personne attentif en canal direct. Elle vous reçoit dans un endroit doux et chaleureux Kris est incroyable vous vous sentez en confiance totale remplie de douceur...",
-    date: "mars 2025"
+    date: "Mars 2025"
   },
   {
     id: 2,
     name: "Katia F.",
     rating: 5,
     text: "Kris m'a été conseillé par une amie et je suis vraiment ravie de cette séance qui m'a bluffé dès le départ. Son approche est douce et je me suis senti en confiance à la minute où je suis rentrée...",
-    date: "Decembre 2024"
+    date: "Octobre 2024"
   },
   {
     id: 3,
-    name: "Stephanie M.",
+    name: "Julie",
     rating: 5,
-    text: "Je suis pleine de gratitude d'avoir fait la connaissance de Kris, c'est une énergéticienne extraordinaire, cette séance m'a fait énormément de bien...",
-    date: "Il y a 1 mois"
+    text: "Au delà des mots, cette séance est venue toucher mon cœur. Je me suis laissé guider et j'en suis ressortie apaisée, éclairée. Ce n'est pas une expérience qui se raconte mais qui se vit.",
+    date: "Mars 2025"
   },
   {
     id: 4,
-    name: "Marie L.",
+    name: "Nathalie J.",
     rating: 5,
-    text: "Une séance exceptionnelle qui a transformé ma vision des choses. Kris sait exactement où chercher pour vous aider à avancer...",
-    date: "Il y a 2 mois"
+    text: "Merci infiniment! Ce fut une séance incroyable! Elle m'a fait un bien fou et je remercie Kris pour tout ce qu'elle a fait pour moi!",
+    date: "Mars 2025"
   },
   {
     id: 5,
-    name: "Thomas R.",
+    name: "T B.",
     rating: 5,
-    text: "Je recommande vivement Kris. Son énergie positive et sa capacité à identifier les blocages sont remarquables...",
-    date: "Il y a 2 mois"
+    text: "Merciii Kris pour cette belle expérience !! Vous êtes vraiment bluffante et merveilleuse, j'ai beaucoup aimé et je reviendrai pour un soin. Je recommande et conseille Kris...",
+    date: "Février 2025"
   },
   {
     id: 6,
-    name: "Sophie D.",
+    name: "Sophie G.",
     rating: 5,
-    text: "Expérience incroyable ! Kris a su déceler des choses que personne n'avait pu identifier auparavant. Je me sens libérée...",
-    date: "Il y a 3 mois"
+    text: "Je tiens Kris à vous exprimer toute ma gratitude. Merci pour votre écoute et votre bienveillance. Je n'attendais rien de précis de cette séance mais votre soin énergétique a été une vraie source de réconfort...",
+    date: "Novembre 2024"
   },
   {
     id: 7,
-    name: "Jean-Marc P.",
+    name: "Yassine L.",
     rating: 5,
-    text: "J'étais sceptique au départ, mais après ma séance avec Kris, je suis convaincu. Son approche est unique et très efficace...",
-    date: "Il y a 3 mois"
+    text: "Très beau rendez-vous de Voyance 🙏🏼 Révélation très surprenante sur ce qui se passe en nous et dans notre vie! La guidance que KRIS pratique nous aide à comprendre clairement et avec précision ce qui se manifeste autour de nous...",
+    date: "Novembre 2024"
   },
   {
     id: 8,
-    name: "Carine B.",
+    name: "Mel T.",
     rating: 5,
-    text: "Kris est d'une bienveillance remarquable. La séance a été un vrai moment de paix et de reconnexion avec moi-même...",
-    date: "Il y a 4 mois"
+    text: "Très belle rencontre. Un moment hors du temps partagé en visio. Un ressenti très juste de mes émotions et énergies du moment avec beaucoup de bienveillance. Une sensation de légèreté après la séance.",
+    date: "Octobre 2024"
   },
   {
     id: 9,
-    name: "Laurent M.",
+    name: "Hedonia Equi-Reiki",
     rating: 5,
-    text: "Depuis ma séance avec Kris, je ressens un calme intérieur que je n'avais pas connu depuis des années. Merci pour cette expérience...",
-    date: "Il y a 4 mois"
+    text: "Kristelle est une professionnelle hors normes, elle accompagne ses patientes grâce à diverses approches qui se complètent les unes les autres. C'est très fluide et ça suit un fil conducteur qui permet d'atteindre un réel mieux être...",
+    date: "Novembre 2024"
   },
   {
     id: 10,
-    name: "Isabelle F.",
+    name: "Jou Elle",
     rating: 5,
-    text: "Kris a une approche très professionnelle et en même temps très humaine. Elle sait vous mettre à l'aise immédiatement...",
-    date: "Il y a 5 mois"
+    text: "Krys est d une grande empathie et bienveillance. Son soin m'a apaisée. Et je sais que je retournerai en séance.",
+    date: "Février 2025"
   }
 ];
 
