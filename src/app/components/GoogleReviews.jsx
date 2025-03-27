@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useAnimationFrame } from "framer-motion";
 
 // Avis clients
 const reviewsData = [
@@ -10,64 +10,175 @@ const reviewsData = [
     id: 1,
     name: "Betty S.",
     rating: 5,
-    text: "Kris est une personne attentif en canal direct. Elle vous reçoit dans un endroit doux et chaleureux Kris est incroyable vous vous sentez en confiance totale remplie de douceur elle ne vous prodigueras pas de soin si vous n en avez pas besoin elle est a votre écoute est feras en sorte d adapter le soin qui vous seras utile est nécessaire...",
+    text: "Kris est une personne attentif en canal direct. Elle vous reçoit dans un endroit doux et chaleureux Kris est incroyable vous vous sentez en confiance totale remplie de douceur...",
     date: "mars 2025"
   },
   {
     id: 2,
     name: "Katia F.",
     rating: 5,
-    text: "Kris m'a été conseillé par une amie et je suis vraiment ravie de cette séance qui m'a bluffé dès le départ. Son approche est douce et je me suis senti en confiance à la minute où je suis rentrée. Tout le travail qu'elle a effectué sur moi à été bénéfique, je me suis senti vraiment libérer de trop de choses qui me pesait...",
+    text: "Kris m'a été conseillé par une amie et je suis vraiment ravie de cette séance qui m'a bluffé dès le départ. Son approche est douce et je me suis senti en confiance à la minute où je suis rentrée...",
     date: "Decembre 2024"
   },
   {
     id: 3,
     name: "Stephanie M.",
     rating: 5,
-    text: "Je suis pleine de gratitude d'avoir fait la connaissance de Kris, c'est une énergéticienne extraordinaire, cette séance m'a fait énormément de bien. Kris est très bienveillante, elle prend le temps de faire les choses, de répondre à mes questions, c'est une belle personne humble, merci Kris à vous et aux anges, je reviendrai avec un immense plaisir",
+    text: "Je suis pleine de gratitude d'avoir fait la connaissance de Kris, c'est une énergéticienne extraordinaire, cette séance m'a fait énormément de bien...",
     date: "Il y a 1 mois"
   },
+  {
+    id: 4,
+    name: "Marie L.",
+    rating: 5,
+    text: "Une séance exceptionnelle qui a transformé ma vision des choses. Kris sait exactement où chercher pour vous aider à avancer...",
+    date: "Il y a 2 mois"
+  },
+  {
+    id: 5,
+    name: "Thomas R.",
+    rating: 5,
+    text: "Je recommande vivement Kris. Son énergie positive et sa capacité à identifier les blocages sont remarquables...",
+    date: "Il y a 2 mois"
+  },
+  {
+    id: 6,
+    name: "Sophie D.",
+    rating: 5,
+    text: "Expérience incroyable ! Kris a su déceler des choses que personne n'avait pu identifier auparavant. Je me sens libérée...",
+    date: "Il y a 3 mois"
+  },
+  {
+    id: 7,
+    name: "Jean-Marc P.",
+    rating: 5,
+    text: "J'étais sceptique au départ, mais après ma séance avec Kris, je suis convaincu. Son approche est unique et très efficace...",
+    date: "Il y a 3 mois"
+  },
+  {
+    id: 8,
+    name: "Carine B.",
+    rating: 5,
+    text: "Kris est d'une bienveillance remarquable. La séance a été un vrai moment de paix et de reconnexion avec moi-même...",
+    date: "Il y a 4 mois"
+  },
+  {
+    id: 9,
+    name: "Laurent M.",
+    rating: 5,
+    text: "Depuis ma séance avec Kris, je ressens un calme intérieur que je n'avais pas connu depuis des années. Merci pour cette expérience...",
+    date: "Il y a 4 mois"
+  },
+  {
+    id: 10,
+    name: "Isabelle F.",
+    rating: 5,
+    text: "Kris a une approche très professionnelle et en même temps très humaine. Elle sait vous mettre à l'aise immédiatement...",
+    date: "Il y a 5 mois"
+  }
 ];
 
-export default function GoogleReviews() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [autoplay, setAutoplay] = useState(true);
+// Composant pour afficher les étoiles
+const RatingStars = () => (
+  <div className="flex items-center gap-1 mb-1">
+    {[...Array(5)].map((_, i) => (
+      <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+      </svg>
+    ))}
+  </div>
+);
 
-  // Autoplay
+// Composant pour un avis individuel
+const ReviewCard = ({ review }) => (
+  <div className="bg-white p-5 rounded-xl shadow-md min-w-[260px] max-w-[300px] mx-3 flex flex-col h-[220px]">
+    <RatingStars />
+    
+    <p className="text-gray-700 italic mb-4 line-clamp-4 text-sm flex-grow">
+      "{review.text}"
+    </p>
+    
+    <div>
+      <p className="font-semibold text-purple-800">{review.name}</p>
+      <p className="text-xs text-gray-500">{review.date}</p>
+    </div>
+  </div>
+);
+
+// Composant pour une ligne de défilement infini
+const InfiniteScrollRow = ({ reviews, direction = "left", speed = 1 }) => {
+  const rowRef = useRef(null);
+  const [xPosition, setXPosition] = useState(0);
+  const [rowWidth, setRowWidth] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [totalItems, setTotalItems] = useState(3);
+  
   useEffect(() => {
-    if (!autoplay) return;
+    if (rowRef.current) {
+      // Largeur du contenu (tous les éléments)
+      const scrollWidth = rowRef.current.scrollWidth;
+      
+      // Largeur du conteneur visible
+      const offsetWidth = rowRef.current.offsetWidth;
+      
+      setRowWidth(scrollWidth / totalItems);
+      setContainerWidth(offsetWidth);
+      
+      // Déterminer combien de fois nous devons dupliquer les éléments pour assurer un défilement fluide
+      const neededDuplication = Math.ceil((offsetWidth * 2) / (scrollWidth / totalItems)) + 1;
+      setTotalItems(neededDuplication);
+    }
+  }, []);
+  
+  useAnimationFrame((time) => {
+    if (!rowWidth || !containerWidth) return;
     
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === reviewsData.length - 1 ? 0 : prevIndex + 1
+    // Calculer le déplacement basé sur la vitesse (plus petit = plus rapide)
+    const speedFactor = direction === "left" ? 60 / speed : 60 / speed;
+    
+    // Calculer la nouvelle position
+    let newPosition;
+    if (direction === "left") {
+      // De droite à gauche
+      newPosition = (time / speedFactor) % rowWidth;
+      setXPosition(-newPosition);
+    } else {
+      // De gauche à droite
+      newPosition = (time / speedFactor) % rowWidth;
+      setXPosition(newPosition - rowWidth);
+    }
+  });
+  
+  // Générer plusieurs copies des avis pour assurer un défilement sans vide
+  const renderReviewCopies = () => {
+    const copies = [];
+    for (let i = 0; i < totalItems; i++) {
+      copies.push(
+        ...reviews.map((review) => (
+          <ReviewCard key={`row-${i}-${review.id}`} review={review} />
+        ))
       );
-    }, 7000);
-    
-    return () => clearInterval(interval);
-  }, [autoplay]);
-
-  const handleNextReview = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === reviewsData.length - 1 ? 0 : prevIndex + 1
-    );
-    setAutoplay(false);
-    setTimeout(() => setAutoplay(true), 10000);
+    }
+    return copies;
   };
-
-  const handlePrevReview = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? reviewsData.length - 1 : prevIndex - 1
-    );
-    setAutoplay(false);
-    setTimeout(() => setAutoplay(true), 10000);
-  };
-
-  const handleMouseEnter = () => setAutoplay(false);
-  const handleMouseLeave = () => setAutoplay(true);
-
+  
   return (
-    <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl shadow-xl p-8 md:p-12">
-      <div className="text-center mb-8">
+    <div className="overflow-hidden">
+      <motion.div 
+        ref={rowRef}
+        className="flex"
+        style={{ x: xPosition }}
+      >
+        {renderReviewCopies()}
+      </motion.div>
+    </div>
+  );
+};
+
+export default function GoogleReviews() {
+  return (
+    <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl shadow-xl p-8 md:p-12 overflow-hidden">
+      <div className="text-center mb-10">
         <h2 className="text-3xl font-bold mb-2 font-heading">
           <span className="bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
             Ce que disent mes clients
@@ -84,82 +195,18 @@ export default function GoogleReviews() {
         <p className="text-gray-600">Basé sur plus de 190 avis vérifiés sur Google</p>
       </div>
       
-      {/* Carrousel d'avis */}
-      <div 
-        className="relative overflow-hidden rounded-2xl bg-white shadow-md mb-8"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <div className="p-6 md:p-8 min-h-[300px] flex flex-col">
-          <div className="flex items-center gap-1 mb-4">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-          
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex-1"
-            >
-              <p className="text-gray-700 italic mb-6 line-clamp-6 md:line-clamp-[8] text-sm md:text-base">
-                "{reviewsData[currentIndex].text}"
-              </p>
-              
-              <div>
-                <p className="font-semibold text-purple-800">{reviewsData[currentIndex].name}</p>
-                <p className="text-sm text-gray-500">{reviewsData[currentIndex].date}</p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        
-        {/* Boutons navigation */}
-        <div className="absolute top-1/2 -translate-y-1/2 w-full hidden md:flex justify-between px-2">
-  <button 
-    onClick={handlePrevReview}
-    className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-purple-600 hover:bg-purple-50"
-    aria-label="Avis précédent"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-      <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-    </svg>
-  </button>
-  
-  <button 
-    onClick={handleNextReview}
-    className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-purple-600 hover:bg-purple-50"
-    aria-label="Avis suivant"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-    </svg>
-  </button>
-</div>
-        
-        {/* Indicateurs de pagination */}
-        <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {reviewsData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setCurrentIndex(index);
-                setAutoplay(false);
-                setTimeout(() => setAutoplay(true), 10000);
-              }}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex ? "bg-purple-600 w-6" : "bg-gray-300"
-              }`}
-              aria-label={`Voir l'avis ${index + 1}`}
-            />
-          ))}
-        </div>
+      {/* Première rangée - défilement de droite à gauche */}
+      <div className="mb-8 overflow-hidden relative">
+        <div className="absolute left-0 top-0 bottom-0 w-[100px] z-10 bg-gradient-to-r from-purple-50/95 via-purple-50/70 to-transparent pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-[100px] z-10 bg-gradient-to-l from-indigo-50/95 via-indigo-50/70 to-transparent pointer-events-none"></div>
+        <InfiniteScrollRow reviews={reviewsData} direction="left" speed={1} />
+      </div>
+      
+      {/* Deuxième rangée - défilement de gauche à droite, plus rapide */}
+      <div className="mb-10 overflow-hidden relative">
+        <div className="absolute left-0 top-0 bottom-0 w-[100px] z-10 bg-gradient-to-r from-purple-50/95 via-purple-50/70 to-transparent pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-[100px] z-10 bg-gradient-to-l from-indigo-50/95 via-indigo-50/70 to-transparent pointer-events-none"></div>
+        <InfiniteScrollRow reviews={reviewsData} direction="right" speed={1.6} />
       </div>
       
       {/* Bouton Google */}

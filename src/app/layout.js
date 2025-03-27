@@ -17,8 +17,16 @@ const nunito = Nunito({
   weight: ["200", "300", "400", "500", "600", "700"], // Plus de poids pour plus de flexibilité
 });
 
+// Configuration du viewport déplacée dans son propre export
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 // Définition des métadonnées du site
 export const metadata = {
+  metadataBase: new URL("https://www.krislavoixdesanges.com"),
   title: {
     default:
       "Kris La Voix des Anges | Soins Énergétiques & Guidance Spirituelle",
@@ -41,7 +49,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://krislavoixdesanges.com/",
+    url: "https://www.krislavoixdesanges.com/",
     siteName: "Kris La Voix des Anges",
     title: "Kris La Voix des Anges | Soins Énergétiques & Guidance Spirituelle",
     description:
@@ -63,19 +71,10 @@ export const metadata = {
     images: ["/photo/logonew.jpg"],
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png" }],
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
   robots: {
     index: true,
     follow: true,

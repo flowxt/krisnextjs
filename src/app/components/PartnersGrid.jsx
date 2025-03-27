@@ -77,6 +77,14 @@ const partnersData = [
     category: "praticien",
     website: "https://www.reflexozen.fr/"
   },
+  {
+    id: 10,
+    name: "flowxt Site Web & App",
+    logo: "/images/flo1.png",
+    description: "Creation de site internet",
+    category: "boutique",
+    website: "https://portfolio-florian-rose.vercel.app/"
+  },
   // Ajoutez vos autres partenaires ici
 ];
 
