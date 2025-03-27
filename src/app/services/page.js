@@ -677,7 +677,10 @@ export default function Services() {
                       <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-3">
                         <button
                           onClick={() => openDetailsModal(service)}
-                          className={`flex-1 py-3 px-4 rounded-xl font-medium bg-${mainColor}-50 text-${mainColor}-600 hover:bg-${mainColor}-100 transition-all duration-200`}
+                          className={`flex-1 py-3 px-4 rounded-xl font-medium bg-${mainColor}-50 text-${mainColor}-600 
+            hover:bg-${mainColor}-100 hover:shadow-md hover:-translate-y-0.5 
+            active:translate-y-0 active:shadow-sm
+            transition-all duration-200`}
                         >
                           <span className="flex items-center justify-center gap-2">
                             <svg
@@ -698,7 +701,11 @@ export default function Services() {
                         </button>
                         <button
                           onClick={() => openBookingModal(service)}
-                          className={`flex-1 py-3 px-4 rounded-xl font-medium text-white bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 hover:brightness-105 transition-all duration-200`}
+                          className={`flex-1 py-3 px-4 rounded-xl font-medium text-white 
+            bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 
+            hover:shadow-lg hover:shadow-${mainColor}-200/50 hover:-translate-y-0.5 
+            active:translate-y-0 active:shadow-sm
+            transition-all duration-200`}
                         >
                           <span className="flex items-center justify-center gap-2">
                             <svg
@@ -863,7 +870,11 @@ function ServiceDetailsModal({ service, onClose, onBooking }) {
           <div className="px-6 py-4 border-t border-gray-200 flex justify-end">
             <button
               onClick={onBooking}
-              className={`py-3 px-6 rounded-xl font-medium text-white bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 hover:brightness-105 transition-all duration-200`}
+              className={`py-3 px-6 rounded-xl font-medium text-white 
+          bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 
+          hover:shadow-lg hover:shadow-${mainColor}-200/50 hover:-translate-y-0.5 
+          active:translate-y-0 active:shadow-sm
+          transition-all duration-200`}
             >
               <span className="flex items-center justify-center gap-2">
                 <svg
