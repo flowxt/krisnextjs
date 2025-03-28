@@ -208,6 +208,7 @@ export default function Hero() {
   />
 </motion.h1>
 
+
           {/* Phrase d'accroche avec icône */}
           <motion.div
             variants={itemVariants}
