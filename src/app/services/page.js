@@ -348,6 +348,41 @@ Pour toute séance en distanciel (WhatsApp), règlement 48h minimum avant la pre
 * Comme une lampe dans la nuit, laissez la guidance éclairer votre chemin ! ✨`,
     images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
   },
+  {
+    id: 13,
+    title: "Soin Libre d'Être Soi",
+    price: "180€",
+    duration: "2h - Présentiel",
+    intervenant: "Kris & Patrice",
+    icon: <SparklesIcon className="w-8 h-8" />,
+    description: `𝙇'𝙐𝙡𝙩𝙞𝙢𝙚 𝙍𝙚𝙣𝙖𝙞𝙨𝙨𝙖𝙣𝙘𝙚 𝙙𝙚 𝙑𝙤𝙩𝙧𝙚 𝙀𝙨𝙨𝙚𝙣𝙘𝙚 𝙋𝙪𝙧𝙚
+  
+    ✨ Duo Zéro Mental + Soin
+    ✨ Séance Réalisée avec 2 thérapeutes
+    ✨ Renaissance de Votre Essence Pure
+    ✨ Intense connexion du Corps de l'Âme et de l'Esprit
+  
+    Imaginez un sanctuaire vibratoire conçu pour briser les chaînes des schémas limitants et des souffrances anciennes qui entravent votre libération.
+  
+    C'est la séance audacieuse du "Soin Libre d'Être Soi", une expérience immersive qui conjugue le lâcher-prise absolu du Zéro Mental à la profonde reconnexion vibratoire du Soin Énergétique.
+  
+    Ce que cette séance vous apporte :
+    • Libération des schémas limitants
+    • Reconnexion à votre essence profonde
+    • Double accompagnement expert
+    • Transformation vibratoire complète
+  
+    Le processus de transformation :
+    • Démantèlement des prisons mentales
+    • Libération des traumatismes
+    • Harmonisation énergétique profonde
+    • Renaissance de votre lumière essentielle
+  
+    Une fusion experte de deux thérapeutes œuvrera en parfaite symbiose pour une transformation totale et durable.
+  
+    Libre d'être Soi dans toute sa gloire, telle est la promesse de cette expérience transformatrice à l'état pur !`,
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
+  },
   //   {
   //     id: 12,
   //     title: "Force Intérieure & Renaissance Masculine",

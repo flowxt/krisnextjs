@@ -25,7 +25,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between p-4 backdrop-blur-sm bg-white/30 m-4 rounded-full shadow-lg">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold text-gray-800 flex items-center font-heading">
-          <img src="/photo/logonew.jpg" alt="Kristelle Feron" className="w-12 h-12 mr-4 rounded-full" />
+          <img src="/photo/logo-fusion.jpg" alt="Kristelle Feron" className="w-12 h-12 mr-4 rounded-full" />
           Kris & Patrice
         </Link>
 

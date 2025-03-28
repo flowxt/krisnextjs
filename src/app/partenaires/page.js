@@ -37,9 +37,7 @@ export default function PartenairesPage() {
         <PartnersGrid />
 
         {/* Section avis Google */}
-        <div className="mt-24 mb-16">
-          <GoogleReviews />
-        </div>
+        <div className="mt-24 mb-16"></div>
       </div>
     </div>
   );

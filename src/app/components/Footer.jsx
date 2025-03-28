@@ -26,13 +26,13 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3">
               <Image 
-                src="/photo/logo.png" 
+                src="/photo/logo-fusion.jpg" 
                 alt="Kristelle Feron"
                 width={48}
                 height={48}
                 className="w-12 h-12 dark:text-white"
               />
-              <span className="text-xl font-bold text-gray-800 dark:text-purple-100">Kristelle Feron</span>
+              <span className="text-xl font-bold text-gray-800 dark:text-purple-100">Kris et Patrice</span>
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed dark:text-purple-200">
               Guidance holistique & soins énergétiques<br />

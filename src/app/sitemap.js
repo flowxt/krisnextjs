@@ -1,6 +1,6 @@
 export default async function sitemap() {
   // URL de base du site
-  const baseUrl = "https://krislavoixdesanges.com";
+  const baseUrl = "https://www.krislavoixdesanges.com";
 
   // Date actuelle pour lastModified
   const currentDate = new Date().toISOString();
