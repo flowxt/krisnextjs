@@ -105,54 +105,72 @@ const ReviewCard = ({ review }) => (
   </div>
 );
 
-// Composant pour une ligne de défilement infini
+// Composant pour une ligne de défilement infini - CORRIGÉ
 const InfiniteScrollRow = ({ reviews, direction = "left", speed = 1 }) => {
   const rowRef = useRef(null);
   const [xPosition, setXPosition] = useState(0);
-  const [rowWidth, setRowWidth] = useState(0);
+  const [rowWidth, setRowWidth] = useState(2000); // Valeur initiale pour éviter les calculs à 0
   const [containerWidth, setContainerWidth] = useState(0);
-  const [totalItems, setTotalItems] = useState(3);
+  const [totalItems, setTotalItems] = useState(10);
+  const animationRef = useRef(0);
   
   useEffect(() => {
-    if (rowRef.current) {
-      // Largeur du contenu (tous les éléments)
-      const scrollWidth = rowRef.current.scrollWidth;
+    if (rowRef.current && reviews?.length > 0) {
+      const reviewCount = reviews.length;
+      const singleCardWidth = 260 + 6; // Largeur carte + marge
       
-      // Largeur du conteneur visible
-      const offsetWidth = rowRef.current.offsetWidth;
+      // Définir une valeur initiale basée sur les données
+      const initialRowWidth = reviewCount * singleCardWidth;
+      setRowWidth(initialRowWidth);
       
-      setRowWidth(scrollWidth / totalItems);
-      setContainerWidth(offsetWidth);
+      const observer = new ResizeObserver(() => {
+        const viewportWidth = rowRef.current.offsetWidth || window.innerWidth;
+        setContainerWidth(viewportWidth);
+        
+        // Calculer le nombre de copies nécessaires
+        const cardsInViewport = Math.ceil(viewportWidth / singleCardWidth);
+        const duplications = Math.max(5, Math.ceil((cardsInViewport * 3) / reviewCount));
+        
+        setTotalItems(duplications);
+      });
       
-      // Déterminer combien de fois nous devons dupliquer les éléments pour assurer un défilement fluide
-      const neededDuplication = Math.ceil((offsetWidth * 2) / (scrollWidth / totalItems)) + 1;
-      setTotalItems(neededDuplication);
+      observer.observe(rowRef.current);
+      
+      return () => {
+        observer.disconnect();
+        cancelAnimationFrame(animationRef.current);
+      };
     }
-  }, []);
+  }, [reviews]);
   
-  useAnimationFrame((time) => {
-    if (!rowWidth || !containerWidth) return;
+  // Animation avec une approche plus simple et fiable
+  useAnimationFrame(() => {
+    if (!rowWidth) return;
     
-    // Calculer le déplacement basé sur la vitesse (plus petit = plus rapide)
-    const speedFactor = direction === "left" ? 60 / speed : 60 / speed;
+    // Vitesse fixe mais ajustable par le paramètre speed
+    const baseSpeed = direction === "left" ? -0.5 : 0.5;
+    const adjustedSpeed = baseSpeed * speed;
     
-    // Calculer la nouvelle position
-    let newPosition;
-    if (direction === "left") {
-      // De droite à gauche
-      newPosition = (time / speedFactor) % rowWidth;
-      setXPosition(-newPosition);
-    } else {
-      // De gauche à droite
-      newPosition = (time / speedFactor) % rowWidth;
-      setXPosition(newPosition - rowWidth);
-    }
+    setXPosition((prevPos) => {
+      let newPos = prevPos + adjustedSpeed;
+      
+      // Réinitialisation pour effet infini
+      if (direction === "left" && newPos < -rowWidth) {
+        newPos = 0;
+      } else if (direction === "right" && newPos > 0) {
+        newPos = -rowWidth;
+      }
+      
+      return newPos;
+    });
   });
   
-  // Générer plusieurs copies des avis pour assurer un défilement sans vide
+  // Générer suffisamment de copies pour un défilement fluide
   const renderReviewCopies = () => {
     const copies = [];
-    for (let i = 0; i < totalItems; i++) {
+    const numCopies = Math.max(10, totalItems);
+    
+    for (let i = 0; i < numCopies; i++) {
       copies.push(
         ...reviews.map((review) => (
           <ReviewCard key={`row-${i}-${review.id}`} review={review} />
@@ -166,7 +184,7 @@ const InfiniteScrollRow = ({ reviews, direction = "left", speed = 1 }) => {
     <div className="overflow-hidden">
       <motion.div 
         ref={rowRef}
-        className="flex"
+        className="flex py-2"
         style={{ x: xPosition }}
       >
         {renderReviewCopies()}
