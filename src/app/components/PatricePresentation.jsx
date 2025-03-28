@@ -91,7 +91,7 @@ export default function PatricePresentation() {
                 >
                   <SparklesIcon className="w-5 h-5 text-blue-600" />
                 </motion.div>
-                <span className="text-blue-600 font-semibold">Thérapeute • Coach • Guide</span>
+                <span className="text-blue-600 font-semibold">Thérapeute • Coach</span>
               </motion.div>
             </div>
           </motion.div>

@@ -206,7 +206,7 @@ const ContactForm = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-purple-800/10 to-indigo-800/10 mix-blend-multiply z-10"></div>
             <div className="absolute inset-0 overflow-hidden">
               <Image
-                src="/photo/IMG_8967.JPG"
+                src="/photo/imagecontact.png"
                 alt="Énergie guérisseuse"
                 width={800}
                 height={800}
