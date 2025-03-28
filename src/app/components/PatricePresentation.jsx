@@ -178,7 +178,7 @@ export default function PatricePresentation() {
                   >
                     <LightBulbIcon className="w-8 h-8 text-cyan-600" />
                   </motion.div>
-                  <h3 className="font-heading text-2xl font-semibold">Mon approche unique</h3>
+                  <h3 className="font-heading text-2xl font-semibold">Mon approche</h3>
                 </motion.div>
                 <p className="font-sans text-gray-600 leading-relaxed dark:text-blue-100">
                   <strong>👉 L'Olfacto-Thérapie :</strong> Les odeurs agissent directement sur nos émotions et notre mémoire pour transformer nos pensées et libérer les blocages profondément ancrés.<br /><br />
