@@ -71,7 +71,11 @@ export const metadata = {
     images: ["/photo/logonew.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon-0.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-1.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-2.png", sizes: "48x48", type: "image/png" },
+    ],
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",

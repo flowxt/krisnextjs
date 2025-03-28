@@ -29,9 +29,14 @@ export default function SplashLoader({ onComplete }) {
         ease: "easeInOut" 
       }}
     >
-      {/* Vidéo spatiale en arrière-plan */}
+      {/* Vidéo spatiale en arrière-plan avec filtre violet-bleu amélioré */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-purple-900/40 mix-blend-multiply z-10"></div>
+        {/* Overlay dégradé violet-bleu */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/70 via-purple-800/60 to-violet-900/70 mix-blend-overlay z-20"></div>
+        
+        {/* Seconde couche pour intensifier les tons */}
+        <div className="absolute inset-0 bg-indigo-700/20 mix-blend-color z-10"></div>
+        
         <video
           autoPlay
           muted
@@ -39,40 +44,18 @@ export default function SplashLoader({ onComplete }) {
           onLoadedData={() => setIsVideoLoaded(true)}
           className="absolute w-full h-full object-cover"
           style={{ 
-            filter: "hue-rotate(-20deg) saturate(110%)", 
-            opacity: 0.7 
+            filter: "hue-rotate(-30deg) saturate(130%) brightness(85%)", 
+            opacity: 0.8
           }}
         >
           <source src="/video/space2.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Logo et animation de texte */}
+      {/* Animation du texte uniquement */}
       <div className="relative z-10 text-center">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6"
-        >
-          {/* Option: Logo ou icône si disponible */}
-          <motion.div 
-            className="mx-auto w-16 h-16 mb-4 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center"
-            animate={{ 
-              boxShadow: [
-                "0 0 0 rgba(139, 92, 246, 0.7)", 
-                "0 0 30px rgba(139, 92, 246, 0.7)", 
-                "0 0 5px rgba(139, 92, 246, 0.7)"
-              ] 
-            }}
-            transition={{ duration: 2, repeat: 1 }}
-          >
-            <span className="text-2xl text-white">K</span>
-          </motion.div>
-        </motion.div>
-
         {/* Animation du texte lettre par lettre */}
-        <motion.h1 className="text-3xl md:text-5xl font-bold text-white relative font-heading">
+        <motion.h1 className="text-4xl md:text-6xl font-bold text-white relative font-heading mb-8">
           {/* Kris */}
           <motion.span 
             className="inline-block bg-gradient-to-br from-violet-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent"
@@ -99,7 +82,7 @@ export default function SplashLoader({ onComplete }) {
           className="mt-6 h-[2px] bg-gradient-to-r from-transparent via-purple-400 to-transparent" 
           initial={{ width: 0, opacity: 0 }}
           animate={{ width: "80%", opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1.5 }}
+          transition={{ delay: 1.2, duration: 1.5 }}
           style={{ margin: "0 auto" }}
         />
       </div>
