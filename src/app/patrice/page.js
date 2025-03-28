@@ -188,16 +188,12 @@ Le processus de transformation :
             >
               <UserIcon className="w-5 h-5 text-blue-600" />
               <span className="text-blue-800 font-medium text-sm">
-                Services exclusivement pour hommes
+                Services pour hommes
               </span>
             </motion.div>
             <h2 className="text-4xl font-bold font-heading mb-3">
               Soins de <span className="text-blue-600">transformation</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Des approches spécifiquement conçues pour accompagner les hommes
-              dans leur libération émotionnelle et leur développement personnel.
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

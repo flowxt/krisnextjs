@@ -182,7 +182,7 @@ export default function PatricePresentation() {
                 </motion.div>
                 <p className="font-sans text-gray-600 leading-relaxed dark:text-blue-100">
                   <strong>👉 L'Olfacto-Thérapie :</strong> Les odeurs agissent directement sur nos émotions et notre mémoire pour transformer nos pensées et libérer les blocages profondément ancrés.<br /><br />
-                  <strong>👉 Le Zéro-Mental :</strong> Cette approche permet d'identifier et désamorcer les pensées répétitives qui nous hypnotisent et nourrissent nos croyances limitantes.<br /><br />
+                  <strong>👉 Le Zéro-Mental :</strong> Nous sommes hypnothisés à 99% par nos pensées. Nous ne voyons pas le monde tel qu'il est mais le reflet de nos pensées. Il n'y a qu'une seule chose qui part en thérapie, c'est le mental.<br /><br />
                   Je propose également une approche combinée Zéro-Mental & soin énergétique pour un résultat optimal, conduisant à une transformation complète et durable.
                 </p>
               </motion.div>
