@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import ClientOnly from "../components/ClientOnly";
 
 const ContactForm = () => {
   // États du formulaire améliorés
@@ -148,44 +149,46 @@ const ContactForm = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 py-20 px-4 relative overflow-hidden">
       {/* Particules cosmiques */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none overflow-hidden"
-        variants={particleVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-purple-300/30 mix-blend-screen blur-sm"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 120 + 30}px`,
-              height: `${Math.random() * 120 + 30}px`,
-            }}
-            variants={{
-              hidden: {
-                scale: 0,
-                opacity: 0,
-                x: Math.random() * 200 - 100,
-                y: Math.random() * 200 - 100,
-              },
-              visible: {
-                scale: [0, 1.2, 1],
-                opacity: [0, 0.7, 0.3],
-                x: 0,
-                y: 0,
-                transition: {
-                  duration: 4 + Math.random() * 5,
-                  repeat: Infinity,
-                  repeatType: "reverse",
+      <ClientOnly>
+        <motion.div
+          className="absolute inset-0 pointer-events-none overflow-hidden"
+          variants={particleVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-purple-300/30 mix-blend-screen blur-sm"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${Math.random() * 120 + 30}px`,
+                height: `${Math.random() * 120 + 30}px`,
+              }}
+              variants={{
+                hidden: {
+                  scale: 0,
+                  opacity: 0,
+                  x: Math.random() * 200 - 100,
+                  y: Math.random() * 200 - 100,
                 },
-              },
-            }}
-          />
-        ))}
-      </motion.div>
+                visible: {
+                  scale: [0, 1.2, 1],
+                  opacity: [0, 0.7, 0.3],
+                  x: 0,
+                  y: 0,
+                  transition: {
+                    duration: 4 + Math.random() * 5,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  },
+                },
+              }}
+            />
+          ))}
+        </motion.div>
+      </ClientOnly>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

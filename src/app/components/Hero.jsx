@@ -25,14 +25,14 @@ const itemVariants = {
 };
 
 // Positions fixes pour les particules (pour éviter les problèmes d'hydratation)
-const particlePositions = [
-  { x: 10, y: 20, size: 3, delay: 0.5, duration: 3 },
-  { x: 85, y: 15, size: 2, delay: 0.8, duration: 4 },
-  { x: 25, y: 55, size: 2, delay: 0.3, duration: 2.5 },
-  { x: 70, y: 45, size: 3, delay: 1.2, duration: 3.5 },
-  { x: 40, y: 10, size: 2, delay: 0.7, duration: 3 },
-  { x: 60, y: 70, size: 2, delay: 0.9, duration: 3.2 }
-];
+// const particlePositions = [
+//   { x: 10, y: 20, size: 3, delay: 0.5, duration: 3 },
+//   { x: 85, y: 15, size: 2, delay: 0.8, duration: 4 },
+//   { x: 25, y: 55, size: 2, delay: 0.3, duration: 2.5 },
+//   { x: 70, y: 45, size: 3, delay: 1.2, duration: 3.5 },
+//   { x: 40, y: 10, size: 2, delay: 0.7, duration: 3 },
+//   { x: 60, y: 70, size: 2, delay: 0.9, duration: 3.2 }
+// ];
 
 export default function Hero() {
   // Hooks
@@ -113,7 +113,7 @@ export default function Hero() {
   {/* Nom avec couleur dégradée - KRIS */}
   <span className="inline-block relative">
     {/* Particules autour du texte "Kris" - optimisées pour moins de particules */}
-    {isClient && particlePositions.slice(0, 2).map((particle, i) => (
+    {/* {isClient && particlePositions.slice(0, 2).map((particle, i) => (
       <motion.div
         key={i}
         className="absolute rounded-full bg-purple-300"
@@ -134,7 +134,7 @@ export default function Hero() {
           delay: particle.delay
         }}
       />
-    ))}
+    ))} */}
     
     <span className="relative inline-block bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
       Kris
@@ -165,7 +165,7 @@ export default function Hero() {
     </span>
     
     {/* Particules optimisées */}
-    {isClient && particlePositions.slice(3, 5).map((particle, i) => (
+    {/* {isClient && particlePositions.slice(3, 5).map((particle, i) => (
       <motion.div
         key={i}
         className="absolute rounded-full bg-purple-300"
@@ -186,7 +186,7 @@ export default function Hero() {
           delay: particle.delay
         }}
       />
-    ))}
+    ))} */}
     
     {/* Effet de lumière qui passe - légèrement plus subtil */}
     {isClient && (

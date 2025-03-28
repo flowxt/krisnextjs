@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { SparklesIcon, HeartIcon, ScaleIcon, ShieldCheckIcon, LockClosedIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "lucide-react";
 
+
+
 const faqItems = [
   {
     question: "Comment se déroule une séance ?",
@@ -67,6 +69,7 @@ export default function Presentation() {
       />
     ))}
   </motion.div>
+
 
   <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-4 gap-16 relative z-10">
     {/* Image Section - avec animations améliorées */}
@@ -309,6 +312,8 @@ export default function Presentation() {
       />
     ))}
   </motion.div>
+  
+
 
   <div className="max-w-7xl mx-auto px-4">
     <motion.h3 
