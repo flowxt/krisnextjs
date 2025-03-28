@@ -109,85 +109,81 @@ const ReviewCard = ({ review }) => (
 const InfiniteScrollRow = ({ reviews, direction = "left", speed = 1 }) => {
   const rowRef = useRef(null);
   const [xPosition, setXPosition] = useState(0);
-  const [rowWidth, setRowWidth] = useState(2000); // Valeur initiale pour éviter les calculs à 0
-  const [containerWidth, setContainerWidth] = useState(0);
-  const [totalItems, setTotalItems] = useState(10);
-  const animationRef = useRef(0);
+  const [rowWidth, setRowWidth] = useState(0);
+  const [isDuplicated, setIsDuplicated] = useState(false);
   
+  // Configuration initiale et mesure des dimensions
   useEffect(() => {
     if (rowRef.current && reviews?.length > 0) {
-      const reviewCount = reviews.length;
-      const singleCardWidth = 260 + 6; // Largeur carte + marge
-      
-      // Définir une valeur initiale basée sur les données
-      const initialRowWidth = reviewCount * singleCardWidth;
-      setRowWidth(initialRowWidth);
-      
-      const observer = new ResizeObserver(() => {
-        const viewportWidth = rowRef.current.offsetWidth || window.innerWidth;
-        setContainerWidth(viewportWidth);
-        
-        // Calculer le nombre de copies nécessaires
-        const cardsInViewport = Math.ceil(viewportWidth / singleCardWidth);
-        const duplications = Math.max(5, Math.ceil((cardsInViewport * 3) / reviewCount));
-        
-        setTotalItems(duplications);
-      });
-      
-      observer.observe(rowRef.current);
-      
-      return () => {
-        observer.disconnect();
-        cancelAnimationFrame(animationRef.current);
-      };
+      // Attendre que les éléments soient rendus pour mesurer correctement
+      setTimeout(() => {
+        const firstRow = rowRef.current.querySelector('.review-row');
+        if (firstRow) {
+          const width = firstRow.offsetWidth;
+          setRowWidth(width);
+          setIsDuplicated(true);
+        }
+      }, 100);
     }
   }, [reviews]);
   
-  // Animation avec une approche plus simple et fiable
+  // Animation réellement infinie avec 2 copies exactes côte à côte
   useAnimationFrame(() => {
-    if (!rowWidth) return;
+    if (!rowWidth || rowWidth <= 0) return;
     
-    // Vitesse fixe mais ajustable par le paramètre speed
-    const baseSpeed = direction === "left" ? -0.5 : 0.5;
-    const adjustedSpeed = baseSpeed * speed;
+    const speed_factor = 0.3 * speed;
+    const step = direction === "left" ? -speed_factor : speed_factor;
     
-    setXPosition((prevPos) => {
-      let newPos = prevPos + adjustedSpeed;
+    setXPosition(prev => {
+      // Technique du "wrapping" - quand on dépasse la largeur, on revient au début
+      let newPos = prev + step;
       
-      // Réinitialisation pour effet infini
-      if (direction === "left" && newPos < -rowWidth) {
-        newPos = 0;
-      } else if (direction === "right" && newPos > 0) {
-        newPos = -rowWidth;
+      // Créer l'illusion d'un défilement infini
+      if (direction === "left") {
+        // Si on va vers la gauche et qu'on a dépassé la largeur totale d'une rangée
+        if (Math.abs(newPos) >= rowWidth) {
+          newPos = 0; // On revient au début sans saut visible
+        }
+      } else {
+        // Pour le défilement vers la droite
+        if (newPos >= 0) {
+          newPos = -rowWidth; // Réinitialisation sans saut visible
+        }
       }
       
       return newPos;
     });
   });
   
-  // Générer suffisamment de copies pour un défilement fluide
-  const renderReviewCopies = () => {
-    const copies = [];
-    const numCopies = Math.max(10, totalItems);
+  // Créer deux rangées identiques pour un défilement vraiment infini
+  const renderInfiniteContent = () => {
+    // La classe review-row nous servira à mesurer la largeur d'une rangée complète
+    const rowContent = (
+      <div className="review-row flex">
+        {reviews.map((review) => (
+          <ReviewCard key={review.id} review={review} />
+        ))}
+      </div>
+    );
     
-    for (let i = 0; i < numCopies; i++) {
-      copies.push(
-        ...reviews.map((review) => (
-          <ReviewCard key={`row-${i}-${review.id}`} review={review} />
-        ))
-      );
-    }
-    return copies;
+    // On duplique la rangée pour assurer la continuité
+    return (
+      <div className="flex">
+        {rowContent}
+        {isDuplicated && rowContent}
+        {isDuplicated && rowContent}
+      </div>
+    );
   };
   
   return (
     <div className="overflow-hidden">
       <motion.div 
         ref={rowRef}
-        className="flex py-2"
+        className="py-2"
         style={{ x: xPosition }}
       >
-        {renderReviewCopies()}
+        {renderInfiniteContent()}
       </motion.div>
     </div>
   );

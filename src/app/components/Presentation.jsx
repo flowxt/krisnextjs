@@ -25,7 +25,8 @@ const faqItems = [
   {
     question: "Les soins énergétiques remplacent-ils les traitements médicaux ?",
     answer: "Non, les soins énergétiques sont complémentaires à la médecine conventionnelle. Ils ne remplacent en aucun cas un traitement médical en cours. Ils agissent en synergie pour votre bien-être global."
-  }
+  } 
+  //
 ];
 
 export default function Presentation() {
