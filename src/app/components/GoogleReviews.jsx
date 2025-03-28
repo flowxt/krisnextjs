@@ -106,54 +106,75 @@ const ReviewCard = ({ review }) => (
 );
 
 // Composant pour une ligne de défilement infini - CORRIGÉ
+// Modifiez le composant InfiniteScrollRow comme suit:
+
 const InfiniteScrollRow = ({ reviews, direction = "left", speed = 1 }) => {
   const rowRef = useRef(null);
   const [xPosition, setXPosition] = useState(0);
-  const [rowWidth, setRowWidth] = useState(0);
-  const [isDuplicated, setIsDuplicated] = useState(false);
+  // Valeur initiale approximative pour commencer l'animation immédiatement
+  const [rowWidth, setRowWidth] = useState(3000);
+  const [isDuplicated, setIsDuplicated] = useState(true);
+  const animationStartedRef = useRef(false);
   
   // Configuration initiale et mesure des dimensions
   useEffect(() => {
     if (rowRef.current && reviews?.length > 0) {
-      // Attendre que les éléments soient rendus pour mesurer correctement
-      setTimeout(() => {
+      // Démarrer l'animation immédiatement avec une valeur approximative
+      animationStartedRef.current = true;
+      
+      // Mesurer la largeur réelle après le rendu
+      const measureWidth = () => {
         const firstRow = rowRef.current.querySelector('.review-row');
         if (firstRow) {
           const width = firstRow.offsetWidth;
-          setRowWidth(width);
-          setIsDuplicated(true);
+          if (width > 0) {
+            setRowWidth(width);
+            setIsDuplicated(true);
+          }
         }
-      }, 100);
+      };
+      
+      // Mesurer immédiatement et réessayer après un délai si nécessaire
+      measureWidth();
+      setTimeout(measureWidth, 100);
+      
+      // Observer les changements de taille (responsive)
+      const observer = new ResizeObserver(() => {
+        measureWidth();
+      });
+      
+      observer.observe(rowRef.current);
+      return () => observer.disconnect();
     }
   }, [reviews]);
   
-  // Animation réellement infinie avec 2 copies exactes côte à côte
-  useAnimationFrame(() => {
-    if (!rowWidth || rowWidth <= 0) return;
+  // Animation avec démarrage immédiat
+  useAnimationFrame((time) => {
+    // Utiliser la largeur disponible, même approximative
+    if (!rowWidth) return;
     
+    // Ajuster la vitesse pour un défilement plus fluide
     const speed_factor = 0.3 * speed;
     const step = direction === "left" ? -speed_factor : speed_factor;
     
     setXPosition(prev => {
-      // Technique du "wrapping" - quand on dépasse la largeur, on revient au début
       let newPos = prev + step;
       
-      // Créer l'illusion d'un défilement infini
       if (direction === "left") {
-        // Si on va vers la gauche et qu'on a dépassé la largeur totale d'une rangée
         if (Math.abs(newPos) >= rowWidth) {
-          newPos = 0; // On revient au début sans saut visible
+          newPos = 0;
         }
       } else {
-        // Pour le défilement vers la droite
         if (newPos >= 0) {
-          newPos = -rowWidth; // Réinitialisation sans saut visible
+          newPos = -rowWidth;
         }
       }
       
       return newPos;
     });
   });
+  
+  // Reste du composant inchangé...
   
   // Créer deux rangées identiques pour un défilement vraiment infini
   const renderInfiniteContent = () => {
