@@ -7,8 +7,26 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
   const [paymentChoice, setPaymentChoice] = useState(null); // null, "online", "onsite"
   const [priceOption, setPriceOption] = useState(null); // Pour stocker l'option de prix sélectionnée
 
+  // Configuration des liens Stripe directs
+  const stripeLinks = {
+    4: { // Guidance Question
+      "guidance-question-1": "https://buy.stripe.com/28o9CuaE75Ifh2w144", // 1 question 20€
+      "guidance-question-2": "https://buy.stripe.com/8wM15Y9A32w3dQkeUV", // 2 questions 30€
+      "guidance-question-3": "https://buy.stripe.com/14keWOeUnc6D6nS8wy", // 3 questions 40€
+    },
+    7: { // Cartes Cadeau
+      "carte-cadeau-60": "https://buy.stripe.com/eVaeWOfYr6Mj3bGfZ1", // 60€
+      "carte-cadeau-80": "https://buy.stripe.com/5kA3e69A38UrfYs8wA", // 80€
+      "carte-cadeau-100": "https://buy.stripe.com/28o5mebIb0nV13yaEJ", // 100€
+      "carte-cadeau-personnalise": "https://buy.stripe.com/9AQ9Cu8vZfiPfYseV0", // Personnalisée
+    }
+  };
+
+  // Services disponibles uniquement en paiement en ligne avec Stripe
+  const stripeOnlyServices = [4, 7]; // Guidance question et Carte cadeau
+  
   // Services disponibles uniquement en paiement en ligne
-  const onlineOnlyServices = [4, 7]; // Guidance question et Carte cadeau
+  const onlineOnlyServices = []; // Autres services en ligne uniquement
   
   // Services avec options de prix multiples
   const multiPriceServices = {
@@ -19,20 +37,30 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     ],
     7: [ // Carte Cadeau
       { label: "Carte Cadeau 60€", price: "60€", slug: "carte-cadeau-60" },
-      { label: "Carte Cadeau 70€", price: "70€", slug: "carte-cadeau-70" },
       { label: "Carte Cadeau 80€", price: "80€", slug: "carte-cadeau-80" },
+      { label: "Carte Cadeau 100€", price: "100€", slug: "carte-cadeau-100" },
       { label: "Carte Cadeau Personnalisée", price: "Sur mesure", slug: "carte-cadeau-personnalise" }
     ]
   };
   
+  // Fonction pour rediriger vers les liens Stripe
+  const handleStripeRedirect = (serviceId, optionSlug) => {
+    if (stripeLinks[serviceId] && stripeLinks[serviceId][optionSlug]) {
+      window.open(stripeLinks[serviceId][optionSlug], '_blank');
+    }
+  };
+  
   // Vérifier si le service actuel a des options de prix multiples
   const hasMultiplePrices = () => multiPriceServices[service?.id] !== undefined;
+
+  // Vérifier si le service utilise Stripe pour le paiement
+  const isStripeService = () => stripeOnlyServices.includes(service?.id);
   
   // Chargement du script Calendly lors de l'ouverture du modal
   useEffect(() => {
     const shouldLoadCalendly = isOpen && service && (
-      (paymentChoice && !hasMultiplePrices()) || 
-      (hasMultiplePrices() && priceOption) ||
+      (paymentChoice && !hasMultiplePrices() && !isStripeService()) || 
+      (hasMultiplePrices() && priceOption && !isStripeService()) ||
       (onlineOnlyServices.includes(service?.id) && !hasMultiplePrices()) || 
       !canBookOnline(service?.id)
     );
@@ -71,10 +99,8 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       1: "je-me-laisse-guider",
       2: "seance-enfant",
       3: "seance-bebe",
-      4: "guidance-question", // Par défaut
       5: "nettoyage-energetique-du-foyer",
       6: "contact-defunt",
-      7: "carte-cadeau", // Par défaut
       8: "soin-personnalise",
       9: "guidance-90",
       10: "guidance-1h",
@@ -93,8 +119,8 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       return null;
     }
     
-    // Pour les services à prix multiples
-    if (hasMultiplePrices()) {
+    // Pour les services à prix multiples qui utilisent Calendly (pas Stripe)
+    if (hasMultiplePrices() && !isStripeService()) {
       if (!priceOption) return null;
       return `https://calendly.com/contact-krislavoixdesanges/${priceOption.slug}`;
     }
@@ -153,6 +179,54 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     );
   };
 
+  // Affichage du module de paiement Stripe pour les services concernés
+  const renderStripePayment = () => {
+    let stripeTitle, stripeInstructions;
+    
+    if (service.id === 4) { // Guidance Question
+      stripeTitle = "Paiement pour Guidance Question";
+      stripeInstructions = "Après votre paiement, vous pourrez poser votre/vos question(s) via WhatsApp au 06 65 55 33 41. Une réponse vous sera apportée dans les 48h.";
+    } else if (service.id === 7) { // Carte Cadeau
+      stripeTitle = "Paiement de votre Carte Cadeau";
+      stripeInstructions = "Après votre paiement, votre carte cadeau vous sera envoyée par email sous 24h. Vous pouvez nous indiquer par mail à contact@krislavoixdesanges.fr le nom du bénéficiaire et un message personnalisé.";
+    }
+    
+    return (
+      <div className="p-8 text-center">
+        <h3 className="text-xl font-semibold mb-4">{stripeTitle}</h3>
+        <p className="text-gray-600 mb-6">
+          Vous avez sélectionné : <span className="font-semibold text-purple-600">{priceOption.label}</span> à {priceOption.price}
+        </p>
+        
+        <div className="mb-8 p-6 bg-purple-50 rounded-xl border border-purple-100">
+          <p className="text-gray-700 mb-4">
+            {stripeInstructions}
+          </p>
+        </div>
+        
+        <button 
+          onClick={() => handleStripeRedirect(service.id, priceOption.slug)}
+          className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2 mx-auto"
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+          </svg>
+          Payer maintenant
+        </button>
+        
+        <button 
+          onClick={() => setPriceOption(null)}
+          className="mt-6 px-4 py-2 text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-1 mx-auto"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Choisir une autre option
+        </button>
+      </div>
+    );
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -198,17 +272,23 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
           ) : hasMultiplePrices() ? (
             // Services avec plusieurs options de prix
             priceOption ? (
-              // Option de prix sélectionnée, afficher Calendly
-              <div className="calendly-inline-widget" 
+              // Option sélectionnée, afficher Stripe ou Calendly selon le service
+              isStripeService() ? (
+                // Utilisation de Stripe pour les services 4 et 7
+                renderStripePayment()
+              ) : (
+                // Utilisation de Calendly pour les autres services
+                <div className="calendly-inline-widget" 
                   data-url={calendlyUrl}
                   style={{ minWidth: '320px', height: '700px' }}
-              />
+                />
+              )
             ) : (
               // Afficher les options de prix
               renderPriceSelection()
             )
           ) : onlineOnlyServices.includes(service.id) ? (
-            // Services disponibles uniquement en paiement en ligne
+            // Services disponibles uniquement en paiement en ligne (autres que Stripe)
             <div className="calendly-inline-widget" 
                 data-url={calendlyUrl}
                 style={{ minWidth: '320px', height: '700px' }}

@@ -177,7 +177,7 @@ Pour toute séance en distanciel, règlement minimum 48h avant la prestation.
   {
     id: 7,
     title: "Carte Cadeau Soin Énergétique",
-    price: "100€",
+    price: "Dès 60€",
     duration: "1h - Présentiel/Distance",
     intervenant: "Kris",
     icon: <GiftIcon className="w-8 h-8" />,
