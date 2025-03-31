@@ -151,8 +151,8 @@ export default function PatricePresentation() {
                   <h3 className="font-heading text-2xl font-semibold">Libération émotionnelle masculine</h3>
                 </motion.div>
                 <p className="font-sans text-gray-600 leading-relaxed ">
-                  J'accompagne les hommes vers leur libération émotionnelle profonde en travaillant sur les ressentis corporels, amenant à une transformation de leur état d'être. En comprenant que nous ne souffrons que de deux choses - notre mémoire et notre imagination - nous pouvons retrouver un état d'être aligné, libre et apaisé.<br /><br />
-                  Ma conviction profonde est qu'il ne s'agit pas de changer la vie, mais de transformer notre regard sur elle. Comme je le dis souvent : "Ce n'est pas la vie qui est belle, c'est notre regard qui la rend belle."
+                  J'accompagne les hommes vers leur libération émotionnelle profonde en travaillant sur les ressentis corporels, amenant à une transformation de leur état d'être. En comprenant que nous ne souffrons que de deux choses - notre mémoire et notre imagination - nous pouvons retrouver un état d'être aligné, libre et apaisé.
+                 
                 </p>
               </motion.div>
 
@@ -229,8 +229,8 @@ export default function PatricePresentation() {
                   transition={{ delay: 1.2, duration: 0.5 }}
                 >
                   <p className="text-xl italic text-blue-800  relative z-10">
-                    " Parce qu'il faut une étiquette pour être classé, identifié dans notre société, j'ai choisi par convention celle de thérapeute/Coach pour accompagner votre transformation.<br />
-Elle commence dès maintenant : vous êtes responsable à 100% de votre état d'être, la croyance que le thérapeute va gagner le combat que vous menez contre vous même, est une illusion qui n'amènera que plus de souffrance en vous.
+                    " Parce qu'il faut une étiquette pour être classé, identifié dans notre société, j'ai choisi par convention celle de thérapeute/Coach pour accompagner votre transformation.<br /><br />
+Elle commence dès maintenant : vous êtes responsable à 100% de votre état d'être, la croyance que le thérapeute va gagner le combat que vous menez contre vous même, est une illusion qui n'amènera que plus de souffrance en vous.<br /><br />
 Ma responsabilité : mon intention, mon engagement, ma détermination au service de votre désir profond de changement"
                   </p>
                 </motion.div>
