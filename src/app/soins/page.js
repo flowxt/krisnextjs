@@ -86,12 +86,14 @@ export default function Soins() {
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           {/* Section Immersive - Version améliorée */}
-          <h2 className="font-heading mt-11 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 relative w-full text-center">
-            <span className="relative z-10 px-4 inline-flex flex-col md:flex-row items-center justify-center gap-2 md:gap-0 mx-auto">
-              <span className="whitespace-nowrap">Mes forfaits</span>{" "}
-              <span className="whitespace-nowrap pl-2">
+          <h2 className="font-heading mt-11 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 text-center md:pb-8">
+            <span className="relative z-10 block">
+              <span className="block mb-2 md:inline-block md:mb-0">
+                Mes forfaits
+              </span>{" "}
+              <span className="block md:inline-block">
                 pour{" "}
-                <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white p-2 inline-block mt-1 md:mt-0">
+                <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white px-2 py-1 md:p-2 inline-block mt-1 md:mt-0">
                   votre bien-être
                 </span>
               </span>

@@ -61,11 +61,11 @@ export default function Hero() {
 
   return (
     <header>
-    <section 
-      ref={ref}
-      className="relative w-full h-screen overflow-hidden"
-      aria-label="Présentation principale"
-    >
+  <section 
+  ref={ref}
+  className="relative w-full min-h-screen pt-24 md:pt-0 overflow-hidden" // Ajout d'un padding top sur mobile
+  aria-label="Présentation principale"
+>
       {/* Arrière-plan amélioré */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-purple-100">
         
@@ -93,18 +93,18 @@ export default function Hero() {
       
 
       {/* Contenu principal */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-        <motion.div 
-          className="max-w-4xl"
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-96px)] md:h-full text-center px-4 md:px-6"> {/* Ajustements ici */}
+      <motion.div 
+      className="max-w-4xl mt-0 md:mt-0" // Ajustement des marges
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
           {/* Titre avec effets améliorés */}
           <motion.h1
-  variants={itemVariants}
-  className="font-heading text-4xl md:text-7xl font-bold mb-8 leading-snug pb-4 relative"
->
+        variants={itemVariants}
+        className="font-heading text-3xl sm:text-4xl md:text-7xl font-bold mb-4 md:mb-8 leading-snug pb-4 relative" // Taille et marges optimisées
+      >
   <span className="sr-only">Kristelle Feron - Kris La Voix Des Anges</span>
   
   {/* Effet de halo amélioré avec plus de subtilité */}
@@ -232,20 +232,20 @@ export default function Hero() {
 
           {/* Sous-titre avec les mots clés et icônes */}
           <motion.div
-            variants={itemVariants}
-            className="mt-4 flex flex-wrap justify-center items-center max-w-3xl mx-auto text-gray-700"
-          >
-            <span className="inline-flex items-center gap-1 mx-2 my-1 hover:text-purple-600 transition-colors text-lg md:text-xl font-light">
+        variants={itemVariants}
+        className="mt-2 md:mt-4 flex flex-wrap justify-center items-center max-w-3xl mx-auto text-gray-700"
+      >
+          <span className="inline-flex items-center gap-1 mx-1 md:mx-2 my-1 hover:text-purple-600 transition-colors text-base md:text-xl font-light">
               <HeartIcon className="w-5 h-5" />
               <span>Soins Énergétiques</span>
             </span>
             <span className="mx-1">•</span>
-            <span className="inline-flex items-center gap-1 mx-2 my-1 hover:text-purple-600 transition-colors text-lg md:text-xl font-light">
+            <span className="inline-flex items-center gap-1 mx-1 md:mx-2 my-1 hover:text-purple-600 transition-colors text-base md:text-xl font-light">
               <MoonIcon className="w-5 h-5" />
               <span>Accompagnement Holistique</span>
             </span>
             <span className="mx-1">•</span>
-            <span className="inline-flex items-center gap-1 mx-2 my-1 hover:text-purple-600 transition-colors text-lg md:text-xl font-light">
+            <span className="inline-flex items-center gap-1 mx-1 md:mx-2 my-1 hover:text-purple-600 transition-colors text-base md:text-xl font-light">
               <LightBulbIcon className="w-5 h-5" />
               <span>Éveil Spirituel</span>
             </span>
@@ -253,10 +253,10 @@ export default function Hero() {
 
           {/* Bouton CTA amélioré */}
          
-<motion.div
-  variants={itemVariants}
-  className="mt-10"
->
+          <motion.div
+        variants={itemVariants}
+        className="mt-6 md:mt-10"
+      >
   <motion.a
     href="/services"
     className="group relative overflow-hidden inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-full"
@@ -300,7 +300,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Badges de spécialité avec icônes */}
-        <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 mt-6 mx-auto px-4 max-w-md">
+        <div className="flex flex-wrap justify-center gap-x-2 md:gap-x-3 gap-y-1 md:gap-y-2 mt-3 md:mt-6 mx-auto px-4 max-w-md">
           <span className="px-4 py-1.5 bg-purple-100 backdrop-blur-sm rounded-full text-xs font-medium text-purple-700 whitespace-nowrap flex items-center gap-1 hover:bg-purple-200 transition-colors">
             <HandRaisedIcon className="w-3.5 h-3.5" />
             Médium
@@ -319,46 +319,46 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Indicateur de défilement amélioré */}
-        {scrollIndicator && (
-          <div
-            className="absolute left-1/2 bottom-8 transform -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center"
-            onClick={() => {
-              window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
-            }}
-            aria-label="Défiler vers le bas"
-          >
-            <motion.p 
-              className="text-sm text-purple-700 mb-2 font-medium"
-              animate={{ opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Découvrir
-            </motion.p>
-            
-            <motion.div
-              className="w-8 h-14 rounded-full border-2 border-purple-500/50 flex items-start justify-center p-1"
-              animate={{ 
-                boxShadow: [
-                  "0 0 0 rgba(167, 139, 250, 0)",
-                  "0 0 10px rgba(167, 139, 250, 0.3)",
-                  "0 0 0 rgba(167, 139, 250, 0)"
-                ] 
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <motion.div 
-                className="w-2 h-2 bg-purple-600 rounded-full"
-                animate={{ y: [2, 8, 2] }}
-                transition={{ 
-                  duration: 1.5, 
-                  repeat: Infinity,
-                  ease: "easeInOut" 
-                }}
-              />
-            </motion.div>
-          </div>
-        )}
+      {/* Indicateur de défilement amélioré - caché sur mobile */}
+{scrollIndicator && (
+  <div
+    className="absolute left-1/2 bottom-8 transform -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center hidden md:flex" // Ajout de hidden md:flex
+    onClick={() => {
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
+    }}
+    aria-label="Défiler vers le bas"
+  >
+    <motion.p 
+      className="text-sm text-purple-700 mb-2 font-medium"
+      animate={{ opacity: [0.6, 1, 0.6] }}
+      transition={{ duration: 2, repeat: Infinity }}
+    >
+      Découvrir
+    </motion.p>
+    
+    <motion.div
+      className="w-8 h-14 rounded-full border-2 border-purple-500/50 flex items-start justify-center p-1"
+      animate={{ 
+        boxShadow: [
+          "0 0 0 rgba(167, 139, 250, 0)",
+          "0 0 10px rgba(167, 139, 250, 0.3)",
+          "0 0 0 rgba(167, 139, 250, 0)"
+        ] 
+      }}
+      transition={{ duration: 2, repeat: Infinity }}
+    >
+      <motion.div 
+        className="w-2 h-2 bg-purple-600 rounded-full"
+        animate={{ y: [2, 8, 2] }}
+        transition={{ 
+          duration: 1.5, 
+          repeat: Infinity,
+          ease: "easeInOut" 
+        }}
+      />
+    </motion.div>
+  </div>
+)}
       </div>
       
       {/* Style pour les animations de dégradés */}

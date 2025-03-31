@@ -229,7 +229,9 @@ export default function PatricePresentation() {
                   transition={{ delay: 1.2, duration: 0.5 }}
                 >
                   <p className="text-xl italic text-blue-800 dark:text-blue-200 relative z-10">
-                    "Ce n'est pas la vie qui est belle, c'est notre regard qui la rend belle."
+                    " Parce qu'il faut une étiquette pour être classé, identifié dans notre société, j'ai choisi par convention celle de thérapeute/Coach pour accompagner votre transformation.<br />
+Elle commence dès maintenant : vous êtes responsable à 100% de votre état d'être, la croyance que le thérapeute va gagner le combat que vous menez contre vous même, est une illusion qui n'amènera que plus de souffrance en vous.
+Ma responsabilité : mon intention, mon engagement, ma détermination au service de votre désir profond de changement"
                   </p>
                 </motion.div>
                 
