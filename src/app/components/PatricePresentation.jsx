@@ -108,22 +108,41 @@ export default function PatricePresentation() {
             }}
             className="w-full lg:w-7/12 space-y-10"
           >
-            <motion.h2 
-              className="font-heading text-4xl font-bold text-gray-900 leading-tight  mt-11"
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              Patrice{" "}
-              <motion.span 
-                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-600  inline-block"
-                initial={{ backgroundPosition: "0% 0%" }}
-                animate={{ backgroundPosition: "100% 0%" }}
-                transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
-              >
-                Guffon
-              </motion.span>
-            </motion.h2>
+          <motion.div 
+  className="flex items-center gap-4 mb-4"
+  initial={{ y: -20, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.5, delay: 0.4 }}
+>
+  <motion.h2 
+    className="font-heading text-4xl font-bold text-gray-900 leading-tight"
+  >
+    Patrice{" "}
+    <motion.span 
+      className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-600 inline-block"
+      initial={{ backgroundPosition: "0% 0%" }}
+      animate={{ backgroundPosition: "100% 0%" }}
+      transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
+    >
+      Guffon
+    </motion.span>
+  </motion.h2>
+  
+  <motion.div
+    initial={{ scale: 0.8, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    transition={{ duration: 0.6, delay: 0.7 }}
+    whileHover={{ scale: 1.05, rotate: 5 }}
+    className="relative h-14 w-14 lg:h-16 lg:w-16"
+  >
+    <Image
+      src="/photo/logo-patrice.jpg"
+      alt="Logo Patrice Guffon"
+      fill
+      className="object-contain rounded-full shadow-sm"
+    />
+  </motion.div>
+</motion.div>
 
             <div className="space-y-8">
               {/* Section 1 - Approche */}
