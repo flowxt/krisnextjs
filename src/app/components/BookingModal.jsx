@@ -5,13 +5,39 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function BookingModal({ isOpen, onClose, service = {} }) {
   const [paymentChoice, setPaymentChoice] = useState(null); // null, "online", "onsite"
+  const [priceOption, setPriceOption] = useState(null); // Pour stocker l'option de prix sélectionnée
 
   // Services disponibles uniquement en paiement en ligne
   const onlineOnlyServices = [4, 7]; // Guidance question et Carte cadeau
   
+  // Services avec options de prix multiples
+  const multiPriceServices = {
+    4: [ // Guidance Question
+      { label: "1 Question", price: "20€", slug: "guidance-question-1" },
+      { label: "2 Questions", price: "30€", slug: "guidance-question-2" },
+      { label: "3 Questions", price: "40€", slug: "guidance-question-3" }
+    ],
+    7: [ // Carte Cadeau
+      { label: "Carte Cadeau 60€", price: "60€", slug: "carte-cadeau-60" },
+      { label: "Carte Cadeau 70€", price: "70€", slug: "carte-cadeau-70" },
+      { label: "Carte Cadeau 80€", price: "80€", slug: "carte-cadeau-80" },
+      { label: "Carte Cadeau Personnalisée", price: "Sur mesure", slug: "carte-cadeau-personnalise" }
+    ]
+  };
+  
+  // Vérifier si le service actuel a des options de prix multiples
+  const hasMultiplePrices = () => multiPriceServices[service?.id] !== undefined;
+  
   // Chargement du script Calendly lors de l'ouverture du modal
   useEffect(() => {
-    if (isOpen && service && (paymentChoice || onlineOnlyServices.includes(service?.id) || !canBookOnline(service?.id))) {
+    const shouldLoadCalendly = isOpen && service && (
+      (paymentChoice && !hasMultiplePrices()) || 
+      (hasMultiplePrices() && priceOption) ||
+      (onlineOnlyServices.includes(service?.id) && !hasMultiplePrices()) || 
+      !canBookOnline(service?.id)
+    );
+    
+    if (shouldLoadCalendly) {
       const script = document.createElement('script');
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
       script.async = true;
@@ -23,7 +49,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
         }
       };
     }
-  }, [isOpen, paymentChoice, service?.id]);
+  }, [isOpen, paymentChoice, priceOption, service?.id]);
 
   if (!isOpen || !service) return null;
 
@@ -35,15 +61,20 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
 
   // Mapping des IDs de service vers les slugs Calendly
   const getCalendlySlug = (serviceId, paymentType) => {
-    // Base des slugs
+    // Si c'est un service à prix multiples et qu'une option est sélectionnée
+    if (hasMultiplePrices() && priceOption) {
+      return priceOption.slug;
+    }
+    
+    // Base des slugs pour les services standards
     const baseSlug = {
       1: "je-me-laisse-guider",
       2: "seance-enfant",
       3: "seance-bebe",
-      4: "guidance-question",
+      4: "guidance-question", // Par défaut
       5: "nettoyage-energetique-du-foyer",
       6: "contact-defunt",
-      7: "carte-cadeau",
+      7: "carte-cadeau", // Par défaut
       8: "soin-personnalise",
       9: "guidance-90",
       10: "guidance-1h",
@@ -62,7 +93,13 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       return null;
     }
     
-    // Pour les services uniquement en ligne, forcer le paiement en ligne
+    // Pour les services à prix multiples
+    if (hasMultiplePrices()) {
+      if (!priceOption) return null;
+      return `https://calendly.com/contact-krislavoixdesanges/${priceOption.slug}`;
+    }
+    
+    // Pour les services uniquement en ligne
     if (onlineOnlyServices.includes(service.id)) {
       return `https://calendly.com/contact-krislavoixdesanges/${getCalendlySlug(service.id, "online")}`;
     }
@@ -78,7 +115,42 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
   // Réinitialiser le choix de paiement lorsqu'on ferme le modal
   const handleClose = () => {
     setPaymentChoice(null);
+    setPriceOption(null);
     onClose();
+  };
+
+  // Rendu de l'interface de sélection de prix
+  const renderPriceSelection = () => {
+    const options = multiPriceServices[service.id];
+    
+    return (
+      <div className="p-8 text-center">
+        <h3 className="text-xl font-semibold mb-6">Choisissez votre formule</h3>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
+          {options.map((option, index) => (
+            <button
+              key={index}
+              onClick={() => setPriceOption(option)}
+              className="flex flex-col items-center p-5 border-2 border-purple-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-all"
+            >
+              <span className="font-medium text-lg mb-1">{option.label}</span>
+              <span className="text-purple-600 font-bold">{option.price}</span>
+            </button>
+          ))}
+        </div>
+        
+        <button 
+          onClick={() => setPaymentChoice(null)}
+          className="mt-6 px-4 py-2 text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-1"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Retour
+        </button>
+      </div>
+    );
   };
 
   return (
@@ -123,6 +195,18 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
                 Fermer
               </button>
             </div>
+          ) : hasMultiplePrices() ? (
+            // Services avec plusieurs options de prix
+            priceOption ? (
+              // Option de prix sélectionnée, afficher Calendly
+              <div className="calendly-inline-widget" 
+                  data-url={calendlyUrl}
+                  style={{ minWidth: '320px', height: '700px' }}
+              />
+            ) : (
+              // Afficher les options de prix
+              renderPriceSelection()
+            )
           ) : onlineOnlyServices.includes(service.id) ? (
             // Services disponibles uniquement en paiement en ligne
             <div className="calendly-inline-widget" 
