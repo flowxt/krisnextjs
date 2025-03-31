@@ -256,7 +256,7 @@ export default function Soins() {
             <div className="max-w-3xl w-full relative">
               {/* Éléments décoratifs */}
               <motion.div
-                className="absolute -top-6 -left-6 w-12 h-12 rounded-full bg-gradient-to-br from-purple-200 to-indigo-200 opacity-70 dark:opacity-30 blur-md"
+                className="absolute -top-6 -left-6 w-12 h-12 rounded-full bg-gradient-to-br from-purple-200 to-indigo-200 opacity-70  blur-md"
                 animate={{
                   scale: [1, 1.2, 1],
                   rotate: [0, 5, 0],

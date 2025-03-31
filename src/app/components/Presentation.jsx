@@ -36,7 +36,7 @@ export default function Presentation() {
   return (
     <>
 <motion.section 
-  className="w-full py-24 bg-gradient-to-br from-gray-50 to-purple-50 dark:bg-gradient-to-t dark:from-purple-700 dark:to-indigo-900 overflow-hidden relative"
+  className="w-full py-24 bg-gradient-to-br from-gray-50 to-purple-50 overflow-hidden relative"
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ duration: 1 }}
@@ -51,7 +51,7 @@ export default function Presentation() {
     {[...Array(12)].map((_, i) => (
       <motion.div 
         key={i}
-        className="absolute w-1 h-1 rounded-full bg-purple-300 dark:bg-purple-300/40"
+        className="absolute w-1 h-1 rounded-full bg-purple-300"
         initial={{ 
           x: Math.random() * 100 + "%", 
           y: Math.random() * 100 + "%",
@@ -139,14 +139,14 @@ export default function Presentation() {
       className="w-full lg:w-7/12 space-y-10"
     >
       <motion.h2 
-        className="font-heading text-4xl font-bold text-gray-900 leading-tight dark:text-white"
+        className="font-heading text-4xl font-bold text-gray-900 leading-tight"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
         Kristelle{" "}
         <motion.span 
-          className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600 dark:from-purple-100 dark:to-indigo-200 inline-block"
+          className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600 inline-block"
           initial={{ backgroundPosition: "0% 0%" }}
           animate={{ backgroundPosition: "100% 0%" }}
           transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
@@ -180,7 +180,7 @@ export default function Presentation() {
             </motion.div>
             <h3 className="font-heading text-2xl font-semibold">Un héritage énergétique</h3>
           </motion.div>
-          <p className="font-sans text-gray-600 leading-relaxed dark:text-purple-100">
+          <p className="font-sans text-gray-600 leading-relaxed ">
             Dès les premiers battements de mon cœur, un lien sacré s'est tissé avec les royaumes invisibles qui sous-tendent notre existence. Un fil d'or vibrant, hérité au tréfonds de mes gènes par mon arrière-grand-mère, celle qui m'a transmis ses dons de médiumnité et son magnétisme singulier. Je percevais les énergies subtiles rayonner tout autour de moi, telles des auréoles invisibles. Cette connexion innée aux dimensions spirituelles éveilla très tôt en moi un destin. Vers l'âge de 7 ans, à l'aube de ma tendre innocence, j'ai pris conscience de mon lien privilégié avec l'au-delà. Des ressentis profonds, des émotions que mon jeune être ne parvenait à saisir.<br /><br />
             Des années durant, j'ai cheminé avec ces sens exacerbés, ces facultés à fleur de peau que je n'osais révéler. Ce n'est qu'une fois l'âge adulte atteint que j'ai pu embrasser pleinement ce don, cette grâce de communier avec les royaumes angéliques.
           </p>
@@ -210,7 +210,7 @@ export default function Presentation() {
             </motion.div>
             <h3 className="font-heading text-2xl font-semibold">Un équilibre holistique</h3>
           </motion.div>
-          <p className="font-sans text-gray-600 leading-relaxed dark:text-purple-100">
+          <p className="font-sans text-gray-600 leading-relaxed">
             En écoutant les murmures secrets des Anges et des Guides, je vous propose un accompagnement holistique unique, alliant psychologie positive et techniques énergétiques avancées. Par le magnétisme, les soins énergétiques sur-mesure, l'harmonisation et le coaching holistique, nous agirons ensemble sur les plans physique, mental, émotionnel et spirituel pour une libération totale de votre énergie vitale, nécessaire à votre évolution du quotidien.<br /><br />
             Quelle que soit l'étape de votre cheminement, je vous accompagne à révéler la plénitude de votre être. En m'ouvrant les portes de votre âme, nous adhérerons à un processus de renaissance vibratoire, où chaque cellule de votre corps rayonnera d'une nouvelle lumière apaisée et resplendissante.<br /><br />Sur les sentiers sacrés de l'évolution, vers l'accomplissement de votre destinée la plus précieuse
           </p>
@@ -222,7 +222,7 @@ export default function Presentation() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
           whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
-          className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/40 dark:to-indigo-900/40 p-6 rounded-xl border border-purple-100 dark:border-purple-700/50 shadow-sm relative overflow-hidden"
+          className="bg-gradient-to-br from-purple-50 to-purple-100  p-6 rounded-xl border border-purple-100  shadow-sm relative overflow-hidden"
         >
           {/* Petites particules de citation */}
           <motion.div 
@@ -234,7 +234,7 @@ export default function Presentation() {
             {[...Array(6)].map((_, i) => (
               <motion.div 
                 key={i}
-                className="absolute w-1 h-1 rounded-full bg-purple-300/40 dark:bg-purple-300/20"
+                className="absolute w-1 h-1 rounded-full bg-purple-300/40 "
                 initial={{ 
                   x: Math.random() * 100 + "%", 
                   y: Math.random() * 100 + "%",
@@ -257,14 +257,14 @@ export default function Presentation() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.5 }}
           >
-            <p className="text-xl italic text-purple-800 dark:text-purple-200 relative z-10">
+            <p className="text-xl italic text-purple-800 relative z-10">
               "Le changement n'est pas douloureux, seule la résistance l'est..."
             </p>
           </motion.div>
           
           {/* Élément décoratif pour la citation */}
           <motion.div 
-            className="absolute -bottom-6 -right-6 w-16 h-16 rounded-full bg-purple-200/30 dark:bg-purple-500/20"
+            className="absolute -bottom-6 -right-6 w-16 h-16 rounded-full bg-purple-200/30 "
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 1.4, duration: 0.5 }}
@@ -278,7 +278,7 @@ export default function Presentation() {
     {/* Section voyage en 4 etapes */}
     
     <motion.section 
-  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100 dark:bg-gradient-to-b dark:from-purple-700 dark:to-indigo-900 overflow-hidden relative"
+  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100   overflow-hidden relative"
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
   viewport={{ once: true, margin: "-100px" }}
@@ -294,7 +294,7 @@ export default function Presentation() {
     {[...Array(20)].map((_, i) => (
       <motion.div 
         key={i}
-        className="absolute w-2 h-2 rounded-full bg-purple-200 dark:bg-purple-300"
+        className="absolute w-2 h-2 rounded-full bg-purple-200"
         initial={{ 
           x: Math.random() * 100 + "%", 
           y: Math.random() * 100 + "%",
@@ -324,7 +324,7 @@ export default function Presentation() {
       transition={{ duration: 0.7 }}
     >
       <motion.span 
-        className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:bg-gradient-to-l dark:from-purple-50 dark:to-indigo-200"
+        className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent "
         initial={{ backgroundPosition: "0% 0%" }}
         animate={{ backgroundPosition: "100% 0%" }}
         transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
@@ -333,7 +333,7 @@ export default function Presentation() {
       </motion.span>
     </motion.h3>
     
-    <div className=" grid md:grid-cols-4 gap-8 dark:text-purple-700">
+    <div className=" grid md:grid-cols-4 gap-8">
       {[
         { icon: '🕊️', title: "Diagnostic énergétique", desc: "Analyse approfondie de vos blocages", delay: 0 },
         { icon: '🌀', title: "Protection sacrée", desc: "Mise en place d'un bouclier vibratoire", delay: 0.2 },
@@ -384,7 +384,7 @@ export default function Presentation() {
             }}
           >
             <motion.div 
-              className="absolute w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-300/20"
+              className="absolute w-16 h-16 rounded-full bg-purple-100 "
               initial={{ scale: 0 }}
               whileInView={{ scale: [0, 1.2, 1] }}
               viewport={{ once: true }}
@@ -480,7 +480,7 @@ export default function Presentation() {
 
 {/* Notre ethique */}
 <motion.section 
-  className="py-24 bg-gradient-to-t from-pink-50 to-purple-100 dark:from-purple-700 dark:to-indigo-900 overflow-hidden"
+  className="py-24 bg-gradient-to-t from-pink-50 to-purple-100  overflow-hidden"
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
   viewport={{ once: true, margin: "-100px" }}
@@ -502,7 +502,7 @@ export default function Presentation() {
         transition={{ duration: 0.6 }}
       >
         <motion.span 
-          className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:bg-gradient-to-l dark:from-purple-100 dark:to-indigo-200"
+          className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
           initial={{ backgroundPosition: "0% 0%" }}
           animate={{ backgroundPosition: "100% 0%" }}
           transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
@@ -511,7 +511,7 @@ export default function Presentation() {
         </motion.span>
       </motion.h3>
       
-      <div className="space-y-8 text-left dark:text-purple-700">
+      <div className="space-y-8 text-left ">
         {[
           { title: "Confidentialité Absolue", icon: LockClosedIcon, delay: 0 },
           { title: "Non-Jugement", icon: HeartIcon, delay: 0.2 },
@@ -569,7 +569,7 @@ export default function Presentation() {
 {/* FAQ */}
 {/* FAQ */}
 <motion.section 
-  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100 dark:from-purple-700 dark:to-indigo-900 overflow-hidden"
+  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100  overflow-hidden"
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
   viewport={{ once: true }}
@@ -585,7 +585,7 @@ export default function Presentation() {
     >
       Vos questions, {' '}
       <motion.span 
-        className="text-purple-600 dark:text-purple-400 inline-block"
+        className="text-purple-600  inline-block"
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -595,7 +595,7 @@ export default function Presentation() {
       </motion.span>
     </motion.h3>
 
-    <div className="space-y-6 dark:text-purple-700">
+    <div className="space-y-6">
       {faqItems.map((item, i) => (
         <motion.div
           key={i}

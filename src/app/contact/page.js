@@ -34,7 +34,7 @@ const ContactForm = () => {
 
   // Classes dynamiques pour les champs du formulaire
   const inputClasses = (fieldName) => {
-    return `w-full px-4 py-3 rounded-lg border transition-all duration-300
+    return `w-full px-4 py-3 rounded-lg border transition-all duration-300 bg-white text-gray-900 placeholder-gray-500
       ${
         errors[fieldName]
           ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"

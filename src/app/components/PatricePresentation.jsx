@@ -8,7 +8,7 @@ export default function PatricePresentation() {
   return (
     <>
       <motion.section 
-        className="w-full py-24 bg-gradient-to-br from-gray-50 to-blue-50 dark:bg-gradient-to-t dark:from-blue-700 dark:to-indigo-900 overflow-hidden relative"
+        className="w-full py-24 bg-gradient-to-br from-gray-50 to-blue-50  overflow-hidden relative"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -23,7 +23,7 @@ export default function PatricePresentation() {
           {[...Array(12)].map((_, i) => (
             <motion.div 
               key={i}
-              className="absolute w-1 h-1 rounded-full bg-blue-300 dark:bg-blue-300/40"
+              className="absolute w-1 h-1 rounded-full bg-blue-300 "
               initial={{ 
                 x: Math.random() * 100 + "%", 
                 y: Math.random() * 100 + "%",
@@ -109,14 +109,14 @@ export default function PatricePresentation() {
             className="w-full lg:w-7/12 space-y-10"
           >
             <motion.h2 
-              className="font-heading text-4xl font-bold text-gray-900 leading-tight dark:text-white mt-11"
+              className="font-heading text-4xl font-bold text-gray-900 leading-tight  mt-11"
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               Patrice{" "}
               <motion.span 
-                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-600 dark:from-blue-100 dark:to-cyan-200 inline-block"
+                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-600  inline-block"
                 initial={{ backgroundPosition: "0% 0%" }}
                 animate={{ backgroundPosition: "100% 0%" }}
                 transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
@@ -150,7 +150,7 @@ export default function PatricePresentation() {
                   </motion.div>
                   <h3 className="font-heading text-2xl font-semibold">Libération émotionnelle masculine</h3>
                 </motion.div>
-                <p className="font-sans text-gray-600 leading-relaxed dark:text-blue-100">
+                <p className="font-sans text-gray-600 leading-relaxed ">
                   J'accompagne les hommes vers leur libération émotionnelle profonde en travaillant sur les ressentis corporels, amenant à une transformation de leur état d'être. En comprenant que nous ne souffrons que de deux choses - notre mémoire et notre imagination - nous pouvons retrouver un état d'être aligné, libre et apaisé.<br /><br />
                   Ma conviction profonde est qu'il ne s'agit pas de changer la vie, mais de transformer notre regard sur elle. Comme je le dis souvent : "Ce n'est pas la vie qui est belle, c'est notre regard qui la rend belle."
                 </p>
@@ -180,7 +180,7 @@ export default function PatricePresentation() {
                   </motion.div>
                   <h3 className="font-heading text-2xl font-semibold">Mon approche</h3>
                 </motion.div>
-                <p className="font-sans text-gray-600 leading-relaxed dark:text-blue-100">
+                <p className="font-sans text-gray-600 leading-relaxed ">
                   <strong>👉 L'Olfacto-Thérapie :</strong> L'odorat est directement lié à la zone du cerveau, responsable de la mémoire. Ainsi une thérapie olfactive aide à se libérer des blocages émotionnels liés au passé. Un véritable changement d'état d'être.<br /><br />
                   <strong>👉 Le Zéro-Mental :</strong> Nous sommes hypnothisés à 99% par nos pensées. Nous ne voyons pas le monde tel qu'il est mais le reflet de nos pensées. Il n'y a qu'une seule chose qui part en thérapie, c'est le mental.<br /><br />
                   Je propose également une approche combinée Zéro-Mental & soin énergétique pour un résultat optimal, conduisant à une transformation complète et durable.
@@ -193,7 +193,7 @@ export default function PatricePresentation() {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 1 }}
                 whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
-                className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/40 dark:to-indigo-900/40 p-6 rounded-xl border border-blue-100 dark:border-blue-700/50 shadow-sm relative overflow-hidden"
+                className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-100  shadow-sm relative overflow-hidden"
               >
                 {/* Petites particules de citation */}
                 <motion.div 
@@ -205,7 +205,7 @@ export default function PatricePresentation() {
                   {[...Array(6)].map((_, i) => (
                     <motion.div 
                       key={i}
-                      className="absolute w-1 h-1 rounded-full bg-blue-300/40 dark:bg-blue-300/20"
+                      className="absolute w-1 h-1 rounded-full bg-blue-300/40 "
                       initial={{ 
                         x: Math.random() * 100 + "%", 
                         y: Math.random() * 100 + "%",
@@ -228,7 +228,7 @@ export default function PatricePresentation() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 1.2, duration: 0.5 }}
                 >
-                  <p className="text-xl italic text-blue-800 dark:text-blue-200 relative z-10">
+                  <p className="text-xl italic text-blue-800  relative z-10">
                     " Parce qu'il faut une étiquette pour être classé, identifié dans notre société, j'ai choisi par convention celle de thérapeute/Coach pour accompagner votre transformation.<br />
 Elle commence dès maintenant : vous êtes responsable à 100% de votre état d'être, la croyance que le thérapeute va gagner le combat que vous menez contre vous même, est une illusion qui n'amènera que plus de souffrance en vous.
 Ma responsabilité : mon intention, mon engagement, ma détermination au service de votre désir profond de changement"
@@ -237,7 +237,7 @@ Ma responsabilité : mon intention, mon engagement, ma détermination au service
                 
                 {/* Élément décoratif pour la citation */}
                 <motion.div 
-                  className="absolute -bottom-6 -right-6 w-16 h-16 rounded-full bg-blue-200/30 dark:bg-blue-500/20"
+                  className="absolute -bottom-6 -right-6 w-16 h-16 rounded-full bg-blue-200/30 "
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 1.4, duration: 0.5 }}
