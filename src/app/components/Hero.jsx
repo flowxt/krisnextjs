@@ -322,7 +322,7 @@ export default function Hero() {
       {/* Indicateur de défilement amélioré - caché sur mobile */}
 {scrollIndicator && (
   <div
-    className="absolute left-1/2 bottom-8 transform -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center hidden md:flex" // Ajout de hidden md:flex
+  className="absolute left-1/2 bottom-8 transform -translate-x-1/2 cursor-pointer z-20 hidden md:flex flex-col items-center" // Ajout de hidden md:flex
     onClick={() => {
       window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
     }}
