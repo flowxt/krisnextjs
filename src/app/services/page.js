@@ -98,7 +98,9 @@ N'oubliez pas doudou et tétine pour un moment de pure douceur.`,
     duration: "Reponse sous 3j - Distanciel uniquement",
     intervenant: "Kris",
     icon: <QuestionMarkCircleIcon className="w-8 h-8" />,
-    description: `À chaque carrefour de votre vie, offrez-vous une guidance précise pour éclairer votre chemin.
+    description: `Merci d'envoyer vos / votre question(s) par SMS au 06.65.55.33.41 afin de pouvoir y répondre sous 72h (hors W.E).
+    
+    À chaque carrefour de votre vie, offrez-vous une guidance précise pour éclairer votre chemin.
 
 ✨ Réponse claire par OUI ou NON
 ✨ Message vocal personnalisé
@@ -116,7 +118,7 @@ Modalités pratiques :
 • Contact via WhatsApp : 06 65 55 33 41
 • Règlement préalable obligatoire
 • Délai de réponse : 3 jours maximum*
-• Message vocal personnalisé
+• Message vocal personnalisé via wattsapp
 
 * Hors week-end et jours fériés`,
     images: ["/photo/IMG_8962.JPG", "/photo/IMG_8963.JPG"],

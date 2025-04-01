@@ -185,7 +185,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     
     if (service.id === 4) { // Guidance Question
       stripeTitle = "Paiement pour Guidance Question";
-      stripeInstructions = "Après votre paiement, vous pourrez poser votre/vos question(s) via WhatsApp au 06 65 55 33 41. Une réponse vous sera apportée dans les 48h.";
+      stripeInstructions = "Après votre paiement, vous pourrez poser votre/vos question(s) via WhatsApp au 06 65 55 33 41. Une réponse vous sera apportée dans les 72h.";
     } else if (service.id === 7) { // Carte Cadeau
       stripeTitle = "Paiement de votre Carte Cadeau";
       stripeInstructions = "Après votre paiement, votre carte cadeau vous sera envoyée par email sous 24h. Vous pouvez nous indiquer par mail à contact@krislavoixdesanges.fr le nom du bénéficiaire et un message personnalisé.";
