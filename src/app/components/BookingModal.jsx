@@ -33,6 +33,9 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
   // Services disponibles uniquement en paiement en ligne
   const onlineOnlyServices = []; // Autres services en ligne uniquement
   
+  // Services avec bon cadeau (pas de paiement nécessaire)
+  const giftCardRedemptionServices = [16]; // ID du service "Utilisation Bon Cadeau"
+  
   // Services avec options de prix multiples
   const multiPriceServices = {
     4: [ // Guidance Question
@@ -67,6 +70,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       (paymentChoice && !hasMultiplePrices() && !isStripeService()) || 
       (hasMultiplePrices() && priceOption && !isStripeService()) ||
       (onlineOnlyServices.includes(service?.id) && !hasMultiplePrices()) || 
+      giftCardRedemptionServices.includes(service?.id) ||
       !canBookOnline(service?.id)
     );
     
@@ -110,6 +114,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       9: "guidance-90",
       10: "guidance-1h",
       11: "guidance-45min",
+      16: "reserver-cadeau", // Nouveau service pour utiliser un bon cadeau
     }[serviceId] || "je-me-laisse-guider";
     
     // Pour le paiement sur place, ajouter le suffixe
@@ -133,6 +138,11 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     // Pour les services uniquement en ligne
     if (onlineOnlyServices.includes(service.id)) {
       return `https://calendly.com/contact-krislavoixdesanges/${getCalendlySlug(service.id, "online")}`;
+    }
+    
+    // Pour les services de bon cadeau
+    if (giftCardRedemptionServices.includes(service.id)) {
+      return `https://calendly.com/contact-krislavoixdesanges/${getCalendlySlug(service.id)}`;
     }
     
     // Pour les autres, utiliser le choix de l'utilisateur
@@ -638,6 +648,12 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
               // Afficher les options de prix
               renderPriceSelection()
             )
+          ) : giftCardRedemptionServices.includes(service.id) ? (
+            // Affichage direct de Calendly pour les services de bon cadeau
+            <div className="calendly-inline-widget" 
+              data-url={calendlyUrl}
+              style={{ minWidth: '320px', height: '700px' }}
+            />
           ) : onlineOnlyServices.includes(service.id) ? (
             // Services disponibles uniquement en paiement en ligne (autres que Stripe)
             <div className="calendly-inline-widget" 
