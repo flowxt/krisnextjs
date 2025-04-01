@@ -39,6 +39,7 @@ export default function Hero() {
   const ref = useRef(null);
   const [scrollIndicator, setScrollIndicator] = useState(true);
   const [isClient, setIsClient] = useState(false);
+  const [windowHeight, setWindowHeight] = useState(0); // Ajoutez ici
   
   // Marqueur côté client pour les animations qui pourraient causer des problèmes d'hydratation
   useEffect(() => {
@@ -58,12 +59,27 @@ export default function Hero() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+  // Ajoutez votre nouvel useEffect ici
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight);
+      // Masquer l'indicateur si l'écran est trop petit ou le zoom trop élevé
+      if (window.innerHeight < 700) {
+        setScrollIndicator(false);
+      }
+    };
+    
+    handleResize(); // Exécution initiale
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <header>
   <section 
   ref={ref}
-  className="relative w-full min-h-screen pt-24 md:pt-0 overflow-hidden" // Ajout d'un padding top sur mobile
+  className="relative w-full min-h-screen pt-28 md:pt-24 lg:pt-28 overflow-hidden" // Ajout d'un padding top sur mobile
   aria-label="Présentation principale"
 >
       {/* Arrière-plan amélioré */}
