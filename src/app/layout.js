@@ -2,6 +2,7 @@ import { Cinzel, Nunito } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -97,6 +98,7 @@ export default function RootLayout({ children }) {
       <body className={`${cinzel.variable} ${nunito.variable} font-sans`}>
         <Navbar />
         {children}
+        <Analytics />
         <Footer />
       </body>
     </html>
