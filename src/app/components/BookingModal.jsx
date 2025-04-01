@@ -6,6 +6,11 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 export default function BookingModal({ isOpen, onClose, service = {} }) {
   const [paymentChoice, setPaymentChoice] = useState(null); // null, "online", "onsite"
   const [priceOption, setPriceOption] = useState(null); // Pour stocker l'option de prix sélectionnée
+  const [formStep, setFormStep] = useState(null); // null, "form", "payment"
+  const [formData, setFormData] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   // Configuration des liens Stripe directs
   const stripeLinks = {
@@ -142,7 +147,57 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
   const handleClose = () => {
     setPaymentChoice(null);
     setPriceOption(null);
+    setFormStep(null);
+    setFormData({});
+    setSubmitError("");
+    setSubmitSuccess(false);
     onClose();
+  };
+
+  // Gérer les changements dans les champs du formulaire
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Soumettre le formulaire
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const formDataToSend = {
+        ...formData,
+        service: service.title,
+        option: priceOption?.label || '',
+        price: priceOption?.price || '',
+        date: new Date().toISOString()
+      };
+
+      const response = await fetch('/api/send-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataToSend),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de l\'envoi du formulaire');
+      }
+
+      setSubmitSuccess(true);
+      setFormStep("payment");
+    } catch (error) {
+      console.error('Erreur:', error);
+      setSubmitError("Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Rendu de l'interface de sélection de prix
@@ -157,7 +212,12 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
           {options.map((option, index) => (
             <button
               key={index}
-              onClick={() => setPriceOption(option)}
+              onClick={() => {
+                setPriceOption(option);
+                if (isStripeService()) {
+                  setFormStep("form");
+                }
+              }}
               className="flex flex-col items-center p-5 border-2 border-purple-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-all"
             >
               <span className="font-medium text-lg mb-1">{option.label}</span>
@@ -179,21 +239,304 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     );
   };
 
+  // Rendu du formulaire de Guidance Question
+  const renderGuidanceQuestionForm = () => {
+    const questionCount = priceOption?.slug === "guidance-question-1" ? 1 : 
+                          priceOption?.slug === "guidance-question-2" ? 2 : 3;
+    
+    return (
+      <div className="p-8">
+        <h3 className="text-xl font-semibold mb-6 text-center">Formulaire pour Guidance Question</h3>
+        
+        {submitError && (
+          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg border border-red-200">
+            {submitError}
+          </div>
+        )}
+        
+        <form onSubmit={handleFormSubmit} className="space-y-4">
+          <div className="mb-4">
+            <label htmlFor="telephone" className="block text-sm font-medium text-gray-700 mb-1">
+              Numéro de téléphone*
+            </label>
+            <input
+              type="tel"
+              id="telephone"
+              name="telephone"
+              required
+              value={formData.telephone || ''}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+              placeholder="Votre numéro de téléphone"
+            />
+          </div>
+          
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              Email*
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={formData.email || ''}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+              placeholder="Votre adresse email"
+            />
+          </div>
+          
+          {Array.from({ length: questionCount }).map((_, index) => (
+            <div key={index} className="mb-4">
+              <label htmlFor={`question${index + 1}`} className="block text-sm font-medium text-gray-700 mb-1">
+                Question {index + 1}*
+              </label>
+              <textarea
+                id={`question${index + 1}`}
+                name={`question${index + 1}`}
+                required
+                value={formData[`question${index + 1}`] || ''}
+                onChange={handleInputChange}
+                rows="3"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                placeholder={`Posez votre question ${index + 1}`}
+              ></textarea>
+            </div>
+          ))}
+          
+          <div className="flex items-center justify-between mt-6">
+            <button 
+              type="button"
+              onClick={() => {
+                setPriceOption(null);
+                setFormStep(null);
+              }}
+              className="px-4 py-2 text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-1"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Retour
+            </button>
+            
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? (
+                <span>Envoi en cours...</span>
+              ) : (
+                <>
+                  <span>Continuer vers le paiement</span>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </>
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  };
+
+  // Rendu du formulaire de Carte Cadeau
+  const renderGiftCardForm = () => {
+    return (
+      <div className="p-8">
+        <h3 className="text-xl font-semibold mb-6 text-center">Formulaire pour Carte Cadeau</h3>
+        
+        {submitError && (
+          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg border border-red-200">
+            {submitError}
+          </div>
+        )}
+        
+        <form onSubmit={handleFormSubmit} className="space-y-4">
+          <div className="mb-6">
+            <h4 className="text-lg font-medium mb-3">Vos informations</h4>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="buyerName" className="block text-sm font-medium text-gray-700 mb-1">
+                  Nom*
+                </label>
+                <input
+                  type="text"
+                  id="buyerName"
+                  name="buyerName"
+                  required
+                  value={formData.buyerName || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="Votre nom"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="buyerFirstName" className="block text-sm font-medium text-gray-700 mb-1">
+                  Prénom*
+                </label>
+                <input
+                  type="text"
+                  id="buyerFirstName"
+                  name="buyerFirstName"
+                  required
+                  value={formData.buyerFirstName || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="Votre prénom"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="buyerEmail" className="block text-sm font-medium text-gray-700 mb-1">
+                  Email*
+                </label>
+                <input
+                  type="email"
+                  id="buyerEmail"
+                  name="buyerEmail"
+                  required
+                  value={formData.buyerEmail || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="Votre email"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="buyerPhone" className="block text-sm font-medium text-gray-700 mb-1">
+                  Téléphone*
+                </label>
+                <input
+                  type="tel"
+                  id="buyerPhone"
+                  name="buyerPhone"
+                  required
+                  value={formData.buyerPhone || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="Votre numéro de téléphone"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <div className="mb-6">
+            <h4 className="text-lg font-medium mb-3">Destinataire du cadeau</h4>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="recipientName" className="block text-sm font-medium text-gray-700 mb-1">
+                  Nom*
+                </label>
+                <input
+                  type="text"
+                  id="recipientName"
+                  name="recipientName"
+                  required
+                  value={formData.recipientName || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="Nom du destinataire"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="recipientFirstName" className="block text-sm font-medium text-gray-700 mb-1">
+                  Prénom*
+                </label>
+                <input
+                  type="text"
+                  id="recipientFirstName"
+                  name="recipientFirstName"
+                  required
+                  value={formData.recipientFirstName || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="Prénom du destinataire"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <div className="mb-4">
+            <label htmlFor="personalMessage" className="block text-sm font-medium text-gray-700 mb-1">
+              Message personnalisé
+            </label>
+            <textarea
+              id="personalMessage"
+              name="personalMessage"
+              value={formData.personalMessage || ''}
+              onChange={handleInputChange}
+              rows="4"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+              placeholder="Votre message personnalisé pour la carte cadeau"
+            ></textarea>
+          </div>
+          
+          <div className="flex items-center justify-between mt-6">
+            <button 
+              type="button"
+              onClick={() => {
+                setPriceOption(null);
+                setFormStep(null);
+              }}
+              className="px-4 py-2 text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-1"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Retour
+            </button>
+            
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? (
+                <span>Envoi en cours...</span>
+              ) : (
+                <>
+                  <span>Continuer vers le paiement</span>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </>
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  };
+
   // Affichage du module de paiement Stripe pour les services concernés
   const renderStripePayment = () => {
     let stripeTitle, stripeInstructions;
     
     if (service.id === 4) { // Guidance Question
       stripeTitle = "Paiement pour Guidance Question";
-      stripeInstructions = "Après votre paiement, merci de m'envoyer directement votre/vos question(s) via WhatsApp ou sms au 06.65.55.33.41. Une réponse vous sera apportée dans les 72h.";
+      stripeInstructions = "Merci d'avoir rempli le formulaire. Vous allez être redirigé vers la page de paiement. Une réponse vous sera apportée dans les 72h.";
     } else if (service.id === 7) { // Carte Cadeau
       stripeTitle = "Paiement de votre Carte Cadeau";
-      stripeInstructions = "Après votre paiement, merci de me contacter par mail  à contact@krislavoixdesanges.fr ou sms au 06.65.55.33.41 avec les informations que vous souhaitez poour votre carte cadeau(avec le nom du bénéficiaire et un message personnalisé si vous le souhaitez) Le bon vous sera envoyé par mail dans les 48h (hors W.E).";
+      stripeInstructions = "Merci d'avoir rempli le formulaire. Vous allez être redirigé vers la page de paiement. Le bon vous sera envoyé par mail dans les 48h (hors W.E).";
     }
     
     return (
       <div className="p-8 text-center">
         <h3 className="text-xl font-semibold mb-4">{stripeTitle}</h3>
+        
+        {submitSuccess && (
+          <div className="mb-6 p-4 bg-green-50 rounded-xl border border-green-100 text-green-700">
+            Votre formulaire a été envoyé avec succès!
+          </div>
+        )}
+        
         <p className="text-gray-600 mb-6">
           Vous avez sélectionné : <span className="font-semibold text-purple-600">{priceOption.label}</span> à {priceOption.price}
         </p>
@@ -215,13 +558,16 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
         </button>
         
         <button 
-          onClick={() => setPriceOption(null)}
+          onClick={() => {
+            setFormStep("form");
+            setSubmitSuccess(false);
+          }}
           className="mt-6 px-4 py-2 text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-1 mx-auto"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          Choisir une autre option
+          Retour au formulaire
         </button>
       </div>
     );
@@ -272,10 +618,15 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
           ) : hasMultiplePrices() ? (
             // Services avec plusieurs options de prix
             priceOption ? (
-              // Option sélectionnée, afficher Stripe ou Calendly selon le service
+              // Option sélectionnée, afficher formulaires ou Stripe
               isStripeService() ? (
-                // Utilisation de Stripe pour les services 4 et 7
-                renderStripePayment()
+                formStep === "form" ? (
+                  // Affichage du formulaire selon le service
+                  service.id === 4 ? renderGuidanceQuestionForm() : renderGiftCardForm()
+                ) : formStep === "payment" ? (
+                  // Affichage du module de paiement Stripe
+                  renderStripePayment()
+                ) : null
               ) : (
                 // Utilisation de Calendly pour les autres services
                 <div className="calendly-inline-widget" 
