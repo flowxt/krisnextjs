@@ -17,7 +17,7 @@ export async function POST(request) {
     // Différents templates selon le type de service
     if (serviceId.includes("Guidance Question")) {
       // Template pour Guidance Question
-      const { telephone, email, ...questions } = formData;
+      const { telephone, email, firstName, lastName, ...questions } = formData;
 
       // Extraction des questions
       const questionsList = Object.entries(questions)
@@ -32,6 +32,7 @@ export async function POST(request) {
           <p><strong>Service:</strong> ${formData.service} - ${
         formData.option
       } (${formData.price})</p>
+          <p><strong>Nom:</strong> ${lastName} ${firstName}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Téléphone:</strong> ${telephone}</p>
           <p><strong>Question(s):</strong></p>

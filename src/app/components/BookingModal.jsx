@@ -265,6 +265,40 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
         )}
         
         <form onSubmit={handleFormSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+                Nom*
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                required
+                value={formData.lastName || ''}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                placeholder="Votre nom"
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+                Prénom*
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                required
+                value={formData.firstName || ''}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                placeholder="Votre prénom"
+              />
+            </div>
+          </div>
+          
           <div className="mb-4">
             <label htmlFor="telephone" className="block text-sm font-medium text-gray-700 mb-1">
               Numéro de téléphone*
