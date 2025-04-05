@@ -7,11 +7,13 @@ import Hero from "./components/Hero";
 import Presentation from "./components/Presentation";
 import SplashLoader from "./components/SplashLoader";
 import GoogleReviews from "./components/GoogleReviews";
+import BlogNewsModal from "./components/BlogNewsModal";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 
 export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
+  const [loaderComplete, setLoaderComplete] = useState(false);
 
   useEffect(() => {
     // Optionnel: Vérifier si le loader a déjà été affiché durant cette session
@@ -19,17 +21,29 @@ export default function Home() {
 
     if (hasSeenLoader) {
       setShowLoader(false);
+      setLoaderComplete(true);
     } else {
       // Marquer le loader comme vu pour cette session
       sessionStorage.setItem("hasSeenLoader", "true");
     }
   }, []);
 
+  const handleLoaderComplete = () => {
+    setShowLoader(false);
+    // Attendre un court délai avant d'afficher la modale
+    setTimeout(() => {
+      setLoaderComplete(true);
+    }, 500);
+  };
+
   return (
     <>
       <AnimatePresence mode="wait">
-        {showLoader && <SplashLoader onComplete={() => setShowLoader(false)} />}
+        {showLoader && <SplashLoader onComplete={handleLoaderComplete} />}
       </AnimatePresence>
+
+      {/* Modale des nouveaux articles de blog - affichée seulement après le loader */}
+      {loaderComplete && <BlogNewsModal />}
 
       <div className={showLoader ? "hidden" : ""}>
         <Hero />
@@ -67,7 +81,7 @@ export default function Home() {
                     cadre apaisant
                   </span>
                   , cet espace a été pensé pour favoriser la relaxation et
-                  l'harmonisation de{" "}
+                  l&apos;harmonisation de{" "}
                   <span className="font-semibold text-indigo-600">
                     votre énergie.
                   </span>
@@ -140,7 +154,7 @@ export default function Home() {
                   transition={{ type: "spring", stiffness: 50 }}
                 >
                   <h3 className="font-heading text-4xl font-bold text-gray-900 mb-6 text-center">
-                    🌿 L'énergie qui vous ressemble
+                    🌿 L&apos;énergie qui vous ressemble
                   </h3>
                   <p className="text-xl text-gray-700 text-center max-w-2xl mx-auto leading-relaxed">
                     Mon approche unique combine{" "}
