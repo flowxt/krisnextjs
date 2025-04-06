@@ -1,0 +1,11 @@
+# robots.txt pour krislavoixdesanges.com
+User-agent: *
+Allow: /
+
+# Référence vers le nouveau sitemap
+Sitemap: https://www.krislavoixdesanges.com/sitemap0.xml
+
+# Exclure les URLs temporaires ou en développement
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/admin/ 
