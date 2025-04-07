@@ -48,6 +48,30 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      // Redirection pour /avis-clients
+      {
+        source: "/avis-clients",
+        destination: "/",
+        permanent: true,
+      },
+      // Redirection pour /lotion
+      {
+        source: "/lotion",
+        destination: "/",
+        permanent: true,
+      },
+      // Redirection pour /kris
+      {
+        source: "/kris",
+        destination: "/",
+        permanent: true,
+      },
+      // Redirection pour /prestations
+      {
+        source: "/prestations",
+        destination: "/",
+        permanent: true,
+      },
       // Ajouter d'autres patterns d'URL selon les besoins
     ];
   },
