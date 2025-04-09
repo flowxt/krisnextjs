@@ -98,9 +98,7 @@ N'oubliez pas doudou et tétine pour un moment de pure douceur.`,
     duration: "Reponse sous 3j - Distanciel uniquement",
     intervenant: "Kris",
     icon: <QuestionMarkCircleIcon className="w-8 h-8" />,
-    description: `Merci d'envoyer vos / votre question(s) par SMS au 06.65.55.33.41 afin de pouvoir y répondre sous 72h (hors W.E).
-    
-    À chaque carrefour de votre vie, offrez-vous une guidance précise pour éclairer votre chemin.
+    description: `À chaque carrefour de votre vie, offrez-vous une guidance précise pour éclairer votre chemin.
 
 ✨ Réponse claire par OUI ou NON
 ✨ Message vocal personnalisé
@@ -355,9 +353,9 @@ Pour toute séance en distanciel (WhatsApp), règlement 48h minimum avant la pre
     title: "Soin Libre d'Être Soi",
     price: "180€",
     duration: "2h - Présentiel",
-    intervenant: "Kris & Patrice",
+    intervenant: "Kris & patrice",
     icon: <SparklesIcon className="w-8 h-8" />,
-    description: `𝙇'𝙐𝙡𝙩𝙞𝙢𝙚 𝙍𝙚𝙣𝙖𝙞𝙨𝙨𝙖𝙣𝙘𝙚 𝙙𝙚 𝙑𝙤𝙩𝙧𝙚 𝙀𝙨𝙨𝙚𝙣𝙘𝙚 𝙋𝙪𝙧𝙚
+    description: `L'Ultime Renaissance de Votre Essence Pure
   
     ✨ Duo Zéro Mental + Soin
     ✨ Séance Réalisée avec 2 thérapeutes
@@ -423,7 +421,46 @@ export default function Services() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
-  const [visibleItems, setVisibleItems] = useState(6);
+  const [visibleItems, setVisibleItems] = useState(services.length); // Afficher tous les services
+
+  // Créer les catégories de services
+  const categories = [
+    {
+      id: "soins",
+      title: "Les soins",
+      services: [1, 8, 13], // Séance "Je me laisse guider", Soin Énergétique Personnalisé, Soin Libre d'Être Soi
+    },
+    {
+      id: "soins-enfants",
+      title: "Les Soins enfants",
+      services: [2, 3], // Séance Enfant (4-12 ans), Séance Enfant (3 mois à 3 ans)
+    },
+    {
+      id: "nettoyage",
+      title: "Nettoyage harmonisation",
+      services: [5], // Nettoyage Énergétique du Foyer
+    },
+    {
+      id: "contact-defunt",
+      title: "Contact défunt",
+      services: [6], // Contact Défunt
+    },
+    {
+      id: "guidances",
+      title: "Guidances",
+      services: [9, 10, 11], // Guidance 1h30, Guidance 1h, Guidance 45min
+    },
+    {
+      id: "questions",
+      title: "Guidance à la question",
+      services: [4], // Guidance à la Question
+    },
+    {
+      id: "bon-cadeau",
+      title: "Bon cadeau",
+      services: [7, 16], // Carte Cadeau Soin Énergétique, Utiliser un Bon Cadeau
+    },
+  ];
 
   // Optimisation: Charger plus d'éléments au défilement
   useEffect(() => {
@@ -452,6 +489,11 @@ export default function Services() {
     setIsBookingModalOpen(true);
   };
 
+  // Fonction pour récupérer un service par son ID
+  const getServiceById = (id) => {
+    return services.find((service) => service.id === id);
+  };
+
   return (
     <>
       <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-20">
@@ -478,174 +520,215 @@ export default function Services() {
             </p>
           </div>
 
-          {/* Grille de services */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.slice(0, visibleItems).map((service, index) => {
-              const isPatrice = service.intervenant === "Patrice";
-              const mainColor = isPatrice ? "blue" : "purple";
-              const secondaryColor = isPatrice ? "cyan" : "indigo";
-
-              return (
-                <div
-                  key={service.id}
-                  className="relative opacity-0 animate-fade-in"
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                    animationFillMode: "forwards",
+          {/* Filtres / Navigation rapide */}
+          <div className="mb-12">
+            <div className="bg-white shadow-md rounded-xl p-4 flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => {
+                    document.getElementById(category.id)?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
                   }}
+                  className="px-4 py-2 rounded-full text-sm font-medium bg-purple-50 text-purple-700 hover:bg-purple-100 transition-colors"
                 >
-                  <div
-                    className={`relative h-full rounded-[2rem] overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2
-                    ${
-                      isPatrice
-                        ? "hover:shadow-blue-200/30"
-                        : "hover:shadow-purple-200/30"
-                    }`}
-                  >
-                    {/* Élément décoratif */}
-                    <div className="absolute inset-0 opacity-5">
-                      <div
-                        className={`absolute -top-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
-                      ></div>
-                    </div>
-
-                    {/* Contenu de la carte */}
-                    <div className="p-8 relative z-10 flex flex-col h-full">
-                      <div className="flex items-start gap-6 relative">
-                        {/* Icône */}
-                        <div
-                          className={`p-5 rounded-2xl text-white shadow-md overflow-hidden
-                          bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
-                        >
-                          <div className="relative z-10">{service.icon}</div>
-                        </div>
-
-                        <div className="flex-1 min-w-0">
-                          {/* Titre */}
-                          <h3 className="text-base md:text-xl font-bold text-gray-800 font-heading mb-2">
-                            <span
-                              className={`bg-clip-text text-${mainColor}-600`}
-                            >
-                              {service.title}
-                            </span>
-                          </h3>
-
-                          {/* Badge intervenant */}
-                          <span
-                            className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3
-                            ${
-                              isPatrice
-                                ? "bg-blue-100 text-blue-800"
-                                : "bg-purple-100 text-purple-800"
-                            }`}
-                          >
-                            {service.intervenant}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Prix et badges */}
-                      <div className="mt-4 flex flex-col space-y-3">
-                        {/* Prix */}
-                        <span
-                          className={`text-xl font-bold text-${mainColor}-600`}
-                        >
-                          {service.price}
-                        </span>
-
-                        {/* Badges simplifiés */}
-                        <div className="flex flex-wrap gap-2">
-                          <span
-                            className={`text-sm font-medium px-3 py-1.5 rounded-full
-                            ${
-                              isPatrice
-                                ? "text-cyan-600 bg-cyan-50"
-                                : "text-indigo-600 bg-indigo-50"
-                            }`}
-                          >
-                            <span className="inline-block mr-1">⌛</span>{" "}
-                            {service.duration.split(" - ")[0]}
-                          </span>
-
-                          <span
-                            className={`text-sm font-medium px-3 py-1.5 rounded-full
-                            ${
-                              isPatrice
-                                ? "text-cyan-600 bg-cyan-50"
-                                : "text-indigo-600 bg-indigo-50"
-                            }`}
-                          >
-                            <span className="inline-block mr-1">📍</span>{" "}
-                            {service.duration.split(" - ")[1]}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Aperçu de description */}
-                      <div className="mt-6 mb-6">
-                        <p className="text-gray-600 line-clamp-3">
-                          {service.description.split("\n")[0]}
-                        </p>
-                      </div>
-
-                      {/* Boutons d'action */}
-                      <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-3">
-                        <button
-                          onClick={() => openDetailsModal(service)}
-                          className={`flex-1 py-3 px-4 rounded-xl font-medium bg-${mainColor}-50 text-${mainColor}-600 
-            hover:bg-${mainColor}-100 hover:shadow-md hover:-translate-y-0.5 
-            active:translate-y-0 active:shadow-sm
-            transition-all duration-200`}
-                        >
-                          <span className="flex items-center justify-center gap-2">
-                            <svg
-                              className="w-5 h-5"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                              ></path>
-                            </svg>
-                            En savoir plus
-                          </span>
-                        </button>
-                        <button
-                          onClick={() => openBookingModal(service)}
-                          className={`flex-1 py-3 px-4 rounded-xl font-medium text-white 
-            bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 
-            hover:shadow-lg hover:shadow-${mainColor}-200/50 hover:-translate-y-0.5 
-            active:translate-y-0 active:shadow-sm
-            transition-all duration-200`}
-                        >
-                          <span className="flex items-center justify-center gap-2">
-                            <svg
-                              className="w-5 h-5"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                              ></path>
-                            </svg>
-                            Réserver
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                  {category.title}
+                </button>
+              ))}
+            </div>
           </div>
+
+          {/* Sections de services avec titres */}
+          {categories.map((category, categoryIndex) => (
+            <div
+              id={category.id}
+              key={category.id}
+              className="mb-16 scroll-mt-24"
+            >
+              {/* Titre de la catégorie */}
+              <h3 className="text-2xl md:text-3xl font-heading font-bold mb-8 text-purple-800 border-b-2 border-purple-200 pb-2">
+                {category.title}
+              </h3>
+
+              {/* Grille de services pour cette catégorie */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {category.services.map((serviceId, index) => {
+                  const service = getServiceById(serviceId);
+                  if (!service) return null;
+
+                  const isPatrice =
+                    service.intervenant === "Patrice" ||
+                    service.intervenant === "Kris & Patrice";
+                  const mainColor = isPatrice ? "blue" : "purple";
+                  const secondaryColor = isPatrice ? "cyan" : "indigo";
+
+                  return (
+                    <div
+                      key={service.id}
+                      className="relative opacity-0 animate-fade-in"
+                      style={{
+                        animationDelay: `${(categoryIndex * 3 + index) * 0.1}s`,
+                        animationFillMode: "forwards",
+                      }}
+                    >
+                      <div
+                        className={`relative h-full rounded-[2rem] overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2
+                        ${
+                          isPatrice
+                            ? "hover:shadow-blue-200/30"
+                            : "hover:shadow-purple-200/30"
+                        }`}
+                      >
+                        {/* Élément décoratif */}
+                        <div className="absolute inset-0 opacity-5">
+                          <div
+                            className={`absolute -top-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
+                          ></div>
+                        </div>
+
+                        {/* Contenu de la carte */}
+                        <div className="p-8 relative z-10 flex flex-col h-full">
+                          <div className="flex items-start gap-6 relative">
+                            {/* Icône */}
+                            <div
+                              className={`p-5 rounded-2xl text-white shadow-md overflow-hidden
+                              bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
+                            >
+                              <div className="relative z-10">
+                                {service.icon}
+                              </div>
+                            </div>
+
+                            <div className="flex-1 min-w-0">
+                              {/* Titre */}
+                              <h3 className="text-base md:text-xl font-bold text-gray-800 font-heading mb-2">
+                                <span
+                                  className={`bg-clip-text text-${mainColor}-600`}
+                                >
+                                  {service.title}
+                                </span>
+                              </h3>
+
+                              {/* Badge intervenant */}
+                              <span
+                                className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3
+                                ${
+                                  isPatrice
+                                    ? "bg-blue-100 text-blue-800"
+                                    : "bg-purple-100 text-purple-800"
+                                }`}
+                              >
+                                {service.intervenant}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Prix et badges */}
+                          <div className="mt-4 flex flex-col space-y-3">
+                            {/* Prix */}
+                            <span
+                              className={`text-xl font-bold text-${mainColor}-600`}
+                            >
+                              {service.price}
+                            </span>
+
+                            {/* Badges simplifiés */}
+                            <div className="flex flex-wrap gap-2">
+                              <span
+                                className={`text-sm font-medium px-3 py-1.5 rounded-full
+                                ${
+                                  isPatrice
+                                    ? "text-cyan-600 bg-cyan-50"
+                                    : "text-indigo-600 bg-indigo-50"
+                                }`}
+                              >
+                                <span className="inline-block mr-1">⌛</span>{" "}
+                                {service.duration.split(" - ")[0]}
+                              </span>
+
+                              <span
+                                className={`text-sm font-medium px-3 py-1.5 rounded-full
+                                ${
+                                  isPatrice
+                                    ? "text-cyan-600 bg-cyan-50"
+                                    : "text-indigo-600 bg-indigo-50"
+                                }`}
+                              >
+                                <span className="inline-block mr-1">📍</span>{" "}
+                                {service.duration.split(" - ")[1]}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Aperçu de description */}
+                          <div className="mt-6 mb-6">
+                            <p className="text-gray-600 line-clamp-3">
+                              {service.description.split("\n")[0]}
+                            </p>
+                          </div>
+
+                          {/* Boutons d'action */}
+                          <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-3">
+                            <button
+                              onClick={() => openDetailsModal(service)}
+                              className={`flex-1 py-3 px-4 rounded-xl font-medium bg-${mainColor}-50 text-${mainColor}-600 
+                hover:bg-${mainColor}-100 hover:shadow-md hover:-translate-y-0.5 
+                active:translate-y-0 active:shadow-sm
+                transition-all duration-200`}
+                            >
+                              <span className="flex items-center justify-center gap-2">
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                  ></path>
+                                </svg>
+                                En savoir plus
+                              </span>
+                            </button>
+                            <button
+                              onClick={() => openBookingModal(service)}
+                              className={`flex-1 py-3 px-4 rounded-xl font-medium text-white 
+                bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 
+                hover:shadow-lg hover:shadow-${mainColor}-200/50 hover:-translate-y-0.5 
+                active:translate-y-0 active:shadow-sm
+                transition-all duration-200`}
+                            >
+                              <span className="flex items-center justify-center gap-2">
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                  ></path>
+                                </svg>
+                                Réserver
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
