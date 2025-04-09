@@ -18,11 +18,18 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
-      // Redirection pour les anciennes URL de Wix (blog)
+      // Redirection pour les anciennes URL de blog de Wix (mais pas la nouvelle page blog)
       {
-        source: "/blog/:path*",
+        source: "/blog/:slug",
         destination: "/",
         permanent: true,
+        has: [
+          {
+            type: "query",
+            key: "wix",
+            value: "true",
+          },
+        ],
       },
       // Redirection pour les anciennes URL de Wix (service)
       {
