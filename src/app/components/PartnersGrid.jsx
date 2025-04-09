@@ -79,11 +79,19 @@ const partnersData = [
   },
   {
     id: 10,
-    name: "flowxt Site Web & App",
+    name: "Atypik Code",
     logo: "/images/flo1.png",
     description: "Creation de site internet",
     category: "boutique",
-    website: "https://portfolio-florian-rose.vercel.app/"
+    website: "https://www.atypikcode.fr"
+  },
+  {
+    id: 10,
+    name: "Harmonie et Sens",
+    logo: "/photo/stephanie.png",
+    description: "Creation de site internet",
+    category: "praticien",
+    website: "https://sophro-three.vercel.app"
   },
   // Ajoutez vos autres partenaires ici
 ];
