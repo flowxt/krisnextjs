@@ -53,14 +53,7 @@ const partnersData = [
     category: "centre",
     website: "https://enki-bioresonance.fr/"
   },
-  {
-    id: 7,
-    name: "Esprit du Cèdre",
-    logo: "/images/logo7.png",
-    description: "Gite en Haute-Savoie",
-    category: "boutique",
-    website: "https://sejourhautesavoie.fr/"
-  },
+
   {
     id: 8,
     name: "Corinne Barreau",
@@ -89,7 +82,7 @@ const partnersData = [
     id: 10,
     name: "Harmonie et Sens",
     logo: "/photo/stephanie.png",
-    description: "Creation de site internet",
+    description: "Sophro-analyste",
     category: "praticien",
     website: "https://sophro-three.vercel.app"
   },
