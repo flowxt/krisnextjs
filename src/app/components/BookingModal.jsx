@@ -334,7 +334,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
           {Array.from({ length: questionCount }).map((_, index) => (
             <div key={index} className="mb-4">
               <label htmlFor={`question${index + 1}`} className="block text-sm font-medium text-gray-700 mb-1">
-                Question {index + 1}*
+                Question précise {index + 1}*
               </label>
               <textarea
                 id={`question${index + 1}`}
