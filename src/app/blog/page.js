@@ -4,6 +4,16 @@ import matter from "gray-matter";
 import ArticleCard from "../components/ArticleCard";
 import BlogPresentation from "../components/BlogPresentation";
 
+// Métadonnées de la page blog
+export const metadata = {
+  title: "Blog | Kris La Voix des Anges",
+  description:
+    "Découvrez des articles sur le bien-être, la spiritualité, les soins énergétiques et le développement personnel.",
+  alternates: {
+    canonical: "https://www.krislavoixdesanges.com/blog",
+  },
+};
+
 // Fonction locale pour obtenir les articles
 async function getArticlesData() {
   const postsDirectory = path.join(process.cwd(), "content/blog");

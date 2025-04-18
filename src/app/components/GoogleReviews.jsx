@@ -124,6 +124,7 @@ const InfiniteScrollRow = ({ reviews, direction = "left", speed = 1 }) => {
       
       // Mesurer la largeur réelle après le rendu
       const measureWidth = () => {
+        if (!rowRef.current) return; // Vérifier que rowRef.current existe avant d'accéder à querySelector
         const firstRow = rowRef.current.querySelector('.review-row');
         if (firstRow) {
           const width = firstRow.offsetWidth;
@@ -187,12 +188,24 @@ const InfiniteScrollRow = ({ reviews, direction = "left", speed = 1 }) => {
       </div>
     );
     
-    // On duplique la rangée pour assurer la continuité
+    // On duplique la rangée pour assurer la continuité mais avec des clés différentes
     return (
       <div className="flex">
         {rowContent}
-        {isDuplicated && rowContent}
-        {isDuplicated && rowContent}
+        {isDuplicated && (
+          <div className="review-row flex">
+            {reviews.map((review) => (
+              <ReviewCard key={`dup1-${review.id}`} review={review} />
+            ))}
+          </div>
+        )}
+        {isDuplicated && (
+          <div className="review-row flex">
+            {reviews.map((review) => (
+              <ReviewCard key={`dup2-${review.id}`} review={review} />
+            ))}
+          </div>
+        )}
       </div>
     );
   };

@@ -51,6 +51,39 @@ async function getArticleData(slug) {
   }
 }
 
+// Génération dynamique des métadonnées pour chaque article
+export async function generateMetadata({ params }) {
+  // Récupérer les données de l'article
+  const article = await getArticleData(params.slug);
+
+  if (!article) {
+    return {
+      title: "Article non trouvé",
+      description: "Cet article n'existe pas ou a été déplacé",
+    };
+  }
+
+  const { Title, description, categories, featuredImage } = article.attributes;
+  const imageUrl = featuredImage?.data?.attributes?.url;
+
+  return {
+    title: Title,
+    description: description,
+    openGraph: {
+      title: Title,
+      description: description,
+      url: `https://www.krislavoixdesanges.com/blog/${params.slug}`,
+      type: "article",
+      images: imageUrl
+        ? [{ url: `https://www.krislavoixdesanges.com${imageUrl}` }]
+        : [],
+    },
+    alternates: {
+      canonical: `https://www.krislavoixdesanges.com/blog/${params.slug}`,
+    },
+  };
+}
+
 export default async function ArticlePage({ params }) {
   // Attendre la résolution des params dans Next.js 15
   const resolvedParams = await Promise.resolve(params);

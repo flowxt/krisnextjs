@@ -247,8 +247,8 @@ const ContactForm = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
                 >
-                  "Votre message est la première vibration de notre échange
-                  énergétique"
+                  &quot;Votre message est la première vibration de notre échange
+                  énergétique&quot;
                 </motion.p>
 
                 <motion.div
@@ -375,7 +375,7 @@ const ContactForm = () => {
                         Message envoyé avec succès!
                       </h4>
                       <p className="text-gray-600 mb-4">
-                        Merci de m'avoir contacté. Je vous répondrai très
+                        Merci de m&apos;avoir contacté. Je vous répondrai très
                         bientôt pour débuter notre voyage énergétique ensemble.
                       </p>
                       <motion.div
@@ -781,8 +781,8 @@ const ContactForm = () => {
             </h3>
             <p className="text-gray-600 mb-6">
               Je propose des consultations en présentiel et à distance.
-              N'hésitez pas à me contacter pour organiser une séance qui vous
-              convient.
+              N&apos;hésitez pas à me contacter pour organiser une séance qui
+              vous convient.
             </p>
 
             <div className="space-y-4">

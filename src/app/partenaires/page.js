@@ -2,12 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import PartnersGrid from "../components/PartnersGrid";
-import GoogleReviews from "../components/GoogleReviews";
 
 export const metadata = {
   title: "Mes Partenaires | Kris La Voix des Anges",
   description:
     "Découvrez les professionnels de confiance avec qui je collabore pour vous offrir un accompagnement holistique complet.",
+  alternates: {
+    canonical: "https://www.krislavoixdesanges.com/partenaires",
+  },
 };
 
 export default function PartenairesPage() {
@@ -27,9 +29,10 @@ export default function PartenairesPage() {
           </h1>
 
           <p className="text-xl text-gray-700 max-w-3xl mx-auto font-sans">
-            Je m'entoure de professionnels d'exception pour vous proposer un
-            accompagnement complet. Découvrez mon réseau de confiance avec qui
-            je partage des valeurs d'authenticité et d'excellence.
+            Je m&apos;entoure de professionnels d&apos;exception pour vous
+            proposer un accompagnement complet. Découvrez mon réseau de
+            confiance avec qui je partage des valeurs d&apos;authenticité et
+            d&apos;excellence.
           </p>
         </div>
 
