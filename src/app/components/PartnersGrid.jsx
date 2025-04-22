@@ -73,7 +73,7 @@ const partnersData = [
   {
     id: 10,
     name: "Atypik Code",
-    logo: "/images/flo1.png",
+    logo: "/images/atypik-code.png",
     description: "Creation de site internet",
     category: "boutique",
     website: "https://www.atypikcode.fr"
