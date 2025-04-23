@@ -1,9 +1,17 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 export default function SplashLoader({ onComplete }) {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
+
+  // Fonction pour forcer la lecture de la vidéo
+  const playVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(e => console.log("Lecture automatique empêchée:", e));
+    }
+  };
 
   // Timer pour la durée du loader
   useEffect(() => {
@@ -13,6 +21,16 @@ export default function SplashLoader({ onComplete }) {
     
     return () => clearTimeout(timer);
   }, [onComplete]);
+
+  // Force la lecture après le chargement
+  useEffect(() => {
+    playVideo();
+    
+    // Tentative supplémentaire pour Safari
+    const replayInterval = setInterval(playVideo, 300);
+    
+    return () => clearInterval(replayInterval);
+  }, [isVideoLoaded]);
 
   return (
     <motion.div 
@@ -38,16 +56,21 @@ export default function SplashLoader({ onComplete }) {
         <div className="absolute inset-0 bg-indigo-700/20 mix-blend-color z-10"></div>
         
         <video
+          ref={videoRef}
           autoPlay
           muted
           playsInline
+          webkit-playsinline="true"
+          playsinline="true"
           loop
           controls={false}
+          preload="auto"
           onLoadedData={() => setIsVideoLoaded(true)}
           className="absolute w-full h-full object-cover"
           style={{ 
             filter: "hue-rotate(-30deg) saturate(130%) brightness(85%)", 
-            opacity: 0.8
+            opacity: 0.8,
+            pointerEvents: "none"
           }}
         >
           <source src="/video/space2.mp4" type="video/mp4" />
