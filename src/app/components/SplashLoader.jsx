@@ -41,6 +41,8 @@ export default function SplashLoader({ onComplete }) {
           autoPlay
           muted
           playsInline
+          loop
+          controls={false}
           onLoadedData={() => setIsVideoLoaded(true)}
           className="absolute w-full h-full object-cover"
           style={{ 
