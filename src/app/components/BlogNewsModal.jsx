@@ -11,7 +11,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     // Identifiant unique pour cette "vague" d'articles
     // À changer chaque fois que vous ajoutez de nouveaux articles que vous voulez mettre en avant
-    const currentArticlesBatchId = "articles-2025-04-15";
+    const currentArticlesBatchId = "articles-2025-05-05";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -71,17 +71,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/dix-neuvieme-article" className="block">
+                    <Link href="/blog/vingt-et-unieme-article" className="block">
                       <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
-                        <h4 className="font-semibold text-purple-700 mb-1">Prendre soin de soi ce n'est pas égoïste, c'est essentiel</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvrez pourquoi le soin de soi n'est pas un luxe mais une nécessité pour votre bien-être.</p>
+                        <h4 className="font-semibold text-purple-700 mb-1">Dire non sans culpabiliser</h4>
+                        <p className="text-gray-600 text-sm mb-2">Apprenez à poser vos limites avec douceur et à préserver votre énergie sans sentiment de culpabilité.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/dix-septieme-article" className="block">
+                    <Link href="/blog/vingtieme-article" className="block">
                       <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors">
-                        <h4 className="font-semibold text-indigo-700 mb-1">Rituel de Renouveau Printanier</h4>
-                        <p className="text-gray-600 text-sm mb-2">Accueillez le printemps avec des pratiques énergétiques revigorantes.</p>
+                        <h4 className="font-semibold text-indigo-700 mb-1">Clés sur la Nouvelle Lune du 27 avril 2025</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvrez les énergies du Taureau et un rituel simple pour cette puissante lunaison.</p>
                       </div>
                     </Link>
                   </div>
