@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import PartnersGrid from "../components/PartnersGrid";
-
+import GoogleReviews from "../components/GoogleReviews";
 export const metadata = {
   title: "Mes Partenaires | Kris La Voix des Anges",
   description:
@@ -40,7 +40,11 @@ export default function PartenairesPage() {
         <PartnersGrid />
 
         {/* Section avis Google */}
-        <div className="mt-24 mb-16"></div>
+
+        <div className="mt-24 mb-16">
+          {" "}
+          <GoogleReviews />
+        </div>
       </div>
     </div>
   );

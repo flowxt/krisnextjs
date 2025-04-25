@@ -6,7 +6,7 @@ import Cta from "./components/Cta";
 import Hero from "./components/Hero";
 import Presentation from "./components/Presentation";
 import SplashLoader from "./components/SplashLoader";
-import GoogleReviews from "./components/GoogleReviews";
+// import GoogleReviews from "./components/GoogleReviews";
 import BlogNewsModal from "./components/BlogNewsModal";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
@@ -174,7 +174,6 @@ export default function Home() {
           <Presentation />
 
           <Cta page="accueil" />
-          <GoogleReviews />
         </main>
       </div>
     </>
