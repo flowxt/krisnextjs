@@ -2,7 +2,7 @@
 title: Clés sur la Nouvelle Lune du 27 avril 2025
 description: Découvre les énergies de la Nouvelle Lune en Taureau, ses influences et un rituel simple pour aligner ton intention avec cette puissante lunaison.
 date: 2025-04-25T12:00:00Z
-categories: Astrologie
+categories: Nouvelle lune
 image: photo/taureau.jpg
 ---
 

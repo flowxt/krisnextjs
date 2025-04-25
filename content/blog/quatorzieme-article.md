@@ -2,7 +2,7 @@
 title: "Eau de Lune : Pourquoi, Comment et Quand la Faire"
 description: "L'eau de lune est une eau chargée sous la lumière de la pleine lune pour capter ses énergies bienfaisantes. Utilisée pour la purification, la manifestation et l'harmonisation spirituelle, elle est simple à préparer et possède des usages variés. Voici ce qu'il faut savoir pour faire de l'eau de lune et en tirer le meilleur parti."
 date: 2025-02-20T12:00:00Z
-categories: Portail énergétique
+categories: Bien-être
 image: photo/eau-de-lune.png
 tags:
   - eau de lune

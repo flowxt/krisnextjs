@@ -2,7 +2,7 @@
 title: Protection Energétique au quotidien
 description: La protection énergétique au quotidien
 date: 2025-03-05T12:00:00Z
-categories: Nettoyage énergétique
+categories: Bien-être
 image: photo/quotidien.png
 ---
 

@@ -2,7 +2,7 @@
 title: Nécessaire pour faire les rituels de pleine lune et de nouvelle lune
 description: Voici une checklist pour les rituels de pleine lune et de nouvelle lune tout au long de l'année. Ces rituels sont souvent utilisés pour la purification, la manifestation, et la méditation, en fonction de la phase lunaire. Vous pouvez personnaliser cette liste de nécessaire pour faire les rituels de pleine lune et de nouvelle lune selon vos préférences, mais voici des éléments de base à avoir chez vous.
 date: 2025-01-11T12:00:00Z
-categories: Lune
+categories: Nouvelle lune / Pleine lune
 image: photo/lune.png
 ---
 

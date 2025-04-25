@@ -2,7 +2,7 @@
 title: Voyance vs Guidance
 description: Voici les principales différences entre la voyance et la guidance spirituelle, présentées de manière simple et clair.
 date: 2025-02-22T12:00:00Z
-categories: Mediumnité
+categories: Bien-être
 image: photo/guidance.png
 tags:
   - calme intérieur

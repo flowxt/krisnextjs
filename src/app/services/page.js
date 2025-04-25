@@ -575,11 +575,11 @@ export default function Services() {
                     >
                       <div
                         className={`relative h-full rounded-[2rem] overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2
-                        ${
-                          isPatrice
-                            ? "hover:shadow-blue-200/30"
-                            : "hover:shadow-purple-200/30"
-                        }`}
+                    ${
+                      isPatrice
+                        ? "hover:shadow-blue-200/30"
+                        : "hover:shadow-purple-200/30"
+                    }`}
                       >
                         {/* Élément décoratif */}
                         <div className="absolute inset-0 opacity-5">
@@ -594,7 +594,7 @@ export default function Services() {
                             {/* Icône */}
                             <div
                               className={`p-5 rounded-2xl text-white shadow-md overflow-hidden
-                              bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
+                          bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
                             >
                               <div className="relative z-10">
                                 {service.icon}
@@ -614,11 +614,11 @@ export default function Services() {
                               {/* Badge intervenant */}
                               <span
                                 className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3
-                                ${
-                                  isPatrice
-                                    ? "bg-blue-100 text-blue-800"
-                                    : "bg-purple-100 text-purple-800"
-                                }`}
+                            ${
+                              isPatrice
+                                ? "bg-blue-100 text-blue-800"
+                                : "bg-purple-100 text-purple-800"
+                            }`}
                               >
                                 {service.intervenant}
                               </span>
@@ -638,11 +638,11 @@ export default function Services() {
                             <div className="flex flex-wrap gap-2">
                               <span
                                 className={`text-sm font-medium px-3 py-1.5 rounded-full
-                                ${
-                                  isPatrice
-                                    ? "text-cyan-600 bg-cyan-50"
-                                    : "text-indigo-600 bg-indigo-50"
-                                }`}
+                            ${
+                              isPatrice
+                                ? "text-cyan-600 bg-cyan-50"
+                                : "text-indigo-600 bg-indigo-50"
+                            }`}
                               >
                                 <span className="inline-block mr-1">⌛</span>{" "}
                                 {service.duration.split(" - ")[0]}
@@ -650,11 +650,11 @@ export default function Services() {
 
                               <span
                                 className={`text-sm font-medium px-3 py-1.5 rounded-full
-                                ${
-                                  isPatrice
-                                    ? "text-cyan-600 bg-cyan-50"
-                                    : "text-indigo-600 bg-indigo-50"
-                                }`}
+                            ${
+                              isPatrice
+                                ? "text-cyan-600 bg-cyan-50"
+                                : "text-indigo-600 bg-indigo-50"
+                            }`}
                               >
                                 <span className="inline-block mr-1">📍</span>{" "}
                                 {service.duration.split(" - ")[1]}
@@ -674,9 +674,9 @@ export default function Services() {
                             <button
                               onClick={() => openDetailsModal(service)}
                               className={`flex-1 py-3 px-4 rounded-xl font-medium bg-${mainColor}-50 text-${mainColor}-600 
-                hover:bg-${mainColor}-100 hover:shadow-md hover:-translate-y-0.5 
-                active:translate-y-0 active:shadow-sm
-                transition-all duration-200`}
+            hover:bg-${mainColor}-100 hover:shadow-md hover:-translate-y-0.5 
+            active:translate-y-0 active:shadow-sm
+            transition-all duration-200`}
                             >
                               <span className="flex items-center justify-center gap-2">
                                 <svg
@@ -698,10 +698,10 @@ export default function Services() {
                             <button
                               onClick={() => openBookingModal(service)}
                               className={`flex-1 py-3 px-4 rounded-xl font-medium text-white 
-                bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 
-                hover:shadow-lg hover:shadow-${mainColor}-200/50 hover:-translate-y-0.5 
-                active:translate-y-0 active:shadow-sm
-                transition-all duration-200`}
+            bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 
+            hover:shadow-lg hover:shadow-${mainColor}-200/50 hover:-translate-y-0.5 
+            active:translate-y-0 active:shadow-sm
+            transition-all duration-200`}
                             >
                               <span className="flex items-center justify-center gap-2">
                                 <svg

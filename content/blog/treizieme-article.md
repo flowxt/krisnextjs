@@ -2,7 +2,7 @@
 title: "Qu'est ce qu'un portail énergétique"
 description: "Un portail énergétique est un moment particulier où les énergies universelles sont amplifiées, favorisant la transformation personnelle et spirituelle. Ces périodes sont souvent associées à des chiffres, des alignements astrologiques ou des événements cosmiques spécifiques, comme le 12/12, qui est lié à la vibration d'accomplissement et d'équilibre en numérologie."
 date: 2025-02-20T12:00:00Z
-categories: Portail énergétique
+categories: Bien-être
 image: photo/portail.png
 tags:
   - alignement

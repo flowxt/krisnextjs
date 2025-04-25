@@ -2,7 +2,7 @@
 title: Le vinaigre blanc
 description: Le nettoyage énergétique au vinaigre blanc
 date: 2025-03-11T12:00:00Z
-categories: Nettoyage énergétique
+categories: Bien-être
 image: photo/vinaigre.png
 ---
 
