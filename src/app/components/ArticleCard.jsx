@@ -73,3 +73,5 @@ export default function ArticleCard({ article }) {
     </motion.div>
   );
 }
+
+// Carte d'article
