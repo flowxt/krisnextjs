@@ -39,7 +39,7 @@ export default function Navbar() {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="text-gray-800 hover:text-indigo-600 font-medium flex items-center gap-1"
             >
-              Nos soins <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+              Soins <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
             </button>
             
             {dropdownOpen && (
@@ -59,12 +59,19 @@ export default function Navbar() {
                   >
                     Soins pour hommes avec Patrice
                   </Link>
+                  <Link 
+                    href="/soins" 
+                    className="block px-4 py-3 text-gray-800 hover:bg-purple-50 hover:text-purple-600 transition-colors" 
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    Forfaits
+                  </Link>
                 </div>
               </div>
             )}
           </div>
           
-          <Link href="/soins" className="text-gray-800 hover:text-indigo-600 font-medium">Forfaits</Link>
+          <Link href="/avis" className="text-gray-800 hover:text-indigo-600 font-medium">Avis</Link>
           <Link href="/blog" className="text-gray-800 hover:text-indigo-600 font-medium">Blog</Link>
           <Link href="/partenaires" className="text-gray-800 hover:text-indigo-600 font-medium">Partenaires</Link>
           <Link href="/contact" className="text-gray-800 hover:text-indigo-600 font-medium">Contact</Link>
@@ -97,9 +104,16 @@ export default function Navbar() {
             >
               Soins pour hommes avec Patrice
             </Link>
+            <Link 
+              href="/soins" 
+              className="block text-gray-800 font-medium" 
+              onClick={() => setIsOpen(false)}
+            >
+              Forfaits
+            </Link>
           </div>
           
-          <Link href="/soins" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Forfaits</Link>
+          <Link href="/avis" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Avis</Link>
           <Link href="/blog" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Blog</Link>
           <Link href="/partenaires" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Partenaires</Link>
           <Link href="/contact" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Contact</Link>

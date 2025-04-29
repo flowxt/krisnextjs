@@ -260,7 +260,7 @@ export default function GoogleReviews() {
       {/* Bouton Google */}
       <div className="text-center">
         <Link 
-          href="https://g.co/kgs/mLVvCp8" 
+          href="https://g.co/kgs/T5osgxD" 
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center px-6 py-3 bg-white border border-gray-300 text-gray-700 font-medium rounded-full hover:bg-gray-50 transition-all duration-300 shadow-sm"
