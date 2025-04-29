@@ -703,7 +703,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
           ) : (
             // Choix du mode de paiement pour les services standards
             <div className="p-8 text-center">
-              <h3 className="text-xl font-semibold mb-6">Comment souhaitez-vous payer ?</h3>
+              <h3 className="text-xl font-semibold mb-6">Souhaitez-vous une séance en présentiel ou à distance ? Sachez que les disponibilités sont identiques</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-lg mx-auto">
                 <button
@@ -713,8 +713,8 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
                   <svg className="w-12 h-12 text-purple-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                   </svg>
-                  <span className="font-medium text-lg mb-2">Paiement en ligne</span>
-                  <span className="text-sm text-gray-500">Payez maintenant par carte bancaire</span>
+                  <span className="font-medium text-lg mb-2">À distance / en visio</span>
+                  <span className="text-sm text-gray-500">Paiement en ligne par carte bancaire</span>
                 </button>
                 
                 <button
@@ -724,8 +724,8 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
                   <svg className="w-12 h-12 text-purple-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
                   </svg>
-                  <span className="font-medium text-lg mb-2">Paiement sur place</span>
-                  <span className="text-sm text-gray-500">Payez lors de votre rendez-vous</span>
+                  <span className="font-medium text-lg mb-2">En présentiel au cabinet</span>
+                  <span className="text-sm text-gray-500">Paiement sur place</span>
                 </button>
               </div>
               
