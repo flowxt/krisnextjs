@@ -79,12 +79,20 @@ const partnersData = [
     website: "https://www.atypikcode.fr"
   },
   {
-    id: 10,
+    id: 11,
     name: "Harmonie et Sens",
     logo: "/photo/stephanie.png",
     description: "Sophro-analyste",
     category: "praticien",
-    website: "https://sophro-three.vercel.app"
+    website: "https://harmonieetsens74.fr"
+  },
+  {
+    id: 12,
+    name: "My Easy Plan",
+    logo: "/photo/myeasyplan.png",
+    description: "Permis de construire",
+    category: "boutique",
+    website: "https://myeasyplan.fr"
   },
   // Ajoutez vos autres partenaires ici
 ];
