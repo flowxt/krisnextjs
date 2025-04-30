@@ -92,7 +92,7 @@ const partnersData = [
     logo: "/photo/myeasyplan.png",
     description: "Permis de construire",
     category: "boutique",
-    website: "https://myeasyplan.fr"
+    website: "https://myeasyplan.com"
   },
   // Ajoutez vos autres partenaires ici
 ];
