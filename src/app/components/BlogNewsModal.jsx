@@ -11,7 +11,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     // Identifiant unique pour cette "vague" d'articles
     // À changer chaque fois que vous ajoutez de nouveaux articles que vous voulez mettre en avant
-    const currentArticlesBatchId = "articles-2025-05-05";
+    const currentArticlesBatchId = "articles-2025-05-06";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -71,17 +71,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/vingt-et-unieme-article" className="block">
+                    <Link href="/blog/vingt-troisieme-article" className="block">
                       <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
-                        <h4 className="font-semibold text-purple-700 mb-1">Dire non sans culpabiliser</h4>
-                        <p className="text-gray-600 text-sm mb-2">Apprenez à poser vos limites avec douceur et à préserver votre énergie sans sentiment de culpabilité.</p>
+                        <h4 className="font-semibold text-purple-700 mb-1">L'amour de soi - Base de toutes les relations</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvrez comment cultiver l'amour de soi, fondement essentiel de toutes relations authentiques et bienveillantes.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/vingtieme-article" className="block">
+                    <Link href="/blog/vingt-deuxieme-article" className="block">
                       <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors">
-                        <h4 className="font-semibold text-indigo-700 mb-1">Clés sur la Nouvelle Lune du 27 avril 2025</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvrez les énergies du Taureau et un rituel simple pour cette puissante lunaison.</p>
+                        <h4 className="font-semibold text-indigo-700 mb-1">Émotions et énergie - comprendre ce qui se passe en nous</h4>
+                        <p className="text-gray-600 text-sm mb-2">Explorez le langage de vos émotions et apprenez à transformer votre énergie émotionnelle en force positive.</p>
                       </div>
                     </Link>
                   </div>
