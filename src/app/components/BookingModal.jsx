@@ -669,7 +669,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
                   service.id === 4 ? renderGuidanceQuestionForm() : renderGiftCardForm()
                 ) : formStep === "payment" ? (
                   // Affichage du module de paiement Stripe
-                  renderStripePayment()
+                renderStripePayment()
                 ) : null
               ) : (
                 // Utilisation de Calendly pour les autres services

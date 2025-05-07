@@ -5,6 +5,7 @@ import ArticleCard from "../components/ArticleCard";
 import BlogPresentation from "../components/BlogPresentation";
 import BlogFilters from "../components/BlogFilters";
 import { MoonIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
+import LunarCalendar2025 from "../components/LunarCalendar2025";
 
 // Version client qui n'utilise pas fs directement
 export default function Blog() {
@@ -76,7 +77,7 @@ export default function Blog() {
     <div className="min-h-screen bg-pattern py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-11">
         <BlogPresentation />
-
+        <LunarCalendar2025 />
         <BlogFilters
           onFilterChange={(category) => setCategoryFilter(category)}
           onSearchChange={(query) => setSearchQuery(query)}
