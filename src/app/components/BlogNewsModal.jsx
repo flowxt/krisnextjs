@@ -71,17 +71,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/vingt-troisieme-article" className="block">
+                    <Link href="/blog/vingt-quatrieme-article" className="block">
                       <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
-                        <h4 className="font-semibold text-purple-700 mb-1">L'amour de soi - Base de toutes les relations</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvrez comment cultiver l'amour de soi, fondement essentiel de toutes relations authentiques et bienveillantes.</p>
+                        <h4 className="font-semibold text-purple-700 mb-1">🌕 Rituel de Pleine Lune du 12 mai 2025 – Libérer & Révéler</h4>
+                        <p className="text-gray-600 text-sm mb-2">Rituel guidé pour se libérer de l'invisible et révéler sa lumière intérieure lors de la Pleine Lune du 12 mai 2025.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/vingt-deuxieme-article" className="block">
+                    <Link href="/blog/vingt-cinquieme-article" className="block">
                       <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors">
-                        <h4 className="font-semibold text-indigo-700 mb-1">Émotions et énergie - comprendre ce qui se passe en nous</h4>
-                        <p className="text-gray-600 text-sm mb-2">Explorez le langage de vos émotions et apprenez à transformer votre énergie émotionnelle en force positive.</p>
+                        <h4 className="font-semibold text-indigo-700 mb-1">Prendre soin de son énergie quand on est hypersensible 🌸🌟</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvre comment préserver ton équilibre et célébrer ton hypersensibilité dans un monde souvent trop bruyant.</p>
                       </div>
                     </Link>
                   </div>
