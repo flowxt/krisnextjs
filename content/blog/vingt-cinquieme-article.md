@@ -4,7 +4,7 @@ date: 2025-05-05T12:00:00Z
 description: "Découvre comment préserver ton équilibre et célébrer ton hypersensibilité dans un monde souvent trop bruyant."
 tags: [hypersensibilité, bien-être, énergie, méditation, limites]
 categories: Bien-être
-image: photo/IMG_8966.jpg
+image: photo/IMG_8966.JPG
 ---
 
 # Prendre soin de son énergie quand on est hypersensible 🌸🌟
