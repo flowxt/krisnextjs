@@ -1,6 +1,6 @@
 ---
 title: "Prendre soin de son énergie quand on est hypersensible"
-date: "2025-05-10"
+date: 2025-05-05T12:00:00Z
 description: "Découvre comment préserver ton équilibre et célébrer ton hypersensibilité dans un monde souvent trop bruyant."
 tags: [hypersensibilité, bien-être, énergie, méditation, limites]
 categories: Bien-être

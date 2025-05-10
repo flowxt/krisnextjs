@@ -7,11 +7,12 @@ import Link from "next/link";
 
 export default function BlogNewsModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   
   useEffect(() => {
+    setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    // À changer chaque fois que vous ajoutez de nouveaux articles que vous voulez mettre en avant
-    const currentArticlesBatchId = "articles-2025-05-06";
+    const currentArticlesBatchId = "articles-2025-05-15";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -28,6 +29,11 @@ export default function BlogNewsModal() {
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  // Ne rien afficher pendant l'hydratation
+  if (!isMounted) {
+    return null;
+  }
   
   return (
     <AnimatePresence>
@@ -59,6 +65,7 @@ export default function BlogNewsModal() {
                   <button 
                     onClick={closeModal}
                     className="text-white p-1 hover:bg-white/20 rounded-full transition-colors"
+                    aria-label="Fermer la modale"
                   >
                     <XMarkIcon className="w-6 h-6" />
                   </button>
