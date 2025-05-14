@@ -78,10 +78,10 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/vingt-quatrieme-article" className="block">
+                    <Link href="/blog/vingt-sixieme-article" className="block">
                       <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
-                        <h4 className="font-semibold text-purple-700 mb-1">🌕 Rituel de Pleine Lune du 12 mai 2025 – Libérer & Révéler</h4>
-                        <p className="text-gray-600 text-sm mb-2">Rituel guidé pour se libérer de l'invisible et révéler sa lumière intérieure lors de la Pleine Lune du 12 mai 2025.</p>
+                        <h4 className="font-semibold text-purple-700 mb-1">🧂 Le gros sel : comment, pourquoi et vertus</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvrez les usages spirituels et énergétiques du gros sel, ses vertus purifiantes et protectrices, et comment l'intégrer dans votre quotidien pour un bien-être profond.</p>
                       </div>
                     </Link>
                     
