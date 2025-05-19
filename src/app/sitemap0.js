@@ -1,3 +1,7 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
 export default async function sitemap() {
   // URL de base du site
   const baseUrl = "https://www.krislavoixdesanges.com";
@@ -24,5 +28,32 @@ export default async function sitemap() {
     priority: route.priority,
   }));
 
-  return staticRoutes;
+  // Récupération dynamique des articles de blog
+  try {
+    const blogDir = path.join(process.cwd(), "content/blog");
+    const files = fs.readdirSync(blogDir);
+
+    const blogRoutes = files
+      .filter((file) => file.endsWith(".md"))
+      .map((file) => {
+        const filePath = path.join(blogDir, file);
+        const fileContent = fs.readFileSync(filePath, "utf8");
+        const { data } = matter(fileContent);
+        const slug = file.replace(".md", "");
+
+        return {
+          url: `${baseUrl}/blog/${slug}`,
+          lastModified: data.date
+            ? new Date(data.date).toISOString()
+            : currentDate,
+          changeFrequency: "monthly",
+          priority: 0.7,
+        };
+      });
+
+    return [...staticRoutes, ...blogRoutes];
+  } catch (error) {
+    console.error("Erreur lors de la génération du sitemap:", error);
+    return staticRoutes;
+  }
 }
