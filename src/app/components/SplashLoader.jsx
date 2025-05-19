@@ -60,8 +60,6 @@ export default function SplashLoader({ onComplete }) {
           autoPlay
           muted
           playsInline
-          webkit-playsinline="true"
-          playsinline="true"
           loop
           controls={false}
           preload="auto"
