@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-05-15";
+    const currentArticlesBatchId = "articles-2024-12-19";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,17 +78,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/vingt-sixieme-article" className="block">
+                    <Link href="/blog/vingt-neuvieme-article" className="block">
                       <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
-                        <h4 className="font-semibold text-purple-700 mb-1">🧂 Le gros sel : comment, pourquoi et vertus</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvrez les usages spirituels et énergétiques du gros sel, ses vertus purifiantes et protectrices, et comment l'intégrer dans votre quotidien pour un bien-être profond.</p>
+                        <h4 className="font-semibold text-purple-700 mb-1">🌑 Nouvelle Lune du 27 mai 2025 en Gémeaux ♊</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvrez un rituel complet pour cette nouvelle lune en Gémeaux, axé sur la communication, la légèreté et l'ouverture d'esprit.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/vingt-cinquieme-article" className="block">
+                    <Link href="/blog/vingt-huitieme-article" className="block">
                       <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors">
-                        <h4 className="font-semibold text-indigo-700 mb-1">Prendre soin de son énergie quand on est hypersensible 🌸🌟</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvre comment préserver ton équilibre et célébrer ton hypersensibilité dans un monde souvent trop bruyant.</p>
+                        <h4 className="font-semibold text-indigo-700 mb-1">🌸 Le printemps intérieur : renaître à soi</h4>
+                        <p className="text-gray-600 text-sm mb-2">Accueillez le renouveau en vous et cultivez votre lumière intérieure en harmonie avec les cycles de la nature.</p>
                       </div>
                     </Link>
                   </div>
