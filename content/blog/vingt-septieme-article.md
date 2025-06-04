@@ -1,6 +1,6 @@
 ---
 title: "Marcher en conscience : se connecter à la Terre 🚶‍♀️🌍"
-date: "2025-05-27"
+date: "2025-06-04"
 excerpt: "Dans le tumulte du quotidien, il est précieux de renouer avec l'essence même de la vie en faisant une simple promenade. Marcher en conscience te permet de ressentir chaque pas, de t'imprégner de la Terre et de retrouver une connexion profonde avec la nature."
 image: "/photo/marche-en-conscience.png"
 categories: Bien-être
