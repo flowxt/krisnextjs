@@ -1,6 +1,6 @@
 ---
 title: "L'influence des saisons sur notre bien-être énergétique 🍂🌞❄️🌼"
-date: "2024-12-19"
+date: "2025-06-04"
 excerpt: "Les saisons rythment notre vie intérieure et influencent notre énergie de façon subtile et puissante. Découvrez comment vous harmoniser avec ces cycles naturels."
 image: "/photo/arbre.png"
 categories: Bien-être énergétique
