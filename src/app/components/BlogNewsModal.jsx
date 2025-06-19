@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-06-11-pleine-lune";
+    const currentArticlesBatchId = "articles-2025-06-25-nouvelle-lune";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,17 +78,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
+                    <Link href="/blog/trente-deuxieme-article" className="block">
+                      <div className="bg-pink-50 p-4 rounded-lg hover:bg-pink-100 transition-colors">
+                        <h4 className="font-semibold text-pink-700 mb-1">🌑 Nouvelle Lune du 25 juin 2025 en Cancer ♋</h4>
+                        <p className="text-gray-600 text-sm mb-2">Un rituel profondément intuitif &quot;Je redeviens ma maison&quot; pour initier un retour à soi, à l&apos;émotionnel, et semer des intentions de guérison et tendresse.</p>
+                      </div>
+                    </Link>
+                    
                     <Link href="/blog/trente-et-unieme-article" className="block">
                       <div className="bg-amber-50 p-4 rounded-lg hover:bg-amber-100 transition-colors">
                         <h4 className="font-semibold text-amber-700 mb-1">🌕 Pleine Lune du 11 juin 2025 en Sagittaire ♐</h4>
                         <p className="text-gray-600 text-sm mb-2">Un rituel lumineux d&apos;expansion pour libérer tes croyances limitantes et t&apos;aligner avec l&apos;énergie de la vérité et de l&apos;infini.</p>
-                      </div>
-                    </Link>
-                    
-                    <Link href="/blog/trentieme-article" className="block">
-                      <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
-                        <h4 className="font-semibold text-purple-700 mb-1">🍂🌞❄️🌼 L&apos;influence des saisons sur notre bien-être énergétique</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvrez comment vous harmoniser avec les cycles naturels et adapter vos pratiques énergétiques aux rythmes des saisons.</p>
                       </div>
                     </Link>
                   </div>
