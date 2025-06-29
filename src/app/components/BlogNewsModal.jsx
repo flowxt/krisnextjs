@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-06-25-nouvelle-lune";
+    const currentArticlesBatchId = "articles-2025-07-02-rituels-spiritualite";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,17 +78,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/trente-deuxieme-article" className="block">
-                      <div className="bg-pink-50 p-4 rounded-lg hover:bg-pink-100 transition-colors">
-                        <h4 className="font-semibold text-pink-700 mb-1">🌑 Nouvelle Lune du 25 juin 2025 en Cancer ♋</h4>
-                        <p className="text-gray-600 text-sm mb-2">Un rituel profondément intuitif &quot;Je redeviens ma maison&quot; pour initier un retour à soi, à l&apos;émotionnel, et semer des intentions de guérison et tendresse.</p>
+                    <Link href="/blog/trente-quatrieme-article" className="block">
+                      <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors">
+                        <h4 className="font-semibold text-indigo-700 mb-1">🙏✨ Prier, méditer, poser une intention : quelle différence ?</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvre comment ces trois pratiques spirituelles peuvent enrichir ton quotidien de manière unique et t&apos;aider à te connecter à toi-même.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/trente-et-unieme-article" className="block">
-                      <div className="bg-amber-50 p-4 rounded-lg hover:bg-amber-100 transition-colors">
-                        <h4 className="font-semibold text-amber-700 mb-1">🌕 Pleine Lune du 11 juin 2025 en Sagittaire ♐</h4>
-                        <p className="text-gray-600 text-sm mb-2">Un rituel lumineux d&apos;expansion pour libérer tes croyances limitantes et t&apos;aligner avec l&apos;énergie de la vérité et de l&apos;infini.</p>
+                    <Link href="/blog/trente-troisieme-article" className="block">
+                      <div className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition-colors">
+                        <h4 className="font-semibold text-orange-700 mb-1">🌞💖 Rituels du matin pour se connecter à soi</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvre comment instaurer de petites habitudes matinales pour éveiller ton esprit et créer une journée pleine de sens et d&apos;énergie positive.</p>
                       </div>
                     </Link>
                   </div>
