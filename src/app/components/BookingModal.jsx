@@ -64,6 +64,18 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
   // Vérifier si le service utilise Stripe pour le paiement
   const isStripeService = () => stripeOnlyServices.includes(service?.id);
   
+  // Fonction pour vérifier si la Guidance Question est en pause
+  const isGuidanceQuestionPaused = () => {
+    if (service?.id !== 4) return false; // Seulement pour Guidance Question
+    
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const startPause = new Date(currentYear, 6, 24); // 24 juillet (mois 6 = juillet, 0-indexé)
+    const endPause = new Date(currentYear, 6, 31); // 31 juillet
+    
+    return now >= startPause && now <= endPause;
+  };
+
   // Chargement du script Calendly lors de l'ouverture du modal
   useEffect(() => {
     const shouldLoadCalendly = isOpen && service && (
@@ -244,6 +256,39 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
           Retour
+        </button>
+      </div>
+    );
+  };
+
+  // Rendu du bandeau de pause pour Guidance Question
+  const renderGuidanceQuestionPauseBanner = () => {
+    return (
+      <div className="p-8 text-center">
+        <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
+          <div className="flex items-center justify-center mb-4">
+            <svg className="w-12 h-12 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 className="text-xl font-semibold text-orange-800 mb-3">
+            Service temporairement en pause
+          </h3>
+          <p className="text-orange-700 mb-4">
+            La <strong>Guidance à la question</strong> est actuellement en pause du <strong>24 juillet au 31 juillet</strong> inclus.
+          </p>
+          <p className="text-orange-600 text-sm">
+            Ce service sera de nouveau disponible à partir du <strong>1er août</strong>. 
+            <br />
+            Merci de votre compréhension ! 🙏
+          </p>
+        </div>
+        
+        <button 
+          onClick={handleClose}
+          className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all"
+        >
+          Fermer
         </button>
       </div>
     );
@@ -661,7 +706,10 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
             </div>
           ) : hasMultiplePrices() ? (
             // Services avec plusieurs options de prix
-            priceOption ? (
+            isGuidanceQuestionPaused() ? (
+              // Afficher le bandeau de pause pour Guidance Question
+              renderGuidanceQuestionPauseBanner()
+            ) : priceOption ? (
               // Option sélectionnée, afficher formulaires ou Stripe
               isStripeService() ? (
                 formStep === "form" ? (

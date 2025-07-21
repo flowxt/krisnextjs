@@ -328,8 +328,8 @@ export default function Soins() {
                       animate={{ opacity: 1 }}
                       transition={{ duration: 1, delay: 0.9 }}
                     >
-                      "L'énergie vitale est la clé de toute transformation
-                      profonde et durable."
+                      &quot;L&apos;énergie vitale est la clé de toute
+                      transformation profonde et durable&quot;
                     </motion.p>
 
                     <motion.p
