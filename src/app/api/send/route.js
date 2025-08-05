@@ -8,12 +8,12 @@ export async function POST(request) {
     const formData = await request.json();
     const { name, email, phone, message } = formData;
 
-    // En développement, envoi à l'email du compte Resend uniquement
-    const toEmail = "contact@krislavoixdesanges.com"; // Email associé au compte Resend
+    // Email de destination mis à jour
+    const toEmail = "feronkristelle@gmail.com"; // Email associé au compte Resend
 
     const { data, error } = await resend.emails.send({
       from: "Kris La Voix des Anges <onboarding@resend.dev>",
-      to: [toEmail], // Remplacer par l'email associé au compte Resend
+      to: [toEmail], // Email de destination
       reply_to: email, // L'email du client pour pouvoir lui répondre
       subject: `Nouveau message de ${name} - Kris La Voix des Anges`,
       html: `

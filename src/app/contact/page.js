@@ -861,7 +861,7 @@ const ContactForm = () => {
                 <div>
                   <h4 className="font-medium text-gray-900">Contact</h4>
                   <p className="text-gray-600">
-                    Email : contact@krislavoixdesanges.fr
+                    Email : feronkristelle@gmail.com
                   </p>
                 </div>
               </motion.div>

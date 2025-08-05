@@ -9,7 +9,7 @@ export async function POST(request) {
     const serviceId = formData.service;
 
     // Email de destination
-    const toEmail = "contact@krislavoixdesanges.com";
+    const toEmail = "feronkristelle@gmail.com";
 
     let emailHtml = "";
     let emailSubject = "";
