@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-07-25-entretenir-energie";
+    const currentArticlesBatchId = "articles-2025-08-12-liberation-emotionnelle-sturgeon-moon";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,17 +78,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/trente-septieme-article" className="block">
-                      <div className="bg-green-50 p-4 rounded-lg hover:bg-green-100 transition-colors">
-                        <h4 className="font-semibold text-green-700 mb-1">🔋🌿 Bien entretenir son énergie : conseils et rituels au quotidien</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvre des rituels simples et ludiques pour garder une énergie stable et rayonnante, jour après jour.</p>
+                    <Link href="/blog/trente-huitieme-article" className="block">
+                      <div className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors">
+                        <h4 className="font-semibold text-blue-700 mb-1">💧💖 La libération émotionnelle : qu'est‑ce que c'est et pourquoi c'est essentiel</h4>
+                        <p className="text-gray-600 text-sm mb-2">Se libérer de ses émotions, c'est comme ouvrir une vanne pour laisser couler l'eau stagnante ; c'est un acte de courage et de douceur envers soi-même.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/trente-sixieme-article" className="block">
-                      <div className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition-colors">
-                        <h4 className="font-semibold text-orange-700 mb-1">🌑 Nouvelle Lune du 24 juillet 2025 en Lion ♌</h4>
-                        <p className="text-gray-600 text-sm mb-2">Un rituel magique pour activer ta lumière intérieure, cultiver la confiance en soi et oser briller de tout ton éclat.</p>
+                    <Link href="/blog/trente-neuvieme-article" className="block">
+                      <div className="bg-yellow-50 p-4 rounded-lg hover:bg-yellow-100 transition-colors">
+                        <h4 className="font-semibold text-yellow-700 mb-1">🌕 Rituel de la Pleine Lune du 9 août 2025 (Sturgeon Moon)</h4>
+                        <p className="text-gray-600 text-sm mb-2">La Pleine Lune du 9 août 2025, nommée Sturgeon Moon, invite à la célébration de l'abondance et à la gratitude pour la nature qui donne.</p>
                       </div>
                     </Link>
                   </div>
