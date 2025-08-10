@@ -39,7 +39,7 @@ export default function Navbar() {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="text-gray-800 hover:text-indigo-600 font-medium flex items-center gap-1"
             >
-              Soins <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+              Réservation <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
             </button>
             
             {dropdownOpen && (
@@ -50,7 +50,7 @@ export default function Navbar() {
                     className="block px-4 py-3 text-gray-800 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
                     onClick={() => setDropdownOpen(false)}
                   >
-                    Soins avec Kris
+                    Soins ou Guidances avec Kris
                   </Link>
                   <Link 
                     href="/patrice" 
@@ -71,10 +71,10 @@ export default function Navbar() {
             )}
           </div>
           
-          <Link href="/avis" className="text-gray-800 hover:text-indigo-600 font-medium">Avis</Link>
           <Link href="/blog" className="text-gray-800 hover:text-indigo-600 font-medium">Blog</Link>
-          <Link href="/partenaires" className="text-gray-800 hover:text-indigo-600 font-medium">Partenaires</Link>
           <Link href="/contact" className="text-gray-800 hover:text-indigo-600 font-medium">Contact</Link>
+          <Link href="/avis" className="text-gray-800 hover:text-indigo-600 font-medium">Avis</Link>
+          <Link href="/partenaires" className="text-gray-800 hover:text-indigo-600 font-medium">Recommandations</Link>
         </nav>
 
         {/* Menu Burger - visible sur mobile et tablette */}
@@ -95,7 +95,7 @@ export default function Navbar() {
               className="block text-gray-800 font-medium" 
               onClick={() => setIsOpen(false)}
             >
-              Soins avec Kris
+              Soins ou Guidances avec Kris
             </Link>
             <Link 
               href="/patrice" 
@@ -113,10 +113,10 @@ export default function Navbar() {
             </Link>
           </div>
           
-          <Link href="/avis" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Avis</Link>
           <Link href="/blog" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Blog</Link>
-          <Link href="/partenaires" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Partenaires</Link>
           <Link href="/contact" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Contact</Link>
+          <Link href="/avis" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Avis</Link>
+          <Link href="/partenaires" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Recommandations</Link>
         </nav>
       )}
     </div>

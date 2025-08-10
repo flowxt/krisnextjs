@@ -124,9 +124,9 @@ Modalités pratiques :
   //Carte 5
   {
     id: 5,
-    title: "Nettoyage Énergétique du Foyer",
-    price: "à partir de 250€",
-    duration: "3h minimum - Présentiel",
+    title: "Nettoyage Harmonisation",
+    price: "Sur devis",
+    duration: "Variable - Présentiel uniquement",
     intervenant: "Kris",
     icon: <HomeIcon className="w-8 h-8" />,
     description: `L'harmonisation de votre espace de vie est fondamentale pour votre bien-être. Un foyer énergétiquement sain est la base d'une vie équilibrée.
@@ -140,8 +140,15 @@ Chaque intervention est unique et adaptée aux besoins spécifiques de votre lie
 
 Cette transformation crée un espace de vie plus léger et harmonieux, avec une nouvelle dynamique énergétique bénéfique et durable.
 
-* Le tarif et la durée varient selon la surface à traiter et l'intensité énergétique requise. Une évaluation précise sera établie lors de notre premier échange.`,
+Pour un devis personnalisé, merci de remplir le formulaire de demande de devis qui comprend :
+• Votre adresse postale complète
+• Le nombre de mètres carrés à traiter
+• La raison de votre demande d'intervention
+• Depuis combien de temps les phénomènes (physiques ou paranormaux) sont présents
+
+Je vous répondrai rapidement avec un devis adapté à vos besoins spécifiques.`,
     images: ["/photo/IMG_8961.JPG", "/photo/IMG_8960.JPG"],
+    requiresQuote: true, // Propriété pour identifier que c'est un service sur devis
   },
   {
     id: 6,
@@ -423,6 +430,18 @@ export default function Services() {
   const [selectedService, setSelectedService] = useState(null);
   const [visibleItems, setVisibleItems] = useState(services.length); // Afficher tous les services
 
+  // Fonction pour vérifier si on est en période de congés
+  const isVacationPeriod = () => {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    // Dates de congés : du 2 septembre au 29 septembre
+    const vacationStart = new Date(currentYear, 8, 2); // Mois 8 = septembre (0-indexé)
+    const vacationEnd = new Date(currentYear, 8, 29);
+
+    return now >= vacationStart && now <= vacationEnd;
+  };
+
   // Créer les catégories de services
   const categories = [
     {
@@ -551,6 +570,36 @@ export default function Services() {
               <h3 className="text-2xl md:text-3xl font-heading font-bold mb-8 text-purple-800 border-b-2 border-purple-200 pb-2">
                 {category.title}
               </h3>
+
+              {/* Bannière de congés pour les guidances */}
+              {(category.id === "questions" || category.id === "guidances") &&
+                isVacationPeriod() && (
+                  <div className="mb-8 p-4 bg-amber-50 border-l-4 border-amber-400 rounded-xl shadow-md">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0">
+                        <svg
+                          className="h-5 w-5 text-amber-400"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-sm text-amber-700">
+                          <strong>Service temporairement indisponible</strong> -
+                          Je suis en congés du 2 au 29 septembre. Les
+                          réservations reprendront dès mon retour. Merci de
+                          votre compréhension ! 🌟
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
               {/* Grille de services pour cette catégorie */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -695,31 +744,59 @@ export default function Services() {
                                 En savoir plus
                               </span>
                             </button>
-                            <button
-                              onClick={() => openBookingModal(service)}
-                              className={`flex-1 py-3 px-4 rounded-xl font-medium text-white 
-            bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 
-            hover:shadow-lg hover:shadow-${mainColor}-200/50 hover:-translate-y-0.5 
-            active:translate-y-0 active:shadow-sm
-            transition-all duration-200`}
-                            >
-                              <span className="flex items-center justify-center gap-2">
-                                <svg
-                                  className="w-5 h-5"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                  ></path>
-                                </svg>
-                                Réserver
-                              </span>
-                            </button>
+                            {service.requiresQuote ? (
+                              <button
+                                onClick={() => openBookingModal(service)}
+                                className={`flex-1 py-3 px-4 rounded-xl font-medium text-white 
+              bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 
+              hover:shadow-lg hover:shadow-${mainColor}-200/50 hover:-translate-y-0.5 
+              active:translate-y-0 active:shadow-sm
+              transition-all duration-200`}
+                              >
+                                <span className="flex items-center justify-center gap-2">
+                                  <svg
+                                    className="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="2"
+                                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                    ></path>
+                                  </svg>
+                                  Demander un devis
+                                </span>
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => openBookingModal(service)}
+                                className={`flex-1 py-3 px-4 rounded-xl font-medium text-white 
+              bg-gradient-to-r from-${mainColor}-600 to-${secondaryColor}-600 
+              hover:shadow-lg hover:shadow-${mainColor}-200/50 hover:-translate-y-0.5 
+              active:translate-y-0 active:shadow-sm
+              transition-all duration-200`}
+                              >
+                                <span className="flex items-center justify-center gap-2">
+                                  <svg
+                                    className="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="2"
+                                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    ></path>
+                                  </svg>
+                                  Réserver
+                                </span>
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -875,20 +952,41 @@ function ServiceDetailsModal({ service, onClose, onBooking }) {
           transition-all duration-200`}
             >
               <span className="flex items-center justify-center gap-2">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  ></path>
-                </svg>
-                Réserver cette séance
+                {service.requiresQuote ? (
+                  <>
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      ></path>
+                    </svg>
+                    Demander un devis
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      ></path>
+                    </svg>
+                    Réserver cette séance
+                  </>
+                )}
               </span>
             </button>
           </div>

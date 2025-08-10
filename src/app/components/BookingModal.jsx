@@ -36,6 +36,9 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
   // Services avec bon cadeau (pas de paiement nécessaire)
   const giftCardRedemptionServices = [16]; // ID du service "Utilisation Bon Cadeau"
   
+  // Services nécessitant un devis
+  const quoteServices = [5]; // ID du service "Nettoyage Harmonisation"
+  
   // Services avec options de prix multiples
   const multiPriceServices = {
     4: [ // Guidance Question
@@ -431,6 +434,239 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     );
   };
 
+  // Rendu du formulaire de demande de devis pour Nettoyage Harmonisation
+  const renderQuoteForm = () => {
+    return (
+      <div className="p-8">
+        <h3 className="text-xl font-semibold mb-6 text-center">Demande de devis - Nettoyage Harmonisation</h3>
+        
+        {submitError && (
+          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg border border-red-200">
+            {submitError}
+          </div>
+        )}
+        
+        {submitSuccess ? (
+          <div className="text-center">
+            <div className="mb-6 p-6 bg-green-50 rounded-xl border border-green-200">
+              <div className="flex items-center justify-center mb-4">
+                <svg className="w-12 h-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h4 className="text-lg font-semibold text-green-800 mb-2">Demande de devis envoyée !</h4>
+              <p className="text-green-700">
+                Merci pour votre demande. Je vous répondrai rapidement avec un devis personnalisé adapté à vos besoins spécifiques.
+              </p>
+            </div>
+            <button 
+              onClick={handleClose}
+              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all"
+            >
+              Fermer
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleFormSubmit} className="space-y-4">
+            {/* Informations personnelles */}
+            <div className="mb-6">
+              <h4 className="text-lg font-medium mb-3">Vos informations</h4>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+                    Nom*
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    required
+                    value={formData.lastName || ''}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Votre nom"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+                    Prénom*
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    required
+                    value={formData.firstName || ''}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Votre prénom"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email*
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email || ''}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Votre adresse email"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="telephone" className="block text-sm font-medium text-gray-700 mb-1">
+                    Téléphone*
+                  </label>
+                  <input
+                    type="tel"
+                    id="telephone"
+                    name="telephone"
+                    required
+                    value={formData.telephone || ''}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Votre numéro de téléphone"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            {/* Informations sur le lieu */}
+            <div className="mb-6">
+              <h4 className="text-lg font-medium mb-3">Informations sur le lieu à traiter</h4>
+              
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
+                    Adresse postale complète*
+                  </label>
+                  <textarea
+                    id="address"
+                    name="address"
+                    required
+                    value={formData.address || ''}
+                    onChange={handleInputChange}
+                    rows="3"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Numéro, rue, code postal, ville"
+                  ></textarea>
+                </div>
+                
+                <div>
+                  <label htmlFor="squareMeters" className="block text-sm font-medium text-gray-700 mb-1">
+                    Nombre de mètres carrés à traiter*
+                  </label>
+                  <input
+                    type="number"
+                    id="squareMeters"
+                    name="squareMeters"
+                    required
+                    min="1"
+                    value={formData.squareMeters || ''}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Superficie en m²"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="interventionReason" className="block text-sm font-medium text-gray-700 mb-1">
+                    Pourquoi demandez-vous mon intervention ?*
+                  </label>
+                  <textarea
+                    id="interventionReason"
+                    name="interventionReason"
+                    required
+                    value={formData.interventionReason || ''}
+                    onChange={handleInputChange}
+                    rows="4"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Décrivez la situation et ce qui vous amène à demander cette intervention..."
+                  ></textarea>
+                </div>
+                
+                <div>
+                  <label htmlFor="phenomenaDuration" className="block text-sm font-medium text-gray-700 mb-1">
+                    Depuis combien de temps les phénomènes (physiques ou paranormaux) sont-ils présents ?*
+                  </label>
+                  <input
+                    type="text"
+                    id="phenomenaDuration"
+                    name="phenomenaDuration"
+                    required
+                    value={formData.phenomenaDuration || ''}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Ex: Depuis 3 mois, depuis 1 an..."
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-700 mb-1">
+                    Informations complémentaires
+                  </label>
+                  <textarea
+                    id="additionalInfo"
+                    name="additionalInfo"
+                    value={formData.additionalInfo || ''}
+                    onChange={handleInputChange}
+                    rows="3"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Toute information que vous jugez utile..."
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-between mt-6">
+              <button 
+                type="button"
+                onClick={handleClose}
+                className="px-4 py-2 text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-1"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Annuler
+              </button>
+              
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                    </svg>
+                    <span>Envoi en cours...</span>
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <span>Envoyer ma demande de devis</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        )}
+      </div>
+    );
+  };
+
   // Rendu du formulaire de Carte Cadeau
   const renderGiftCardForm = () => {
     return (
@@ -691,7 +927,10 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
           </div>
           
           {/* Contenu conditionnel */}
-          {!canBookOnline(service.id) ? (
+          {quoteServices.includes(service.id) ? (
+            // Formulaire de devis pour Nettoyage Harmonisation
+            renderQuoteForm()
+          ) : !canBookOnline(service.id) ? (
             // Services non réservables en ligne
             <div className="p-8 text-center">
               <h3 className="text-xl font-semibold mb-4">Réservation par SMS uniquement</h3>

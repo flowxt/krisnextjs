@@ -21,6 +21,18 @@ const ContactForm = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [formStep, setFormStep] = useState(0);
 
+  // Fonction pour vérifier si on est en période de congés
+  const isVacationPeriod = () => {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    // Dates de congés : du 2 septembre au 29 septembre
+    const vacationStart = new Date(currentYear, 8, 2); // Mois 8 = septembre (0-indexé)
+    const vacationEnd = new Date(currentYear, 8, 29);
+
+    return now >= vacationStart && now <= vacationEnd;
+  };
+
   // Gestion des changements de champs
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -332,10 +344,42 @@ const ContactForm = () => {
                   Envoyez-moi votre message
                 </span>
               </motion.h3>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-600 mb-4">
                 Je vous répondrai personnellement pour échanger sur vos besoins
                 et vos objectifs énergétiques.
               </p>
+
+              {/* Bannière de congés dynamique */}
+              {isVacationPeriod() && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-8 p-4 bg-amber-50 border-l-4 border-amber-400 rounded-xl shadow-md"
+                >
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <svg
+                        className="h-5 w-5 text-amber-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm text-amber-700">
+                        <strong>Absence temporaire</strong> - Je suis en congés
+                        du 2 au 29 septembre. Votre message sera traité dès mon
+                        retour. Merci de votre patience ! 🌟
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
 
               <AnimatePresence mode="wait">
                 {submitSuccess ? (
