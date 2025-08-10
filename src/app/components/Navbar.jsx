@@ -88,29 +88,32 @@ export default function Navbar() {
         <nav className="lg:hidden backdrop-blur-md bg-white/70 p-4 space-y-4 absolute w-[calc(100%-2rem)] left-4 top-20 rounded-2xl shadow-lg">
           <Link href="/" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Accueil</Link>
           
-          {/* Les liens de soins sont directement affichés sans dropdown sur mobile */}
-          <div className="pl-4 border-l-2 border-indigo-200 space-y-4">
-            <Link 
-              href="/services" 
-              className="block text-gray-800 font-medium" 
-              onClick={() => setIsOpen(false)}
-            >
-              Soins ou Guidances avec Kris
-            </Link>
-            <Link 
-              href="/patrice" 
-              className="block text-gray-800 font-medium" 
-              onClick={() => setIsOpen(false)}
-            >
-              Soins pour hommes avec Patrice
-            </Link>
-            <Link 
-              href="/soins" 
-              className="block text-gray-800 font-medium" 
-              onClick={() => setIsOpen(false)}
-            >
-              Forfaits
-            </Link>
+          {/* Section Réservation avec sous-liens */}
+          <div>
+            <div className="text-gray-800 font-medium mb-2">Réservation</div>
+            <div className="pl-4 border-l-2 border-indigo-200 space-y-3">
+              <Link 
+                href="/services" 
+                className="block text-gray-700 font-medium" 
+                onClick={() => setIsOpen(false)}
+              >
+                Soins ou Guidances avec Kris
+              </Link>
+              <Link 
+                href="/patrice" 
+                className="block text-gray-700 font-medium" 
+                onClick={() => setIsOpen(false)}
+              >
+                Soins pour hommes avec Patrice
+              </Link>
+              <Link 
+                href="/soins" 
+                className="block text-gray-700 font-medium" 
+                onClick={() => setIsOpen(false)}
+              >
+                Forfaits
+              </Link>
+            </div>
           </div>
           
           <Link href="/blog" className="block text-gray-800 font-medium" onClick={() => setIsOpen(false)}>Blog</Link>
