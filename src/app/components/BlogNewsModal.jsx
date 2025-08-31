@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-08-12-liberation-emotionnelle-sturgeon-moon";
+    const currentArticlesBatchId = "articles-2025-08-23-emotions-chakras";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,17 +78,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/trente-huitieme-article" className="block">
-                      <div className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors">
-                        <h4 className="font-semibold text-blue-700 mb-1">💧💖 La libération émotionnelle : qu'est‑ce que c'est et pourquoi c'est essentiel</h4>
-                        <p className="text-gray-600 text-sm mb-2">Se libérer de ses émotions, c'est comme ouvrir une vanne pour laisser couler l'eau stagnante ; c'est un acte de courage et de douceur envers soi-même.</p>
+                    <Link href="/blog/quarantieme-article" className="block">
+                      <div className="bg-pink-50 p-4 rounded-lg hover:bg-pink-100 transition-colors">
+                        <h4 className="font-semibold text-pink-700 mb-1">💖 Pourquoi la gestion des émotions est-elle si importante ?</h4>
+                        <p className="text-gray-600 text-sm mb-2">Les émotions sont comme des vagues : parfois douces, parfois puissantes, mais toujours là pour nous dire quelque chose. Découvrez comment les apprivoiser avec bienveillance.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/trente-neuvieme-article" className="block">
-                      <div className="bg-yellow-50 p-4 rounded-lg hover:bg-yellow-100 transition-colors">
-                        <h4 className="font-semibold text-yellow-700 mb-1">🌕 Rituel de la Pleine Lune du 9 août 2025 (Sturgeon Moon)</h4>
-                        <p className="text-gray-600 text-sm mb-2">La Pleine Lune du 9 août 2025, nommée Sturgeon Moon, invite à la célébration de l'abondance et à la gratitude pour la nature qui donne.</p>
+                    <Link href="/blog/quarante-et-unieme-article" className="block">
+                      <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
+                        <h4 className="font-semibold text-purple-700 mb-1">🌈 Les chakras : comprendre ces centres d'énergie pour mieux s'harmoniser</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvrez les 7 chakras principaux et apprenez comment équilibrer ces centres énergétiques pour votre bien-être global.</p>
                       </div>
                     </Link>
                   </div>
