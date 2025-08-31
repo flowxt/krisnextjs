@@ -2,7 +2,7 @@
 title: "🌈 Les chakras : comprendre ces centres d'énergie pour mieux s'harmoniser"
 date: "2025-08-31"
 excerpt: "Tu as sûrement déjà entendu parler des chakras… mais que sont-ils vraiment ? Et pourquoi sont-ils si importants pour notre bien-être global — corps, cœur, esprit ? Dans cet article, je t'emmène à la (re)découverte de ces merveilleux centres d'énergie."
-image: "/photo/leschakras.png"
+image: "/photo/leschakras.jpg"
 categories: Spiritualité
 ---
 
@@ -131,4 +131,4 @@ Tu veux en savoir plus sur l'état de tes chakras ou recevoir un soin ciblé ?
 
 Je peux t'accompagner dans cette exploration avec douceur et intuition 🌈✨
 
-![Les 7 chakras principaux](/photo/leschakras.png)
+![Les 7 chakras principaux](/photo/leschakras.jpg)
