@@ -435,9 +435,9 @@ export default function Services() {
     const now = new Date();
     const currentYear = now.getFullYear();
 
-    // Dates de congés : du 2 septembre au 29 septembre
-    const vacationStart = new Date(currentYear, 8, 2); // Mois 8 = septembre (0-indexé)
-    const vacationEnd = new Date(currentYear, 8, 29);
+    // Dates de congés : du 2 septembre au 25 septembre 2025
+    const vacationStart = new Date(2025, 8, 2); // Mois 8 = septembre (0-indexé)
+    const vacationEnd = new Date(2025, 8, 25);
 
     return now >= vacationStart && now <= vacationEnd;
   };

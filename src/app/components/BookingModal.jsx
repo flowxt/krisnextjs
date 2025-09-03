@@ -72,11 +72,9 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     if (service?.id !== 4) return false; // Seulement pour Guidance Question
     
     const now = new Date();
-    const currentYear = now.getFullYear();
-    const startPause = new Date(currentYear, 6, 24); // 24 juillet (mois 6 = juillet, 0-indexé)
-    const endPause = new Date(currentYear, 6, 31); // 31 juillet
+    const endPause = new Date(2025, 8, 25); // 25 septembre 2025 (mois 8 = septembre, 0-indexé)
     
-    return now >= startPause && now <= endPause;
+    return now <= endPause;
   };
 
   // Chargement du script Calendly lors de l'ouverture du modal
@@ -278,10 +276,10 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
             Service temporairement en pause
           </h3>
           <p className="text-orange-700 mb-4">
-            La <strong>Guidance à la question</strong> est actuellement en pause du <strong>24 juillet au 31 juillet</strong> inclus.
+            La <strong>Guidance à la question</strong> est actuellement en pause jusqu'au <strong>25 septembre 2025</strong> inclus.
           </p>
           <p className="text-orange-600 text-sm">
-            Ce service sera de nouveau disponible à partir du <strong>1er août</strong>. 
+            Ce service sera de nouveau disponible à partir du <strong>26 septembre 2025</strong>. 
             <br />
             Merci de votre compréhension ! 🙏
           </p>
