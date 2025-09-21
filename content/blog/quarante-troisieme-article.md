@@ -3,7 +3,7 @@ title: "🌕✨ Mini Rituel de la Pleine Lune d'Octobre (Hunter's Moon)"
 date: "2025-10-07"
 excerpt: "Voici un rituel simplifié et puissant pour la Pleine Lune du 7 octobre 2025, qui ne prend que 10 à 15 minutes tout en gardant toute sa force symbolique. Parfait pour honorer cette phase lunaire même avec peu de temps disponible."
 image: "/photo/lune-oct.jpg"
-categories: Spiritualité
+categories: Pleine lune
 ---
 
 🌾 Voici un rituel simplifié et puissant pour la Pleine Lune du 7 octobre 2025, qui ne prend que 10 à 15 minutes tout en gardant toute sa force symbolique :

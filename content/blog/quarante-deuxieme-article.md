@@ -3,7 +3,7 @@ title: "Rituel de la Nouvelle Lune du 21 septembre 2025 (Harvest New Moon) 🌱�
 date: "2025-09-21"
 excerpt: "La Nouvelle Lune du 21 septembre 2025 à 21 h 54 CEST est une puissante invitation à se reconnecter à ses racines, planter de nouveaux projets et préparer l'automne avec confiance. Voici un rituel sur‑mesure pour profiter de cette phase lunaire de transition."
 image: "/photo/lune-sept.png"
-categories: Spiritualité
+categories: Nouvelle lune
 ---
 
 La Nouvelle Lune du 21 septembre 2025 à 21 h 54 CEST est une puissante invitation à se reconnecter à ses racines, planter de nouveaux projets et préparer l'automne avec confiance. Voici un rituel sur‑mesure pour profiter de cette phase lunaire de transition :
