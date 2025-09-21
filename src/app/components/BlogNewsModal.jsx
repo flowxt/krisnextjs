@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-08-23-emotions-chakras";
+    const currentArticlesBatchId = "articles-2025-09-bien-etre-soin";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,17 +78,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/quarantieme-article" className="block">
+                    <Link href="/blog/quarante-cinquieme-article" className="block">
                       <div className="bg-pink-50 p-4 rounded-lg hover:bg-pink-100 transition-colors">
-                        <h4 className="font-semibold text-pink-700 mb-1">💖 Pourquoi la gestion des émotions est-elle si importante ?</h4>
-                        <p className="text-gray-600 text-sm mb-2">Les émotions sont comme des vagues : parfois douces, parfois puissantes, mais toujours là pour nous dire quelque chose. Découvrez comment les apprivoiser avec bienveillance.</p>
+                        <h4 className="font-semibold text-pink-700 mb-1">💖 Prendre soin de soi : un acte d'amour essentiel</h4>
+                        <p className="text-gray-600 text-sm mb-2">Dans le tourbillon du quotidien, découvrez pourquoi prendre soin de soi est l'un des plus grands gestes d'amour que l'on puisse s'offrir.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/quarante-et-unieme-article" className="block">
+                    <Link href="/blog/quarante-quatrieme-article" className="block">
                       <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
-                        <h4 className="font-semibold text-purple-700 mb-1">🌈 Les chakras : comprendre ces centres d'énergie pour mieux s'harmoniser</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvrez les 7 chakras principaux et apprenez comment équilibrer ces centres énergétiques pour votre bien-être global.</p>
+                        <h4 className="font-semibold text-purple-700 mb-1">🌸 Le bien-être : une quête, un équilibre, un état d'être</h4>
+                        <p className="text-gray-600 text-sm mb-2">Qu'est-ce que le bien-être vraiment ? Découvrez comment cultiver cet état d'équilibre intérieur au quotidien.</p>
                       </div>
                     </Link>
                   </div>
