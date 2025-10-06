@@ -2,7 +2,7 @@
 title: "🌑 Rituel de la Nouvelle Lune du 21 octobre 2025"
 date: "2025-10-20"
 excerpt: "Une pause sacrée pour semer doucement de nouvelles intentions… Rituel simplifié de 10 à 15 minutes pour honorer cette lunaison d'automne et préparer l'hiver avec douceur et clarté."
-image: "/photo/nouvelleluneoct.jpg"
+image: "/photo/nouvelleluneoct.avif"
 categories: Nouvelle lune
 ---
 
@@ -40,6 +40,7 @@ Visualise un ciel étoilé très sombre, paisible, prêt à accueillir de nouvel
 Dans ton carnet, note 1 à 3 intentions douces pour ce nouveau cycle.
 
 **📝 Exemples :**
+
 - _« Je me donne du temps chaque jour pour écouter mon corps. »_
 - _« Je choisis la paix, même dans l'agitation. »_
 
@@ -67,4 +68,4 @@ Tu peux relire tes intentions à chaque début de semaine pour les garder vivant
 
 Ce rituel doux vous accompagne dans cette transition automnale, en honorant vos rythmes naturels et en plantant les graines de vos futures transformations 🍂✨
 
-![Nouvelle Lune d'octobre](/photo/nouvelleluneoct.jpg)
+![Nouvelle Lune d'octobre](/photo/nouvelleluneoct.avif)

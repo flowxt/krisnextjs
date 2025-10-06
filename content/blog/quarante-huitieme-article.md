@@ -2,7 +2,7 @@
 title: "✨ Savoir se foutre la paix : un art de vivre intérieur"
 date: "2025-10-02"
 excerpt: "Et si la prochaine étape de ton bien-être, c'était… de te foutre la paix ? Pas dans le sens de tout lâcher, mais dans le sens profond et libérateur de cesser la guerre intérieure qu'on se fait trop souvent."
-image: "/photo/doigts.jpg"
+image: "/photo/doigts.webp"
 categories: Bien-être
 ---
 
@@ -82,4 +82,4 @@ Et de te dire, tendrement :
 
 _« Tu fais déjà de ton mieux, et c'est suffisant. »_
 
-![Se foutre la paix](/photo/doigts.jpg)
+![Se foutre la paix](/photo/doigts.webp)
