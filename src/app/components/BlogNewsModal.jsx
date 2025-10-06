@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-09-bien-etre-soin";
+    const currentArticlesBatchId = "articles-2025-10-lune-paix";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,17 +78,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/quarante-cinquieme-article" className="block">
-                      <div className="bg-pink-50 p-4 rounded-lg hover:bg-pink-100 transition-colors">
-                        <h4 className="font-semibold text-pink-700 mb-1">💖 Prendre soin de soi : un acte d'amour essentiel</h4>
-                        <p className="text-gray-600 text-sm mb-2">Dans le tourbillon du quotidien, découvrez pourquoi prendre soin de soi est l'un des plus grands gestes d'amour que l'on puisse s'offrir.</p>
+                    <Link href="/blog/quarante-sixieme-article" className="block">
+                      <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors">
+                        <h4 className="font-semibold text-indigo-700 mb-1">🌾 Mini Rituel de la Pleine Lune d'Octobre (Hunter's Moon)</h4>
+                        <p className="text-gray-600 text-sm mb-2">Un rituel doux et rapide de 10-15 minutes pour honorer la Pleine Lune d'octobre, parfait même avec peu de temps disponible.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/quarante-quatrieme-article" className="block">
-                      <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
-                        <h4 className="font-semibold text-purple-700 mb-1">🌸 Le bien-être : une quête, un équilibre, un état d'être</h4>
-                        <p className="text-gray-600 text-sm mb-2">Qu'est-ce que le bien-être vraiment ? Découvrez comment cultiver cet état d'équilibre intérieur au quotidien.</p>
+                    <Link href="/blog/quarante-huitieme-article" className="block">
+                      <div className="bg-green-50 p-4 rounded-lg hover:bg-green-100 transition-colors">
+                        <h4 className="font-semibold text-green-700 mb-1">✨ Savoir se foutre la paix : un art de vivre intérieur</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvrez l'art libérateur de cesser la guerre intérieure et d'accueillir vos rythmes naturels avec bienveillance.</p>
                       </div>
                     </Link>
                   </div>
