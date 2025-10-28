@@ -47,10 +47,8 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       { label: "3 Questions", price: "40€", slug: "guidance-question-3" }
     ],
     7: [ // Carte Cadeau
-      { label: "Carte Cadeau 60€", price: "60€", slug: "carte-cadeau-60" },
-      { label: "Carte Cadeau 80€", price: "80€", slug: "carte-cadeau-80" },
-      { label: "Carte Cadeau 100€", price: "100€", slug: "carte-cadeau-100" },
-      { label: "Carte Cadeau Personnalisée", price: "Sur mesure", slug: "carte-cadeau-personnalise" }
+      { label: "Carte Cadeau 80€ - Guidance 45 min", price: "80€", slug: "carte-cadeau-80" },
+      { label: "Carte Cadeau 100€ - Guidance 1h", price: "100€", slug: "carte-cadeau-100" }
     ]
   };
   

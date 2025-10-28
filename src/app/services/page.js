@@ -183,20 +183,24 @@ Pour toute séance en distanciel, règlement minimum 48h avant la prestation.
   },
   {
     id: 7,
-    title: "Carte Cadeau Soin Énergétique",
-    price: "Dès 60€",
-    duration: "1h - Présentiel/Distance",
+    title: "Carte Cadeau Guidance",
+    price: "Dès 80€",
+    duration: "45 min à 1h - Présentiel/Distance",
     intervenant: "Kris",
     icon: <GiftIcon className="w-8 h-8" />,
-    description: `Offrez un moment de sérénité à un être cher avec ce cadeau unique qui touche l'âme et le cœur.
+    description: `Offrez un moment de guidance spirituelle à un être cher avec ce cadeau unique qui touche l'âme et le cœur.
   
-✨ Soin énergétique personnalisé
+✨ Guidance spirituelle personnalisée
 ✨ Bon cadeau nominatif élégant
 ✨ Validité d'un an
 ✨ Envoi par mail ou courrier
 
+Deux options au choix :
+• Carte Cadeau 80€ : Guidance de 45 minutes
+• Carte Cadeau 100€ : Guidance d'1 heure
+
 Le bon cadeau comprend :
-• Une séance énergétique complète d'1h
+• Une séance de guidance intuitive et bienveillante
 • Un message personnalisé de votre part
 • La flexibilité du présentiel ou distanciel
 
@@ -206,7 +210,7 @@ Modalités pratiques :
 • Personnalisation de votre message
 • Valable 1 an à partir de l'émission
 
-* Un présent précieux offrant un véritable moment de reconnexion et de profond ressourcement. ✨`,
+* Un présent précieux offrant un véritable moment de reconnexion et de clarté spirituelle. ✨`,
     images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"], // À remplacer avec les images appropriées
   },
   {
