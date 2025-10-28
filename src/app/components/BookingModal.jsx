@@ -19,16 +19,17 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       "guidance-question-2": "https://buy.stripe.com/8wM15Y9A32w3dQkeUV", // 2 questions 30€
       "guidance-question-3": "https://buy.stripe.com/14keWOeUnc6D6nS8wy", // 3 questions 40€
     },
-    7: { // Cartes Cadeau
-      "carte-cadeau-60": "https://buy.stripe.com/eVaeWOfYr6Mj3bGfZ1", // 60€
+    7: { // Cartes Cadeau Guidance
       "carte-cadeau-80": "https://buy.stripe.com/5kA3e69A38UrfYs8wA", // 80€
       "carte-cadeau-100": "https://buy.stripe.com/28o5mebIb0nV13yaEJ", // 100€
-      "carte-cadeau-personnalise": "https://buy.stripe.com/9AQ9Cu8vZfiPfYseV0", // Personnalisée
+    },
+    17: { // Carte Cadeau Soin Énergétique
+      "carte-cadeau-soin-100": "https://buy.stripe.com/28o5mebIb0nV13yaEJ", // 100€ (même lien que guidance 1h)
     }
   };
 
   // Services disponibles uniquement en paiement en ligne avec Stripe
-  const stripeOnlyServices = [4, 7]; // Guidance question et Carte cadeau
+  const stripeOnlyServices = [4, 7, 17]; // Guidance question, Carte cadeau Guidance, Carte cadeau Soin
   
   // Services disponibles uniquement en paiement en ligne
   const onlineOnlyServices = []; // Autres services en ligne uniquement
@@ -46,9 +47,12 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       { label: "2 Questions", price: "30€", slug: "guidance-question-2" },
       { label: "3 Questions", price: "40€", slug: "guidance-question-3" }
     ],
-    7: [ // Carte Cadeau
+    7: [ // Carte Cadeau Guidance
       { label: "Carte Cadeau 80€ - Guidance 45 min", price: "80€", slug: "carte-cadeau-80" },
       { label: "Carte Cadeau 100€ - Guidance 1h", price: "100€", slug: "carte-cadeau-100" }
+    ],
+    17: [ // Carte Cadeau Soin Énergétique
+      { label: "Carte Cadeau 100€ - Soin Énergétique 1h", price: "100€", slug: "carte-cadeau-soin-100" }
     ]
   };
   

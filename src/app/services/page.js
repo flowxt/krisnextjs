@@ -424,6 +424,35 @@ Lors de votre réservation, merci de préciser :
 Prenez soin de respecter les conditions d'utilisation de votre bon cadeau pour profiter pleinement de votre expérience spirituelle.`,
     images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
   },
+  {
+    id: 17,
+    title: "Carte Cadeau Soin Énergétique 100€",
+    price: "100€",
+    duration: "1h - Présentiel/Distance",
+    intervenant: "Kris",
+    icon: <GiftIcon className="w-8 h-8" />,
+    description: `Offrez un moment de sérénité profonde à un être cher avec ce soin énergétique complet.
+  
+✨ Soin énergétique personnalisé d'1 heure
+✨ Bon cadeau nominatif élégant
+✨ Validité d'un an
+✨ Envoi par mail ou courrier
+
+Le bon cadeau comprend :
+• Une séance énergétique complète d'1 heure
+• Un accompagnement bienveillant et personnalisé
+• Un message personnalisé de votre part
+• La flexibilité du présentiel ou distanciel
+
+Modalités pratiques :
+• Envoi dès réception du règlement
+• Choix d'envoi par mail ou courrier postal
+• Personnalisation de votre message
+• Valable 1 an à partir de l'émission
+
+* Un présent précieux offrant un véritable moment de reconnexion énergétique et de profond ressourcement. ✨`,
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
+  },
 
   // Ajouter les autres services de la même manière
 ];
@@ -481,7 +510,7 @@ export default function Services() {
     {
       id: "bon-cadeau",
       title: "Bon cadeau",
-      services: [7, 16], // Carte Cadeau Soin Énergétique, Utiliser un Bon Cadeau
+      services: [7, 17, 16], // Carte Cadeau Guidance, Carte Cadeau Soin Énergétique 100€, Utiliser un Bon Cadeau
     },
   ];
 
