@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import Cta from "./components/Cta";
 import Hero from "./components/Hero";
 import Presentation from "./components/Presentation";
+import PatricePresentation from "./components/PatricePresentation";
 import SplashLoader from "./components/SplashLoader";
 // import GoogleReviews from "./components/GoogleReviews";
 import BlogNewsModal from "./components/BlogNewsModal";
@@ -202,7 +203,9 @@ export default function Home() {
                   dans cette interview
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  ✨ Dans cette émission de La Spiritualité pour Tous, je partage mon univers rempli d'expériences étonnantes, d'anecdotes touchantes et de messages inspirants 👼
+                  ✨ Dans cette émission de La Spiritualité pour Tous, je
+                  partage mon univers rempli d'expériences étonnantes,
+                  d'anecdotes touchantes et de messages inspirants 👼
                 </p>
               </motion.div>
 
@@ -217,14 +220,14 @@ export default function Home() {
                 >
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                     <div className="aspect-video w-full">
-                      <iframe 
-                        width="100%" 
-                        height="100%" 
-                        src="https://www.youtube.com/embed/_xVkQTn0v6M?si=0PnVewOaTc5Equi6" 
-                        title="Interview Kris La Voix des Anges - La Spiritualité pour Tous" 
-                        frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerPolicy="strict-origin-when-cross-origin" 
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/_xVkQTn0v6M?si=0PnVewOaTc5Equi6"
+                        title="Interview Kris La Voix des Anges - La Spiritualité pour Tous"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
                         className="rounded-3xl"
                       ></iframe>
@@ -248,16 +251,24 @@ export default function Home() {
                       Une rencontre authentique
                     </h3>
                     <p className="text-gray-700 leading-relaxed mb-4">
-                      Médium de naissance, je vous entraîne dans mon univers rempli d'expériences étonnantes, d'anecdotes touchantes et de messages inspirants.
+                      Médium de naissance, je vous entraîne dans mon univers
+                      rempli d'expériences étonnantes, d'anecdotes touchantes et
+                      de messages inspirants.
                     </p>
                     <p className="text-gray-700 leading-relaxed mb-4">
-                      Même avec mes dons innés, je rappelle que rien n'est acquis : il faut oser{" "}
-                      <span className="font-semibold text-purple-600">travailler sur soi</span> 💎, 
-                      apprendre à s'écouter et transformer ses fragilités en forces 💖.
+                      Même avec mes dons innés, je rappelle que rien n'est
+                      acquis : il faut oser{" "}
+                      <span className="font-semibold text-purple-600">
+                        travailler sur soi
+                      </span>{" "}
+                      💎, apprendre à s'écouter et transformer ses fragilités en
+                      forces 💖.
                     </p>
                     <p className="text-gray-700 leading-relaxed">
-                      Avec simplicité et authenticité, je partage mon chemin spirituel, mes prises de conscience et ma vision de la médiumnité 🔮. 
-                      Une rencontre lumineuse, riche d'enseignements et d'espoir 🌈✨.
+                      Avec simplicité et authenticité, je partage mon chemin
+                      spirituel, mes prises de conscience et ma vision de la
+                      médiumnité 🔮. Une rencontre lumineuse, riche
+                      d'enseignements et d'espoir 🌈✨.
                     </p>
                   </div>
 
@@ -279,6 +290,8 @@ export default function Home() {
           </section>
 
           <Presentation />
+
+          <PatricePresentation />
 
           <Cta page="accueil" />
         </main>

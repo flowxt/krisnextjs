@@ -11,7 +11,6 @@ import {
   BrainIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import PatricePresentation from "../components/PatricePresentation";
 
 export default function PatricePage() {
   const [selectedService, setSelectedService] = useState(null);
@@ -170,9 +169,108 @@ Le processus de transformation :
 
   return (
     <main>
-      <PatricePresentation />
+      {/* Section Hero pour la page Patrice */}
+      <section className="relative h-[60vh] min-h-[500px] bg-gradient-to-br from-blue-50 via-cyan-50 to-gray-50 overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.1 }}
+            transition={{ duration: 1.5 }}
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.3) 0%, transparent 50%)",
+            }}
+          />
+        </div>
 
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-gray-100">
+        <div className="relative z-10 h-full flex items-center justify-center px-4">
+          <div className="max-w-5xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-6"
+            >
+              <motion.div
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-8"
+              >
+                <UserIcon className="w-6 h-6 text-blue-600" />
+                <span className="text-blue-800 font-semibold">
+                  Patrice Guffon - Thérapeute & Coach
+                </span>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
+              >
+                Libération émotionnelle{" "}
+                <span className="block mt-2">
+                  <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    et transformation masculine
+                  </span>
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto"
+              >
+                Un accompagnement unique alliant olfactothérapie et zéro mental
+                pour retrouver votre état d'être aligné
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8"
+              >
+                <a
+                  href="#services"
+                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  Découvrir les soins
+                </a>
+                <a
+                  href="sms:+33665553341"
+                  className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                >
+                  <PhoneIcon className="w-5 h-5" />
+                  Réserver par SMS
+                </a>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Élément décoratif en bas */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            viewBox="0 0 1440 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
+              fill="#f3f4f6"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <section
+        id="services"
+        className="py-20 bg-gradient-to-b from-gray-100 to-blue-50"
+      >
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -184,16 +282,35 @@ Le processus de transformation :
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-blue-100 px-4 py-1.5 rounded-full mb-4"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-cyan-100 px-6 py-2 rounded-full mb-6 shadow-md"
             >
               <UserIcon className="w-5 h-5 text-blue-600" />
-              <span className="text-blue-800 font-medium text-sm">
+              <span className="text-blue-800 font-semibold text-sm">
                 Services pour hommes
               </span>
             </motion.div>
-            <h2 className="text-4xl font-bold font-heading mb-3">
-              Soins de <span className="text-blue-600">transformation</span>
-            </h2>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-4xl md:text-5xl font-bold font-heading mb-4"
+            >
+              Soins de{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                transformation
+              </span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-gray-600 text-lg max-w-2xl mx-auto"
+            >
+              Des accompagnements personnalisés pour révéler votre plein
+              potentiel
+            </motion.p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -204,57 +321,207 @@ Le processus de transformation :
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-blue-100 h-full flex flex-col"
+                className="group relative h-full flex flex-col"
               >
-                <div className="p-6 flex-grow">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-blue-100 rounded-lg">
-                      {service.icon}
-                    </div>
-                    <div className="text-right">
-                      <span className="block text-blue-600 font-bold">
-                        {service.price}
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        {service.duration}
-                      </span>
-                    </div>
+                {/* Effet de glow animé en arrière-plan */}
+                <motion.div
+                  className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500"
+                  animate={{
+                    background: [
+                      "linear-gradient(to right, #60a5fa, #06b6d4, #2563eb)",
+                      "linear-gradient(to right, #2563eb, #60a5fa, #06b6d4)",
+                      "linear-gradient(to right, #60a5fa, #06b6d4, #2563eb)",
+                    ],
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+
+                {/* Carte principale */}
+                <motion.div
+                  className="relative bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col border border-blue-100"
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                >
+                  {/* Particules décoratives qui apparaissent au survol */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    {[...Array(8)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-blue-400 rounded-full"
+                        initial={{
+                          x: Math.random() * 100 + "%",
+                          y: Math.random() * 100 + "%",
+                        }}
+                        animate={{
+                          y: [
+                            Math.random() * 100 + "%",
+                            Math.random() * 100 + "%",
+                          ],
+                          opacity: [0.2, 0.8, 0.2],
+                        }}
+                        transition={{
+                          duration: 2 + Math.random() * 3,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                        }}
+                      />
+                    ))}
                   </div>
 
-                  <h3 className="font-heading text-xl font-bold mb-3 text-gray-900">
-                    {service.title}
-                  </h3>
+                  {/* Bande décorative supérieure avec dégradé */}
+                  <div className="h-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600" />
 
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                    {service.description.split("\n\n")[0]}
-                  </p>
-                </div>
+                  <div className="p-6 flex-grow relative z-10">
+                    {/* Header avec icône et prix */}
+                    <div className="flex items-start justify-between mb-6">
+                      {/* Icône avec effet de glow */}
+                      <motion.div
+                        className="relative"
+                        whileHover={{
+                          rotate: [0, -10, 10, -10, 0],
+                          scale: 1.1,
+                        }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="relative p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200 group-hover:border-blue-300 transition-colors">
+                          <div className="text-blue-600 group-hover:text-blue-700 transition-colors">
+                            {service.icon}
+                          </div>
+                        </div>
+                      </motion.div>
 
-                <div className="mt-auto border-t border-blue-50">
-                  <button
-                    onClick={() => setSelectedService(service)}
-                    className="w-full py-4 text-blue-600 font-medium hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
-                  >
-                    Voir plus de détails
-                  </button>
-                </div>
+                      {/* Badge prix stylé */}
+                      <motion.div
+                        className="text-right"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <div className="bg-gradient-to-br from-blue-500 to-cyan-600 text-white px-4 py-2 rounded-full shadow-lg">
+                          <span className="block font-bold text-lg">
+                            {service.price}
+                          </span>
+                        </div>
+                        <span className="text-xs text-gray-500 mt-2 block bg-blue-50 px-3 py-1 rounded-full">
+                          {service.duration}
+                        </span>
+                      </motion.div>
+                    </div>
+
+                    {/* Titre avec effet au survol */}
+                    <motion.h3
+                      className="font-heading text-xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300"
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      {service.title}
+                    </motion.h3>
+
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                      {service.description.split("\n\n")[0]}
+                    </p>
+                  </div>
+
+                  {/* Bouton avec effet moderne */}
+                  <div className="mt-auto relative overflow-hidden">
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                    />
+                    <button
+                      onClick={() => setSelectedService(service)}
+                      className="relative w-full py-4 text-blue-600 font-semibold hover:text-blue-700 transition-all flex items-center justify-center gap-2 border-t border-blue-100 group-hover:border-blue-300"
+                    >
+                      <span>Voir plus de détails</span>
+                      <motion.span
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        →
+                      </motion.span>
+                    </button>
+                  </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <motion.div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="mt-20 text-center"
+          >
+            <div className="relative inline-block">
+              {/* Effet de glow en arrière-plan */}
+              <motion.div
+                className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full blur-lg opacity-30"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              <motion.a
+                href="sms:+33665553341"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300"
+              >
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="bg-white/20 p-2 rounded-full"
+                >
+                  <PhoneIcon className="w-6 h-6" />
+                </motion.div>
+                <div className="text-left">
+                  <span className="block text-sm font-medium opacity-90">
+                    Réservation par SMS uniquement
+                  </span>
+                  <span className="block text-lg font-bold">
+                    06.65.55.33.41
+                  </span>
+                </div>
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="text-2xl"
+                >
+                  →
+                </motion.span>
+              </motion.a>
+            </div>
+
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="inline-flex items-center gap-3 bg-blue-50 border border-blue-200 rounded-full px-6 py-3"
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="mt-6 text-gray-600 text-sm"
             >
-              <PhoneIcon className="w-5 h-5 text-blue-600" />
-              <span className="text-blue-800">
-                Réservation uniquement par SMS au 06.65.55.33.41
-              </span>
-            </motion.div>
-          </div>
+              📱 Cliquez pour envoyer un SMS et réserver votre séance
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
