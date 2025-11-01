@@ -36,39 +36,11 @@ export default function Presentation() {
   return (
     <>
 <motion.section 
-  className="w-full py-24 bg-gradient-to-br from-gray-50 to-purple-50 overflow-hidden relative"
+  className="w-full py-24 overflow-hidden relative"
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ duration: 1 }}
 >
-  {/* Particules d'arrière-plan subtiles */}
-  <motion.div 
-    className="absolute inset-0 pointer-events-none"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 0.3 }}
-    transition={{ delay: 0.5, duration: 1 }}
-  >
-    {[...Array(12)].map((_, i) => (
-      <motion.div 
-        key={i}
-        className="absolute w-1 h-1 rounded-full bg-purple-300"
-        initial={{ 
-          x: Math.random() * 100 + "%", 
-          y: Math.random() * 100 + "%",
-          opacity: 0.2
-        }}
-        animate={{ 
-          y: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
-          opacity: [0.1, 0.4, 0.1]
-        }}
-        transition={{ 
-          duration: 8 + Math.random() * 15,
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
-      />
-    ))}
-  </motion.div>
 
 
   <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-4 gap-16 relative z-10">
@@ -297,40 +269,12 @@ export default function Presentation() {
     {/* Section voyage en 4 etapes */}
     
     <motion.section 
-  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100   overflow-hidden relative"
+  className="py-24 overflow-hidden relative"
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
   viewport={{ once: true, margin: "-100px" }}
   transition={{ duration: 0.8 }}
 >
-  {/* Particules d'arrière-plan subtiles */}
-  <motion.div 
-    className="absolute inset-0 pointer-events-none"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 0.4 }}
-    transition={{ delay: 0.5, duration: 1 }}
-  >
-    {[...Array(20)].map((_, i) => (
-      <motion.div 
-        key={i}
-        className="absolute w-2 h-2 rounded-full bg-purple-200"
-        initial={{ 
-          x: Math.random() * 100 + "%", 
-          y: Math.random() * 100 + "%",
-          opacity: 0.3
-        }}
-        animate={{ 
-          y: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
-          opacity: [0.2, 0.8, 0.2]
-        }}
-        transition={{ 
-          duration: 5 + Math.random() * 10,
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
-      />
-    ))}
-  </motion.div>
   
 
 
@@ -361,7 +305,7 @@ export default function Presentation() {
       ].map((step, i) => (
         <motion.div
           key={i}
-          className="p-8 rounded-2xl bg-purple-50 border border-purple-100 hover:bg-white relative overflow-hidden group shadow-sm hover:shadow-xl"
+          className="p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-purple-200 hover:border-indigo-300 hover:bg-white relative overflow-hidden group shadow-md hover:shadow-2xl"
           initial={{ 
             opacity: 0, 
             y: 30,
@@ -499,7 +443,7 @@ export default function Presentation() {
 
 {/* Notre ethique */}
 <motion.section 
-  className="py-24 bg-gradient-to-t from-pink-50 to-purple-100  overflow-hidden"
+  className="py-24 overflow-hidden"
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
   viewport={{ once: true, margin: "-100px" }}
@@ -538,7 +482,7 @@ export default function Presentation() {
         ].map((item, i) => (
           <motion.div
             key={i}
-            className="flex items-center gap-6 p-6 bg-gray-50 rounded-xl hover:bg-white relative overflow-hidden group shadow-sm hover:shadow-xl"
+            className="flex items-center gap-6 p-6 bg-white/70 backdrop-blur-sm rounded-xl hover:bg-white relative overflow-hidden group shadow-md hover:shadow-xl border border-purple-100 hover:border-indigo-200"
             initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -588,7 +532,7 @@ export default function Presentation() {
 {/* FAQ */}
 {/* FAQ */}
 <motion.section 
-  className="py-24 bg-gradient-to-b from-pink-50 to-purple-100  overflow-hidden"
+  className="py-24 overflow-hidden"
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
   viewport={{ once: true }}
@@ -618,7 +562,7 @@ export default function Presentation() {
       {faqItems.map((item, i) => (
         <motion.div
           key={i}
-          className="bg-white p-8 rounded-2xl shadow-lg cursor-pointer relative overflow-hidden group"
+          className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg cursor-pointer relative overflow-hidden group border border-purple-100 hover:border-indigo-200"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}

@@ -8,39 +8,11 @@ export default function PatricePresentation() {
   return (
     <>
       <motion.section 
-        className="w-full py-24 bg-gradient-to-br from-gray-50 to-blue-50  overflow-hidden relative"
+        className="w-full py-24 overflow-hidden relative"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        {/* Particules d'arrière-plan subtiles */}
-        <motion.div 
-          className="absolute inset-0 pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.3 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          {[...Array(12)].map((_, i) => (
-            <motion.div 
-              key={i}
-              className="absolute w-1 h-1 rounded-full bg-blue-300 "
-              initial={{ 
-                x: Math.random() * 100 + "%", 
-                y: Math.random() * 100 + "%",
-                opacity: 0.2
-              }}
-              animate={{ 
-                y: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
-                opacity: [0.1, 0.4, 0.1]
-              }}
-              transition={{ 
-                duration: 8 + Math.random() * 15,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            />
-          ))}
-        </motion.div>
 
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-4 gap-16 relative z-10">
           {/* Image Section - avec animations améliorées */}

@@ -289,9 +289,186 @@ export default function Home() {
             </div>
           </section>
 
-          <Presentation />
+          {/* Section unifiée des présentations des thérapeutes */}
+          <section className="relative bg-gradient-to-b from-purple-50 via-white to-blue-50 overflow-hidden">
+            {/* Particules de fond subtiles */}
+            <div className="absolute inset-0 pointer-events-none opacity-30">
+              {[...Array(15)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 rounded-full"
+                  style={{
+                    background: i % 2 === 0 ? "#a78bfa" : "#60a5fa",
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                  }}
+                  animate={{
+                    y: [0, -30, 0],
+                    opacity: [0.2, 0.5, 0.2],
+                  }}
+                  transition={{
+                    duration: 3 + Math.random() * 4,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                  }}
+                />
+              ))}
+            </div>
 
-          <PatricePresentation />
+            {/* Titre de section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative z-10 text-center pt-20 pb-8 px-4"
+            >
+              <motion.div
+                initial={{ scale: 0.9 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 px-6 py-2 rounded-full mb-6 shadow-md"
+              >
+                <motion.span
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  ✨
+                </motion.span>
+                <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+                  Nos Thérapeutes
+                </span>
+              </motion.div>
+
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                <span className="text-gray-900">Deux expertises,</span>
+                <br />
+                <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">
+                  un même engagement
+                </span>
+              </h2>
+
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Découvrez nos accompagnements personnalisés pour votre transformation intérieure
+              </p>
+            </motion.div>
+
+            {/* Présentation de Kristelle */}
+            <div className="relative z-10">
+              <Presentation />
+            </div>
+
+            {/* Séparateur élégant et animé */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, type: "spring" }}
+              className="relative z-10 py-16 px-4"
+            >
+              <div className="max-w-4xl mx-auto">
+                {/* Ligne décorative avec effet de brillance */}
+                <div className="relative flex items-center justify-center">
+                  {/* Ligne gauche */}
+                  <motion.div
+                    className="flex-1 h-px bg-gradient-to-r from-transparent via-purple-300 to-purple-400"
+                    initial={{ scaleX: 0, originX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                  />
+
+                  {/* Élément central décoratif */}
+                  <motion.div
+                    className="relative mx-8"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
+                  >
+                    {/* Cercles concentriques animés */}
+                    <motion.div
+                      className="absolute inset-0 -m-4"
+                      animate={{
+                        scale: [1, 1.3, 1],
+                        opacity: [0.3, 0.6, 0.3],
+                      }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    >
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 opacity-20 blur-md" />
+                    </motion.div>
+
+                    <motion.div
+                      className="absolute inset-0 -m-2"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.4, 0.7, 0.4],
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    >
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-30 blur-sm" />
+                    </motion.div>
+
+                    {/* Symbole central */}
+                    <div className="relative w-8 h-8 bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-500 rounded-full flex items-center justify-center shadow-xl">
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        className="text-white text-xl"
+                      >
+                        ⚡
+                      </motion.div>
+                    </div>
+                  </motion.div>
+
+                  {/* Ligne droite */}
+                  <motion.div
+                    className="flex-1 h-px bg-gradient-to-l from-transparent via-blue-300 to-blue-400"
+                    initial={{ scaleX: 0, originX: 1 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                  />
+                </div>
+
+                {/* Texte de transition */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  className="text-center mt-12"
+                >
+                  <div className="inline-block relative">
+                    <motion.div
+                      className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl opacity-50 blur-xl"
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [0.3, 0.6, 0.3],
+                      }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                    />
+                    <h3 className="relative font-heading text-2xl md:text-3xl font-bold text-gray-900 px-8 py-4">
+                      Découvrez également{" "}
+                      <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                        Patrice
+                      </span>
+                      , expert en libération émotionnelle masculine
+                    </h3>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Présentation de Patrice */}
+            <div className="relative z-10">
+              <PatricePresentation />
+            </div>
+
+            {/* Effet de dégradé en bas de section */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-blue-50 to-transparent pointer-events-none" />
+          </section>
 
           <Cta page="accueil" />
         </main>
