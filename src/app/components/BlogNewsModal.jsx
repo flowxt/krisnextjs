@@ -85,10 +85,10 @@ export default function BlogNewsModal() {
                       </div>
                     </Link>
                     
-                    <Link href="/blog/quarante-huitieme-article" className="block">
-                      <div className="bg-green-50 p-4 rounded-lg hover:bg-green-100 transition-colors">
-                        <h4 className="font-semibold text-green-700 mb-1">✨ Savoir se foutre la paix : un art de vivre intérieur</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvrez l'art libérateur de cesser la guerre intérieure et d'accueillir vos rythmes naturels avec bienveillance.</p>
+                    <Link href="/blog/cinquantieme-article" className="block">
+                      <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
+                        <h4 className="font-semibold text-purple-700 mb-1">✨ Le pouvoir de la manifestation : créer ta réalité pas à pas</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvre comment utiliser ton énergie intérieure pour attirer vers toi ce que tu désires réellement en alignant pensées, émotions et actions.</p>
                       </div>
                     </Link>
                   </div>
