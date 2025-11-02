@@ -170,7 +170,7 @@ Le processus de transformation :
   return (
     <main>
       {/* Section Hero pour la page Patrice */}
-      <section className="relative h-[60vh] min-h-[500px] bg-gradient-to-br from-blue-50 via-cyan-50 to-gray-50 overflow-hidden">
+      <section className="relative min-h-[650px] md:min-h-[500px] md:h-[60vh] bg-gradient-to-br from-blue-50 via-cyan-50 to-gray-50 overflow-hidden pt-32 md:pt-0">
         <div className="absolute inset-0">
           <motion.div
             initial={{ opacity: 0 }}
@@ -184,7 +184,7 @@ Le processus de transformation :
           />
         </div>
 
-        <div className="relative z-10 h-full flex items-center justify-center px-4">
+        <div className="relative z-10 h-full flex items-center justify-center px-4 py-12 md:py-8">
           <div className="max-w-5xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -196,10 +196,10 @@ Le processus de transformation :
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-8"
+                className="inline-flex items-center gap-2 md:gap-3 bg-white/80 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 rounded-full shadow-lg mb-6 md:mb-8"
               >
-                <UserIcon className="w-6 h-6 text-blue-600" />
-                <span className="text-blue-800 font-semibold">
+                <UserIcon className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
+                <span className="text-blue-800 font-semibold text-sm md:text-base">
                   Patrice Guffon - Thérapeute & Coach
                 </span>
               </motion.div>
@@ -208,7 +208,7 @@ Le processus de transformation :
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
+                className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight px-4"
               >
                 Libération émotionnelle{" "}
                 <span className="block mt-2">
@@ -222,7 +222,7 @@ Le processus de transformation :
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
-                className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto"
+                className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto px-4"
               >
                 Un accompagnement unique alliant olfactothérapie et zéro mental
                 pour retrouver votre état d'être aligné
@@ -232,20 +232,20 @@ Le processus de transformation :
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.9 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8"
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mt-6 md:mt-8 px-4"
               >
                 <a
                   href="#services"
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center"
                 >
                   Découvrir les soins
                 </a>
                 <a
                   href="sms:+33665553341"
-                  className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white text-blue-600 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <PhoneIcon className="w-5 h-5" />
-                  Réserver par SMS
+                  <span className="whitespace-nowrap">Réserver par SMS</span>
                 </a>
               </motion.div>
             </motion.div>
@@ -269,14 +269,14 @@ Le processus de transformation :
 
       <section
         id="services"
-        className="py-20 bg-gradient-to-b from-gray-100 to-blue-50"
+        className="py-12 md:py-20 bg-gradient-to-b from-gray-100 to-blue-50"
       >
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-16"
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -294,7 +294,7 @@ Le processus de transformation :
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-4xl md:text-5xl font-bold font-heading mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading mb-3 md:mb-4 px-4"
             >
               Soins de{" "}
               <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
@@ -306,14 +306,14 @@ Le processus de transformation :
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-gray-600 text-lg max-w-2xl mx-auto"
+              className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto px-4"
             >
               Des accompagnements personnalisés pour révéler votre plein
               potentiel
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {patriceServices.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -371,9 +371,9 @@ Le processus de transformation :
                   {/* Bande décorative supérieure avec dégradé */}
                   <div className="h-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600" />
 
-                  <div className="p-6 flex-grow relative z-10">
+                  <div className="p-4 sm:p-6 flex-grow relative z-10">
                     {/* Header avec icône et prix */}
-                    <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-start justify-between mb-4 sm:mb-6">
                       {/* Icône avec effet de glow */}
                       <motion.div
                         className="relative"
@@ -384,8 +384,8 @@ Le processus de transformation :
                         transition={{ duration: 0.5 }}
                       >
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
-                        <div className="relative p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200 group-hover:border-blue-300 transition-colors">
-                          <div className="text-blue-600 group-hover:text-blue-700 transition-colors">
+                        <div className="relative p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200 group-hover:border-blue-300 transition-colors">
+                          <div className="text-blue-600 group-hover:text-blue-700 transition-colors scale-90 sm:scale-100">
                             {service.icon}
                           </div>
                         </div>
@@ -397,12 +397,12 @@ Le processus de transformation :
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 400 }}
                       >
-                        <div className="bg-gradient-to-br from-blue-500 to-cyan-600 text-white px-4 py-2 rounded-full shadow-lg">
-                          <span className="block font-bold text-lg">
+                        <div className="bg-gradient-to-br from-blue-500 to-cyan-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg">
+                          <span className="block font-bold text-base sm:text-lg">
                             {service.price}
                           </span>
                         </div>
-                        <span className="text-xs text-gray-500 mt-2 block bg-blue-50 px-3 py-1 rounded-full">
+                        <span className="text-xs text-gray-500 mt-1.5 sm:mt-2 block bg-blue-50 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
                           {service.duration}
                         </span>
                       </motion.div>
@@ -410,7 +410,7 @@ Le processus de transformation :
 
                     {/* Titre avec effet au survol */}
                     <motion.h3
-                      className="font-heading text-xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300"
+                      className="font-heading text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300"
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
@@ -418,7 +418,7 @@ Le processus de transformation :
                     </motion.h3>
 
                     {/* Description */}
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                    <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-3 leading-relaxed">
                       {service.description.split("\n\n")[0]}
                     </p>
                   </div>
@@ -433,7 +433,7 @@ Le processus de transformation :
                     />
                     <button
                       onClick={() => setSelectedService(service)}
-                      className="relative w-full py-4 text-blue-600 font-semibold hover:text-blue-700 transition-all flex items-center justify-center gap-2 border-t border-blue-100 group-hover:border-blue-300"
+                      className="relative w-full py-3 sm:py-4 text-blue-600 font-semibold hover:text-blue-700 transition-all flex items-center justify-center gap-2 border-t border-blue-100 group-hover:border-blue-300 text-sm sm:text-base"
                     >
                       <span>Voir plus de détails</span>
                       <motion.span
@@ -457,7 +457,7 @@ Le processus de transformation :
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-20 text-center"
+            className="mt-12 md:mt-20 text-center px-4"
           >
             <div className="relative inline-block">
               {/* Effet de glow en arrière-plan */}
@@ -478,7 +478,7 @@ Le processus de transformation :
                 href="sms:+33665553341"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300"
+                className="relative inline-flex items-center gap-2 sm:gap-3 md:gap-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full px-4 sm:px-6 md:px-8 py-3 md:py-4 shadow-xl hover:shadow-2xl transition-all duration-300 max-w-full"
               >
                 <motion.div
                   animate={{ rotate: [0, 10, -10, 0] }}
@@ -487,15 +487,15 @@ Le processus de transformation :
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="bg-white/20 p-2 rounded-full"
+                  className="bg-white/20 p-1.5 sm:p-2 rounded-full flex-shrink-0"
                 >
-                  <PhoneIcon className="w-6 h-6" />
+                  <PhoneIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </motion.div>
-                <div className="text-left">
-                  <span className="block text-sm font-medium opacity-90">
+                <div className="text-left flex-1 min-w-0">
+                  <span className="block text-xs sm:text-sm font-medium opacity-90">
                     Réservation par SMS uniquement
                   </span>
-                  <span className="block text-lg font-bold">
+                  <span className="block text-base sm:text-lg font-bold whitespace-nowrap">
                     06.65.55.33.41
                   </span>
                 </div>
@@ -506,7 +506,7 @@ Le processus de transformation :
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="text-2xl"
+                  className="text-xl sm:text-2xl flex-shrink-0"
                 >
                   →
                 </motion.span>
@@ -517,7 +517,7 @@ Le processus de transformation :
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="mt-6 text-gray-600 text-sm"
+              className="mt-6 text-gray-600 text-xs sm:text-sm px-4"
             >
               📱 Cliquez pour envoyer un SMS et réserver votre séance
             </motion.p>
@@ -526,28 +526,28 @@ Le processus de transformation :
       </section>
 
       {selectedService && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-2 sm:p-4 z-50">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto"
           >
-            <div className="p-8">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-bold font-heading">
+            <div className="p-4 sm:p-6 md:p-8">
+              <div className="flex justify-between items-start gap-4 mb-4 sm:mb-6">
+                <h3 className="text-xl sm:text-2xl font-bold font-heading leading-tight flex-1">
                   {selectedService.title}
                 </h3>
                 <button
                   onClick={() => setSelectedService(null)}
-                  className="rounded-full h-10 w-10 flex items-center justify-center bg-blue-50 hover:bg-blue-100 transition-colors"
+                  className="rounded-full h-8 w-8 sm:h-10 sm:w-10 flex items-center justify-center bg-blue-50 hover:bg-blue-100 transition-colors flex-shrink-0"
                 >
                   ✕
                 </button>
               </div>
 
-              <div className="flex flex-col md:flex-row gap-6 mb-8">
-                <div className="md:w-1/3">
+              <div className="flex flex-col md:flex-row gap-4 sm:gap-6 mb-6 sm:mb-8">
+                <div className="w-full md:w-1/3">
                   <div className="aspect-square rounded-xl overflow-hidden">
                     <Image
                       src={selectedService.images[0]}
@@ -559,21 +559,24 @@ Le processus de transformation :
                   </div>
                 </div>
 
-                <div className="md:w-2/3">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="px-4 py-1.5 bg-blue-100 rounded-full text-blue-800 font-medium">
+                <div className="w-full md:w-2/3">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4">
+                    <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-blue-100 rounded-full text-blue-800 font-medium text-sm sm:text-base">
                       {selectedService.price}
                     </span>
-                    <span className="px-4 py-1.5 bg-gray-100 rounded-full text-gray-800 text-sm">
+                    <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-gray-100 rounded-full text-gray-800 text-xs sm:text-sm">
                       {selectedService.duration}
                     </span>
                   </div>
 
-                  <div className="prose max-w-none">
+                  <div className="prose prose-sm sm:prose max-w-none">
                     {selectedService.description
                       .split("\n\n")
                       .map((paragraph, i) => (
-                        <p key={i} className="mb-4 whitespace-pre-line">
+                        <p
+                          key={i}
+                          className="mb-3 sm:mb-4 whitespace-pre-line text-sm sm:text-base"
+                        >
                           {paragraph}
                         </p>
                       ))}
@@ -581,10 +584,10 @@ Le processus de transformation :
                 </div>
               </div>
 
-              <div className="mt-8 flex justify-center">
+              <div className="mt-6 sm:mt-8 flex justify-center">
                 <button
                   onClick={() => setSelectedService(null)}
-                  className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors"
                 >
                   Fermer
                 </button>
