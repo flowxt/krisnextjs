@@ -10,6 +10,7 @@ export default function BlogFilters({ onFilterChange, onSearchChange }) {
   const filters = [
     { name: "Tous", colorActive: "bg-gray-600 text-white shadow-md", colorInactive: "bg-gray-50 text-gray-600 hover:bg-gray-100" },
     { name: "Bien-être", colorActive: "bg-purple-600 text-white shadow-md", colorInactive: "bg-purple-50 text-purple-600 hover:bg-purple-100" },
+    { name: "Développement personnel", colorActive: "bg-pink-600 text-white shadow-md", colorInactive: "bg-pink-50 text-pink-600 hover:bg-pink-100" },
     { name: "Nouvelle lune", colorActive: "bg-indigo-600 text-white shadow-md", colorInactive: "bg-indigo-50 text-indigo-600 hover:bg-indigo-100" },
     { name: "Pleine lune", colorActive: "bg-blue-600 text-white shadow-md", colorInactive: "bg-blue-50 text-blue-600 hover:bg-blue-100" },
   ];
