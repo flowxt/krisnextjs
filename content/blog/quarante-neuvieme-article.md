@@ -3,7 +3,7 @@ title: "🌕 Rituel de la Pleine Lune de Novembre 2025 – Beaver Moon"
 date: "2025-11-01"
 excerpt: "Découvrez un rituel chaleureux et complet pour la Pleine Lune du 5 novembre 2025, aussi appelée Beaver Moon. Une lunaison profonde propice à la transformation intérieure et à la préparation à l'hiver."
 image: "/beaver-moon.jpg"
-categories: Rituels
+categories: Pleine lune
 ---
 
 🦫🍂 Voici un rituel de pleine lune complet et chaleureux pour la Pleine Lune du 5 novembre 2025, également appelée **Beaver Moon**, une lunaison profonde et propice à la transformation intérieure et à la préparation à l'hiver.
