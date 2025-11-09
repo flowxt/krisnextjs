@@ -198,6 +198,7 @@ Pour toute séance en distanciel, règlement minimum 48h avant la prestation.
 Deux options au choix :
 • Carte Cadeau 80€ : Guidance de 45 minutes
 • Carte Cadeau 100€ : Guidance d'1 heure
+• Carte Cadeau 140€ : Guidance d'1 heure 30
 
 Le bon cadeau comprend :
 • Une séance de guidance intuitive et bienveillante
@@ -248,7 +249,7 @@ Pour toute séance en distanciel, règlement minimum 48h avant la prestation.
   {
     id: 9,
     title: "Guidance 1h30",
-    price: "120€",
+    price: "140€",
     duration: "1h30 - Présentiel/Distance",
     intervenant: "Kris",
     icon: <SunIcon className="w-8 h-8" />,
@@ -288,7 +289,7 @@ Pour toute séance en distanciel (via WhatsApp), règlement minimum 48h avant la
   {
     id: 10,
     title: "Guidance 1h",
-    price: "80€",
+    price: "100€",
     duration: "1h - Présentiel/Distance",
     intervenant: "Kris",
     icon: <LightBulbIcon className="w-8 h-8" />,
@@ -325,7 +326,7 @@ Pour toute séance en distanciel (WhatsApp), règlement 48h minimum avant la pre
   {
     id: 11,
     title: "Guidance 45min",
-    price: "60€",
+    price: "80€",
     duration: "45min - Présentiel/Distance",
     intervenant: "Kris",
     icon: <LightBulbIcon className="w-8 h-8" />,
@@ -649,12 +650,21 @@ export default function Services() {
                   return (
                     <div
                       key={service.id}
-                      className="relative opacity-0 animate-fade-in"
+                      className="relative opacity-0 animate-fade-in group"
                       style={{
                         animationDelay: `${(categoryIndex * 3 + index) * 0.1}s`,
                         animationFillMode: "forwards",
                       }}
                     >
+                      {/* Effet de glow animé en arrière-plan */}
+                      <motion.div
+                        className={`absolute -inset-0.5 bg-gradient-to-r ${
+                          isPatrice
+                            ? "from-blue-400 via-cyan-500 to-blue-600"
+                            : "from-purple-400 via-indigo-500 to-purple-600"
+                        } rounded-[2rem] opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500`}
+                      />
+
                       <div
                         className={`relative h-full rounded-[2rem] overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2
                     ${
@@ -663,6 +673,51 @@ export default function Services() {
                         : "hover:shadow-purple-200/30"
                     }`}
                       >
+                        {/* Bande décorative supérieure avec dégradé */}
+                        <div className={`h-2 bg-gradient-to-r ${
+                          isPatrice
+                            ? "from-blue-500 via-cyan-500 to-blue-600"
+                            : "from-purple-500 via-indigo-500 to-purple-600"
+                        }`} />
+
+                        {/* Effet de brillance qui parcourt la carte au survol */}
+                        <div className="absolute inset-0 overflow-hidden rounded-[2rem] pointer-events-none">
+                          <motion.div
+                            className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent opacity-0 group-hover:opacity-100"
+                            initial={{ x: "-100%" }}
+                            whileHover={{ x: "100%" }}
+                            transition={{ duration: 1.5, ease: "easeInOut" }}
+                          />
+                        </div>
+
+                        {/* Particules décoratives qui apparaissent au survol */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                          {[...Array(8)].map((_, i) => (
+                            <motion.div
+                              key={i}
+                              className={`absolute w-1 h-1 ${
+                                isPatrice ? "bg-blue-400" : "bg-purple-400"
+                              } rounded-full`}
+                              initial={{
+                                x: Math.random() * 100 + "%",
+                                y: Math.random() * 100 + "%",
+                              }}
+                              animate={{
+                                y: [
+                                  Math.random() * 100 + "%",
+                                  Math.random() * 100 + "%",
+                                ],
+                                opacity: [0.2, 0.8, 0.2],
+                              }}
+                              transition={{
+                                duration: 2 + Math.random() * 3,
+                                repeat: Infinity,
+                                repeatType: "reverse",
+                              }}
+                            />
+                          ))}
+                        </div>
+
                         {/* Élément décoratif */}
                         <div className="absolute inset-0 opacity-5">
                           <div
@@ -673,15 +728,32 @@ export default function Services() {
                         {/* Contenu de la carte */}
                         <div className="p-8 relative z-10 flex flex-col h-full">
                           <div className="flex items-start gap-6 relative">
-                            {/* Icône */}
-                            <div
-                              className={`p-5 rounded-2xl text-white shadow-md overflow-hidden
-                          bg-gradient-to-br from-${mainColor}-500 to-${secondaryColor}-400`}
+                            {/* Icône avec effet de glow */}
+                            <motion.div
+                              className="relative"
+                              whileHover={{
+                                rotate: [0, -10, 10, -10, 0],
+                                scale: 1.1,
+                              }}
+                              transition={{ duration: 0.5 }}
                             >
-                              <div className="relative z-10">
-                                {service.icon}
+                              <div className={`absolute inset-0 bg-gradient-to-br ${
+                                isPatrice
+                                  ? "from-blue-400 to-cyan-500"
+                                  : "from-purple-400 to-indigo-500"
+                              } rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300`} />
+                              <div
+                                className={`relative p-5 rounded-2xl text-white shadow-md overflow-hidden border ${
+                                  isPatrice
+                                    ? "bg-gradient-to-br from-blue-500 to-cyan-400 border-blue-200 group-hover:border-blue-300"
+                                    : "bg-gradient-to-br from-purple-500 to-indigo-400 border-purple-200 group-hover:border-purple-300"
+                                } transition-colors`}
+                              >
+                                <div className="relative z-10">
+                                  {service.icon}
+                                </div>
                               </div>
-                            </div>
+                            </motion.div>
 
                             <div className="flex-1 min-w-0">
                               {/* Titre */}

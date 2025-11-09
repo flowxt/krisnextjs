@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-11-beaver-moon";
+    const currentArticlesBatchId = "articles-2025-11-cosmic-stars";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,10 +78,10 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/quarante-neuvieme-article" className="block">
-                      <div className="bg-amber-50 p-4 rounded-lg hover:bg-amber-100 transition-colors">
-                        <h4 className="font-semibold text-amber-700 mb-1">🌕 Rituel de la Pleine Lune de Novembre 2025 – Beaver Moon</h4>
-                        <p className="text-gray-600 text-sm mb-2">Un rituel chaleureux et complet pour la Pleine Lune du 5 novembre, propice à la transformation intérieure et à la préparation à l'hiver.</p>
+                    <Link href="/blog/cinquante-et-unieme-article" className="block">
+                      <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors">
+                        <h4 className="font-semibold text-indigo-700 mb-1">⭐ Se reconnecter aux étoiles : l'énergie cosmique à ton service</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvre comment te connecter à l'énergie cosmique des étoiles pour trouver guidance, inspiration et élever ta vibration énergétique.</p>
                       </div>
                     </Link>
                     
