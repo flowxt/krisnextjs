@@ -21,7 +21,7 @@ export default function Footer() {
     
     {/* Contenu du footer avec z-index pour passer au-dessus du gradient */}
     <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12 ">
           {/* Logo et description */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3">
@@ -38,6 +38,28 @@ export default function Footer() {
               Guidance holistique & soins énergétiques<br />
               Libérez votre potentiel vibratoire
             </p>
+          </div>
+
+          {/* Liens rapides */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-purple-600 mb-2">Liens rapides</h3>
+            <div className="space-y-2 flex flex-col">
+              <Link href="/services" className="text-gray-700 hover:text-purple-600 transition-colors text-sm">
+                Services
+              </Link>
+              <Link href="/blog" className="text-gray-700 hover:text-purple-600 transition-colors text-sm">
+                Blog
+              </Link>
+              <Link href="/avis" className="text-gray-700 hover:text-purple-600 transition-colors text-sm">
+                Avis clients
+              </Link>
+              <Link href="/partenaires" className="text-gray-700 hover:text-purple-600 transition-colors text-sm font-medium">
+                ✨ Nos recommandations
+              </Link>
+              <Link href="/contact" className="text-gray-700 hover:text-purple-600 transition-colors text-sm">
+                Contact
+              </Link>
+            </div>
           </div>
 
           {/* Contact */}

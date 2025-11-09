@@ -168,20 +168,6 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full" />
             )}
           </Link>
-          
-          <Link 
-            href="/partenaires" 
-            className={`relative font-medium transition-colors duration-300 ${
-              isActive("/partenaires")
-                ? "text-indigo-600" 
-                : "text-gray-800 hover:text-indigo-600"
-            }`}
-          >
-            Recommandations
-            {isActive("/partenaires") && (
-              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full" />
-            )}
-          </Link>
         </nav>
 
         {/* Menu Burger - visible sur mobile et tablette */}
@@ -292,19 +278,6 @@ export default function Navbar() {
           >
             {isActive("/avis") && <span className="mr-2">•</span>}
             Avis
-          </Link>
-          
-          <Link 
-            href="/partenaires" 
-            className={`block font-medium transition-colors ${
-              isActive("/partenaires")
-                ? "text-indigo-600 bg-indigo-50 px-3 py-2 rounded-lg"
-                : "text-gray-800"
-            }`}
-            onClick={() => setIsOpen(false)}
-          >
-            {isActive("/partenaires") && <span className="mr-2">•</span>}
-            Recommandations
           </Link>
         </nav>
       )}

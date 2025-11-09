@@ -6,6 +6,7 @@ import Cta from "./components/Cta";
 import Hero from "./components/Hero";
 import TherapistsCards from "./components/TherapistsCards";
 import FAQSection from "./components/FAQSection";
+import PartnersCTA from "./components/PartnersCTA";
 import SplashLoader from "./components/SplashLoader";
 // import GoogleReviews from "./components/GoogleReviews";
 import BlogNewsModal from "./components/BlogNewsModal";
@@ -489,6 +490,9 @@ export default function Home() {
 
           {/* FAQ */}
           <FAQSection />
+
+          {/* CTA Partenaires */}
+          <PartnersCTA />
 
           <Cta page="accueil" />
         </main>
