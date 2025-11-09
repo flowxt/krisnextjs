@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import Cta from "./components/Cta";
 import Hero from "./components/Hero";
 import TherapistsCards from "./components/TherapistsCards";
+import FAQSection from "./components/FAQSection";
 import SplashLoader from "./components/SplashLoader";
 // import GoogleReviews from "./components/GoogleReviews";
 import BlogNewsModal from "./components/BlogNewsModal";
@@ -290,6 +291,204 @@ export default function Home() {
 
           {/* Section unifiée des présentations des thérapeutes */}
           <TherapistsCards />
+
+          {/* Section voyage en 4 étapes */}
+          <motion.section 
+            className="py-24 overflow-hidden relative bg-gradient-to-b from-blue-50 via-white to-purple-50"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="max-w-7xl mx-auto px-4">
+              <motion.h3 
+                className="font-heading text-4xl font-bold text-center mb-16 relative"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+              >
+                <motion.span 
+                  className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+                  initial={{ backgroundPosition: "0% 0%" }}
+                  animate={{ backgroundPosition: "100% 0%" }}
+                  transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
+                >
+                  Votre voyage en 4 étapes sécurisées
+                </motion.span>
+              </motion.h3>
+              
+              <div className="grid md:grid-cols-4 gap-8">
+                {[
+                  { icon: '🕊️', title: "Diagnostic énergétique", desc: "Analyse approfondie de vos blocages", delay: 0 },
+                  { icon: '🌀', title: "Protection sacrée", desc: "Mise en place d'un bouclier vibratoire", delay: 0.2 },
+                  { icon: '🌿', title: "Soin personnalisé", desc: "Procédure adaptée à votre signature énergétique", delay: 0.4 },
+                  { icon: '✨', title: "Intégration durable", desc: "Rituel de pérennisation des bienfaits", delay: 0.6 }
+                ].map((step, i) => (
+                  <motion.div
+                    key={i}
+                    className="p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-purple-200 hover:border-indigo-300 hover:bg-white relative overflow-hidden group shadow-md hover:shadow-2xl"
+                    initial={{ 
+                      opacity: 0, 
+                      y: 30,
+                      scale: 0.9 
+                    }}
+                    whileInView={{ 
+                      opacity: 1, 
+                      y: 0,
+                      scale: 1 
+                    }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: step.delay,
+                      type: "spring", 
+                      stiffness: 50 
+                    }}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -10,
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    {/* Icône avec animation */}
+                    <motion.div 
+                      className="text-4xl mb-6 relative flex justify-center items-center h-16"
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        delay: step.delay + 0.3,
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      whileHover={{ 
+                        scale: 1.2,
+                        rotate: [0, 5, -5, 0],
+                        transition: { duration: 0.5, repeat: Infinity }
+                      }}
+                    >
+                      <motion.div 
+                        className="absolute w-16 h-16 rounded-full bg-purple-100"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: [0, 1.2, 1] }}
+                        viewport={{ once: true }}
+                        transition={{ 
+                          delay: step.delay + 0.2,
+                          duration: 0.8
+                        }}
+                      />
+                      <span className="relative z-10">{step.icon}</span>
+                    </motion.div>
+                    
+                    <motion.h4 
+                      className="text-xl font-bold mb-3 relative z-10"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: step.delay + 0.4 }}
+                    >
+                      {step.title}
+                    </motion.h4>
+                    
+                    <motion.p 
+                      className="text-gray-600 relative z-10"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: step.delay + 0.5 }}
+                    >
+                      {step.desc}
+                    </motion.p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.section>
+
+          {/* Notre éthique */}
+          <motion.section 
+            className="py-24 overflow-hidden bg-gradient-to-b from-purple-50 via-white to-blue-50"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="max-w-7xl mx-auto px-4">
+              <motion.div
+                className="lg:w-1/2 mx-auto text-center"
+                initial={{ y: 50 }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.h3 
+                  className="font-heading text-4xl font-bold mb-8 relative"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <motion.span 
+                    className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+                    initial={{ backgroundPosition: "0% 0%" }}
+                    animate={{ backgroundPosition: "100% 0%" }}
+                    transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}
+                  >
+                    Charte Éthique
+                  </motion.span>
+                </motion.h3>
+                
+                <div className="space-y-8 text-left">
+                  {[
+                    { title: "Confidentialité Absolue", icon: "🔒", delay: 0 },
+                    { title: "Non-Jugement", icon: "💖", delay: 0.2 },
+                    { title: "Respect du Libre Arbitre", icon: "⚖️", delay: 0.4 }
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      className="flex items-center gap-6 p-6 bg-white/70 backdrop-blur-sm rounded-xl hover:bg-white relative overflow-hidden group shadow-md hover:shadow-xl border border-purple-100 hover:border-indigo-200"
+                      initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
+                      whileInView={{ x: 0, opacity: 1 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ 
+                        duration: 0.8, 
+                        delay: item.delay,
+                        type: "spring", 
+                        stiffness: 70 
+                      }}
+                      whileHover={{ scale: 1.03, y: -5 }}
+                    >
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-purple-100/30 to-indigo-100/30 opacity-0 group-hover:opacity-100"
+                        animate={{ x: ["0%", "100%", "0%"], opacity: [0, 0.5, 0] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      />
+                      <motion.div 
+                        className="text-4xl flex-shrink-0 relative"
+                        whileHover={{ scale: 1.1, rotate: [0, 5, -5, 0] }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        {item.icon}
+                      </motion.div>
+                      <motion.span 
+                        className="text-xl font-semibold relative z-10"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: item.delay + 0.3 }}
+                      >
+                        {item.title}
+                      </motion.span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </motion.section>
+
+          {/* FAQ */}
+          <FAQSection />
 
           <Cta page="accueil" />
         </main>
