@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-11-cosmic-stars";
+    const currentArticlesBatchId = "articles-2025-11-moon-signs";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,17 +78,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/cinquante-et-unieme-article" className="block">
-                      <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors">
-                        <h4 className="font-semibold text-indigo-700 mb-1">⭐ Se reconnecter aux étoiles : l'énergie cosmique à ton service</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvre comment te connecter à l'énergie cosmique des étoiles pour trouver guidance, inspiration et élever ta vibration énergétique.</p>
+                    <Link href="/blog/cinquante-deuxieme-article" className="block">
+                      <div className="bg-slate-50 p-4 rounded-lg hover:bg-slate-100 transition-colors border border-slate-200">
+                        <h4 className="font-semibold text-slate-700 mb-1">🌑 Rituel de la Nouvelle Lune du 20 novembre 2025</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvre un rituel doux et ressourçant pour la Lune Noire d'Intériorité, parfait pour l'introspection et le renouveau avant l'hiver.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/cinquantieme-article" className="block">
-                      <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors">
-                        <h4 className="font-semibold text-purple-700 mb-1">✨ Le pouvoir de la manifestation : créer ta réalité pas à pas</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvre comment utiliser ton énergie intérieure pour attirer vers toi ce que tu désires réellement en alignant pensées, émotions et actions.</p>
+                    <Link href="/blog/cinquante-troisieme-article" className="block">
+                      <div className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors">
+                        <h4 className="font-semibold text-blue-700 mb-1">🌌 Comment voir les signes de l'univers ?</h4>
+                        <p className="text-gray-600 text-sm mb-2">Apprends à reconnaître et accueillir les petits clins d'œil que l'univers t'envoie pour te guider sur ton chemin de vie.</p>
                       </div>
                     </Link>
                   </div>
