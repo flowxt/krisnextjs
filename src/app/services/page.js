@@ -372,7 +372,8 @@ Pour toute séance en distanciel (WhatsApp), règlement 48h minimum avant la pre
     duration: "2h - Présentiel",
     intervenant: "Kris & Patrice",
     icon: <SparklesIcon className="w-8 h-8" />,
-    calendlyLink: "https://calendly.com/contact-krislavoixdesanges/libre-d-etre-soi",
+    calendlyLink:
+      "https://calendly.com/contact-krislavoixdesanges/libre-d-etre-soi",
     description: `𝙇'𝙐𝙡𝙩𝙞𝙢𝙚 𝙍𝙚𝙣𝙖𝙞𝙨𝙨𝙖𝙣𝙘𝙚 𝙙𝙚 𝙑𝙤𝙩𝙧𝙚 𝙀𝙨𝙨𝙚𝙣𝙘𝙚 𝙋𝙪𝙧𝙚
 
 ✨ Duo Zéro Mental + Soin 
@@ -686,7 +687,9 @@ export default function Services() {
                             />
                             <div className="relative bg-gradient-to-r from-amber-400 to-orange-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
                               <span className="text-xl">⭐</span>
-                              <span className="font-bold text-sm whitespace-nowrap">N°1 des séances</span>
+                              <span className="font-bold text-sm whitespace-nowrap">
+                                N°1 des séances
+                              </span>
                             </div>
                           </div>
                         </motion.div>
@@ -709,21 +712,22 @@ export default function Services() {
                             ? "bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 hover:shadow-amber-200/50 border-2 border-amber-200/50"
                             : "bg-white"
                         } ${
-                      isPatrice
-                        ? "hover:shadow-blue-200/30"
-                        : "hover:shadow-purple-200/30"
-                    }`}
+                          isPatrice
+                            ? "hover:shadow-blue-200/30"
+                            : "hover:shadow-purple-200/30"
+                        }`}
                       >
-
                         {/* Bande décorative supérieure avec dégradé - DORÉE pour la séance premium */}
-                        <div className={`h-2 bg-gradient-to-r ${
-                          service.featured
-                            ? "from-amber-400 via-yellow-500 to-orange-500"
-                            : isPatrice
-                            ? "from-blue-500 via-cyan-500 to-blue-600"
-                            : "from-purple-500 via-indigo-500 to-purple-600"
-                        }`} />
-                        
+                        <div
+                          className={`h-2 bg-gradient-to-r ${
+                            service.featured
+                              ? "from-amber-400 via-yellow-500 to-orange-500"
+                              : isPatrice
+                              ? "from-blue-500 via-cyan-500 to-blue-600"
+                              : "from-purple-500 via-indigo-500 to-purple-600"
+                          }`}
+                        />
+
                         {/* Effet de brillance dorée qui traverse la carte premium */}
                         {service.featured && (
                           <motion.div
@@ -733,7 +737,7 @@ export default function Services() {
                               duration: 3,
                               repeat: Infinity,
                               repeatDelay: 2,
-                              ease: "easeInOut"
+                              ease: "easeInOut",
                             }}
                           />
                         )}
@@ -795,13 +799,15 @@ export default function Services() {
                               }}
                               transition={{ duration: 0.5 }}
                             >
-                              <div className={`absolute inset-0 bg-gradient-to-br ${
-                                service.featured
-                                  ? "from-amber-400 to-orange-500"
-                                  : isPatrice
-                                  ? "from-blue-400 to-cyan-500"
-                                  : "from-purple-400 to-indigo-500"
-                              } rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300`} />
+                              <div
+                                className={`absolute inset-0 bg-gradient-to-br ${
+                                  service.featured
+                                    ? "from-amber-400 to-orange-500"
+                                    : isPatrice
+                                    ? "from-blue-400 to-cyan-500"
+                                    : "from-purple-400 to-indigo-500"
+                                } rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300`}
+                              />
                               <div
                                 className={`relative p-5 rounded-2xl text-white shadow-md overflow-hidden border ${
                                   service.featured
@@ -810,11 +816,11 @@ export default function Services() {
                                     ? "bg-gradient-to-br from-blue-500 to-cyan-400 border-blue-200 group-hover:border-blue-300"
                                     : "bg-gradient-to-br from-purple-500 to-indigo-400 border-purple-200 group-hover:border-purple-300"
                                 } transition-colors`}
-                            >
-                              <div className="relative z-10">
-                                {service.icon}
+                              >
+                                <div className="relative z-10">
+                                  {service.icon}
+                                </div>
                               </div>
-                            </div>
                             </motion.div>
 
                             <div className="flex-1 min-w-0">
