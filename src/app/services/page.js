@@ -366,37 +366,39 @@ Pour toute séance en distanciel (WhatsApp), règlement 48h minimum avant la pre
   },
   {
     id: 13,
+    slug: "libre-d-etre-soi",
     title: "Soin Libre d'Être Soi",
     price: "180€",
     duration: "2h - Présentiel",
-    intervenant: "Kris & patrice",
+    intervenant: "Kris & Patrice",
     icon: <SparklesIcon className="w-8 h-8" />,
-    description: `L'Ultime Renaissance de Votre Essence Pure
-  
-    ✨ Duo Zéro Mental + Soin
-    ✨ Séance Réalisée avec 2 thérapeutes
-    ✨ Renaissance de Votre Essence Pure
-    ✨ Intense connexion du Corps de l'Âme et de l'Esprit
-  
-    Imaginez un sanctuaire vibratoire conçu pour briser les chaînes des schémas limitants et des souffrances anciennes qui entravent votre libération.
-  
-    C'est la séance audacieuse du "Soin Libre d'Être Soi", une expérience immersive qui conjugue le lâcher-prise absolu du Zéro Mental à la profonde reconnexion vibratoire du Soin Énergétique.
-  
-    Ce que cette séance vous apporte :
-    • Libération des schémas limitants
-    • Reconnexion à votre essence profonde
-    • Double accompagnement expert
-    • Transformation vibratoire complète
-  
-    Le processus de transformation :
-    • Démantèlement des prisons mentales
-    • Libération des traumatismes
-    • Harmonisation énergétique profonde
-    • Renaissance de votre lumière essentielle
-  
-    Une fusion experte de deux thérapeutes œuvrera en parfaite symbiose pour une transformation totale et durable.
-  
-    Libre d'être Soi dans toute sa gloire, telle est la promesse de cette expérience transformatrice à l'état pur !`,
+    calendlyLink: "https://calendly.com/contact-krislavoixdesanges/libre-d-etre-soi",
+    description: `𝙇'𝙐𝙡𝙩𝙞𝙢𝙚 𝙍𝙚𝙣𝙖𝙞𝙨𝙨𝙖𝙣𝙘𝙚 𝙙𝙚 𝙑𝙤𝙩𝙧𝙚 𝙀𝙨𝙨𝙚𝙣𝙘𝙚 𝙋𝙪𝙧𝙚
+
+✨ Duo Zéro Mental + Soin 
+✨ Séance Réalisée avec 2 thérapeutes
+✨ Renaissance de Votre Essence Pure
+✨ Intense connexion du Corps de l'Âme et de l'Esprit
+
+Imaginez un sanctuaire vibratoire conçu pour briser les chaînes des schémas limitants et des souffrances anciennes qui entravent votre libération.
+
+C'est la séance audacieuse du "Soin Libre d'Être Soi", une expérience immersive qui conjugue le lâcher-prise absolu du Zéro Mental à la profonde reconnexion vibratoire du Soin Énergétique.
+
+Ce que cette séance vous apporte :
+• Libération des schémas limitants
+• Reconnexion à votre essence profonde
+• Double accompagnement expert
+• Transformation vibratoire complète
+
+Le processus de transformation :
+• Démantèlement des prisons mentales
+• Libération des traumatismes
+• Harmonisation énergétique profonde
+• Renaissance de votre lumière essentielle
+
+Une fusion experte de deux thérapeutes œuvrera en parfaite symbiose pour une transformation totale et durable.
+
+Libre d'être Soi dans toute sa gloire, telle est la promesse de cette expérience transformatrice à l'état pur !`,
     images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
   },
   {
@@ -650,9 +652,7 @@ export default function Services() {
                   const service = getServiceById(serviceId);
                   if (!service) return null;
 
-                  const isPatrice =
-                    service.intervenant === "Patrice" ||
-                    service.intervenant === "Kris & Patrice";
+                  const isPatrice = service.intervenant === "Patrice";
                   const mainColor = isPatrice ? "blue" : "purple";
                   const secondaryColor = isPatrice ? "cyan" : "indigo";
 
@@ -709,10 +709,10 @@ export default function Services() {
                             ? "bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 hover:shadow-amber-200/50 border-2 border-amber-200/50"
                             : "bg-white"
                         } ${
-                          isPatrice
-                            ? "hover:shadow-blue-200/30"
-                            : "hover:shadow-purple-200/30"
-                        }`}
+                      isPatrice
+                        ? "hover:shadow-blue-200/30"
+                        : "hover:shadow-purple-200/30"
+                    }`}
                       >
 
                         {/* Bande décorative supérieure avec dégradé - DORÉE pour la séance premium */}
@@ -810,11 +810,11 @@ export default function Services() {
                                     ? "bg-gradient-to-br from-blue-500 to-cyan-400 border-blue-200 group-hover:border-blue-300"
                                     : "bg-gradient-to-br from-purple-500 to-indigo-400 border-purple-200 group-hover:border-purple-300"
                                 } transition-colors`}
-                              >
-                                <div className="relative z-10">
-                                  {service.icon}
-                                </div>
+                            >
+                              <div className="relative z-10">
+                                {service.icon}
                               </div>
+                            </div>
                             </motion.div>
 
                             <div className="flex-1 min-w-0">

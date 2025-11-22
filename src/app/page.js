@@ -304,12 +304,12 @@ export default function Home() {
             <div className="max-w-7xl mx-auto px-4">
               <motion.h3 
                 className="font-heading text-4xl font-bold text-center mb-16 relative"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
               >
-                <motion.span 
+                <motion.span
                   className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
                   initial={{ backgroundPosition: "0% 0%" }}
                   animate={{ backgroundPosition: "100% 0%" }}
@@ -353,7 +353,7 @@ export default function Home() {
                     }}
                   >
                     {/* Icône avec animation */}
-                    <motion.div 
+                    <motion.div
                       className="text-4xl mb-6 relative flex justify-center items-center h-16"
                       initial={{ scale: 0.8, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
@@ -381,7 +381,7 @@ export default function Home() {
                       />
                       <span className="relative z-10">{step.icon}</span>
                     </motion.div>
-                    
+
                     <motion.h4 
                       className="text-xl font-bold mb-3 relative z-10"
                       initial={{ opacity: 0 }}
@@ -404,7 +404,7 @@ export default function Home() {
                   </motion.div>
                 ))}
               </div>
-            </div>
+                </div>
           </motion.section>
 
           {/* Notre éthique */}
@@ -416,7 +416,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <div className="max-w-7xl mx-auto px-4">
-              <motion.div
+                <motion.div
                 className="lg:w-1/2 mx-auto text-center"
                 initial={{ y: 50 }}
                 whileInView={{ y: 0 }}
@@ -464,7 +464,7 @@ export default function Home() {
                         className="absolute inset-0 bg-gradient-to-r from-purple-100/30 to-indigo-100/30 opacity-0 group-hover:opacity-100"
                         animate={{ x: ["0%", "100%", "0%"], opacity: [0, 0.5, 0] }}
                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                      />
+                    />
                       <motion.div 
                         className="text-4xl flex-shrink-0 relative"
                         whileHover={{ scale: 1.1, rotate: [0, 5, -5, 0] }}
@@ -481,10 +481,10 @@ export default function Home() {
                       >
                         {item.title}
                       </motion.span>
-                    </motion.div>
+                </motion.div>
                   ))}
-                </div>
-              </motion.div>
+              </div>
+            </motion.div>
             </div>
           </motion.section>
 

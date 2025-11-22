@@ -11,26 +11,27 @@ import {
   BrainIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import BookingModal from "../components/BookingModal";
 
 export default function PatricePage() {
   const [selectedService, setSelectedService] = useState(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   // Les services de Patrice
   const patriceServices = [
     {
-      id: 1,
+      id: 18,
       title: "Force Intérieure & Renaissance Masculine",
       price: "100€",
       duration: "1h - Présentiel",
       icon: <UserIcon className="w-8 h-8" />,
+      calendlyLink: "https://calendly.com/contact-krislavoixdesanges/force-interieure-et-renaissance",
       description: `Un espace dédié à la libération émotionnelle masculine, alliant olfactothérapie et zéro mental pour une transformation profonde.
 
 ✨ Libération émotionnelle masculine
 ✨ Approche holistique personnalisée
 ✨ Techniques d'olfactothérapie ciblées
 ✨ Pratique du zéro mental guidée
-
-RESERVATION PAR SMS UNIQUEMENT 06.65.55.33.41
 
 Cette approche unique combine deux méthodes puissantes :
 
@@ -58,19 +59,18 @@ Cette méthode offre une voie unique pour reconnecter corps, esprit et émotions
       images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
     },
     {
-      id: 2,
+      id: 13,
       title: "Soin Libre d'Être Soi",
       price: "180€",
       duration: "2h - Présentiel",
       icon: <SparklesIcon className="w-8 h-8" />,
+      calendlyLink: "https://calendly.com/contact-krislavoixdesanges/libre-d-etre-soi",
       description: `𝙇'𝙐𝙡𝙩𝙞𝙢𝙚 𝙍𝙚𝙣𝙖𝙞𝙨𝙨𝙖𝙣𝙘𝙚 𝙙𝙚 𝙑𝙤𝙩𝙧𝙚 𝙀𝙨𝙨𝙚𝙣𝙘𝙚 𝙋𝙪𝙧𝙚
 
 ✨ Duo Zéro Mental + Soin 
 ✨ Séance Réalisée avec 2 thérapeutes
 ✨ Renaissance de Votre Essence Pure
 ✨ Intense connexion du Corps de l'Âme et de l'Esprit
-
-RESERVATION PAR SMS UNIQUEMENT 06.65.55.33.41
 
 Imaginez un sanctuaire vibratoire conçu pour briser les chaînes des schémas limitants et des souffrances anciennes qui entravent votre libération.
 
@@ -94,19 +94,18 @@ Libre d'être Soi dans toute sa gloire, telle est la promesse de cette expérien
       images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
     },
     {
-      id: 3,
-      title: "Zero Mental",
+      id: 19,
+      title: "Zéro Mental",
       price: "100€",
       duration: "1h - Présentiel",
       icon: <LightBulbIcon className="w-8 h-8" />,
+      calendlyLink: "https://calendly.com/contact-krislavoixdesanges/zero-mental",
       description: `𝑳'𝑨𝒖𝒃𝒆 𝒅'𝒖𝒏𝒆 𝑵𝒐𝒖𝒗𝒆𝒍𝒍𝒆 𝑪𝒐𝒏𝒔𝒄𝒊𝒆𝒏𝒄𝒆 𝑳𝒊𝒃𝒆́𝒓𝒆́𝒆
 
 ✨ Libération du mental limitant 
 ✨ Reconnexion à votre essence pure
 ✨ Transformation vibratoire profonde
 ✨ État de plénitude intérieure absolue
-
-RESERVATION PAR SMS UNIQUEMENT 06.65.55.33.41
 
 𝑽𝒐𝒖𝒔 𝒍'𝒂𝒗𝒆𝒛 𝒅𝒆́𝒋𝒂̀ 𝒈𝒐𝒖̂𝒕𝒆́ 𝒑𝒂𝒓 𝒃𝒓𝒊𝒃𝒆𝒔, ce sentiment exaltant de plénitude intérieure, tel un parfum d'éternité flottant dans l'air, avant de le voir se dissiper aussi vite dans le tumulte du quotidien.
 
@@ -132,19 +131,18 @@ Le Zéro Mental, clé ouvrant les portes d'une Nouvelle Conscience libérée des
       images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
     },
     {
-      id: 4,
+      id: 21,
       title: "Olfactothérapie",
       price: "100€",
       duration: "1h - Présentiel",
       icon: <SparklesIcon className="w-8 h-8" />,
+      calendlyLink: "https://calendly.com/contact-krislavoixdesanges/olfactotherapie",
       description: `𝑳𝒂 𝑷𝒖𝒊𝒔𝒔𝒂𝒏𝒄𝒆 𝒅𝒆𝒔 𝑺𝒆𝒏𝒔 𝒑𝒐𝒖𝒓 𝒖𝒏𝒆 𝑳𝒊𝒃𝒆́𝒓𝒂𝒕𝒊𝒐𝒏 É𝒎𝒐𝒕𝒊𝒐𝒏𝒏𝒆𝒍𝒍𝒆
 
 ✨ Libération des émotions cristallisées
 ✨ Thérapie psycho-corporelle ciblée
 ✨ Transformation des schémas répétitifs
 ✨ Reconnexion sensorielle profonde
-
-RESERVATION PAR SMS UNIQUEMENT 06.65.55.33.41
 
 L'olfacto-thérapie utilise la puissance évocatrice des odeurs pour accéder à vos mémoires émotionnelles les plus profondes et libérer les blocages ancrés dans votre corps.
 
@@ -423,30 +421,51 @@ Le processus de transformation :
                     </p>
                   </div>
 
-                  {/* Bouton avec effet moderne */}
-                  <div className="mt-auto relative overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.6, ease: "easeInOut" }}
-                    />
-                    <button
-                      onClick={() => setSelectedService(service)}
-                      className="relative w-full py-3 sm:py-4 text-blue-600 font-semibold hover:text-blue-700 transition-all flex items-center justify-center gap-2 border-t border-blue-100 group-hover:border-blue-300 text-sm sm:text-base"
-                    >
-                      <span>Voir plus de détails</span>
-                      <motion.span
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
+                  {/* Boutons d'action */}
+                  <div className="mt-auto relative overflow-hidden border-t border-blue-100 group-hover:border-blue-300">
+                    <div className="flex gap-2 p-3 sm:p-4">
+                      <button
+                        onClick={() => setSelectedService(service)}
+                        className="flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-xl font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
                       >
-                        →
-                      </motion.span>
-                    </button>
+                        <svg
+                          className="w-4 h-4 sm:w-5 sm:h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        Détails
+                      </button>
+                      <button
+                        onClick={() => {
+                          setSelectedService(service);
+                          setIsBookingModalOpen(true);
+                        }}
+                        className="flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-xl font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:shadow-lg transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
+                      >
+                        <svg
+                          className="w-4 h-4 sm:w-5 sm:h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+                        Réserver
+                      </button>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>
@@ -584,18 +603,46 @@ Le processus de transformation :
                 </div>
               </div>
 
-              <div className="mt-6 sm:mt-8 flex justify-center">
+              <div className="mt-6 sm:mt-8 flex gap-4 justify-center">
                 <button
                   onClick={() => setSelectedService(null)}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors"
+                  className="px-6 sm:px-8 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full font-medium transition-colors"
                 >
                   Fermer
+                </button>
+                <button
+                  onClick={() => {
+                    setIsBookingModalOpen(true);
+                  }}
+                  className="px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:shadow-lg text-white rounded-full font-medium transition-all flex items-center gap-2"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Réserver
                 </button>
               </div>
             </div>
           </motion.div>
         </div>
       )}
+
+      {/* Modal de réservation */}
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        service={selectedService}
+      />
     </main>
   );
 }

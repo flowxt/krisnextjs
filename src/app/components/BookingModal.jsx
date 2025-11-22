@@ -32,10 +32,13 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
   const stripeOnlyServices = [4, 7, 17]; // Guidance question, Carte cadeau Guidance, Carte cadeau Soin
   
   // Services disponibles uniquement en paiement en ligne
-  const onlineOnlyServices = []; // Autres services en ligne uniquement
+  const onlineOnlyServices = [20]; // Zéro Mental en Visio (Patrice) - paiement en ligne requis
   
   // Services avec bon cadeau (pas de paiement nécessaire)
   const giftCardRedemptionServices = [16]; // ID du service "Utilisation Bon Cadeau"
+  
+  // Services qui ouvrent directement Calendly sans choix de paiement (services présentiels de Patrice)
+  const directCalendlyServices = [18, 19, 21, 13]; // Force Intérieure, Zéro Mental présentiel, Olfactothérapie, Libre d'être Soi
   
   // Services nécessitant un devis
   const quoteServices = [5]; // ID du service "Nettoyage Harmonisation"
@@ -86,6 +89,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       (hasMultiplePrices() && priceOption && !isStripeService()) ||
       (onlineOnlyServices.includes(service?.id) && !hasMultiplePrices()) || 
       giftCardRedemptionServices.includes(service?.id) ||
+      directCalendlyServices.includes(service?.id) || // Services directs sans choix
       !canBookOnline(service?.id)
     );
     
@@ -107,7 +111,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
 
   // Vérifie si un service est réservable en ligne
   const canBookOnline = (serviceId) => {
-    const nonBookableServices = [12, 13, 14, 15]; // IDs des services par SMS uniquement
+    const nonBookableServices = [12, 14, 15]; // IDs des services par SMS uniquement (retiré 13 qui est maintenant réservable)
     return !nonBookableServices.includes(serviceId);
   };
 
@@ -129,7 +133,12 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       9: "guidance-90",
       10: "guidance-1h",
       11: "guidance-45min",
+      13: "libre-d-etre-soi", // Soin Libre d'Être Soi (Kris & Patrice)
       16: "reserver-cadeau", // Nouveau service pour utiliser un bon cadeau
+      18: "force-interieure-et-renaissance", // Force Intérieure & Renaissance (Patrice)
+      19: "zero-mental", // Zéro Mental présentiel (Patrice)
+      20: "zero-mental-clone", // Zéro Mental visio (Patrice)
+      21: "olfactotherapie", // Olfactothérapie (Patrice)
     }[serviceId] || "je-me-laisse-guider";
     
     // Pour le paiement sur place, ajouter le suffixe
@@ -157,6 +166,11 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     
     // Pour les services de bon cadeau
     if (giftCardRedemptionServices.includes(service.id)) {
+      return `https://calendly.com/contact-krislavoixdesanges/${getCalendlySlug(service.id)}`;
+    }
+    
+    // Pour les services directs de Patrice (présentiel sans choix de paiement)
+    if (directCalendlyServices.includes(service.id)) {
       return `https://calendly.com/contact-krislavoixdesanges/${getCalendlySlug(service.id)}`;
     }
     
@@ -977,6 +991,12 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
             />
           ) : onlineOnlyServices.includes(service.id) ? (
             // Services disponibles uniquement en paiement en ligne (autres que Stripe)
+            <div className="calendly-inline-widget" 
+                data-url={calendlyUrl}
+                style={{ minWidth: '320px', height: '700px' }}
+            />
+          ) : directCalendlyServices.includes(service.id) ? (
+            // Services présentiels de Patrice - Calendly direct sans choix de paiement
             <div className="calendly-inline-widget" 
                 data-url={calendlyUrl}
                 style={{ minWidth: '320px', height: '700px' }}

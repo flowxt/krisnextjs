@@ -155,7 +155,7 @@ export default function Hero() {
     <span className="relative inline-block">
       <span className="text-purple-400 text-3xl sm:text-4xl md:text-6xl">"</span>
       <span className="bg-gradient-to-br from-fuchsia-500 via-purple-600 to-indigo-500 bg-clip-text text-transparent pb-1">
-        La<span className="hidden sm:inline">&#8202;</span>Voix<span className="hidden sm:inline">&#8202;</span>Des<span className="hidden sm:inline">&#8202;</span>Anges
+      La<span className="hidden sm:inline">&#8202;</span>Voix<span className="hidden sm:inline">&#8202;</span>Des<span className="hidden sm:inline">&#8202;</span>Anges
       </span>
       <span className="text-purple-400 text-3xl sm:text-4xl md:text-6xl">"</span>
     </span>
@@ -345,25 +345,25 @@ export default function Hero() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-      >
+  >
         <motion.div
           className="px-6 py-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-purple-200 flex items-center gap-2"
           whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(139, 92, 246, 0.3)" }}
-        >
-          <motion.div
-            animate={{ 
+    >
+    <motion.div
+      animate={{ 
               scale: [1, 1.2, 1],
               opacity: [0.7, 1, 0.7]
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
+      }}
+      transition={{ duration: 2, repeat: Infinity }}
+    >
             <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full" />
           </motion.div>
           <span className="text-sm font-medium text-gray-700">
             En présentiel ou à distance
           </span>
         </motion.div>
-      </motion.div>
+    </motion.div>
       </div>
       
       {/* Style pour les animations de dégradés */}
