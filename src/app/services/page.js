@@ -25,7 +25,10 @@ const services = [
     duration: "1h - Présentiel/Distance",
     intervenant: "Kris",
     icon: <SparklesIcon className="w-8 h-8" />,
-    description: `Une invitation au retour à l'essentiel, à l'écoute de ce doux murmure de votre âme.
+    featured: true, // Tag pour mettre en valeur
+    description: `Vous ne savez pas quoi choisir comme séance...
+
+Une invitation au retour à l'essentiel, à l'écoute de ce doux murmure de votre âme.
 
 Faites confiance à vos élans vibratoires et laissez-vous guider dans un espace de lâcher-prise où l'essentiel se révèle.
 
@@ -477,7 +480,7 @@ export default function Services() {
     return now >= vacationStart && now <= vacationEnd;
   };
 
-  // Créer les catégories de services
+  // Créer les catégories de services - NOUVEL ORDRE
   const categories = [
     {
       id: "soins",
@@ -490,16 +493,6 @@ export default function Services() {
       services: [2, 3], // Séance Enfant (4-12 ans), Séance Enfant (3 mois à 3 ans)
     },
     {
-      id: "nettoyage",
-      title: "Nettoyage harmonisation",
-      services: [5], // Nettoyage Énergétique du Foyer
-    },
-    {
-      id: "contact-defunt",
-      title: "Contact défunt",
-      services: [6], // Contact Défunt
-    },
-    {
       id: "guidances",
       title: "Guidances",
       services: [9, 10, 11], // Guidance 1h30, Guidance 1h, Guidance 45min
@@ -508,6 +501,16 @@ export default function Services() {
       id: "questions",
       title: "Guidance à la question",
       services: [4], // Guidance à la Question
+    },
+    {
+      id: "contact-defunt",
+      title: "Contact défunt",
+      services: [6], // Contact Défunt
+    },
+    {
+      id: "nettoyage",
+      title: "Nettoyage harmonisation",
+      services: [5], // Nettoyage Énergétique du Foyer
     },
     {
       id: "bon-cadeau",
@@ -567,17 +570,17 @@ export default function Services() {
               <span className="font-semibold text-purple-600">
                 soins personnalisés
               </span>{" "}
-              pour harmoniser votre{" "}
+              pour harmoniser{" "}
               <span className="font-semibold text-indigo-600">
-                corps, cœur et esprit
+                votre corps, cœur et esprit
               </span>
             </p>
           </div>
 
           {/* Filtres / Navigation rapide */}
           <div className="mb-12">
-            <div className="bg-white shadow-md rounded-xl p-4 flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
-              {categories.map((category) => (
+            <div className="bg-white shadow-md rounded-xl p-4 flex flex-wrap justify-center gap-2 max-w-5xl mx-auto">
+              {categories.map((category, idx) => (
                 <button
                   key={category.id}
                   onClick={() => {
@@ -586,8 +589,13 @@ export default function Services() {
                       block: "start",
                     });
                   }}
-                  className="px-4 py-2 rounded-full text-sm font-medium bg-purple-50 text-purple-700 hover:bg-purple-100 transition-colors"
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    idx === 0
+                      ? "bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 hover:from-amber-200 hover:to-orange-200 font-semibold"
+                      : "bg-purple-50 text-purple-700 hover:bg-purple-100"
+                  }`}
                 >
+                  {idx === 0 && <span className="mr-1">⭐</span>}
                   {category.title}
                 </button>
               ))}
@@ -658,29 +666,77 @@ export default function Services() {
                         animationFillMode: "forwards",
                       }}
                     >
-                      {/* Effet de glow animé en arrière-plan */}
+                      {/* Badge "N°1" pour la séance mise en avant - AU-DESSUS de la carte */}
+                      {service.featured && (
+                        <motion.div
+                          className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-30"
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{ type: "spring", delay: 0.3 }}
+                        >
+                          <div className="relative">
+                            {/* Effet de glow autour du badge */}
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full blur-md"
+                              animate={{
+                                scale: [1, 1.2, 1],
+                                opacity: [0.5, 0.8, 0.5],
+                              }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            />
+                            <div className="relative bg-gradient-to-r from-amber-400 to-orange-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+                              <span className="text-xl">⭐</span>
+                              <span className="font-bold text-sm whitespace-nowrap">N°1 des séances</span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Effet de glow animé en arrière-plan - DORÉ pour la séance premium */}
                       <motion.div
                         className={`absolute -inset-0.5 bg-gradient-to-r ${
-                          isPatrice
+                          service.featured
+                            ? "from-amber-400 via-yellow-500 to-orange-500"
+                            : isPatrice
                             ? "from-blue-400 via-cyan-500 to-blue-600"
                             : "from-purple-400 via-indigo-500 to-purple-600"
                         } rounded-[2rem] opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500`}
                       />
 
                       <div
-                        className={`relative h-full rounded-[2rem] overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2
-                    ${
-                      isPatrice
-                        ? "hover:shadow-blue-200/30"
-                        : "hover:shadow-purple-200/30"
-                    }`}
-                      >
-                        {/* Bande décorative supérieure avec dégradé */}
-                        <div className={`h-2 bg-gradient-to-r ${
+                        className={`relative h-full rounded-[2rem] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${
+                          service.featured
+                            ? "bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 hover:shadow-amber-200/50 border-2 border-amber-200/50"
+                            : "bg-white"
+                        } ${
                           isPatrice
+                            ? "hover:shadow-blue-200/30"
+                            : "hover:shadow-purple-200/30"
+                        }`}
+                      >
+
+                        {/* Bande décorative supérieure avec dégradé - DORÉE pour la séance premium */}
+                        <div className={`h-2 bg-gradient-to-r ${
+                          service.featured
+                            ? "from-amber-400 via-yellow-500 to-orange-500"
+                            : isPatrice
                             ? "from-blue-500 via-cyan-500 to-blue-600"
                             : "from-purple-500 via-indigo-500 to-purple-600"
                         }`} />
+                        
+                        {/* Effet de brillance dorée qui traverse la carte premium */}
+                        {service.featured && (
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/30 to-transparent pointer-events-none"
+                            animate={{ x: ["-100%", "200%"] }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              repeatDelay: 2,
+                              ease: "easeInOut"
+                            }}
+                          />
+                        )}
 
                         {/* Effet de brillance qui parcourt la carte au survol */}
                         <div className="absolute inset-0 overflow-hidden rounded-[2rem] pointer-events-none">
@@ -730,7 +786,7 @@ export default function Services() {
                         {/* Contenu de la carte */}
                         <div className="p-8 relative z-10 flex flex-col h-full">
                           <div className="flex items-start gap-6 relative">
-                            {/* Icône avec effet de glow */}
+                            {/* Icône avec effet de glow - DORÉE pour la séance premium */}
                             <motion.div
                               className="relative"
                               whileHover={{
@@ -740,13 +796,17 @@ export default function Services() {
                               transition={{ duration: 0.5 }}
                             >
                               <div className={`absolute inset-0 bg-gradient-to-br ${
-                                isPatrice
+                                service.featured
+                                  ? "from-amber-400 to-orange-500"
+                                  : isPatrice
                                   ? "from-blue-400 to-cyan-500"
                                   : "from-purple-400 to-indigo-500"
                               } rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300`} />
                               <div
                                 className={`relative p-5 rounded-2xl text-white shadow-md overflow-hidden border ${
-                                  isPatrice
+                                  service.featured
+                                    ? "bg-gradient-to-br from-amber-500 to-orange-500 border-amber-300 group-hover:border-amber-400"
+                                    : isPatrice
                                     ? "bg-gradient-to-br from-blue-500 to-cyan-400 border-blue-200 group-hover:border-blue-300"
                                     : "bg-gradient-to-br from-purple-500 to-indigo-400 border-purple-200 group-hover:border-purple-300"
                                 } transition-colors`}
@@ -767,11 +827,13 @@ export default function Services() {
                                 </span>
                               </h3>
 
-                              {/* Badge intervenant */}
+                              {/* Badge intervenant - DORÉ pour la séance premium */}
                               <span
                                 className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3
                             ${
-                              isPatrice
+                              service.featured
+                                ? "bg-amber-100 text-amber-800 border border-amber-300"
+                                : isPatrice
                                 ? "bg-blue-100 text-blue-800"
                                 : "bg-purple-100 text-purple-800"
                             }`}
@@ -783,9 +845,13 @@ export default function Services() {
 
                           {/* Prix et badges */}
                           <div className="mt-4 flex flex-col space-y-3">
-                            {/* Prix */}
+                            {/* Prix - DORÉ pour la séance premium */}
                             <span
-                              className={`text-xl font-bold text-${mainColor}-600`}
+                              className={`text-xl font-bold ${
+                                service.featured
+                                  ? "text-amber-700"
+                                  : `text-${mainColor}-600`
+                              }`}
                             >
                               {service.price}
                             </span>
