@@ -19,6 +19,7 @@ import BookingModal from "../components/BookingModal";
 const services = [
   {
     id: 1,
+    slug: "je-me-laisse-guider",
     title: 'Séance "Je me laisse guider"',
     price: "100€",
     duration: "1h - Présentiel/Distance",
@@ -650,7 +651,8 @@ export default function Services() {
                   return (
                     <div
                       key={service.id}
-                      className="relative opacity-0 animate-fade-in group"
+                      id={service.slug || `service-${service.id}`}
+                      className="relative opacity-0 animate-fade-in group scroll-mt-24"
                       style={{
                         animationDelay: `${(categoryIndex * 3 + index) * 0.1}s`,
                         animationFillMode: "forwards",

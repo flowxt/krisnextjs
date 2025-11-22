@@ -128,30 +128,6 @@ export default function Hero() {
   
   {/* Nom avec couleur dégradée - KRIS */}
   <span className="inline-block relative">
-    {/* Particules autour du texte "Kris" - optimisées pour moins de particules */}
-    {/* {isClient && particlePositions.slice(0, 2).map((particle, i) => (
-      <motion.div
-        key={i}
-        className="absolute rounded-full bg-purple-300"
-        style={{
-          width: particle.size,
-          height: particle.size,
-          left: `${particle.x}%`,
-          top: `${particle.y}%`
-        }}
-        animate={{
-          y: [0, -10, 0],
-          opacity: [0, 0.6, 0],
-          scale: [0.5, 1.1, 0.5]
-        }}
-        transition={{
-          duration: particle.duration * 1.2, // légèrement ralenti pour plus de douceur
-          repeat: Infinity,
-          delay: particle.delay
-        }}
-      />
-    ))} */}
-    
     <span className="relative inline-block bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
       Kris
     </span>
@@ -174,10 +150,14 @@ export default function Hero() {
   {/* Espacement responsive amélioré */}
   <span className="mx-1 md:mx-3"></span>
   
-  {/* LA VOIX DES ANGES - séparé pour meilleure lisibilité */}
-  <span className="inline-flex flex-wrap relative" style={{ paddingBottom: "0.25em" }}>
-    <span className="relative inline-block bg-gradient-to-br from-fuchsia-500 via-purple-600 to-indigo-500 bg-clip-text text-transparent pb-1">
-      La<span className="hidden sm:inline">&#8202;</span>Voix<span className="hidden sm:inline">&#8202;</span>Des<span className="hidden sm:inline">&#8202;</span>Anges
+  {/* "LA VOIX DES ANGES" avec guillemets */}
+  <span className="inline-flex flex-wrap relative items-center" style={{ paddingBottom: "0.25em" }}>
+    <span className="relative inline-block">
+      <span className="text-purple-400 text-3xl sm:text-4xl md:text-6xl">"</span>
+      <span className="bg-gradient-to-br from-fuchsia-500 via-purple-600 to-indigo-500 bg-clip-text text-transparent pb-1">
+        La<span className="hidden sm:inline">&#8202;</span>Voix<span className="hidden sm:inline">&#8202;</span>Des<span className="hidden sm:inline">&#8202;</span>Anges
+      </span>
+      <span className="text-purple-400 text-3xl sm:text-4xl md:text-6xl">"</span>
     </span>
     
     {/* Particules optimisées */}
@@ -215,6 +195,16 @@ export default function Hero() {
     )}
   </span>
   
+  {/* Ajout de "& Patrice" en plus petit et italique bleu */}
+  <motion.span 
+    className="block mt-2 text-xl sm:text-2xl md:text-3xl italic text-blue-600 font-light"
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.8, duration: 0.6 }}
+  >
+    & Patrice
+  </motion.span>
+  
   {/* Ligne décorative sous le titre - légèrement affinée */}
   <motion.div
     className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[2px] bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-400"
@@ -246,10 +236,10 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          {/* Sous-titre avec les mots clés et icônes */}
+          {/* Sous-titre avec les mots clés et icônes - maintenant avec 5 éléments */}
           <motion.div
         variants={itemVariants}
-        className="mt-2 md:mt-4 flex flex-wrap justify-center items-center max-w-3xl mx-auto text-gray-700"
+        className="mt-2 md:mt-4 flex flex-wrap justify-center items-center max-w-4xl mx-auto text-gray-700"
       >
           <span className="inline-flex items-center gap-1 mx-1 md:mx-2 my-1 hover:text-purple-600 transition-colors text-base md:text-xl font-light">
               <HeartIcon className="w-5 h-5" />
@@ -265,6 +255,16 @@ export default function Hero() {
               <LightBulbIcon className="w-5 h-5" />
               <span>Éveil Spirituel</span>
             </span>
+            <span className="mx-1">•</span>
+            <span className="inline-flex items-center gap-1 mx-1 md:mx-2 my-1 hover:text-purple-600 transition-colors text-base md:text-xl font-light">
+              <HandRaisedIcon className="w-5 h-5" />
+              <span>Coaching</span>
+            </span>
+            <span className="mx-1">•</span>
+            <span className="inline-flex items-center gap-1 mx-1 md:mx-2 my-1 hover:text-purple-600 transition-colors text-base md:text-xl font-light">
+              <SparklesIcon className="w-5 h-5" />
+              <span>Libération Émotionnelle</span>
+            </span>
           </motion.div>
 
           {/* Bouton CTA amélioré */}
@@ -274,9 +274,9 @@ export default function Hero() {
         className="mt-6 md:mt-10"
       >
   <motion.a
-    href="/services"
+    href="/services#je-me-laisse-guider"
     className="group relative overflow-hidden inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-full"
-    aria-label="Prendre rendez-vous"
+    aria-label="Découvrir la séance Je me laisse guider"
     whileHover={{
       scale: 1.03,
       boxShadow: "0 20px 30px -10px rgba(139, 92, 246, 0.4)",
@@ -315,8 +315,8 @@ export default function Hero() {
 </motion.div>
         </motion.div>
 
-        {/* Badges de spécialité avec icônes */}
-        <div className="flex flex-wrap justify-center gap-x-2 md:gap-x-3 gap-y-1 md:gap-y-2 mt-3 md:mt-6 mx-auto px-4 max-w-md">
+        {/* Badges de spécialité avec icônes - mis à jour */}
+        <div className="flex flex-wrap justify-center gap-x-2 md:gap-x-3 gap-y-1 md:gap-y-2 mt-3 md:mt-6 mx-auto px-4 max-w-2xl">
           <span className="px-4 py-1.5 bg-purple-100 backdrop-blur-sm rounded-full text-xs font-medium text-purple-700 whitespace-nowrap flex items-center gap-1 hover:bg-purple-200 transition-colors">
             <HandRaisedIcon className="w-3.5 h-3.5" />
             Médium
@@ -327,7 +327,11 @@ export default function Hero() {
           </span>
           <span className="px-4 py-1.5 bg-purple-100 backdrop-blur-sm rounded-full text-xs font-medium text-purple-700 whitespace-nowrap flex items-center gap-1 hover:bg-purple-200 transition-colors">
             <SunIcon className="w-3.5 h-3.5" />
-            Guide Spirituel
+            Coach Spirituel
+          </span>
+          <span className="px-4 py-1.5 bg-purple-100 backdrop-blur-sm rounded-full text-xs font-medium text-purple-700 whitespace-nowrap flex items-center gap-1 hover:bg-purple-200 transition-colors">
+            <MoonIcon className="w-3.5 h-3.5" />
+            Guidances
           </span>
           <span className="px-4 py-1.5 bg-purple-100 backdrop-blur-sm rounded-full text-xs font-medium text-purple-700 whitespace-nowrap flex items-center gap-1 hover:bg-purple-200 transition-colors">
             <HeartIcon className="w-3.5 h-3.5" />
@@ -335,46 +339,31 @@ export default function Hero() {
           </span>
         </div>
 
-      {/* Indicateur de défilement amélioré - caché sur mobile */}
-{scrollIndicator && (
-  <div
-  className="absolute left-1/2 bottom-8 transform -translate-x-1/2 cursor-pointer z-20 hidden md:flex flex-col items-center" // Ajout de hidden md:flex
-    onClick={() => {
-      window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
-    }}
-    aria-label="Défiler vers le bas"
-  >
-    <motion.p 
-      className="text-sm text-purple-700 mb-2 font-medium"
-      animate={{ opacity: [0.6, 1, 0.6] }}
-      transition={{ duration: 2, repeat: Infinity }}
-    >
-      Découvrir
-    </motion.p>
-    
-    <motion.div
-      className="w-8 h-14 rounded-full border-2 border-purple-500/50 flex items-start justify-center p-1"
-      animate={{ 
-        boxShadow: [
-          "0 0 0 rgba(167, 139, 250, 0)",
-          "0 0 10px rgba(167, 139, 250, 0.3)",
-          "0 0 0 rgba(167, 139, 250, 0)"
-        ] 
-      }}
-      transition={{ duration: 2, repeat: Infinity }}
-    >
-      <motion.div 
-        className="w-2 h-2 bg-purple-600 rounded-full"
-        animate={{ y: [2, 8, 2] }}
-        transition={{ 
-          duration: 1.5, 
-          repeat: Infinity,
-          ease: "easeInOut" 
-        }}
-      />
-    </motion.div>
-  </div>
-)}
+      {/* Badge "En présentiel ou à distance" - moderne et élégant */}
+      <motion.div
+        className="absolute left-1/2 bottom-8 transform -translate-x-1/2 z-20"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+      >
+        <motion.div
+          className="px-6 py-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-purple-200 flex items-center gap-2"
+          whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(139, 92, 246, 0.3)" }}
+        >
+          <motion.div
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.7, 1, 0.7]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full" />
+          </motion.div>
+          <span className="text-sm font-medium text-gray-700">
+            En présentiel ou à distance
+          </span>
+        </motion.div>
+      </motion.div>
       </div>
       
       {/* Style pour les animations de dégradés */}

@@ -70,7 +70,7 @@ export default function Navbar() {
                   : "text-gray-800 hover:text-indigo-600"
               }`}
             >
-              Réservation 
+              Réserver 
               <ChevronDown size={16} className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
               {isReservationActive() && (
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full" />
@@ -192,12 +192,12 @@ export default function Navbar() {
             Accueil
           </Link>
           
-          {/* Section Réservation avec sous-liens */}
+          {/* Section Réserver avec sous-liens */}
           <div>
             <div className={`font-medium mb-2 ${
               isReservationActive() ? "text-indigo-600" : "text-gray-800"
             }`}>
-              Réservation
+              Réserver
             </div>
             <div className={`pl-4 border-l-2 space-y-3 ${
               isReservationActive() ? "border-indigo-400" : "border-indigo-200"
