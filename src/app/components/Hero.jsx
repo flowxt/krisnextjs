@@ -195,16 +195,6 @@ export default function Hero() {
     )}
   </span>
   
-  {/* Ajout de "& Patrice" en plus petit et italique bleu */}
-  <motion.span 
-    className="block mt-2 text-xl sm:text-2xl md:text-3xl italic text-blue-600 font-light"
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.8, duration: 0.6 }}
-  >
-    & Patrice
-  </motion.span>
-  
   {/* Ligne décorative sous le titre - légèrement affinée */}
   <motion.div
     className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[2px] bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-400"
