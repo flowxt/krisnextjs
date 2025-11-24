@@ -70,8 +70,9 @@ const ContactForm = () => {
       newErrors.email = "Format d'email invalide";
     }
 
-    if (
-      formData.phone &&
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Le téléphone est requis";
+    } else if (
       !/^(\+33|0)[1-9](\d{2}){4}$/.test(formData.phone.replace(/\s/g, ""))
     ) {
       newErrors.phone = "Format de téléphone invalide";
@@ -546,15 +547,13 @@ const ContactForm = () => {
                     {/* Téléphone */}
                     <div>
                       <label className="block text-gray-700 mb-2 font-medium">
-                        Votre téléphone{" "}
-                        <span className="text-gray-400 text-sm">
-                          (optionnel)
-                        </span>
+                        Votre téléphone<span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
                         <motion.input
                           type="tel"
                           name="phone"
+                          required
                           placeholder="Votre numéro de téléphone"
                           className={inputClasses("phone")}
                           value={formData.phone}
@@ -879,7 +878,7 @@ const ContactForm = () => {
                 <div>
                   <h4 className="font-medium text-gray-900">Horaires</h4>
                   <p className="text-gray-600">
-                    Du lundi au samedi, de 9h à 19h
+                    Du lundi au vendredi, de 9h à 18h30
                     <br />
                     Sur rendez-vous uniquement
                   </p>
@@ -905,7 +904,7 @@ const ContactForm = () => {
                 <div>
                   <h4 className="font-medium text-gray-900">Contact</h4>
                   <p className="text-gray-600">
-                    Email : feronkristelle@gmail.com
+                    Email : contact@krislavoixdesanges.com
                   </p>
                 </div>
               </motion.div>
