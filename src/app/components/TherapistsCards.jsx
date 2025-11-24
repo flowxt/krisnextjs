@@ -13,7 +13,7 @@ export default function TherapistsCards() {
       id: "kris",
       name: "Kristelle",
       lastName: "Feron",
-      title: "Médium • Magnétiseuse • Guide",
+      title: "Médium • Énergéticienne • Coach",
       image: "/photo/kris.jpg",
       logo: "/photo/logonew.jpg",
       colors: {

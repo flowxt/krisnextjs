@@ -60,6 +60,20 @@ export default function Navbar() {
             )}
           </Link>
           
+          <Link 
+            href="/a-propos" 
+            className={`relative font-medium transition-colors duration-300 ${
+              isActive("/a-propos")
+                ? "text-indigo-600" 
+                : "text-gray-800 hover:text-indigo-600"
+            }`}
+          >
+            À propos de nous
+            {isActive("/a-propos") && (
+              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full" />
+            )}
+          </Link>
+          
           {/* Menu déroulant pour les soins */}
           <div className="relative" ref={dropdownRef}>
             <button 
@@ -119,7 +133,7 @@ export default function Navbar() {
                   >
                     <span className="flex items-center gap-2">
                       {pathname === "/soins" && <span className="w-1.5 h-1.5 bg-purple-600 rounded-full" />}
-                      Forfaits
+                      Coaching et accompagnement holistique
                     </span>
                   </Link>
                 </div>
@@ -192,6 +206,19 @@ export default function Navbar() {
             Accueil
           </Link>
           
+          <Link 
+            href="/a-propos" 
+            className={`block font-medium transition-colors ${
+              isActive("/a-propos")
+                ? "text-indigo-600 bg-indigo-50 px-3 py-2 rounded-lg" 
+                : "text-gray-800"
+            }`}
+            onClick={() => setIsOpen(false)}
+          >
+            {isActive("/a-propos") && <span className="mr-2">•</span>}
+            À propos de nous
+          </Link>
+          
           {/* Section Réserver avec sous-liens */}
           <div>
             <div className={`font-medium mb-2 ${
@@ -236,7 +263,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
               >
                 {pathname === "/soins" && <span className="mr-2">•</span>}
-                Forfaits
+                Coaching et accompagnement holistique
               </Link>
             </div>
           </div>
