@@ -2,6 +2,7 @@ import { Cinzel, Nunito } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import PartnersFloatingButton from "./components/PartnersFloatingButton";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -101,6 +102,7 @@ export default function RootLayout({ children }) {
         {children}
         <Analytics />
         <SpeedInsights />
+        <PartnersFloatingButton />
         <Footer />
       </body>
     </html>
