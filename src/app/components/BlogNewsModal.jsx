@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2025-11-moon-signs";
+    const currentArticlesBatchId = "articles-2025-12-coldmoon-liberation";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -78,17 +78,17 @@ export default function BlogNewsModal() {
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/cinquante-deuxieme-article" className="block">
-                      <div className="bg-slate-50 p-4 rounded-lg hover:bg-slate-100 transition-colors border border-slate-200">
-                        <h4 className="font-semibold text-slate-700 mb-1">🌑 Rituel de la Nouvelle Lune du 20 novembre 2025</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvre un rituel doux et ressourçant pour la Lune Noire d'Intériorité, parfait pour l'introspection et le renouveau avant l'hiver.</p>
+                    <Link href="/blog/cinquante-quatrieme-article" className="block">
+                      <div className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors border border-blue-200">
+                        <h4 className="font-semibold text-blue-700 mb-1">🌕 Rituel de la Pleine Lune du 5 décembre 2025</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvre un rituel hivernal de clôture énergétique pour la Cold Moon, parfait pour l'épuration profonde avant l'hiver.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/cinquante-troisieme-article" className="block">
-                      <div className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors">
-                        <h4 className="font-semibold text-blue-700 mb-1">🌌 Comment voir les signes de l'univers ?</h4>
-                        <p className="text-gray-600 text-sm mb-2">Apprends à reconnaître et accueillir les petits clins d'œil que l'univers t'envoie pour te guider sur ton chemin de vie.</p>
+                    <Link href="/blog/cinquante-cinquieme-article" className="block">
+                      <div className="bg-emerald-50 p-4 rounded-lg hover:bg-emerald-100 transition-colors">
+                        <h4 className="font-semibold text-emerald-700 mb-1">🌿 Quand tu es prête à faire une libération</h4>
+                        <p className="text-gray-600 text-sm mb-2">Apprends à reconnaître ce moment sacré où tu es prête à te libérer. Ton corps sait avant toi.</p>
                       </div>
                     </Link>
                   </div>
