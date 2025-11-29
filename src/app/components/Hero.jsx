@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import ParticlesBackground from "./ParticlesBackground";
 
 // Import des icônes Heroicons
 import { SparklesIcon, HeartIcon, MoonIcon, SunIcon, 
@@ -105,6 +106,9 @@ export default function Hero() {
         
         {/* Lueur décorative */}
         <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2 w-2/3 h-96 rounded-full bg-purple-200/20 blur-3xl" />
+        
+        {/* Effet de particules animées */}
+        <ParticlesBackground />
       </div>
       
 
