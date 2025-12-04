@@ -123,88 +123,69 @@ export default function Hero() {
           {/* Titre avec effets améliorés */}
           <motion.h1
         variants={itemVariants}
-        className="font-heading text-3xl sm:text-4xl md:text-7xl font-bold mb-4 md:mb-8 leading-snug pb-4 relative" // Taille et marges optimisées
+        className="font-heading text-4xl sm:text-5xl md:text-8xl font-bold mb-2 md:mb-4 leading-tight pb-4 relative flex flex-col items-center" // Taille augmentée et disposition en colonne
       >
-  <span className="sr-only">Kristelle Feron - Kris La Voix Des Anges</span>
+  <span className="sr-only">Kristelle Feron & Patrice Guffon - Kris & Patrice La Voix Des Anges</span>
   
   {/* Effet de halo amélioré avec plus de subtilité */}
-  <div className="absolute inset-0 blur-2xl opacity-20 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl -z-10" />
+  <div className="absolute inset-0 blur-3xl opacity-30 bg-gradient-to-r from-violet-500 via-purple-500 to-blue-500 rounded-3xl -z-10" />
   
-  {/* Nom avec couleur dégradée - KRIS */}
-  <span className="inline-block relative">
-    <span className="relative inline-block bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-      Kris
+  {/* KRIS & PATRICE avec dégradé violet-bleu magnifique */}
+  <span className="inline-block relative mb-2 md:mb-3">
+    <span className="relative inline-block bg-gradient-to-r from-violet-600 via-purple-500 to-blue-600 bg-clip-text text-transparent font-extrabold tracking-tight" style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+      Kris & Patrice
     </span>
     
-    {/* Effet halo autour de "Kris" - animation plus douce */}
-    <motion.span
-      className="absolute inset-0 rounded-lg opacity-0"
-      animate={{
-        boxShadow: [
-          "0 0 5px rgba(139, 92, 246, 0)",
-          "0 0 12px rgba(139, 92, 246, 0.25)",
-          "0 0 5px rgba(139, 92, 246, 0)"
-        ],
-        opacity: [0, 0.4, 0]
-      }}
-      transition={{ duration: 3.5, repeat: Infinity, repeatDelay: 1.5 }}
-    />
-  </span>
-  
-  {/* Espacement responsive amélioré */}
-  <span className="mx-1 md:mx-3"></span>
-  
-  {/* "LA VOIX DES ANGES" avec guillemets */}
-  <span className="inline-flex flex-wrap relative items-center" style={{ paddingBottom: "0.25em" }}>
-    <span className="relative inline-block">
-      <span className="text-purple-400 text-3xl sm:text-4xl md:text-6xl">"</span>
-      <span className="bg-gradient-to-br from-fuchsia-500 via-purple-600 to-indigo-500 bg-clip-text text-transparent pb-1">
-      La<span className="hidden sm:inline">&#8202;</span>Voix<span className="hidden sm:inline">&#8202;</span>Des<span className="hidden sm:inline">&#8202;</span>Anges
-      </span>
-      <span className="text-purple-400 text-3xl sm:text-4xl md:text-6xl">"</span>
-    </span>
-    
-    {/* Particules optimisées */}
-    {/* {isClient && particlePositions.slice(3, 5).map((particle, i) => (
-      <motion.div
-        key={i}
-        className="absolute rounded-full bg-purple-300"
-        style={{
-          width: particle.size,
-          height: particle.size,
-          right: `${particle.x - 15}%`,
-          top: `${particle.y + 10}%`
-        }}
-        animate={{
-          y: [0, -12, 0],
-          opacity: [0, 0.6, 0],
-          scale: [0.5, 1.1, 0.5]
-        }}
-        transition={{
-          duration: particle.duration * 1.2,
-          repeat: Infinity,
-          delay: particle.delay
-        }}
-      />
-    ))} */}
-    
-    {/* Effet de lumière qui passe - légèrement plus subtil */}
+    {/* Effet de brillance qui traverse - simplifié */}
     {isClient && (
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-15"
-        style={{ width: "200%" }}
-        animate={{ x: ["-100%", "100%"] }}
-        transition={{ duration: 3.5, repeat: Infinity, repeatDelay: 5 }}
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none"
+        style={{ width: "200%", left: "-50%" }}
+        animate={{ x: ["-50%", "150%"] }}
+        transition={{ duration: 3, repeat: Infinity, repeatDelay: 4 }}
       />
     )}
   </span>
   
-  {/* Ligne décorative sous le titre - légèrement affinée */}
+  {/* LaVoixDesAnges en dessous */}
+  <span className="inline-block relative text-2xl sm:text-3xl md:text-5xl">
+    <span className="relative inline-block bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent font-semibold italic tracking-wide">
+      LaVoixDesAnges
+    </span>
+    
+    {/* Petites étoiles décoratives */}
+    {isClient && (
+      <>
+        <motion.span
+          className="absolute -left-8 top-1/2 transform -translate-y-1/2 text-purple-400 text-xl"
+          animate={{
+            opacity: [0.3, 1, 0.3],
+            scale: [0.8, 1.2, 0.8]
+          }}
+          transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+        >
+          ✨
+        </motion.span>
+        <motion.span
+          className="absolute -right-8 top-1/2 transform -translate-y-1/2 text-purple-400 text-xl"
+          animate={{
+            opacity: [0.3, 1, 0.3],
+            scale: [0.8, 1.2, 0.8]
+          }}
+          transition={{ duration: 2, repeat: Infinity, repeatDelay: 1, delay: 1 }}
+        >
+          ✨
+        </motion.span>
+      </>
+    )}
+  </span>
+  
+  {/* Ligne décorative sous le titre - dégradé violet-bleu */}
   <motion.div
-    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[2px] bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-400"
+    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[3px] bg-gradient-to-r from-violet-500 via-purple-500 to-blue-500 rounded-full"
     initial={{ width: "0%" }}
-    animate={{ width: "85%" }}
-    transition={{ delay: 0.7, duration: 0.9, ease: "easeOut" }}
+    animate={{ width: "90%" }}
+    transition={{ delay: 0.7, duration: 1, ease: "easeOut" }}
   />
 </motion.h1>
 

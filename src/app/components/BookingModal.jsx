@@ -85,9 +85,24 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     if (service?.id !== 4) return false; // Seulement pour Guidance Question
     
     const now = new Date();
-    const endPause = new Date(2025, 8, 25); // 25 septembre 2025 (mois 8 = septembre, 0-indexé)
     
-    return now <= endPause;
+    // Pause de Noël 2025 : du 16 décembre au soir (23h59) au 4 janvier 2026 (minuit)
+    const christmasPauseStart = new Date(2025, 11, 16, 23, 59, 59); // 16 décembre 2025 à 23h59
+    const christmasPauseEnd = new Date(2026, 0, 4, 0, 0, 0); // 4 janvier 2026 à minuit
+    
+    // Vérifier si on est en période de pause de Noël
+    const isInChristmasPause = now >= christmasPauseStart && now < christmasPauseEnd;
+    
+    return isInChristmasPause;
+  };
+  
+  // Fonction pour obtenir le message de pause approprié
+  const getGuidanceQuestionPauseMessage = () => {
+    return {
+      title: "Service en pause pour les vacances de Noël 🎄",
+      message: "La Guidance à la question est actuellement en pause du 16 décembre au soir au 4 janvier 2026.",
+      returnDate: "4 janvier 2026"
+    };
   };
 
   // Chargement du script Calendly lors de l'ouverture du modal
@@ -304,6 +319,8 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
 
   // Rendu du bandeau de pause pour Guidance Question
   const renderGuidanceQuestionPauseBanner = () => {
+    const pauseInfo = getGuidanceQuestionPauseMessage();
+    
     return (
       <div className="p-8 text-center">
         <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
@@ -313,13 +330,13 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
             </svg>
           </div>
           <h3 className="text-xl font-semibold text-orange-800 mb-3">
-            Service temporairement en pause
+            {pauseInfo.title}
           </h3>
           <p className="text-orange-700 mb-4">
-            La <strong>Guidance à la question</strong> est actuellement en pause jusqu'au <strong>25 septembre 2025</strong> inclus.
+            {pauseInfo.message}
           </p>
           <p className="text-orange-600 text-sm">
-            Ce service sera de nouveau disponible à partir du <strong>26 septembre 2025</strong>. 
+            Ce service sera de nouveau disponible à partir du <strong>{pauseInfo.returnDate}</strong>. 
             <br />
             Merci de votre compréhension ! 🙏
           </p>
