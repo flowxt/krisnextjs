@@ -58,8 +58,8 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       { label: "Carte Cadeau 100€ - Soin Énergétique 1h", price: "100€", slug: "carte-cadeau-soin-100" }
     ],
     12: [ // Guidance 1h + Soin - Options de localisation
-      { label: "Réserver en Présentiel", price: "150€", slug: "guidance-1h30-soin-clone", type: "location" },
-      { label: "Réserver à Distance / Visio", price: "150€", slug: "guidance-1h-soin-clone", type: "location" }
+      { label: "Réserver en Présentiel", price: "200€", slug: "guidance-1h30-soin-clone", type: "location" },
+      { label: "Réserver à Distance / Visio", price: "200€", slug: "guidance-1h-soin-clone", type: "location" }
     ],
     22: [ // Coaching & Accompagnement Holistique - Options de localisation
       { label: "Réserver en Présentiel", price: "100€", slug: "coaching-accompagnement-a-la-seance", type: "location" },

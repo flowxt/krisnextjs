@@ -367,7 +367,7 @@ Pour toute séance en distanciel (WhatsApp), règlement 48h minimum avant la pre
   {
     id: 12,
     title: "Guidance 1h + Soin Énergétique Personnalisé",
-    price: "150€",
+    price: "200€",
     duration: "1h30 - Présentiel/Distance",
     intervenant: "Kris",
     icon: <SparklesIcon className="w-8 h-8" />,
@@ -534,7 +534,12 @@ export default function Services() {
     {
       id: "guidances",
       title: "Guidances",
-      services: [9, 10, 11, 12], // Guidance 1h30, Guidance 1h, Guidance 45min, Guidance 1h + Soin
+      services: [9, 10, 11], // Guidance 1h30, Guidance 1h, Guidance 45min
+    },
+    {
+      id: "guidance-soin",
+      title: "Guidance + Soin",
+      services: [12], // Guidance 1h + Soin Énergétique Personnalisé
     },
     {
       id: "questions",
