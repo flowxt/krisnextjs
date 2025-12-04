@@ -365,6 +365,42 @@ Pour toute séance en distanciel (WhatsApp), règlement 48h minimum avant la pre
     images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
   },
   {
+    id: 12,
+    title: "Guidance 1h + Soin Énergétique Personnalisé",
+    price: "150€",
+    duration: "1h30 - Présentiel/Distance",
+    intervenant: "Kris",
+    icon: <SparklesIcon className="w-8 h-8" />,
+    calendlyLink: {
+      presentiel: "https://calendly.com/contact-krislavoixdesanges/guidance-1h30-soin-clone",
+      visio: "https://calendly.com/contact-krislavoixdesanges/guidance-1h-soin-clone"
+    },
+    description: `Un voyage profond au cœur de ton âme
+
+✨ Guidance intuitive personnalisée
+✨ Soin énergétique sur-mesure
+✨ Harmonisation complète
+✨ Transformation en douceur
+
+Une séance complète pour éclairer ton chemin et réaligner ton énergie.
+
+Nous commençons par une guidance intuitive pour répondre à tes questions, libérer ce qui bloque et mettre en lumière ce qui cherche à émerger 🌟
+
+Puis, place à un soin énergétique entièrement personnalisé : harmonisation, recentrage, rééquilibrage et libération en douceur.
+
+✨ Pour repartir plus légère, alignée, ancrée…
+✨ Pour remettre du sens, de la clarté et du souffle dans ta vie.
+✨ Pour reconnecter à ta vérité intérieure.
+
+Une véritable expérience de transformation, douce et profonde à la fois.
+
+Important :
+Délais identiques pour le présentiel et le distanciel.
+
+* Réserve ton moment sacré. ✨`,
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
+  },
+  {
     id: 13,
     slug: "libre-d-etre-soi",
     title: "Soin Libre d'Être Soi",
@@ -498,7 +534,7 @@ export default function Services() {
     {
       id: "guidances",
       title: "Guidances",
-      services: [9, 10, 11], // Guidance 1h30, Guidance 1h, Guidance 45min
+      services: [9, 10, 11, 12], // Guidance 1h30, Guidance 1h, Guidance 45min, Guidance 1h + Soin
     },
     {
       id: "questions",

@@ -56,6 +56,14 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
     ],
     17: [ // Carte Cadeau Soin Énergétique
       { label: "Carte Cadeau 100€ - Soin Énergétique 1h", price: "100€", slug: "carte-cadeau-soin-100" }
+    ],
+    12: [ // Guidance 1h + Soin - Options de localisation
+      { label: "Réserver en Présentiel", price: "150€", slug: "guidance-1h30-soin-clone", type: "location" },
+      { label: "Réserver à Distance / Visio", price: "150€", slug: "guidance-1h-soin-clone", type: "location" }
+    ],
+    22: [ // Coaching & Accompagnement Holistique - Options de localisation
+      { label: "Réserver en Présentiel", price: "100€", slug: "coaching-accompagnement-a-la-seance", type: "location" },
+      { label: "Réserver à Distance / Visio", price: "100€", slug: "coaching-accompagnement-a-la-seance-clone", type: "location" }
     ]
   };
   
@@ -111,7 +119,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
 
   // Vérifie si un service est réservable en ligne
   const canBookOnline = (serviceId) => {
-    const nonBookableServices = [12, 14, 15]; // IDs des services par SMS uniquement (retiré 13 qui est maintenant réservable)
+    const nonBookableServices = [14, 15]; // IDs des services par SMS uniquement (retiré 12 et 13 qui sont maintenant réservables)
     return !nonBookableServices.includes(serviceId);
   };
 
@@ -141,7 +149,7 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       21: "olfactotherapie", // Olfactothérapie (Patrice)
     }[serviceId] || "je-me-laisse-guider";
     
-    // Pour le paiement sur place, ajouter le suffixe
+    // Pour les autres services, ajouter le suffixe pour le paiement sur place
     return paymentType === "onsite" 
       ? `${baseSlug}-sur-place` 
       : baseSlug; // URL d'origine pour le paiement en ligne
@@ -242,10 +250,17 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
   // Rendu de l'interface de sélection de prix
   const renderPriceSelection = () => {
     const options = multiPriceServices[service.id];
+    const isLocationChoice = options[0]?.type === "location";
     
     return (
       <div className="p-8 text-center">
-        <h3 className="text-xl font-semibold mb-6">Choisissez votre formule</h3>
+        <h3 className="text-xl font-semibold mb-6">
+          {isLocationChoice ? "Choisissez votre mode de réservation" : "Choisissez votre formule"}
+        </h3>
+        
+        {isLocationChoice && (
+          <p className="text-gray-600 mb-6">Les délais sont identiques pour le présentiel et le distanciel</p>
+        )}
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
           {options.map((option, index) => (
@@ -259,15 +274,24 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
               }}
               className="flex flex-col items-center p-5 border-2 border-purple-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-all"
             >
+              {isLocationChoice && (
+                <svg className="w-12 h-12 text-purple-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  {index === 0 ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  )}
+                </svg>
+              )}
               <span className="font-medium text-lg mb-1">{option.label}</span>
-              <span className="text-purple-600 font-bold">{option.price}</span>
+              {!isLocationChoice && <span className="text-purple-600 font-bold">{option.price}</span>}
             </button>
           ))}
         </div>
         
         <button 
           onClick={() => setPaymentChoice(null)}
-          className="mt-6 px-4 py-2 text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-1"
+          className="mt-6 px-4 py-2 text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-1 mx-auto"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

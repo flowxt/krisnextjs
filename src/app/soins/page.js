@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   RocketLaunchIcon,
   SunIcon,
@@ -10,8 +10,10 @@ import {
   AcademicCapIcon,
   ArrowRightIcon,
   SparklesIcon,
+  UserGroupIcon,
 } from "@heroicons/react/24/outline";
 import Cta from "../components/Cta";
+import BookingModal from "../components/BookingModal";
 
 const formules = [
   {
@@ -22,7 +24,7 @@ const formules = [
     description: [
       "Coaching holistique",
       "Soins énergétiques",
-      "Définition d’objectifs",
+      "Définition d'objectifs",
       "Relaxation profonde",
     ],
   },
@@ -42,7 +44,7 @@ const formules = [
     id: 3,
     title: "Accompagnement Holistique - 10h",
     price: "800€",
-    duration: "10 séances d’1h - Valable 6 mois",
+    duration: "10 séances d'1h - Valable 6 mois",
     description: [
       "Comprendre son mental et ses perceptions",
       "Trouver son équilibre spirituel",
@@ -64,9 +66,37 @@ const formules = [
   },
 ];
 
+const servicesSeance = [
+  {
+    id: 22,
+    title: "Coaching & Accompagnement Holistique",
+    price: "100€",
+    duration: "1h - Présentiel/Distance",
+    intervenant: "Kris",
+    icon: <UserGroupIcon className="w-8 h-8" />,
+    description: `Révéler ton potentiel, réaligner ta vie
+
+Un accompagnement complet qui unit corps, esprit et âme pour t'aider à avancer avec clarté, confiance et authenticité.
+
+Que ce soit pour ta vie personnelle, professionnelle ou ton évolution intérieure, je t'accompagne à libérer ce qui freine, activer tes ressources et poser des actions alignées.
+
+✨ Compréhension profonde de tes enjeux
+✨ Mise en lumière de ta vérité intérieure
+✨ Clarté, structure et guidance
+✨ Transformation durable et consciente
+
+Un espace sécurisant, bienveillant et puissant pour t'accompagner vers une version plus alignée, sereine et rayonnante de toi.
+
+Réserve ton accompagnement.`,
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
+  },
+];
+
 export default function Soins() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
 
   // Animation variants
   const cardVariants = {
@@ -348,9 +378,143 @@ export default function Soins() {
           {/* Ajout du CTA */}
         </div>
       </section>
+
+      {/* Section Services à la séance */}
+      <section className="w-full py-16 bg-gradient-to-br from-purple-50 to-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              <span className="block mb-2">
+                Séances{" "}
+                <span className="bg-gradient-to-br from-purple-400 to-indigo-600 text-white px-2 py-1 inline-block">
+                  à l'unité
+                </span>
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Un accompagnement personnalisé pour avancer à ton rythme
+            </p>
+          </motion.div>
+
+          <div className="flex justify-center">
+            {servicesSeance.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative h-full flex flex-col w-full max-w-md"
+              >
+                {/* Effet de glow animé en arrière-plan */}
+                <motion.div
+                  className="absolute -inset-0.5 bg-gradient-to-r from-purple-400 via-indigo-500 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500"
+                />
+
+                <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col border border-purple-100">
+                  {/* Bande décorative supérieure */}
+                  <div className="h-2 bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600" />
+
+                  <div className="p-6 flex-grow relative z-10">
+                    {/* Header avec icône */}
+                    <div className="flex items-start justify-between mb-4">
+                      <motion.div
+                        className="relative"
+                        whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="relative p-4 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl border border-purple-200 group-hover:border-purple-300 transition-colors">
+                          <div className="text-purple-600 group-hover:text-purple-700 transition-colors">
+                            {service.icon}
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    {/* Titre */}
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+                      {service.title}
+                    </h3>
+
+                    {/* Badge intervenant */}
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-purple-100 text-purple-800">
+                      {service.intervenant}
+                    </span>
+
+                    {/* Prix et badges */}
+                    <div className="mt-4 flex flex-col space-y-3">
+                      <span className="text-xl font-bold text-purple-600">
+                        {service.price}
+                      </span>
+
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-sm font-medium px-3 py-1.5 rounded-full text-indigo-600 bg-indigo-50">
+                          <span className="inline-block mr-1">⌛</span>{" "}
+                          {service.duration.split(" - ")[0]}
+                        </span>
+                        <span className="text-sm font-medium px-3 py-1.5 rounded-full text-indigo-600 bg-indigo-50">
+                          <span className="inline-block mr-1">📍</span>{" "}
+                          {service.duration.split(" - ")[1]}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Aperçu de description */}
+                    <div className="mt-6">
+                      <p className="text-gray-600 line-clamp-3">
+                        {service.description.split("\n\n")[0]}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bouton d'action */}
+                  <div className="mt-auto p-4 border-t border-purple-100">
+                    <button
+                      onClick={() => {
+                        setSelectedService(service);
+                        setIsBookingModalOpen(true);
+                      }}
+                      className="w-full py-3 px-4 rounded-xl font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      Réserver
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <div className="w-full">
         <Cta page="soins" />
       </div>
+
+      {/* Modal de réservation */}
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        service={selectedService}
+      />
     </>
   );
 }

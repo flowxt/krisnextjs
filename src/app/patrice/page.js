@@ -6,7 +6,6 @@ import {
   SparklesIcon,
   HeartIcon,
   UserIcon,
-  PhoneIcon,
   LightBulbIcon,
   BrainIcon,
 } from "@heroicons/react/24/outline";
@@ -238,13 +237,6 @@ Le processus de transformation :
                 >
                   Découvrir les soins
                 </a>
-                <a
-                  href="sms:+33665553341"
-                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white text-blue-600 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
-                >
-                  <PhoneIcon className="w-5 h-5" />
-                  <span className="whitespace-nowrap">Réserver par SMS</span>
-                </a>
               </motion.div>
             </motion.div>
           </div>
@@ -472,75 +464,6 @@ Le processus de transformation :
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-12 md:mt-20 text-center px-4"
-          >
-            <div className="relative inline-block">
-              {/* Effet de glow en arrière-plan */}
-              <motion.div
-                className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full blur-lg opacity-30"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-
-              <motion.a
-                href="sms:+33665553341"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="relative inline-flex items-center gap-2 sm:gap-3 md:gap-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full px-4 sm:px-6 md:px-8 py-3 md:py-4 shadow-xl hover:shadow-2xl transition-all duration-300 max-w-full"
-              >
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="bg-white/20 p-1.5 sm:p-2 rounded-full flex-shrink-0"
-                >
-                  <PhoneIcon className="w-5 h-5 sm:w-6 sm:h-6" />
-                </motion.div>
-                <div className="text-left flex-1 min-w-0">
-                  <span className="block text-xs sm:text-sm font-medium opacity-90">
-                    Réservation par SMS uniquement
-                  </span>
-                  <span className="block text-base sm:text-lg font-bold whitespace-nowrap">
-                    06.65.55.33.41
-                  </span>
-                </div>
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="text-xl sm:text-2xl flex-shrink-0"
-                >
-                  →
-                </motion.span>
-              </motion.a>
-            </div>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="mt-6 text-gray-600 text-xs sm:text-sm px-4"
-            >
-              📱 Cliquez pour envoyer un SMS et réserver votre séance
-            </motion.p>
-          </motion.div>
         </div>
       </section>
 

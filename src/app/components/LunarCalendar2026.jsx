@@ -1,23 +1,24 @@
 import React from "react";
 
 const lunarData = [
-  { mois: "Janvier", nouvelle: "29 janv. 13:35", pleine: "13 janvier à 23:26" },
-  { mois: "Février", nouvelle: "28 févr. 01:44", pleine: "12 février à 14:53" },
-  { mois: "Mars", nouvelle: "29 mars 11:57", pleine: "14 mars à 07:54" },
-  { mois: "Avril", nouvelle: "27 avril 21:31", pleine: "13 avril à 18:55" },
-  { mois: "Mai", nouvelle: "27 juin 12:31", pleine: "12 mai à 19:43" },
-  { mois: "Juillet", nouvelle: "24 juillet 21:11", pleine: "10 juillet à 22:36" },
-  { mois: "Août", nouvelle: "23 août 08:06", pleine: "9 août à 09:54" },
-  { mois: "Septembre", nouvelle: "21 sept. 21:54", pleine: "7 septembre 20:08" },
-  { mois: "Octobre", nouvelle: "21 oct. 14:25", pleine: "7 octobre 05:47" },
-  { mois: "Novembre", nouvelle: "20 nov. 07:47", pleine: "5 novembre 14:19" },
-  { mois: "Décembre", nouvelle: "20 déc. 02:43", pleine: "5 décembre 00:14" },
+  { mois: "Janvier", nouvelle: "18 janv. 20:52", pleine: "3 janvier à 11:02" },
+  { mois: "Février", nouvelle: "17 févr. 13:01", pleine: "1 février à 23:09" },
+  { mois: "Mars", nouvelle: "19 mars 02:23", pleine: "3 mars à 12:37" },
+  { mois: "Avril", nouvelle: "17 avril 13:51", pleine: "2 avril à 04:11" },
+  { mois: "Mai", nouvelle: "16 mai 22:01", pleine: "1 mai à 19:23" },
+  { mois: "Juin", nouvelle: "15 juin 04:54", pleine: "30 juin à 01:56" },
+  { mois: "Juillet", nouvelle: "14 juil. 11:43", pleine: "29 juillet à 16:35" },
+  { mois: "Août", nouvelle: "12 août 19:36", pleine: "28 août à 06:18" },
+  { mois: "Septembre", nouvelle: "11 sept. 05:27", pleine: "26 septembre à 18:49" },
+  { mois: "Octobre", nouvelle: "10 oct. 17:50", pleine: "26 octobre à 05:11" },
+  { mois: "Novembre", nouvelle: "9 nov. 12:47", pleine: "24 novembre à 21:28" },
+  { mois: "Décembre", nouvelle: "9 déc. 01:51", pleine: "24 décembre à 02:28" },
 ];
 
-export default function LunarCalendar2025() {
+export default function LunarCalendar2026() {
   return (
     <section className="my-12 bg-gradient-to-b from-indigo-900 via-indigo-800 to-indigo-900 rounded-2xl shadow-xl p-8 border border-indigo-200 relative overflow-hidden">
-      <h2 className="text-3xl font-bold text-center text-indigo-100 mb-8 tracking-wide drop-shadow-lg">Calendrier Lunaire 2025</h2>
+      <h2 className="text-3xl font-bold text-center text-indigo-100 mb-8 tracking-wide drop-shadow-lg">Calendrier Lunaire 2026</h2>
       {/* Lune animée en arrière-plan */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <span className="lune-anim block absolute" />
@@ -153,4 +154,5 @@ export default function LunarCalendar2025() {
       `}</style>
     </section>
   );
-} 
+}
+
