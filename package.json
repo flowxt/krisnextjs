@@ -21,7 +21,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.474.0",
     "marked": "^15.0.7",
-    "next": "^15.1.9",
+    "next": "^15.5.9",
     "process": "^0.11.10",
     "react": "^19.0.1",
     "react-calendar": "^5.1.0",
