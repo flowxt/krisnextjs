@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PartnersFloatingButton from "./components/PartnersFloatingButton";
 import ScrollToTop from "./components/ScrollToTop";
-import FloatingGiftButton from "./components/FloatingGiftButton";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -106,7 +105,6 @@ export default function RootLayout({ children }) {
         <SpeedInsights />
         <ScrollToTop />
         <PartnersFloatingButton />
-        <FloatingGiftButton />
         <Footer />
       </body>
     </html>
