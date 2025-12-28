@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, CalendarIcon } from "@heroicons/react/24/outline";
 
-export default function BlogFilters({ onFilterChange, onSearchChange }) {
+export default function BlogFilters({ onFilterChange, onSearchChange, onYearChange }) {
   const [activeFilter, setActiveFilter] = useState("Tous");
+  const [activeYear, setActiveYear] = useState("Toutes");
   const [searchQuery, setSearchQuery] = useState("");
 
   const filters = [
@@ -13,11 +14,23 @@ export default function BlogFilters({ onFilterChange, onSearchChange }) {
     { name: "Développement personnel", colorActive: "bg-pink-600 text-white shadow-md", colorInactive: "bg-pink-50 text-pink-600 hover:bg-pink-100" },
     { name: "Nouvelle lune", colorActive: "bg-indigo-600 text-white shadow-md", colorInactive: "bg-indigo-50 text-indigo-600 hover:bg-indigo-100" },
     { name: "Pleine lune", colorActive: "bg-blue-600 text-white shadow-md", colorInactive: "bg-blue-50 text-blue-600 hover:bg-blue-100" },
+    { name: "Rituel", colorActive: "bg-amber-600 text-white shadow-md", colorInactive: "bg-amber-50 text-amber-600 hover:bg-amber-100" },
+  ];
+
+  const years = [
+    { name: "Toutes", label: "Toutes les années" },
+    { name: "2026", label: "2026" },
+    { name: "2025", label: "2025" },
   ];
 
   const handleFilterClick = (filter) => {
     setActiveFilter(filter);
     onFilterChange(filter === "Tous" ? null : filter);
+  };
+
+  const handleYearClick = (year) => {
+    setActiveYear(year);
+    onYearChange(year === "Toutes" ? null : year);
   };
 
   const handleSearch = (e) => {
@@ -28,6 +41,24 @@ export default function BlogFilters({ onFilterChange, onSearchChange }) {
 
   return (
     <div className="mb-12 space-y-6">
+      {/* Filtres par année */}
+      <div className="flex flex-wrap gap-2 justify-center items-center">
+        <CalendarIcon className="h-5 w-5 text-gray-500 mr-1" />
+        {years.map((year) => (
+          <button
+            key={year.name}
+            onClick={() => handleYearClick(year.name)}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+              activeYear === year.name
+                ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md"
+                : "bg-white/80 text-gray-600 hover:bg-purple-50 border border-gray-200"
+            }`}
+          >
+            {year.label}
+          </button>
+        ))}
+      </div>
+
       {/* Filtres de catégories */}
       <div className="flex flex-wrap gap-3 justify-center">
         {filters.map((filter) => (

@@ -53,8 +53,12 @@ async function getArticleData(slug) {
 
 // Génération dynamique des métadonnées pour chaque article
 export async function generateMetadata({ params }) {
+  // Attendre la résolution des params dans Next.js 15
+  const resolvedParams = await Promise.resolve(params);
+  const { slug } = resolvedParams;
+  
   // Récupérer les données de l'article
-  const article = await getArticleData(params.slug);
+  const article = await getArticleData(slug);
 
   if (!article) {
     return {
@@ -72,14 +76,14 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: Title,
       description: description,
-      url: `https://www.krislavoixdesanges.com/blog/${params.slug}`,
+      url: `https://www.krislavoixdesanges.com/blog/${slug}`,
       type: "article",
       images: imageUrl
         ? [{ url: `https://www.krislavoixdesanges.com${imageUrl}` }]
         : [],
     },
     alternates: {
-      canonical: `https://www.krislavoixdesanges.com/blog/${params.slug}`,
+      canonical: `https://www.krislavoixdesanges.com/blog/${slug}`,
     },
   };
 }

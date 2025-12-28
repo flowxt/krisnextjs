@@ -12,6 +12,7 @@ export default function Blog() {
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState(null);
+  const [yearFilter, setYearFilter] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -41,6 +42,18 @@ export default function Blog() {
   useEffect(() => {
     let result = [...articles];
 
+    // Filtre par année
+    if (yearFilter) {
+      result = result.filter((article) => {
+        const articleDate = article.attributes.publicationDate;
+        if (articleDate) {
+          // La date peut être au format "2025-03-11T12:00:00Z" ou "2026-01-01"
+          return articleDate.toString().startsWith(yearFilter);
+        }
+        return false;
+      });
+    }
+
     // Filtre par catégorie
     if (categoryFilter) {
       result = result.filter(
@@ -60,7 +73,7 @@ export default function Blog() {
     }
 
     setFilteredArticles(result);
-  }, [articles, categoryFilter, searchQuery]);
+  }, [articles, categoryFilter, yearFilter, searchQuery]);
 
   if (isLoading) {
     return (
@@ -80,6 +93,7 @@ export default function Blog() {
         <LunarCalendar2026 />
         <BlogFilters
           onFilterChange={(category) => setCategoryFilter(category)}
+          onYearChange={(year) => setYearFilter(year)}
           onSearchChange={(query) => setSearchQuery(query)}
         />
 
