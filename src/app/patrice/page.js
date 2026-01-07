@@ -11,21 +11,21 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import BookingModal from "../components/BookingModal";
+import { StarIcon } from "@heroicons/react/24/solid";
 
 export default function PatricePage() {
   const [selectedService, setSelectedService] = useState(null);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  // Les services de Patrice
-  const patriceServices = [
-    {
-      id: 18,
-      title: "Force Intérieure & Renaissance Masculine",
-      price: "100€",
-      duration: "1h - Présentiel",
-      icon: <UserIcon className="w-8 h-8" />,
-      calendlyLink: "https://calendly.com/contact-krislavoixdesanges/force-interieure-et-renaissance",
-      description: `Un espace dédié à la libération émotionnelle masculine, alliant olfactothérapie et zéro mental pour une transformation profonde.
+  // Service mis en avant - Force Intérieure
+  const featuredService = {
+    id: 18,
+    title: "Force Intérieure & Renaissance Masculine",
+    price: "100€",
+    duration: "1h - Présentiel",
+    icon: <UserIcon className="w-8 h-8" />,
+    calendlyLink: "https://calendly.com/contact-krislavoixdesanges/force-interieure-et-renaissance",
+    description: `Un espace dédié à la libération émotionnelle masculine, alliant olfactothérapie et zéro mental pour une transformation profonde.
 
 ✨ Libération émotionnelle masculine
 ✨ Approche holistique personnalisée
@@ -55,8 +55,11 @@ Bénéfices :
 • Légèreté intérieure et sérénité
 
 Cette méthode offre une voie unique pour reconnecter corps, esprit et émotions dans un cadre spécialement conçu pour les hommes en quête d'authenticité et de transformation.`,
-      images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
-    },
+    images: ["/photo/IMG_8967.JPG", "/photo/IMG_8963.JPG"],
+  };
+
+  // Les autres services de Patrice
+  const patriceServices = [
     {
       id: 13,
       title: "Soin Libre d'Être Soi",
@@ -257,9 +260,170 @@ Le processus de transformation :
         </div>
       </section>
 
+      {/* Section mise en avant - Force Intérieure */}
+      <section className="py-12 md:py-20 bg-gradient-to-b from-gray-100 to-blue-100">
+        <div className="max-w-4xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-center mb-8 md:mb-12"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 px-6 py-2 rounded-full mb-6 shadow-md"
+            >
+              <StarIcon className="w-5 h-5 text-amber-600" />
+              <span className="text-amber-800 font-semibold text-sm">
+                Séance Homme Exclusive
+              </span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading mb-3 md:mb-4 px-4"
+            >
+              <span className="bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent">
+                Force Intérieure
+              </span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto px-4"
+            >
+              Un espace unique pour la libération émotionnelle masculine
+            </motion.p>
+          </motion.div>
+
+          {/* Carte mise en avant */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="group relative"
+          >
+            {/* Effet de glow animé spécial */}
+            <motion.div
+              className="absolute -inset-1 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 rounded-3xl opacity-75 blur-lg group-hover:opacity-100 transition-all duration-500"
+              animate={{
+                background: [
+                  "linear-gradient(to right, #f59e0b, #ea580c, #f59e0b)",
+                  "linear-gradient(to right, #ea580c, #f59e0b, #ea580c)",
+                  "linear-gradient(to right, #f59e0b, #ea580c, #f59e0b)",
+                ],
+              }}
+              transition={{ duration: 4, repeat: Infinity }}
+            />
+
+            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-amber-200">
+              {/* Bande décorative supérieure */}
+              <div className="h-3 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600" />
+
+              <div className="p-6 md:p-8">
+                <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+                  {/* Colonne gauche - Infos principales */}
+                  <div className="flex-1">
+                    <div className="flex items-start gap-4 mb-6">
+                      <motion.div
+                        className="relative"
+                        whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl blur-md opacity-60" />
+                        <div className="relative p-4 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border border-amber-200">
+                          <UserIcon className="w-8 h-8 text-amber-600" />
+                        </div>
+                      </motion.div>
+
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                          {featuredService.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="px-4 py-1.5 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-full font-bold text-lg">
+                            {featuredService.price}
+                          </span>
+                          <span className="px-3 py-1.5 bg-amber-50 text-amber-700 rounded-full text-sm font-medium">
+                            {featuredService.duration}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="prose prose-sm max-w-none text-gray-600 mb-6">
+                      {featuredService.description.split("\n\n").slice(0, 2).map((paragraph, i) => (
+                        <p key={i} className="mb-3 whitespace-pre-line">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+
+                    {/* Points clés */}
+                    <div className="grid grid-cols-2 gap-3 mb-6">
+                      {["Libération émotionnelle", "Olfactothérapie", "Zéro Mental", "Espace sécurisant"].map((item, i) => (
+                        <div key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                          <div className="w-2 h-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full" />
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Colonne droite - Image */}
+                  <div className="md:w-1/3">
+                    <div className="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                      <Image
+                        src={featuredService.images[0]}
+                        alt={featuredService.title}
+                        width={400}
+                        height={400}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Boutons d'action */}
+                <div className="flex flex-col sm:flex-row gap-4 mt-6 pt-6 border-t border-amber-100">
+                  <button
+                    onClick={() => setSelectedService(featuredService)}
+                    className="flex-1 py-3 px-6 rounded-xl font-medium text-amber-700 bg-amber-50 hover:bg-amber-100 transition-all flex items-center justify-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Voir tous les détails
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSelectedService(featuredService);
+                      setIsBookingModalOpen(true);
+                    }}
+                    className="flex-1 py-3 px-6 rounded-xl font-medium text-white bg-gradient-to-r from-amber-500 to-orange-600 hover:shadow-lg transform hover:scale-105 transition-all flex items-center justify-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Réserver cette séance
+                  </button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section
         id="services"
-        className="py-12 md:py-20 bg-gradient-to-b from-gray-100 to-blue-50"
+        className="py-12 md:py-20 bg-gradient-to-b from-blue-100 to-blue-50"
       >
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
@@ -276,7 +440,7 @@ Le processus de transformation :
             >
               <UserIcon className="w-5 h-5 text-blue-600" />
               <span className="text-blue-800 font-semibold text-sm">
-                Services pour hommes
+                Tous les services
               </span>
             </motion.div>
 
@@ -303,7 +467,7 @@ Le processus de transformation :
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {patriceServices.map((service, index) => (
               <motion.div
                 key={service.id}

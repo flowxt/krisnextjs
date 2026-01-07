@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2026-01-pleine-lune-intentions";
+    const currentArticlesBatchId = "articles-2026-01-chemin-interieur";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -61,7 +61,7 @@ export default function BlogNewsModal() {
               <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-purple-100">
                 {/* En-tête */}
                 <div className="bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-4 flex justify-between items-center">
-                  <h3 className="text-xl font-bold text-white">Nouveaux Articles de Blog</h3>
+                  <h3 className="text-xl font-bold text-white">Nouvel Article de Blog</h3>
                   <button 
                     onClick={closeModal}
                     className="text-white p-1 hover:bg-white/20 rounded-full transition-colors"
@@ -74,21 +74,14 @@ export default function BlogNewsModal() {
                 {/* Contenu */}
                 <div className="p-6">
                   <p className="text-gray-600 mb-4">
-                    Découvrez nos nouveaux articles pour vous accompagner dans votre bien-être quotidien :
+                    Un nouvel article pour t'accompagner sur ton chemin intérieur :
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/cinquante-sixieme-article" className="block">
-                      <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors border border-purple-200">
-                        <h4 className="font-semibold text-purple-700 mb-1">🌕✨ Rituel Pleine Lune du 3 Janvier 2026</h4>
-                        <p className="text-gray-600 text-sm mb-2">Un rituel doux de 10 min pour accueillir cette première Pleine Lune de l'année avec ton cœur clair.</p>
-                      </div>
-                    </Link>
-                    
-                    <Link href="/blog/cinquante-septieme-article" className="block">
-                      <div className="bg-amber-50 p-4 rounded-lg hover:bg-amber-100 transition-colors border border-amber-200">
-                        <h4 className="font-semibold text-amber-700 mb-1">✨ S'ouvrir à 2026 : poser une intention claire</h4>
-                        <p className="text-gray-600 text-sm mb-2">Une approche douce et vivante pour commencer l'année avec une intention alignée avec ton cœur.</p>
+                    <Link href="/blog/cinquante-huitieme-article" className="block">
+                      <div className="bg-cyan-50 p-4 rounded-lg hover:bg-cyan-100 transition-colors border border-cyan-200">
+                        <h4 className="font-semibold text-cyan-700 mb-1">🌙 Comment sentir son chemin intérieur quand le mental s'agite</h4>
+                        <p className="text-gray-600 text-sm mb-2">Ce n'est jamais le mental qui connaît le chemin. C'est le cœur. Découvre comment reconnaître la voix de ton cœur.</p>
                       </div>
                     </Link>
                   </div>
