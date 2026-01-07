@@ -2,7 +2,7 @@
 title: "Comment sentir son chemin intérieur quand le mental s'agite"
 date: "2026-01-07"
 excerpt: "Ce n'est jamais le mental qui connaît le chemin. C'est le cœur. Découvre comment reconnaître la voix de ton cœur et t'y reconnecter."
-image: "/photo/stigma-being-affected-by-mental-illness.jpeg"
+image: "/arti.jpeg"
 categories: "Développement personnel"
 ---
 
