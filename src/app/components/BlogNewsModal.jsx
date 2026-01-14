@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2026-01-chemin-interieur";
+    const currentArticlesBatchId = "articles-2026-01-lunes";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -61,7 +61,7 @@ export default function BlogNewsModal() {
               <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-purple-100">
                 {/* En-tête */}
                 <div className="bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-4 flex justify-between items-center">
-                  <h3 className="text-xl font-bold text-white">Nouvel Article de Blog</h3>
+                  <h3 className="text-xl font-bold text-white">Nouveaux Articles de Blog</h3>
                   <button 
                     onClick={closeModal}
                     className="text-white p-1 hover:bg-white/20 rounded-full transition-colors"
@@ -74,14 +74,21 @@ export default function BlogNewsModal() {
                 {/* Contenu */}
                 <div className="p-6">
                   <p className="text-gray-600 mb-4">
-                    Un nouvel article pour t'accompagner sur ton chemin intérieur :
+                    Deux nouveaux articles pour mieux comprendre l'influence des cycles lunaires :
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/cinquante-huitieme-article" className="block">
-                      <div className="bg-cyan-50 p-4 rounded-lg hover:bg-cyan-100 transition-colors border border-cyan-200">
-                        <h4 className="font-semibold text-cyan-700 mb-1">🌙 Comment sentir son chemin intérieur quand le mental s'agite</h4>
-                        <p className="text-gray-600 text-sm mb-2">Ce n'est jamais le mental qui connaît le chemin. C'est le cœur. Découvre comment reconnaître la voix de ton cœur.</p>
+                    <Link href="/blog/cinquante-neuvieme-article" className="block">
+                      <div className="bg-amber-50 p-4 rounded-lg hover:bg-amber-100 transition-colors border border-amber-200">
+                        <h4 className="font-semibold text-amber-700 mb-1">🌕 L'Influence de la Pleine Lune sur Notre Énergie</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvre comment la pleine lune réveille tes émotions et comment vivre ce moment en douceur.</p>
+                      </div>
+                    </Link>
+                    
+                    <Link href="/blog/soixantieme-article" className="block">
+                      <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors border border-indigo-200">
+                        <h4 className="font-semibold text-indigo-700 mb-1">🌑 Les Énergies et l'Influence des Nouvelles Lunes</h4>
+                        <p className="text-gray-600 text-sm mb-2">Un moment de renaissance intérieure pour poser tes intentions et te réaligner.</p>
                       </div>
                     </Link>
                   </div>
