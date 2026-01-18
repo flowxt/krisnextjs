@@ -67,27 +67,27 @@ export default function PauseModal() {
                 <div className="p-8 sm:p-10 text-center">
                   {/* Icône */}
                   <div className="mb-6">
-                    <span className="text-6xl">🌿</span>
+                    <span className="text-6xl">💜</span>
                   </div>
                   
                   {/* Titre */}
                   <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-                    Pause Bien-Être
+                    Pause temporaire
                   </h2>
                   
                   {/* Message */}
                   <div className="space-y-4 text-gray-600 mb-8">
                     <p className="text-lg">
-                      Kris & Patrice prennent un temps de ressourcement personnel.
-                    </p>
-                    <p>
-                      Les réservations sont temporairement suspendues.
+                      Pour des raisons de santé, totalement indépendantes de notre volonté, nous sommes dans l'obligation de suspendre temporairement les rendez-vous, et ce pour une durée indéterminée.
                     </p>
                     <p className="text-purple-600 font-medium">
-                      Merci pour votre compréhension et votre bienveillance. 💜
+                      Nous vous présentons toutes nos excuses pour ce désagrément. 🙏
+                    </p>
+                    <p className="text-gray-700">
+                      En attendant de vous retrouver, prenez bien soin de vous.
                     </p>
                     <p className="text-sm text-gray-500 italic">
-                      À très bientôt sur ce chemin de lumière.
+                      Avec toute notre gratitude pour votre compréhension et votre bienveillance. 💜
                     </p>
                   </div>
                   

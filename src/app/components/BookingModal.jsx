@@ -332,21 +332,22 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
       <div className="p-8 text-center">
         <div className="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-6">
           <div className="flex items-center justify-center mb-4">
-            <span className="text-5xl">🌿</span>
+            <span className="text-5xl">💜</span>
           </div>
           <h3 className="text-xl font-semibold text-purple-800 mb-3">
-            Pause Bien-Être
+            Pause temporaire
           </h3>
           <p className="text-purple-700 mb-4">
-            Kris & Patrice prennent un temps de ressourcement personnel.
+            Pour des raisons de santé, totalement indépendantes de notre volonté, nous sommes dans l'obligation de suspendre temporairement les rendez-vous, et ce pour une durée indéterminée.
           </p>
           <p className="text-purple-600 mb-4">
-            Les réservations sont temporairement suspendues.
+            Nous vous présentons toutes nos excuses pour ce désagrément. 🙏
           </p>
-          <p className="text-gray-600 text-sm italic">
-            Merci pour votre compréhension et votre bienveillance. 💜
-            <br />
-            À très bientôt sur ce chemin de lumière.
+          <p className="text-gray-700 mb-4">
+            En attendant de vous retrouver, prenez bien soin de vous.
+          </p>
+          <p className="text-gray-500 text-sm italic">
+            Avec toute notre gratitude pour votre compréhension et votre bienveillance. 💜
           </p>
         </div>
         
