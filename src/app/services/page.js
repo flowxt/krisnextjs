@@ -15,6 +15,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Cta from "../components/Cta";
 import BookingModal from "../components/BookingModal";
+import PauseModal from "../components/PauseModal";
 
 const services = [
   {
@@ -597,6 +598,7 @@ export default function Services() {
 
   return (
     <>
+      <PauseModal />
       <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-20">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           {/* En-tête simplifié */}

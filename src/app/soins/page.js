@@ -14,6 +14,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Cta from "../components/Cta";
 import BookingModal from "../components/BookingModal";
+import PauseModal from "../components/PauseModal";
 
 const formules = [
   {
@@ -106,6 +107,7 @@ export default function Soins() {
 
   return (
     <>
+      <PauseModal />
       {/* Section Services à la séance - EN PREMIER */}
       <section className="w-full pt-32 pb-16 bg-gradient-to-br from-purple-50 to-white">
         <div className="max-w-7xl mx-auto px-4">

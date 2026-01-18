@@ -11,6 +11,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import BookingModal from "../components/BookingModal";
+import PauseModal from "../components/PauseModal";
 import { StarIcon } from "@heroicons/react/24/solid";
 
 export default function PatricePage() {
@@ -169,6 +170,7 @@ Le processus de transformation :
 
   return (
     <main>
+      <PauseModal />
       {/* Section Hero pour la page Patrice */}
       <section className="relative min-h-[650px] md:min-h-[500px] md:h-[60vh] bg-gradient-to-br from-blue-50 via-cyan-50 to-gray-50 overflow-hidden pt-32 md:pt-0">
         <div className="absolute inset-0">

@@ -80,6 +80,12 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
   // Vérifier si le service utilise Stripe pour le paiement
   const isStripeService = () => stripeOnlyServices.includes(service?.id);
   
+  // PAUSE GLOBALE - Maladie (leucémie)
+  // Toutes les réservations sont suspendues jusqu'à nouvel ordre
+  const isGlobalPauseActive = () => {
+    return true; // Pause activée - mettre à false pour réactiver les réservations
+  };
+  
   // Fonction pour vérifier si la Guidance Question est en pause
   const isGuidanceQuestionPaused = () => {
     if (service?.id !== 4) return false; // Seulement pour Guidance Question
@@ -107,6 +113,9 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
 
   // Chargement du script Calendly lors de l'ouverture du modal
   useEffect(() => {
+    // Ne pas charger Calendly si la pause globale est active
+    if (isGlobalPauseActive()) return;
+    
     const shouldLoadCalendly = isOpen && service && (
       (paymentChoice && !hasMultiplePrices() && !isStripeService()) || 
       (hasMultiplePrices() && priceOption && !isStripeService()) ||
@@ -312,6 +321,40 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
           Retour
+        </button>
+      </div>
+    );
+  };
+
+  // Rendu du bandeau de pause GLOBALE
+  const renderGlobalPauseBanner = () => {
+    return (
+      <div className="p-8 text-center">
+        <div className="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-6">
+          <div className="flex items-center justify-center mb-4">
+            <span className="text-5xl">🌿</span>
+          </div>
+          <h3 className="text-xl font-semibold text-purple-800 mb-3">
+            Pause Bien-Être
+          </h3>
+          <p className="text-purple-700 mb-4">
+            Kris & Patrice prennent un temps de ressourcement personnel.
+          </p>
+          <p className="text-purple-600 mb-4">
+            Les réservations sont temporairement suspendues.
+          </p>
+          <p className="text-gray-600 text-sm italic">
+            Merci pour votre compréhension et votre bienveillance. 💜
+            <br />
+            À très bientôt sur ce chemin de lumière.
+          </p>
+        </div>
+        
+        <button 
+          onClick={handleClose}
+          className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all"
+        >
+          Fermer
         </button>
       </div>
     );
@@ -982,7 +1025,10 @@ export default function BookingModal({ isOpen, onClose, service = {} }) {
           </div>
           
           {/* Contenu conditionnel */}
-          {quoteServices.includes(service.id) ? (
+          {isGlobalPauseActive() ? (
+            // PAUSE GLOBALE - Toutes les réservations sont suspendues
+            renderGlobalPauseBanner()
+          ) : quoteServices.includes(service.id) ? (
             // Formulaire de devis pour Nettoyage Harmonisation
             renderQuoteForm()
           ) : !canBookOnline(service.id) ? (

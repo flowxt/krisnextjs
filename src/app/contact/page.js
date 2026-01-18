@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ClientOnly from "../components/ClientOnly";
+import PauseModal from "../components/PauseModal";
 
 const ContactForm = () => {
   // États du formulaire améliorés
@@ -161,6 +162,7 @@ const ContactForm = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 py-20 px-4 relative overflow-hidden">
+      <PauseModal />
       {/* Particules cosmiques */}
       <ClientOnly>
         <motion.div
