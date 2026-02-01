@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2026-01-lunes";
+    const currentArticlesBatchId = "articles-2026-02-lion-chakras";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -74,21 +74,21 @@ export default function BlogNewsModal() {
                 {/* Contenu */}
                 <div className="p-6">
                   <p className="text-gray-600 mb-4">
-                    Deux nouveaux articles pour mieux comprendre l'influence des cycles lunaires :
+                    Deux nouveaux articles pour t'accompagner dans ton rayonnement :
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/cinquante-neuvieme-article" className="block">
+                    <Link href="/blog/soixante-et-unieme-article" className="block">
                       <div className="bg-amber-50 p-4 rounded-lg hover:bg-amber-100 transition-colors border border-amber-200">
-                        <h4 className="font-semibold text-amber-700 mb-1">🌕 L'Influence de la Pleine Lune sur Notre Énergie</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvre comment la pleine lune réveille tes émotions et comment vivre ce moment en douceur.</p>
+                        <h4 className="font-semibold text-amber-700 mb-1">🌕✨ Pleine Lune du 1er Février 2026 en Lion</h4>
+                        <p className="text-gray-600 text-sm mb-2">Un rituel "Je Brille Sans Forcer" pour réveiller ton feu intérieur et oser être vue.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/soixantieme-article" className="block">
-                      <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors border border-indigo-200">
-                        <h4 className="font-semibold text-indigo-700 mb-1">🌑 Les Énergies et l'Influence des Nouvelles Lunes</h4>
-                        <p className="text-gray-600 text-sm mb-2">Un moment de renaissance intérieure pour poser tes intentions et te réaligner.</p>
+                    <Link href="/blog/soixante-deuxieme-article" className="block">
+                      <div className="bg-emerald-50 p-4 rounded-lg hover:bg-emerald-100 transition-colors border border-emerald-200">
+                        <h4 className="font-semibold text-emerald-700 mb-1">🌿 Comprendre les Énergies de Notre Corps</h4>
+                        <p className="text-gray-600 text-sm mb-2">Découvre comment l'énergie circule dans ton corps et comment les chakras influencent ton bien-être.</p>
                       </div>
                     </Link>
                   </div>
