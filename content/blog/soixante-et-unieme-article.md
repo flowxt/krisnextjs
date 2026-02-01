@@ -2,7 +2,7 @@
 title: "🌕✨ Pleine Lune du 1er Février 2026 en Lion - Je Brille Sans Forcer"
 date: "2026-02-01"
 excerpt: "Cette pleine lune apporte une énergie de rayonnement, d'affirmation et de confiance. Un rituel de 10 min pour réveiller ton feu intérieur et oser briller."
-image: "/photo/lion-moon.jpeg"
+image: "/lion-moon.png"
 categories: "Pleine lune"
 ---
 

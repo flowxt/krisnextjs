@@ -2,7 +2,7 @@
 title: "🌿✨ Comprendre les Énergies de Notre Corps"
 date: "2026-01-28"
 excerpt: "Notre corps est traversé par une énergie vivante, fluide et intelligente. Découvre comment elle circule, où elle se bloque, et comment la faire circuler à nouveau."
-image: "/photo/chakra.jpeg"
+image: "/shakra.png"
 categories: "Bien-être"
 ---
 
