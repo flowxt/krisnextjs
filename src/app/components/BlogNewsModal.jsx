@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2026-02-lion-chakras";
+    const currentArticlesBatchId = "articles-2026-02-verseau-emotions";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -74,21 +74,21 @@ export default function BlogNewsModal() {
                 {/* Contenu */}
                 <div className="p-6">
                   <p className="text-gray-600 mb-4">
-                    Deux nouveaux articles pour t'accompagner dans ton rayonnement :
+                    Deux nouveaux articles pour t'accompagner dans ton évolution intérieure :
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/soixante-et-unieme-article" className="block">
-                      <div className="bg-amber-50 p-4 rounded-lg hover:bg-amber-100 transition-colors border border-amber-200">
-                        <h4 className="font-semibold text-amber-700 mb-1">🌕✨ Pleine Lune du 1er Février 2026 en Lion</h4>
-                        <p className="text-gray-600 text-sm mb-2">Un rituel "Je Brille Sans Forcer" pour réveiller ton feu intérieur et oser être vue.</p>
+                    <Link href="/blog/soixante-troisieme-article" className="block">
+                      <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-colors border border-indigo-200">
+                        <h4 className="font-semibold text-indigo-700 mb-1">🌑✨ Nouvelle Lune du 17 Février 2026 en Verseau</h4>
+                        <p className="text-gray-600 text-sm mb-2">Un rituel "Je Me Donne la Liberté d'Être Moi" pour réveiller ton authenticité et ta liberté intérieure.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/soixante-deuxieme-article" className="block">
-                      <div className="bg-emerald-50 p-4 rounded-lg hover:bg-emerald-100 transition-colors border border-emerald-200">
-                        <h4 className="font-semibold text-emerald-700 mb-1">🌿 Comprendre les Énergies de Notre Corps</h4>
-                        <p className="text-gray-600 text-sm mb-2">Découvre comment l'énergie circule dans ton corps et comment les chakras influencent ton bien-être.</p>
+                    <Link href="/blog/soixante-quatrieme-article" className="block">
+                      <div className="bg-rose-50 p-4 rounded-lg hover:bg-rose-100 transition-colors border border-rose-200">
+                        <h4 className="font-semibold text-rose-700 mb-1">💜 Comprendre ses Émotions</h4>
+                        <p className="text-gray-600 text-sm mb-2">La clé pour transcender la douleur : découvre comment accueillir tes émotions pour les transformer.</p>
                       </div>
                     </Link>
                   </div>
