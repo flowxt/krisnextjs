@@ -12,7 +12,7 @@ export default function BlogNewsModal() {
   useEffect(() => {
     setIsMounted(true);
     // Identifiant unique pour cette "vague" d'articles
-    const currentArticlesBatchId = "articles-2026-03-vierge-intelligence";
+    const currentArticlesBatchId = "articles-2026-03-balance-hypersensibilite";
     
     // Vérifier quelle est la dernière vague d'articles vue par l'utilisateur
     const lastSeenArticlesBatch = localStorage.getItem("lastSeenArticlesBatch");
@@ -74,21 +74,21 @@ export default function BlogNewsModal() {
                 {/* Contenu */}
                 <div className="p-6">
                   <p className="text-gray-600 mb-4">
-                    Deux nouveaux articles pour t'accompagner sur ton chemin :
+                    Deux nouveaux articles pour t'accompagner dans ton équilibre et ta reconnexion à toi :
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <Link href="/blog/soixante-cinquieme-article" className="block">
-                      <div className="bg-teal-50 p-4 rounded-lg hover:bg-teal-100 transition-colors border border-teal-200">
-                        <h4 className="font-semibold text-teal-700 mb-1">🌕✨ Pleine Lune du 3 Mars 2026 en Vierge</h4>
-                        <p className="text-gray-600 text-sm mb-2">Un rituel "Je Fais de la Place en Moi" pour clarifier, alléger et retrouver la simplicité.</p>
+                    <Link href="/blog/soixante-septieme-article" className="block">
+                      <div className="bg-rose-50 p-4 rounded-lg hover:bg-rose-100 transition-colors border border-rose-200">
+                        <h4 className="font-semibold text-rose-700 mb-1">🌕✨ Pleine Lune du 2 Avril 2026 en Balance</h4>
+                        <p className="text-gray-600 text-sm mb-2">Un rituel "Je Reviens à Mon Centre" pour retrouver l'harmonie dans tes liens et ta vie.</p>
                       </div>
                     </Link>
                     
-                    <Link href="/blog/soixante-sixieme-article" className="block">
-                      <div className="bg-amber-50 p-4 rounded-lg hover:bg-amber-100 transition-colors border border-amber-200">
-                        <h4 className="font-semibold text-amber-700 mb-1">✨ L'Intelligence Émotionnelle</h4>
-                        <p className="text-gray-600 text-sm mb-2">La compétence oubliée qui change une vie : apprends à reconnaître, comprendre et transformer ce que tu ressens.</p>
+                    <Link href="/blog/soixante-huitieme-article" className="block">
+                      <div className="bg-violet-50 p-4 rounded-lg hover:bg-violet-100 transition-colors border border-violet-200">
+                        <h4 className="font-semibold text-violet-700 mb-1">🌊 Hypersensibilité ou surcharge ?</h4>
+                        <p className="text-gray-600 text-sm mb-2">Comprendre l'énergie qui déborde : ton âme n'est pas fragile, elle est fatiguée. Retrouve ton chemin de puissance.</p>
                       </div>
                     </Link>
                   </div>
